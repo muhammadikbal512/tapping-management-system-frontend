@@ -1,0 +1,52 @@
+.default-container {
+    @apply
+    flex 
+    flex-row
+    min-h-screen 
+    bg-gray-100 
+    text-gray-800
+}
+
+.sidebar {
+    @apply
+    w-64 
+    md:shadow transform 
+    -translate-x-full 
+    md:translate-x-0 
+    transition-transform duration-150 ease-in 
+    bg-indigo-500
+}
+
+.main {
+    @apply
+    flex 
+    flex-col 
+    flex-grow 
+    -ml-64 
+    md:ml-0 
+    transition-all duration-150 ease-in
+}
+
+.main-content {
+    @apply
+    flex 
+    flex-col 
+    flex-grow 
+    p-4
+}
+
+.main-content h1 {
+    @apply
+    font-bold 
+    text-2xl 
+    text-gray-700
+}
+
+.main-content-board {
+    @apply
+    flex 
+    flex-col 
+    flex-grow 
+     
+    mt-4
+}

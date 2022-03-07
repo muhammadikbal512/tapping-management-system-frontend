@@ -1,0 +1,549 @@
+<aside
+  class="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500"
+>
+  <div class="sidebar-header flex items-center justify-center py-4">
+    <div class="inline-flex">
+      <a href="#" class="inline-flex flex-row items-center">
+        <img src="../../../assets/logo/logo-tms.png" class="w-10 h-10" alt="" />
+        <span class="leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase"
+          >TMS</span
+        >
+      </a>
+    </div>
+  </div>
+  <div id="mobile-menu" class="sidebar-content px-4 py-6">
+    <ul class="flex flex-col w-full">
+      <li class="my-px">
+        <a
+          href="#"
+          class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100"
+        >
+          <span class="flex items-center justify-center text-lg text-gray-400">
+            <svg
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              />
+            </svg>
+          </span>
+          <span class="ml-3">Dashboard</span>
+        </a>
+      </li>
+      <li class="my-px">
+        <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase"
+          >Projects</span
+        >
+      </li>
+
+      <li>
+        <button
+          aria-controls="dropdown-investigation"
+          data-collapse-toggle="dropdown-investigation"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            >Investigation</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-investigation"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="investigation/alert-analysis"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Alert Analysis</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-acquirer"
+          data-collapse-toggle="dropdown-acquirer"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >Acquirer</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-acquirer"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="acquirer/terminal-list"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Terminal List</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="acquirer/alert"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Alert</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-issuer"
+          data-collapse-toggle="dropdown-issuer"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >Issuer</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-issuer"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="issuer/terminal-list"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Terminal List</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="issuer/alert"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Alert</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-external"
+          data-collapse-toggle="dropdown-external"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >External Interfaces</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-external"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="external-interfaces/iso8583-configuration"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >ISO8083</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="external-interfaces/iso20022"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >ISO20022</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="external-interfaces/json-configuration"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >JSON Configuration</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="external-interfaces/NDC"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >NDC</a
+              >
+            </li>
+          </ul>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="external-interfaces/xml-configuration"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >XML Configuration</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-terminal"
+          data-collapse-toggle="dropdown-terminal"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >Terminal Configuration</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-terminal"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="terminal-configuration/terminal"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Terminal</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          routerLink="transaction"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >Transaction</span
+          >
+        </button>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-user-management"
+          data-collapse-toggle="dropdown-user-management"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >User Management</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-user-management"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="user-management/private-scheme"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Private Schemes</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="user-management/roles"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >Roles</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="user-management/user"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >User</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button
+          aria-controls="dropdown-system"
+          data-collapse-toggle="dropdown-system"
+          type="button"
+          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item
+            id="dropdown-example"
+            >System</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="dropdown-system"
+          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
+          <ul class="py-2 space-y-2">
+            <li>
+              <a
+                routerLink="user-management/private-scheme"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >ARP</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="user-management/roles"
+                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                >System Parameters</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</aside>
