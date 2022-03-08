@@ -1,11 +1,20 @@
-/* .sidebar {
+.sidebar {
     @apply
-    w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500
+    w-64 
+    md:shadow 
+    transform 
+    -translate-x-full 
+    md:translate-x-0 
+    transition-transform duration-150 ease-in 
+    bg-indigo-500
 }
 
 .sidebar-header {
     @apply
-    flex items-center justify-center py-4
+    flex 
+    items-center 
+    justify-center 
+    py-4
 }
 
 .sidebar-logo {
@@ -13,14 +22,9 @@
     inline-flex
 }
 
-.sidebar-logo a {
+.sidebar-logo > a {
     @apply
     inline-flex flex-row items-center
-}
-
-.sidebar-logo a span {
-    @apply
-    leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase
 }
 
 .sidebar-content {
@@ -28,45 +32,89 @@
     px-4 py-6
 }
 
-.sidebar-ul {
+.sidebar-items {
     @apply
-    flex flex-col w-full
+    flex 
+    flex-col 
+    w-full
 }
 
-.sidebar-ul li {
+.items-dashboard > a {
     @apply
-    my-px
+    flex 
+    flex-row 
+    items-center 
+    h-10 
+    px-3 
+    rounded-lg 
+    text-gray-700 
+    bg-gray-100
 }
 
-.sidebar-ul li a {
+.items-dashboard > span {
     @apply
-    flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100
+    flex 
+    items-center 
+    justify-center 
+    text-lg 
+    text-gray-400
 }
 
-.sidebar-ul li span a {
+.items-projects > span {
     @apply
-    flex items-center justify-center text-lg text-gray-400
+    flex 
+    font-medium 
+    text-sm 
+    text-gray-300 
+    px-4 
+    my-4 
+    uppercase
 }
 
-.sidebar button {
+.items-sidebar button {
     @apply
-    flex items-center p-2 w-full text-base font-normal text-gray-300 hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75
+    flex 
+    items-center
+    p-2 
+    w-full 
+    text-base 
+    font-normal 
+    text-black
+    hover:bg-gray-100 
+    hover:text-gray-700 
+    rounded-lg 
+    transition duration-75 
 }
 
-.span-items {
+.items-sidebar span {
     @apply
-    flex-1 ml-3 text-left whitespace-nowrap
+    flex-1 
+    ml-3 
+    text-left 
+    whitespace-nowrap
 }
 
-li ul {
-    @apply
-    py-2 space-y-2
-}
-ul li a {
-    @apply
-    block py-2 px-4 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
+.item {
+    @apply 
+    z-10 
+    text-base 
+    list-none 
+    bg-black
+    rounded 
+    divide-y 
+    divide-gray-100 
+    shadow 
+    dark:bg-gray-700
 }
 
-.dropdown-div {
-    cursor: pointer
-} */
+.item a {
+    @apply 
+    py-2 
+    px-4 
+    text-sm
+    text-white 
+    dark:hover:bg-gray-600 
+    dark:text-gray-200 
+    dark:hover:text-white 
+    cursor-pointer
+}

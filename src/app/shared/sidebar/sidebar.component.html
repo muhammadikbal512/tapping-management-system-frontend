@@ -1,9 +1,7 @@
-<aside
-  class="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500"
->
-  <div class="sidebar-header flex items-center justify-center py-4">
-    <div class="inline-flex">
-      <a href="#" class="inline-flex flex-row items-center">
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <a href="#">
         <img src="../../../assets/logo/logo-tms.png" class="w-10 h-10" alt="" />
         <span class="leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase"
           >TMS</span
@@ -11,14 +9,11 @@
       </a>
     </div>
   </div>
-  <div id="mobile-menu" class="sidebar-content px-4 py-6">
-    <ul class="flex flex-col w-full">
-      <li class="my-px">
-        <a
-          href="#"
-          class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100"
-        >
-          <span class="flex items-center justify-center text-lg text-gray-400">
+  <div id="mobile-menu" class="sidebar-content">
+    <ul class="sidebar-items">
+      <li class="items-dashboard">
+        <a routerLink="">
+          <span>
             <svg
               fill="none"
               stroke-linecap="round"
@@ -36,18 +31,15 @@
           <span class="ml-3">Dashboard</span>
         </a>
       </li>
-      <li class="my-px">
-        <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase"
-          >Projects</span
-        >
+      <li class="items-projects">
+        <span>Projects</span>
       </li>
 
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-investigation"
-          data-collapse-toggle="dropdown-investigation"
+          id="Button-Investigation"
+          data-dropdown-toggle="dropdown-investigation"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:group-hover:text-white"
@@ -65,11 +57,7 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            >Investigation</span
-          >
+          <span>Investigation</span>
           <svg
             sidebar-toggle-item
             class="w-6 h-6"
@@ -84,27 +72,22 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-investigation"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+
+        <div id="dropdown-investigation" class="hidden item">
+          <ul aria-labelledby="Button-Investigation" class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="investigation/alert-analysis"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a class="block" routerLink="investigation/alert-analysis"
                 >Alert Analysis</a
               >
             </li>
           </ul>
         </div>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-acquirer"
-          data-collapse-toggle="dropdown-acquirer"
+          id="Button-Acquirer"
+          data-dropdown-toggle="dropdown-acquirer"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -121,14 +104,8 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >Acquirer</span
-          >
+          <span>Acquirer</span>
           <svg
-            sidebar-toggle-item
             class="w-6 h-6"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -141,36 +118,27 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-acquirer"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+
+        <div id="dropdown-acquirer" class="hidden item">
+          <ul aria-labelledby="Button-Acquirer" class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="acquirer/terminal-list"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a class="block" routerLink="acquirer/terminal-list"
                 >Terminal List</a
               >
             </li>
           </ul>
           <ul class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="acquirer/alert"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-                >Alert</a
-              >
+              <a routerLink="acquirer/alert" class="block">Alert</a>
             </li>
           </ul>
         </div>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-issuer"
-          data-collapse-toggle="dropdown-issuer"
+          id="Button-Issuer"
+          data-dropdown-toggle="dropdown-issuer"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -185,12 +153,7 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >Issuer</span
-          >
+          <span>Issuer</span>
           <svg
             sidebar-toggle-item
             class="w-6 h-6"
@@ -205,36 +168,26 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-issuer"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+        <div id="dropdown-issuer" class="hidden item">
+          <ul aria-labelledby="Button-Issuer" class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="issuer/terminal-list"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="issuer/terminal-list" class="block"
                 >Terminal List</a
               >
             </li>
           </ul>
           <ul class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="issuer/alert"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-                >Alert</a
-              >
+              <a routerLink="issuer/alert" class="block">Alert</a>
             </li>
           </ul>
         </div>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-external"
-          data-collapse-toggle="dropdown-external"
+          id="Button-External-Interfaces"
+          data-dropdown-toggle="dropdown-External-Interfaces"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -251,12 +204,7 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >External Interfaces</span
-          >
+          <span>External Interfaces</span>
           <svg
             sidebar-toggle-item
             class="w-6 h-6"
@@ -271,24 +219,22 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-external"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+        <div id="dropdown-External-Interfaces" class="hidden item">
+          <ul
+            aria-labelledby="Button-External-Interfaces"
+            class="py-2 space-y-2"
+          >
             <li>
               <a
                 routerLink="external-interfaces/iso8583-configuration"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                class="block"
                 >ISO8083</a
               >
             </li>
           </ul>
           <ul class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="external-interfaces/iso20022"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="external-interfaces/iso20022" class="block"
                 >ISO20022</a
               >
             </li>
@@ -297,37 +243,32 @@
             <li>
               <a
                 routerLink="external-interfaces/json-configuration"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                class="block"
                 >JSON Configuration</a
               >
             </li>
           </ul>
           <ul class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="external-interfaces/NDC"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-                >NDC</a
-              >
+              <a routerLink="external-interfaces/NDC" class="block">NDC</a>
             </li>
           </ul>
           <ul class="py-2 space-y-2">
             <li>
               <a
                 routerLink="external-interfaces/xml-configuration"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                class="block"
                 >XML Configuration</a
               >
             </li>
           </ul>
         </div>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-terminal"
-          data-collapse-toggle="dropdown-terminal"
+          id="Button-Terminal-Configuration"
+          data-dropdown-toggle="dropdown-Terminal-Configuration"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -344,12 +285,7 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >Terminal Configuration</span
-          >
+          <span>Terminal Configuration</span>
           <svg
             sidebar-toggle-item
             class="w-6 h-6"
@@ -364,27 +300,21 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-terminal"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+        <div id="dropdown-Terminal-Configuration" class="hidden item">
+          <ul
+            aria-labelledby="Button-Terminal-Configuration"
+            class="py-2 space-y-2"
+          >
             <li>
-              <a
-                routerLink="terminal-configuration/terminal"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="terminal-configuration/terminal" class="block"
                 >Terminal</a
               >
             </li>
           </ul>
         </div>
       </li>
-      <li>
-        <button
-          routerLink="transaction"
-          type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
-        >
+      <li class="items-sidebar">
+        <button routerLink="transaction" type="button">
           <svg
             class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:group-hover:text-white"
             xmlns="http://www.w3.org/2000/svg"
@@ -400,21 +330,14 @@
               d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >Transaction</span
-          >
+          <span>Transaction</span>
         </button>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-user-management"
-          data-collapse-toggle="dropdown-user-management"
+          id="Button-User-Management"
+          data-dropdown-toggle="dropdown-User-Management"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -431,12 +354,7 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >User Management</span
-          >
+          <span>User Management</span>
           <svg
             sidebar-toggle-item
             class="w-6 h-6"
@@ -451,41 +369,27 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-user-management"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+        <div id="dropdown-User-Management" class="hidden item">
+          <ul aria-labelledby="Button-User-Management" class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="user-management/private-scheme"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="user-management/private-scheme" class="block"
                 >Private Schemes</a
               >
             </li>
             <li>
-              <a
-                routerLink="user-management/roles"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-                >Roles</a
-              >
+              <a routerLink="user-management/roles" class="block">Roles</a>
             </li>
             <li>
-              <a
-                routerLink="user-management/user"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
-                >User</a
-              >
+              <a routerLink="user-management/user" class="block">User</a>
             </li>
           </ul>
         </div>
       </li>
-      <li>
+      <li class="items-sidebar">
         <button
-          aria-controls="dropdown-system"
-          data-collapse-toggle="dropdown-system"
+          id="Button-System"
+          data-dropdown-toggle="dropdown-System"
           type="button"
-          class="flex items-center p-2 w-full text-base font-normal text-black hover:bg-gray-100 hover:text-gray-700 rounded-lg transition duration-75 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -502,14 +406,8 @@
             />
           </svg>
 
-          <span
-            class="flex-1 ml-3 text-left whitespace-nowrap"
-            sidebar-toggle-item
-            id="dropdown-example"
-            >System</span
-          >
+          <span>System</span>
           <svg
-            sidebar-toggle-item
             class="w-6 h-6"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -522,22 +420,15 @@
             ></path>
           </svg>
         </button>
-        <div
-          id="dropdown-system"
-          class="hidden z-10 text-base list-none bg-indigo rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-        >
-          <ul class="py-2 space-y-2">
+        <div id="dropdown-System" class="hidden item">
+          <ul aria-labelledby="Button-System" class="py-2 space-y-2">
             <li>
-              <a
-                routerLink="user-management/private-scheme"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="user-management/private-scheme" class="block"
                 >ARP</a
               >
             </li>
             <li>
-              <a
-                routerLink="user-management/roles"
-                class="block py-2 px-4 text-sm text-white dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+              <a routerLink="user-management/roles" class="block"
                 >System Parameters</a
               >
             </li>

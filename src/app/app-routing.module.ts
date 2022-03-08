@@ -17,6 +17,8 @@ import { TerminalComponent } from './modules/module/terminal-configuration/termi
 import { PrivateSchemeComponent } from './modules/module/user-management/private-scheme/private-scheme.component';
 import { RolesComponent } from './modules/module/user-management/roles/roles.component';
 import { UserComponent } from './modules/module/user-management/user/user.component';
+// import { ArpComponent } from './modules/module/system/application-parameters/arp/arp.component';
+// import { SystemParametersComponent } from './modules/module/system/system-parameters/system-parameters.component';
 
 const routes: Routes = [
   {
@@ -109,15 +111,14 @@ const routes: Routes = [
           },
           {
             path: 'roles',
-            component: RolesComponent
+            component: RolesComponent,
           },
           {
             path: 'user',
-            component: UserComponent
-          }
+            component: UserComponent,
+          },
         ],
       },
-      
     ],
   },
 

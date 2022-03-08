@@ -1,0 +1,80 @@
+.login-container {
+    @apply
+    bg-gray-200 
+    font-sans 
+    text-gray-700
+}
+
+.container-box {
+    @apply
+    mx-auto 
+    p-8 
+    flex
+}
+
+.container-header {
+    @apply
+    max-w-md 
+    w-full 
+    mx-auto
+}
+
+.container-header img {
+    @apply
+    mx-auto 
+    py-2
+}
+
+.box-forms {
+    @apply
+    bg-white 
+    rounded-lg 
+    overflow-hidden 
+    shadow-2xl
+}
+
+.forms-input div {
+    @apply
+    mb-5
+}
+
+.forms-input label {
+    @apply
+    block
+    mb-2 
+    text-sm 
+    font-medium 
+    text-gray-600
+}
+
+.forms-input input {
+    @apply
+    block 
+    w-full 
+    p-3 
+    rounded 
+    bg-gray-200 
+    border border-transparent 
+    focus:outline-none
+}
+
+.forms-input button {
+    @apply
+    w-full 
+    p-3 
+    mt-4 
+    bg-indigo-600 
+    text-white 
+    rounded 
+    shadow
+}
+
+.forms-footer {
+    @apply
+    text-center 
+    p-8 
+    text-sm 
+    border-t 
+    border-gray-300 
+    bg-gray-100
+}

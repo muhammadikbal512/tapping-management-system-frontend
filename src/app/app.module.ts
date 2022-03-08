@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSliderModule } from '@angular/material/slider'
 import { NgxEchartsModule } from 'ngx-echarts';
+import { HttpClientModule} from '@angular/common/http'
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -29,6 +30,9 @@ import { RolesComponent } from './modules/module/user-management/roles/roles.com
 import { UserComponent } from './modules/module/user-management/user/user.component';
 import { TransactionRateComponent } from './modules/module/dashboard/transaction-rate/transaction-rate.component';
 import { TerminalComponent } from './modules/module/terminal-configuration/terminal/terminal.component';
+import { ArpComponent } from './modules/module/system/application-parameters/arp/arp.component';
+import { SystemParametersComponent } from './modules/module/system/system-parameters/system-parameters.component';
+import { CreateUpdateDialogComponent } from './modules/module/system/system-parameters/create-update-dialog/create-update-dialog.component';
 
 
 
@@ -59,6 +63,9 @@ import { TerminalComponent } from './modules/module/terminal-configuration/termi
     UserComponent,
     TransactionRateComponent,
     TerminalComponent,
+    ArpComponent,
+    SystemParametersComponent,
+    CreateUpdateDialogComponent,
     
     
   ],
@@ -67,7 +74,8 @@ import { TerminalComponent } from './modules/module/terminal-configuration/termi
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    NgxEchartsModule
+    NgxEchartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

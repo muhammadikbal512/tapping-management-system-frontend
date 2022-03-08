@@ -7,3 +7,70 @@
     lg:grid-cols-2 
     xl:grid-cols-4
 }
+
+.dashboard-card {
+    @apply
+    flex 
+    items-center 
+    justify-between 
+    p-4 
+    bg-white 
+    rounded-md 
+}
+
+.dashboard-card h6 {
+    @apply
+    text-xs 
+    font-medium 
+    leading-none 
+    tracking-wider 
+    text-gray-500 
+    uppercase 
+}
+
+.card-value {
+    @apply
+    text-xl 
+    font-semibold
+}
+
+.card-updated {
+    @apply
+    inline-block 
+    px-2 
+    py-px 
+    ml-2 
+    text-xs 
+    rounded-md
+}
+
+.dashboard-content {
+    @apply
+    grid 
+    grid-cols-1 
+    p-4 
+    space-y-8 
+    lg:gap-8 
+    lg:space-y-0 
+    lg:grid-cols-1
+}
+
+.grid-container {
+    @apply
+    col-span-1 
+    bg-white 
+    rounded-md
+}
+
+.grid-header {
+    @apply
+    p-4 
+    border-b 
+}
+
+.grid-header h4 {
+    @apply
+    text-lg 
+    font-semibold 
+    text-gray-500 
+}

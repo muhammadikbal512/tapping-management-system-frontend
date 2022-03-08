@@ -1,0 +1,12 @@
+.footer {
+    @apply
+    px-4 
+    py-6
+}
+
+.footer-content p {
+    @apply
+    text-sm 
+    text-gray-600 
+    text-center
+}

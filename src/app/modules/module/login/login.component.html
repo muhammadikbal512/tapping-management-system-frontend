@@ -1,31 +1,25 @@
-<div class="bg-gray-200 font-sans text-gray-700">
-    <div class="container mx-auto p-8 flex">
-        <div class="max-w-md w-full mx-auto">
-            <img src="../../../../assets/logo/tms-logo1.png" width="400px" height="400px" class=" mx-auto py-2" alt="">
-
-            <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
-                <div class="p-8">
-                    <form>
-                        <div class="mb-5">
-                            <label for="username" class="block mb-2 text-sm font-medium text-gray-600">Username</label>
-
-                            <input type="text" name="username" class="block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none">
-                        </div>
-                
-                        <div class="mb-5">
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-600">Password</label>
-
-                            <input type="password" name="password" class="block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none">
-                        </div>
-
-                        <button [routerLink]="['']" class="w-full p-3 mt-4 bg-indigo-600 text-white rounded shadow">Login</button>
-                    </form>
-                </div>
-                
-                <div class="text-center p-8 text-sm border-t border-gray-300 bg-gray-100">
-                   <p>Tapping Management System</p>
-                </div>
+<div class="login-container">
+  <div class="container-box">
+    <div class="container-header">
+      <img src="../../../../assets/logo/tms-logo1.png" />
+      <div class="box-forms">
+        <div class="p-8">
+          <form class="forms-input">
+            <div>
+              <label for="username">Username</label>
+              <input type="text" name="username" />
             </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" name="password" />
+            </div>
+            <button [routerLink]="['']">Login</button>
+          </form>
         </div>
+        <div class="forms-footer">
+          <p>Tapping Management System</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
