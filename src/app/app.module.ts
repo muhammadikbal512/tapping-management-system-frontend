@@ -24,7 +24,6 @@ import { XmlConfigurationComponent } from './modules/module/external-interface/x
 import { NdcComponent } from './modules/module/external-interface/ndc/ndc.component';
 import { Iso8583configurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583configuration.component';
 import { InterfaceComponent } from './modules/module/transaction/interface/interface.component';
-import { WidgetTransactionComponent } from './modules/module/transaction/widget-transaction/widget-transaction.component';
 import { PrivateSchemeComponent } from './modules/module/user-management/private-scheme/private-scheme.component';
 import { RolesComponent } from './modules/module/user-management/roles/roles.component';
 import { UserComponent } from './modules/module/user-management/user/user.component';
@@ -33,6 +32,9 @@ import { TerminalComponent } from './modules/module/terminal-configuration/termi
 import { ArpComponent } from './modules/module/system/application-parameters/arp/arp.component';
 import { SystemParametersComponent } from './modules/module/system/system-parameters/system-parameters.component';
 import { CreateUpdateDialogComponent } from './modules/module/system/system-parameters/create-update-dialog/create-update-dialog.component';
+import { TransactionStatusComponent } from './modules/module/dashboard/transaction-status/transaction-status.component';
+import { DatePickerComponent } from './modules/module/transaction/widget-transaction/date-picker/date-picker.component';
+import { TableComponent } from './modules/module/transaction/widget-transaction/table/table.component';
 
 
 
@@ -57,7 +59,6 @@ import { CreateUpdateDialogComponent } from './modules/module/system/system-para
     NdcComponent,
     Iso8583configurationComponent,
     InterfaceComponent,
-    WidgetTransactionComponent,
     PrivateSchemeComponent,
     RolesComponent,
     UserComponent,
@@ -66,6 +67,9 @@ import { CreateUpdateDialogComponent } from './modules/module/system/system-para
     ArpComponent,
     SystemParametersComponent,
     CreateUpdateDialogComponent,
+    TransactionStatusComponent,
+    DatePickerComponent,
+    TableComponent,
     
     
   ],

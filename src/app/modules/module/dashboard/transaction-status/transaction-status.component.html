@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+    <div class="dashboard-card">
+      <div>
+        <h6>Transaction Success</h6>
+        <span class="card-value text-green-500">500</span>
+        <span class="card-updated text-green-500 bg-green-100">
+          Updated: {{ myDate | date: 'dd/MM/yyyy HH:mm:ss' }}
+        </span>
+      </div>
+      <div>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="green"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div>
+        <h6>Failed</h6>
+        <span class="card-value text-red-500">15</span>
+        <span class="card-updated text-red-500 bg-red-100">
+          Updated: {{ myDate | date: "short" }}
+        </span>
+      </div>
+      <div>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="red"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div>
+        <h6>Pending</h6>
+        <span class="card-value text-yellow-200">50</span>
+        <span class="card-updated text-yellow-500 bg-yellow-100">
+          Updated: {{ myDate | date: "short" }}
+        </span>
+      </div>
+      <div>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="yellow"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div>
+        <h6>Transaction Declined</h6>
+        <span class="card-value text-blue-500">100</span>
+        <span class="card-updated text-blue-500 bg-blue-100">
+          Updated: {{ myDate | date: "short" }}
+        </span>
+      </div>
+      <div>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="blue"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
