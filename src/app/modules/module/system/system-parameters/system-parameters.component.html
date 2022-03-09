@@ -1,1 +1,24 @@
-<p>system-parameters works!</p>
+<div class="system-container">
+    <div class="container-grid">
+        <div class="container-grid-header">
+
+        </div>
+        <div class="grid-1">
+            <div class="button-group">
+                <div class="search-container">
+                    <span class="search-icon bx bx-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </span>
+                    <input class="search-input" type="text" placeholder="Search">
+                </div>
+                <button mat-flat-button color="primary" (click)="openDialog()" class="create-button">
+                    <span class="create-text">Create</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

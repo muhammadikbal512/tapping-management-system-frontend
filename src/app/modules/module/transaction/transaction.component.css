@@ -1,5 +1,6 @@
 .container-transaction {
-  @apply grid 
+  @apply 
+    grid 
     grid-cols-1 
     gap-8 
     p-4 
