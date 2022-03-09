@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field'
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormsTransactionComponent } from './forms-transaction/forms-transaction.component';
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
@@ -8,9 +8,15 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 })
 export class TransactionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog(): void {
+    this.dialog.open(FormsTransactionComponent, {
+    width: '800px'});
+  }
+
 }
+

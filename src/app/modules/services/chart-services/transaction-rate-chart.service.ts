@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import * as echarts from 'echarts';
-import { WebsocketService } from '../websocket-service/websocket-service.service';
+import {WebsocketService} from "../websocket-service/websocket-service.service";
 
 @Injectable({
   providedIn: 'root'

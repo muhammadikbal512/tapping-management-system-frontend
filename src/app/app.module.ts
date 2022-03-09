@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatSliderModule } from '@angular/material/slider'
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule} from '@angular/common/http'
+import { MaterialModule } from './modules/material/material.module';
+import 'flowbite';
+
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -35,6 +38,9 @@ import { CreateUpdateDialogComponent } from './modules/module/system/system-para
 import { TransactionStatusComponent } from './modules/module/dashboard/transaction-status/transaction-status.component';
 import { DatePickerComponent } from './modules/module/transaction/widget-transaction/date-picker/date-picker.component';
 import { TableComponent } from './modules/module/transaction/widget-transaction/table/table.component';
+import { FormsTransactionComponent } from './modules/module/transaction/forms-transaction/forms-transaction.component';
+import { TransactionSummaryComponent } from './modules/module/transaction/transaction-summary/transaction-summary.component';
+
 
 
 
@@ -70,16 +76,20 @@ import { TableComponent } from './modules/module/transaction/widget-transaction/
     TransactionStatusComponent,
     DatePickerComponent,
     TableComponent,
+    FormsTransactionComponent,
+    TransactionSummaryComponent
     
     
   ],
+  entryComponents: [FormsTransactionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
     NgxEchartsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
