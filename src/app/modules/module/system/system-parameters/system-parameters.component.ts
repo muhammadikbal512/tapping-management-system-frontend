@@ -15,7 +15,10 @@ export class SystemParametersComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(CreateUpdateDialogComponent);
+    this.dialog.open(CreateUpdateDialogComponent, {
+      width: '500px',
+
+    });
   }
 
 }

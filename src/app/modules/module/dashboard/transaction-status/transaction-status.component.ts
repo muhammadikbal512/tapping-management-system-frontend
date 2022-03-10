@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-transaction-status',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transaction-status.component.css']
 })
 export class TransactionStatusComponent implements OnInit {
-  myDate = new Date();
-  constructor() { }
+  @Input() status: string = '';
+  updateDate: any;
 
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit(): void {
+    this.updateDate = new Date().toLocaleString().replace(' AM', '').replace(' PM', '');
+    setInterval(() => {
+      this.updateDate = new Date().toLocaleString().replace(' AM', '').replace(' PM', '');
+    }, 500)
+  }
 }

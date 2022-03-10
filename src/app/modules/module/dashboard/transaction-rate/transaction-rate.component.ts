@@ -7,7 +7,7 @@ import { WebsocketService } from '../../../services/websocket-service/websocket-
   templateUrl: './transaction-rate.component.html',
   styleUrls: ['./transaction-rate.component.css'],
 })
-export class TransactionRateComponent implements OnInit {
+export class TransactionRateComponent implements OnInit, OnDestroy {
   constructor(
     // public transactionRateService: TransactionRateChartService,
     // public webSocketService: WebsocketService

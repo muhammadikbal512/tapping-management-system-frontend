@@ -33,6 +33,8 @@
   }
   
   .create-button {
+    background-color: #6875f5;
+    color: white;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
