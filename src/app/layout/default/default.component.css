@@ -14,7 +14,7 @@
     -translate-x-full 
     md:translate-x-0 
     transition-transform duration-150 ease-in 
-    bg-indigo-500
+    bg-black
 }
 
 .main {

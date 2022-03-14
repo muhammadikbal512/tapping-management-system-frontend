@@ -6,7 +6,7 @@
     -translate-x-full 
     md:translate-x-0 
     transition-transform duration-150 ease-in 
-    bg-indigo-500
+    bg-black
 }
 
 .sidebar-header {
@@ -79,7 +79,7 @@
     w-full 
     text-base 
     font-normal 
-    text-black
+    text-white
     hover:bg-gray-100 
     hover:text-gray-700 
     rounded-lg 
@@ -95,9 +95,10 @@
 }
 
 .item {
+    
     @apply 
     z-10 
-    text-base 
+    text-white
     list-none 
     bg-black
     rounded 
@@ -110,9 +111,10 @@
 .item a {
     @apply 
     py-2 
-    px-4 
+    px-7 
     text-sm
     text-white 
+    bg-black
     dark:hover:bg-gray-600 
     dark:text-gray-200 
     dark:hover:text-white 

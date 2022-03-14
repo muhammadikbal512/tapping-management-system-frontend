@@ -32,3 +32,64 @@ header {
     flex 
     ml-auto
 }
+
+.header-logout button {
+  @apply
+  flex 
+  mr-3 
+  text-sm 
+  bg-gray-800 
+  rounded-full 
+  md:mr-0 
+  focus:ring-4 
+  focus:ring-gray-300 
+  dark:focus:ring-gray-600
+}
+
+.header-logout button img {
+  @apply
+  w-8 
+  h-8 
+  rounded-full
+}
+
+.user-dropdown-container {
+  @apply 
+  z-50 
+  my-4 
+  text-base 
+  list-none 
+  bg-white 
+  rounded 
+  divide-y 
+  divide-gray-100 
+  shadow 
+  dark:bg-gray-700 
+  dark:divide-gray-600
+}
+
+.user-dropdown-name {
+  @apply 
+  text-sm 
+  text-gray-900 
+  dark:text-white
+}
+
+.user-dropdown-role {
+  @apply 
+  text-sm 
+  font-medium 
+  text-gray-500 
+  truncate 
+  dark:text-gray-400
+}
+
+.user-dropdown-list {
+  @apply
+  py-4
+}
+
+.user-dropdown-list a {
+  @apply
+  py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
+}
