@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-default',
@@ -7,14 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
   showSidebar = false;
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  ShowSide() {
+  getOnClick() {
+    // console.log(evt);
+    // console.log('default');
     this.showSidebar = !this.showSidebar
   }
+  
 
 }
