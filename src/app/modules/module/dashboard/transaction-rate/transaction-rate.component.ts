@@ -9,8 +9,7 @@ import { WebsocketService } from '../../../services/websocket-service/websocket-
 })
 export class TransactionRateComponent implements OnInit, OnDestroy {
   constructor(
-    // public transactionRateService: TransactionRateChartService,
-    // public webSocketService: WebsocketService
+    
   ) {}
 
   ngOnInit(): void {
