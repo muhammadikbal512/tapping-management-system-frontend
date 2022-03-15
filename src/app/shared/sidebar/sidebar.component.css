@@ -1,79 +1,60 @@
-.sidebar {
-    @apply
-    w-64 
-    md:shadow 
-    transform 
-    -translate-x-full 
-    md:translate-x-0 
-    transition-transform duration-150 ease-in 
-    bg-black
-}
-
 .sidebar-header {
-    @apply
-    flex 
+  @apply flex 
     items-center 
     justify-center 
-    py-4
+    py-4;
 }
 
 .sidebar-logo {
-    @apply
-    inline-flex
+  @apply inline-flex;
 }
 
 .sidebar-logo > a {
-    @apply
-    inline-flex flex-row items-center
+  @apply inline-flex flex-row items-center;
 }
 
 .sidebar-content {
-    @apply
-    px-4 py-6
+  @apply px-4 py-6;
 }
 
 .sidebar-items {
-    @apply
-    flex 
+  @apply flex 
     flex-col 
-    w-full
+    w-full;
 }
 
 .items-dashboard > a {
-    @apply
-    flex 
+  @apply 
+  flex 
     flex-row 
     items-center 
     h-10 
     px-3 
     rounded-lg 
     text-gray-700 
-    bg-gray-100
+    bg-gray-100;
 }
 
 .items-dashboard > span {
-    @apply
-    flex 
+  @apply flex 
     items-center 
     justify-center 
     text-lg 
-    text-gray-400
+    text-gray-400;
 }
 
 .items-projects > span {
-    @apply
-    flex 
+  @apply flex 
     font-medium 
     text-sm 
     text-gray-300 
     px-4 
     my-4 
-    uppercase
+    uppercase;
 }
 
 .items-sidebar button {
-    @apply
-    flex 
+  @apply flex 
     items-center
     p-2 
     w-full 
@@ -83,21 +64,18 @@
     hover:bg-gray-100 
     hover:text-gray-700 
     rounded-lg 
-    transition duration-75 
+    transition duration-75;
 }
 
 .items-sidebar span {
-    @apply
-    flex-1 
+  @apply flex-1 
     ml-3 
     text-left 
-    whitespace-nowrap
+    whitespace-nowrap;
 }
 
 .item {
-    
-    @apply 
-    z-10 
+  @apply z-10 
     text-white
     list-none 
     bg-black
@@ -105,12 +83,11 @@
     divide-y 
     divide-gray-100 
     shadow 
-    dark:bg-gray-700
+    dark:bg-gray-700;
 }
 
 .item a {
-    @apply 
-    py-2 
+  @apply py-2 
     px-7 
     text-sm
     text-white 
@@ -118,5 +95,5 @@
     dark:hover:bg-gray-600 
     dark:text-gray-200 
     dark:hover:text-white 
-    cursor-pointer
+    cursor-pointer;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  showSidebar = false;
+  @Output() btnClick = new EventEmitter();
+  @Output() mobileClick = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick() {
+    // console.log('header')
+    this.btnClick.emit();
+  }
+
+  mobile() {
+    this.btnClick.emit();
   }
 
 }

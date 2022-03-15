@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*ag-grid-community*/
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+
 body {
     margin: 0;
     padding: 0;

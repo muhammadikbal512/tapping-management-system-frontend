@@ -4,8 +4,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule} from '@angular/common/http'
 import { MaterialModule } from './modules/material/material.module';
 import 'flowbite';
-
-import { MatFormFieldModule } from '@angular/material/form-field'
+import { AgGridModule } from 'ag-grid-angular';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -40,6 +39,16 @@ import { DatePickerComponent } from './modules/module/transaction/widget-transac
 import { TableComponent } from './modules/module/transaction/widget-transaction/table/table.component';
 import { FormsTransactionComponent } from './modules/module/transaction/forms-transaction/forms-transaction.component';
 import { TransactionSummaryComponent } from './modules/module/transaction/transaction-summary/transaction-summary.component';
+import { Iso8583FormatComponent } from './modules/module/message-format/iso8583-format/iso8583-format.component';
+import { Iso8583FormatTableComponent } from './modules/module/message-format/iso8583-format/widget/iso8583-format-table/iso8583-format-table.component';
+import { CreateUpdateDialogIso8583FormatTableComponent } from './modules/module/message-format/iso8583-format/widget/create-update-dialog-iso8583-format-table/create-update-dialog-iso8583-format-table.component';
+import { ActionButtonGroupIso8583FormatComponent } from './modules/module/message-format/iso8583-format/widget/action-button-group-iso8583-format/action-button-group-iso8583-format.component';
+import { ChannelComponent } from './modules/module/channel-configuration/channel/channel.component';
+import { ChannelTypeComponent } from './modules/module/channel-configuration/channel-type/channel-type.component';
+import { ChannelTableComponent } from './modules/module/channel-configuration/channel/widget/channel-table/channel-table.component';
+import { ActionButtonGroupTerminalComponent } from './modules/module/channel-configuration/channel/widget/action-button-group-terminal/action-button-group-terminal.component';
+import { ChannelTypeTableComponent } from './modules/module/channel-configuration/channel-type/widget/channel-type-table/channel-type-table.component';
+import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
 
 
 
@@ -77,7 +86,17 @@ import { TransactionSummaryComponent } from './modules/module/transaction/transa
     DatePickerComponent,
     TableComponent,
     FormsTransactionComponent,
-    TransactionSummaryComponent
+    TransactionSummaryComponent,
+    Iso8583FormatComponent,
+    Iso8583FormatTableComponent,
+    CreateUpdateDialogIso8583FormatTableComponent,
+    ActionButtonGroupIso8583FormatComponent,
+    ChannelComponent,
+    ChannelTypeComponent,
+    ChannelTableComponent,
+    ActionButtonGroupTerminalComponent,
+    ChannelTypeTableComponent,
+    ActionButtonGroupChannelTypeComponent
     
     
   ],
@@ -88,8 +107,8 @@ import { TransactionSummaryComponent } from './modules/module/transaction/transa
     BrowserAnimationsModule,
     NgxEchartsModule,
     HttpClientModule,
-    MatFormFieldModule,
-    MaterialModule
+    MaterialModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]

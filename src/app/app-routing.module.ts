@@ -19,6 +19,10 @@ import { RolesComponent } from './modules/module/user-management/roles/roles.com
 import { UserComponent } from './modules/module/user-management/user/user.component';
 import { ArpComponent } from './modules/module/system/application-parameters/arp/arp.component';
 import { SystemParametersComponent } from './modules/module/system/system-parameters/system-parameters.component';
+import { Iso8583FormatComponent } from './modules/module/message-format/iso8583-format/iso8583-format.component';
+import { ChannelComponent } from './modules/module/channel-configuration/channel/channel.component'
+import { ChannelTypeComponent } from './modules/module/channel-configuration/channel-type/channel-type.component'
+
 
 const routes: Routes = [
   {
@@ -65,6 +69,15 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'message-format',
+        children: [
+          {
+            path: 'iso8583-format',
+            component: Iso8583FormatComponent,
+          },
+        ],
+      },
+      {
         path: 'external-interfaces',
         children: [
           {
@@ -88,6 +101,19 @@ const routes: Routes = [
             component: XmlConfigurationComponent,
           },
         ],
+      },
+      {
+        path: 'channel-configuration',
+        children: [
+          {
+            path: 'channel',
+            component: ChannelComponent
+          },
+          {
+            path: 'channel-type',
+            component: ChannelTypeComponent
+          }
+        ]
       },
       {
         path: 'terminal-configuration',
@@ -124,13 +150,13 @@ const routes: Routes = [
         children: [
           {
             path: 'arp',
-            component: ArpComponent
+            component: ArpComponent,
           },
           {
             path: 'system-parameters',
-            component: SystemParametersComponent
+            component: SystemParametersComponent,
           },
-        ]
+        ],
       },
     ],
   },
