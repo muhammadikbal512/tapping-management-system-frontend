@@ -14,10 +14,28 @@ export class SystemParametersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  columnDefs = [
+    {
+      headerName: 'Country', field: 'Country'
+    },
+    
+    {
+      headerName: 'Code', field: 'Code'
+    }
+  ]
+
+  rowData = [
+    {
+      Country: 'Indonesia', Code: '62'
+    },
+    {
+      Country: 'Singapore', Code: '61'
+    }
+  ]
+
   openDialog() {
     this.dialog.open(CreateUpdateDialogComponent, {
       width: '500px',
-
     });
   }
 

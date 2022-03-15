@@ -1,16 +1,15 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as echarts from 'echarts';
-import {WebsocketService} from "../../../modules/services/websocket-service/websocket-service.service";
+import { WebsocketService } from '../../../modules/services/websocket-service/websocket-service.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransactionRateChartService {
-  constructor(private websocketService: WebsocketService) {
-  }
+  constructor(private websocketService: WebsocketService) {}
 
   interval: any;
-  public updateOptions: any;
+  public _updateOptions: any;
 
   private timeStamps = (function () {
     let now = new Date();
@@ -45,37 +44,37 @@ export class TransactionRateChartService {
   public _option: echarts.EChartsOption = {
     grid: {
       top: 70,
-      bottom: 30
+      bottom: 30,
     },
     title: {
       text: 'Transaction Rate',
-      show: false
+      show: false,
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
         label: {
-          backgroundColor: '#283b56'
-        }
-      }
+          backgroundColor: '#283b56',
+        },
+      },
     },
     legend: {},
     toolbox: {
       show: true,
       feature: {
-        dataView: {readOnly: false},
+        dataView: { readOnly: false },
         magicType: {
-          type: ['line', 'bar']
+          type: ['line', 'bar'],
         },
         restore: {},
-        saveAsImage: {}
-      }
+        saveAsImage: {},
+      },
     },
     dataZoom: {
       id: 'dataZoomX',
       type: 'inside',
-      filterMode: 'filter'
+      filterMode: 'filter',
     },
     xAxis: [
       {
@@ -87,7 +86,7 @@ export class TransactionRateChartService {
       {
         type: 'value',
         name: 'Price',
-        boundaryGap: [0, 0]
+        boundaryGap: [0, 0],
       },
     ],
     series: [
@@ -102,7 +101,7 @@ export class TransactionRateChartService {
         type: 'bar',
         data: this.data2,
         // showSymbol: false,
-      }
+      },
     ],
   };
 
@@ -118,20 +117,20 @@ export class TransactionRateChartService {
       this.timeStamps.shift();
       this.timeStamps.push(axisData);
 
-      this.updateOptions = {
+      this._updateOptions = {
         xAxis: [
           {
-            data: this.timeStamps
-          }
+            data: this.timeStamps,
+          },
         ],
         series: [
           {
-            data: this.data
+            data: this.data,
           },
           {
-            data: this.data2
-          }
-        ]
+            data: this.data2,
+          },
+        ],
       };
     }, 1000);
   }

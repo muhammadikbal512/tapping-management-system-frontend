@@ -1,63 +1,65 @@
-.system-parameter-container {
-    padding: 20px;
-    height: 100%;
-  }
-  
-  .search-container {
-    width: 300px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-icon {
-    position: absolute;
-    margin-left: 10px;
-  }
-  
-  .search-input {
-    @apply
-    bg-white
-    appearance-none
-    border-2
-    border-gray-300
-    rounded py-[5px] pl-[30px] pr-4 w-full
-    text-gray-700 leading-[0] text-[14px]
-    focus:outline-none focus:border-[#3f51b5]
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    position: relative;
-  }
-  
-  .create-button {
-    background-color: #6875f5;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
-  
-  .create-icon {
-    margin-right: 5px;
-    font-size: 20px;
-  }
-  
-  .content {
-    position: relative;
-  }
-  
-  .table-container {
-    @apply
-    overflow-hidden 
-    shadow-md 
-    sm:rounded-lg
+.grid-container {
+  @apply
+  col-span-1 
+  bg-white 
+  rounded-md
 }
 
-.table-container th {
-    @apply
-    py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
+.grid-header {
+  justify-content: space-between;
+  @apply
+  p-4 
+  border-b 
+  flex
+}
+
+.grid-header h4 {
+  @apply
+  text-lg 
+  font-semibold 
+  text-gray-500 
+}
+
+.grid-header-right {
+  @apply
+  flex
+  px-4
+}
+
+.search-container {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.search-input {
+  @apply
+  bg-white
+  appearance-none
+  border-2
+  border-gray-300
+  rounded py-[5px] pl-[30px] pr-4 w-full
+  text-gray-700 leading-[0] text-[14px]
+  focus:outline-none focus:border-[#3f51b5]
+}
+
+.create-button {
+  background-color: #6875f5;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.table-container {
+  @apply
+  overflow-hidden 
+  shadow-md 
+  sm:rounded-lg
 }
