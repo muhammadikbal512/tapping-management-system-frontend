@@ -5,6 +5,7 @@ import { HttpClientModule} from '@angular/common/http'
 import { MaterialModule } from './modules/material/material.module';
 import 'flowbite';
 import { AgGridModule } from 'ag-grid-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -108,7 +109,8 @@ import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-
     NgxEchartsModule,
     HttpClientModule,
     MaterialModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

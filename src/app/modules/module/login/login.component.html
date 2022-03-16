@@ -4,16 +4,16 @@
       <img src="../../../../assets/logo/tms-logo1.png" />
       <div class="box-forms">
         <div class="p-8">
-          <form class="forms-input">
+          <form [formGroup]="form" class="forms-input">
             <div>
               <label for="username">Username</label>
-              <input type="text" name="username" />
+              <input required="" formControlName="username" type="text" name="username" />
             </div>
             <div>
               <label for="password">Password</label>
-              <input type="password" name="password" />
+              <input required="" formControlName="password" type="password" name="password" />
             </div>
-            <button routerLink=''>Login</button>
+            <button (click)="login(form.value)">Login</button>
           </form>
         </div>
         <div class="forms-footer">

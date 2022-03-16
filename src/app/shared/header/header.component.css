@@ -7,7 +7,7 @@ header {
 }
 
 .header-mobile {
-  @apply flex md:hidden;
+  @apply flex sm:hidden;
 }
 
 .header-mobile button {
