@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './guard/authentication.guard';
+
 
 import { DefaultComponent } from './layout/default/default.component';
 import { DashboardComponent } from './modules/module/dashboard/dashboard.component';
@@ -28,6 +30,7 @@ const routes: Routes = [
   {
     path: 'TMS-Home',
     component: DefaultComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       {
         path: 'dashboard',
@@ -168,7 +171,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'TMS-Home/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
 ];

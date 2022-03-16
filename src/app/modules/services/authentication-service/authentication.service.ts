@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { Router } from '@angular/router';
-import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root',
