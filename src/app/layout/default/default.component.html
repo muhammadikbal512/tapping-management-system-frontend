@@ -1,10 +1,9 @@
 <!-- component -->
 
 <div class="default-container">
-  <div [ngClass]="showSidebar ? 'hidden' : ''">
+  <div [ngClass]="showSidebar ? 'block' : 'hidden'">
     <app-sidebar></app-sidebar>
   </div>
-
   <main class="main">
     <app-header (btnClick)="getOnClick()">
     </app-header>

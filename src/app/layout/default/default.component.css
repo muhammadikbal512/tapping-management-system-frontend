@@ -1,13 +1,12 @@
 .default-container {
+    /* zoom: 0.8; */
+    min-height: 100%;
     @apply
     flex 
-    flex-row
-    min-h-screen 
+    flex-row 
     bg-gray-100 
     text-gray-800
 }
-
-
 
 .main {
     @apply
