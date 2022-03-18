@@ -16,6 +16,6 @@ export class TransactionStatusComponent implements OnInit {
     this.updateDate = new Date().toLocaleString().replace(' AM', '').replace(' PM', '');
     setInterval(() => {
       this.updateDate = new Date().toLocaleString().replace(' AM', '').replace(' PM', '');
-    }, 500)
+    }, 5000)
   }
 }

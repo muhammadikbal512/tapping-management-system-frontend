@@ -15,7 +15,7 @@
 }
 
 .grid-1 {
-  @apply relative
+  @apply
     p-4;
 }
 

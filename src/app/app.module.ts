@@ -6,6 +6,8 @@ import { MaterialModule } from './modules/material/material.module';
 import 'flowbite';
 import { AgGridModule } from 'ag-grid-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -50,6 +52,14 @@ import { ChannelTableComponent } from './modules/module/channel-configuration/ch
 import { ActionButtonGroupTerminalComponent } from './modules/module/channel-configuration/channel/widget/action-button-group-terminal/action-button-group-terminal.component';
 import { ChannelTypeTableComponent } from './modules/module/channel-configuration/channel-type/widget/channel-type-table/channel-type-table.component';
 import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
+import { Iso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component';
+import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component';
+import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
+import { Iso8583DialectTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/iso8583-dialect-table/iso8583-dialect-table.component';
+import { CreateUpdateIso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
+import { ActionButtonGroupIso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
+import { Iso8583FieldTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-field-table/iso8583-field-table.component';
+import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
 
 
 
@@ -97,7 +107,15 @@ import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-
     ChannelTableComponent,
     ActionButtonGroupTerminalComponent,
     ChannelTypeTableComponent,
-    ActionButtonGroupChannelTypeComponent
+    ActionButtonGroupChannelTypeComponent,
+    Iso8583DialectComponent,
+    Iso8583FieldConfigurationComponent,
+    Iso8583ResponseMappingComponent,
+    Iso8583DialectTableComponent,
+    CreateUpdateIso8583DialectComponent,
+    ActionButtonGroupIso8583DialectComponent,
+    Iso8583FieldTableComponent,
+    CreateUpdateIso8583FieldFormComponent
     
     
   ],
@@ -110,7 +128,8 @@ import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-
     HttpClientModule,
     MaterialModule,
     AgGridModule.withComponents([]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

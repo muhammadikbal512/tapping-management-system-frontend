@@ -24,6 +24,11 @@ import { SystemParametersComponent } from './modules/module/system/system-parame
 import { Iso8583FormatComponent } from './modules/module/message-format/iso8583-format/iso8583-format.component';
 import { ChannelComponent } from './modules/module/channel-configuration/channel/channel.component'
 import { ChannelTypeComponent } from './modules/module/channel-configuration/channel-type/channel-type.component'
+import { Iso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component'
+import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component'
+import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component'
+
+
 
 
 const routes: Routes = [
@@ -85,7 +90,20 @@ const routes: Routes = [
         children: [
           {
             path: 'iso8583-configuration',
-            component: Iso8583configurationComponent,
+            children: [
+              {
+                path: 'iso8583-dialect',
+                component: Iso8583DialectComponent
+              },
+              {
+                path: 'iso8583-field-configuration',
+                component: Iso8583FieldConfigurationComponent
+              },
+              {
+                path: 'iso8583-response-mapping',
+                component: Iso8583ResponseMappingComponent
+              }
+            ]
           },
           {
             path: 'iso20022',
