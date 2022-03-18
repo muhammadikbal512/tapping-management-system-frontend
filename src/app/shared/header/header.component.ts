@@ -3,7 +3,7 @@ import { HeaderService } from 'src/app/modules/services/shared-service/header.se
 import { RoleUser } from 'src/app/enum/role-user';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/modules/services/authentication-service/authentication.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -34,14 +34,6 @@ export class HeaderComponent implements OnInit {
     this.btnClick.emit();
   }
 
-  mobile() {
-    this.btnClick.emit();
-  }
-
-  logout() {
-
-  }
-
   getUserData() {
     const UserDataFromLocalStorage = this.headerService.loadDataUserFromLocalStorage() || '';
     this.dataUser = JSON.parse(UserDataFromLocalStorage);
@@ -54,7 +46,21 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-    alert(`You've been successfully logged out`);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'success',
+      title: `You've been successfully logout`
+    })
   }
 
 }

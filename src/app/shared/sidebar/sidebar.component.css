@@ -107,5 +107,19 @@
     dark:hover:bg-gray-600 
     dark:text-gray-200 
     dark:hover:text-white 
-    cursor-pointer;
+    cursor-pointer
+    hover:text-gray-400
+}
+
+.dropdown:hover > .dropdown-content {
+	display: block;
+}
+
+.dropdown a {
+  @apply
+  bg-black 
+  hover:text-gray-300 
+  py-2 
+  px-4 
+  block 
 }

@@ -8,7 +8,7 @@
       </svg>
     </button>
     <p>Tapping Management System</p>
-    <div class="header-mobile">
+    <!-- <div class="header-mobile">
       <button (click)="mobile()" data-collapse-toggle="mobile-menu" type="button" aria-controls="mobile-menu-2" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -22,13 +22,11 @@
             clip-rule="evenodd"></path>
         </svg>
       </button>
-    </div>
+    </div> -->
     <div class="header-logout">
-      <button type="button"
-        class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-        id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
+      <button type="button" id="user-menu-button" type="button" data-dropdown-toggle="dropdown">
         <span class="sr-only">Open user menu</span>
-        <img src="src/assets/0.jpg" alt="user photo">
+        <img src="../../../assets/0.jpg" alt="user photo">
       </button>
       <!-- Dropdown menu -->
       <div class="hidden user-dropdown-container" id="dropdown">
@@ -38,19 +36,16 @@
         </div>
         <ul class="user-dropdown-list" aria-labelledby="dropdown">
           <li>
-            <a href="#"
-              class="block">User
+            <a href="#" class="block">User
               Profile</a>
           </li>
           <li>
-            <a href="#"
-              class="block">Session
+            <a href="#" class="block">Session
               Report</a>
           </li>
           <li>
             <div>
-              <a (click)="onLogout()"
-                class="block pointer">Sign
+              <a (click)="onLogout()" class="block pointer">Sign
                 out</a>
             </div>
           </li>

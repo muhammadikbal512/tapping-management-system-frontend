@@ -1,7 +1,7 @@
 <aside class="sidebar">
   <div class="sidebar-header">
     <div class="sidebar-logo">
-      <a href="#">
+      <a routerLink="dashboard">
         <img src="../../../assets/logo/logo-tms.png" class="w-10 h-10" alt="" />
         <span class="leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase">TMS</span>
       </a>
@@ -10,7 +10,7 @@
   <div class="sidebar-content">
     <ul class="sidebar-items">
       <li class="items-sidebar">
-        <button routerLink="transaction" type="button">
+        <button routerLink="dashboard" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
             stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -27,9 +27,8 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-
           <span>Investigation</span>
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
               clip-rule="evenodd"></path>
@@ -106,7 +105,7 @@
               d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
           </svg>
           <span>Message Format</span>
-          <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          <svg sidebar-toggle-item class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -130,7 +129,7 @@
               d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
           </svg>
           <span>External Interfaces</span>
-          <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          <svg sidebar-toggle-item class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -139,8 +138,13 @@
         </button>
         <div id="dropdown-External-Interfaces" class="hidden item">
           <ul aria-labelledby="Button-External-Interfaces" class="py-2 space-y-2">
-            <li>
-              <a routerLink="external-interfaces/iso8583-configuration" class="block">ISO8583 Configuration</a>
+            <li class="dropdown ml-3">
+              <a class="whitespace-no-wrap" style="background-color: black;" href="#">Iso8583 Configuration 🠞</a>
+              <ul class="dropdown-content absolute hidden text-gray-700 pl-5 ml-40 -mt-10" style="width: 120%;">
+                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-dialect">Iso8583 Dialect</a>
+                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration">Iso8583 Field Configuration</a>
+                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping">Iso8583 Response Mapping</a>
+              </ul>
             </li>
             <li>
               <a routerLink="external-interfaces/iso20022" class="block">ISO20022</a>
@@ -166,7 +170,7 @@
               clip-rule="evenodd" />
           </svg>
           <span>Channel Configuration</span>
-          <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          <svg sidebar-toggle-item class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -184,7 +188,6 @@
           </ul>
         </div>
       </li>
-
       <li class="items-sidebar">
         <button routerLink="transaction" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -202,9 +205,8 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-
           <span>User Management</span>
-          <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+          <svg sidebar-toggle-item class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -232,9 +234,8 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
           </svg>
-
           <span>System</span>
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
               clip-rule="evenodd"></path>
