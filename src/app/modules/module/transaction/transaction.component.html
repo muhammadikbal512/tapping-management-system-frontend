@@ -23,33 +23,7 @@
       <div class="grid-2">
         <div class="grid-3">
           <div class="grid-4">
-            <div class="table-container">
-              <table class="min-w-full">
-                <thead class="bg-gray-50 dark:bg-gray-700">
-                  <tr>
-                    <th scope="col">
-                      Transaction Date
-                    </th>
-                    <th scope="col">
-                      Network Date
-                    </th>
-                    <th scope="col">
-                      MTI
-                    </th>
-                    <th scope="col">
-                      HPAN
-                    </th>
-                    <th scope="col">
-                      Merchant Id
-                    </th>
-                    <th scope="col">
-                      Merchant Type
-                    </th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
+            <app-table></app-table>
           </div>
         </div>
       </div>
@@ -60,7 +34,7 @@
       <div class="grid-2">
         <div class="grid-3">
           <div class="grid-4">
-            <div class="overflow-hidden shadow-md sm:rounded-lg">
+            <div class="shadow-md sm:rounded-lg">
               <mat-tab-group>
                 <mat-tab label="Transaction Summary">
                   <app-transaction-summary></app-transaction-summary>
