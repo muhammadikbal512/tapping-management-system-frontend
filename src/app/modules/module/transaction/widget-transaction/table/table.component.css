@@ -1,0 +1,11 @@
+.table-container {
+    @apply
+    overflow-hidden 
+    shadow-md 
+    sm:rounded-lg
+}
+
+.table-container th {
+    @apply
+    py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
+}
