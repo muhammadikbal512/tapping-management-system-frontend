@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import {ThemePalette} from "@angular/material/core";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-date-picker',
@@ -6,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent implements OnInit {
+  @ViewChild('picker') picker: any;
+  @Input() form!: FormGroup;
+
+  public showSpinners = true;
+  public showSeconds = true;
+  public defaultTime = [0, 0, 0]
+  public color: ThemePalette = 'primary';
 
   constructor() { }
 

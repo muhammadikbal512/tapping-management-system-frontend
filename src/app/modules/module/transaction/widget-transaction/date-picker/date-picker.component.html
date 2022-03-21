@@ -1,13 +1,26 @@
 <div>
-    <mat-form-field style="font-size: 12px; width: 150px; margin-right: 15px">
-        <input matInput [matDatepicker]="from" placeholder="Date From" formControlName="dateFrom" autocomplete="off">
-        <mat-datepicker-toggle [for]="from" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #from></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field style="font-size: 12px; width: 150px; margin-right: 15px">
-        <input matInput [matDatepicker]="to" placeholder="Date From" formControlName="dateFrom" autocomplete="off">
-        <mat-datepicker-toggle [for]="to" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #to></mat-datepicker>
-    </mat-form-field>
+    <!-- <mat-form-field style="font-size: 12px; width: 150px; margin-right: 15px">
+        <input matInput [ngxMatDatetimePicker]="$any(pickerFrom)" placeholder="Date From" formControlName="dateFrom"
+               autocomplete="off">
+        <mat-datepicker-toggle matSuffix [for]="$any(pickerFrom)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerFrom [showSeconds]="showSeconds" [color]="color"
+                                 [defaultTime]="defaultTime"></ngx-mat-datetime-picker>
+      </mat-form-field>
+    
+      <mat-form-field style="font-size: 12px; width: 150px">
+        <input matInput [ngxMatDatetimePicker]="$any(pickerTo)" placeholder="Date To" formControlName="dateTo"
+               autocomplete="off">
+        <mat-datepicker-toggle matSuffix [for]="$any(pickerTo)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #pickerTo [showSeconds]="showSeconds" [color]="color"></ngx-mat-datetime-picker>
+      </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Date from</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      
 </div>
