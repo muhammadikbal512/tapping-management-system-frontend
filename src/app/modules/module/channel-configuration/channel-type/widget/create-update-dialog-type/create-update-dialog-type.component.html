@@ -1,0 +1,31 @@
+<form class="p-8">
+
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Channel Type</label>
+        </div>
+        <div class="m-auto space-x-2 text-center pb-5">
+            <p>Message Template</p>
+            <p-dropdown [options]="cities" optionLabel="name"></p-dropdown>
+        </div>
+    </div>
+    <div>
+        <div class="input-container">
+            <input type="text" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Description</label>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn-submit-form">Search</button>
+        <button type="submit" class="btn-submit-form ml-5">Clear</button>
+    </div>
+</form>
+<!-- <div class="p-6 space-y-6">
+            <div class="modal-footer">
+                <button data-modal-toggle="defaultModal" type="button" class="clear-footer">
+                    Close
+                </button>
+            </div>
+        </div> -->
