@@ -4,9 +4,12 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule} from '@angular/common/http'
 import { MaterialModule } from './modules/material/material.module';
 import 'flowbite';
+
 import { AgGridModule } from 'ag-grid-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DropdownModule } from 'primeng/dropdown'
+
 
 
 import { HeaderComponent } from './shared/header/header.component';
@@ -18,7 +21,6 @@ import { AppComponent } from './app.component';
 import { DefaultComponent } from './layout/default/default.component';
 import { LoginComponent } from './modules/module/login/login.component';
 import { DashboardComponent } from './modules/module/dashboard/dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransactionComponent } from './modules/module/transaction/transaction.component';
 import { AlertAnalysisComponent } from './modules/module/investigation/alert-analysis/alert-analysis.component';
 import { AlertComponent } from './modules/module/acquirer/alert/alert.component';
@@ -60,7 +62,7 @@ import { CreateUpdateIso8583DialectComponent } from './modules/module/external-i
 import { ActionButtonGroupIso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
 import { Iso8583FieldTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-field-table/iso8583-field-table.component';
 import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
-
+import { CreateUpdateDialogTypeComponent } from './modules/module/channel-configuration/channel-type/widget/create-update-dialog-type/create-update-dialog-type.component';
 
 
 
@@ -115,21 +117,22 @@ import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external
     CreateUpdateIso8583DialectComponent,
     ActionButtonGroupIso8583DialectComponent,
     Iso8583FieldTableComponent,
-    CreateUpdateIso8583FieldFormComponent
+    CreateUpdateIso8583FieldFormComponent,
+    CreateUpdateDialogTypeComponent
     
     
   ],
-  entryComponents: [FormsTransactionComponent],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     NgxEchartsModule,
     HttpClientModule,
     MaterialModule,
     AgGridModule.withComponents([]),
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

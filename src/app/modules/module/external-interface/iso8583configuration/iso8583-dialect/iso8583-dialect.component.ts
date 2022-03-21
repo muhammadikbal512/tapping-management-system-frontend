@@ -16,7 +16,9 @@ export class Iso8583DialectComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(CreateUpdateIso8583DialectComponent)
+    this.dialog.open(CreateUpdateIso8583DialectComponent, {
+      width: "600px"
+    })
   }
 
 }

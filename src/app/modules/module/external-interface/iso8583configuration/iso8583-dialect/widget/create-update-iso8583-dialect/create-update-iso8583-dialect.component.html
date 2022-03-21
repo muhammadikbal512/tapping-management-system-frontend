@@ -3,18 +3,18 @@
         <div class="input-container">
             <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">Channel Id</label>
+            <label for="floating_first_name" class="input-label">Name Type</label>
         </div>
     </div>
     <div class="form-filled-container">
         <div class="input-container">
             <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">Channel Type</label>
+            <label for="floating_first_name" class="input-label">Description</label>
         </div>
-        <div class="m-auto space-x-2">
-            <input type="checkbox" id="test" name="test" value="premise">
-            Message Format
+        <div class="m-auto space-x-2 text-center pb-5">
+            <p>Message Format</p>
+            <p-dropdown [options]="cities" optionLabel="name"></p-dropdown>
         </div>
     </div>
     <div class="text-center">

@@ -7,6 +7,12 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
 
 const MaterialComponents = [
   MatFormFieldModule,
@@ -16,7 +22,11 @@ const MaterialComponents = [
   MatDialogModule,
   MatButtonModule,
   MatTabsModule,
-  MatTableModule
+  MatTableModule,
+  BrowserAnimationsModule,
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
 ]
 
 @NgModule({
