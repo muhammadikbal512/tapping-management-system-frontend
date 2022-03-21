@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateUpdateDialogTypeComponent } from './widget/create-update-dialog-type/create-update-dialog-type.component';
+
 
 @Component({
   selector: 'app-channel-type',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog() {
+    this.dialog.open(CreateUpdateDialogTypeComponent, {
+      width: '700px', 
+    })
+  }
 }

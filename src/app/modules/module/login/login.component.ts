@@ -42,10 +42,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login(user: UserModel): void {
-    let returnUrl =
-      this.route.snapshot.queryParamMap.get('returnUrl') ||
-      'TMS-Home/dashboard';
-      this.showLoading = true;
+    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || 'TMS-Home/dashboard';
+    this.showLoading = true;
     this.subscriptions.push(
       this.authenticationService.login(user).subscribe(
         (response: HttpResponse<UserModel> | any) => {
@@ -63,6 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000,
+            background: 'red',
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer);
