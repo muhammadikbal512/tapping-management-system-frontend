@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'TMS-Home',
     component: DefaultComponent,
-    // canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard],
     children: [
       {
         path: 'dashboard',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateUpdateDialogComponent } from './widget/create-update-dialog/create-update-dialog.component';
+import { CreateUpdateDialogChannelComponent } from './widget/create-update-dialog/create-update-dialog.component';
 @Component({
   selector: 'app-channel',
   templateUrl: './channel.component.html',
@@ -13,9 +13,15 @@ export class ChannelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  refresh() {
+    location.reload();
+  }
+
+  
+
   openDialog() {
-    this.dialog.open(CreateUpdateDialogComponent, {
-      width: '700px', 
+    this.dialog.open(CreateUpdateDialogChannelComponent, {
+      width: '700px', height: '490px'
     })
   }
 

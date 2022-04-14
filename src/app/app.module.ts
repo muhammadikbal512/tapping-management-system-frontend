@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import 'flowbite';
 
 import { AgGridModule } from 'ag-grid-angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DropdownModule } from 'primeng/dropdown'
-
-
+import { DropdownModule } from 'primeng/dropdown';
+import { MessageModule } from 'primeng/message';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -63,8 +62,10 @@ import { ActionButtonGroupIso8583DialectComponent } from './modules/module/exter
 import { Iso8583FieldTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-field-table/iso8583-field-table.component';
 import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
 import { CreateUpdateDialogTypeComponent } from './modules/module/channel-configuration/channel-type/widget/create-update-dialog-type/create-update-dialog-type.component';
-
-
+import { EditDialogIso8583FormatComponent } from './modules/module/message-format/iso8583-format/widget/edit-dialog-iso8583-format/edit-dialog-iso8583-format.component';
+import { UserTableComponent } from './modules/module/user-management/user/widgets/user-table/user-table.component';
+import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
+import { CreateUpdateDialogChannelComponent } from './modules/module/channel-configuration/channel/widget/create-update-dialog/create-update-dialog.component';
 
 
 @NgModule({
@@ -118,11 +119,13 @@ import { CreateUpdateDialogTypeComponent } from './modules/module/channel-config
     ActionButtonGroupIso8583DialectComponent,
     Iso8583FieldTableComponent,
     CreateUpdateIso8583FieldFormComponent,
-    CreateUpdateDialogTypeComponent
-    
-    
+    CreateUpdateDialogTypeComponent,
+    EditDialogIso8583FormatComponent,
+    UserTableComponent,
+    InterfaceListComponent,
+    CreateUpdateDialogChannelComponent
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -132,9 +135,11 @@ import { CreateUpdateDialogTypeComponent } from './modules/module/channel-config
     AgGridModule.withComponents([]),
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    DropdownModule
+    DropdownModule,
+    FormsModule,
+    MessageModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

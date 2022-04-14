@@ -1,0 +1,29 @@
+.field {
+    @apply
+    flex
+    flex-col
+    flex-nowrap
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+}
+
+.has-child-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.action-button-group {
+    margin-top: 10px;
+  }
+  
+  .cancel-button {
+    margin-right: 10px;
+  }
+  
+  .save-button {
+    margin-right: 20px;
+  }
+  

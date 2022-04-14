@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community'
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
+import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
+
 
 @Component({
   selector: 'app-table',
@@ -7,22 +12,29 @@ import { ColDef } from 'ag-grid-community'
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+  @Input('ELEMENT_DATA') ELEMENT_DATA!: TransactionMessageInterface[];
+  displayedColumns: string[] = ['amount', 'currencyCode', 'destAccount', 'HPAN', 'clearHPAN', 'merchantId', 'merchantType', 'MTI', 'networkId', 'responseCode', 'RRN', 'srcAccount', 'terminalId', 'transactionId', 'transType']
+  dataSource = new MatTableDataSource<TransactionMessageInterface>(this.ELEMENT_DATA)
+  @ViewChild(MatPaginator) paginator!: MatPaginator
+  @ViewChild(MatSort) sort!: MatSort
 
-  constructor() { }
+
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
+    this.onGetAllTransactionList();
   }
 
-  columnDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price'}
-];
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort
+  }
 
-rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-];
+  onGetAllTransactionList() {
+    this.transactionService.getAllTransactionList().subscribe((response) => {
+      this.dataSource.data = response
+      console.log(this.dataSource.data)
+    })
+  }
 
 }

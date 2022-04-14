@@ -1,23 +1,51 @@
 <div class="table-container">
-    <table class="min-w-full">
-        <thead class="bg-gray-50 dark:bg-gray-700">
-            <tr>
-                <th scope="col">
-                    Nama Type
-                </th>
-                <th scope="col">
-                    Message Format
-                </th>
-                <th scope="col">
-                    Description
-                </th>
-                <th scope="col">
-                    Actions
-                </th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="table-container">
+        <div *ngIf="this.dataSource.data.length != 0; else other_content">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" (matSortChange)="announceSortChange($event)">
+        
+                <ng-container matColumnDef="nameType">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name Type</th>
+                    <td mat-cell *matCellDef="let element"> {{element.nameType}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="msgFormat">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Message Format</th>
+                    <td mat-cell *matCellDef="let element"> {{element.messageFormat.description}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.description}}
+                    </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="editRecord">
+                    <th mat-header-cell *matHeaderCellDef>Edit Record</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="accent">Edit</button>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="deleteRecord">
+                    <th mat-header-cell *matHeaderCellDef>Delete Record</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button (click)="onDeleteDialectMsgTemplate(element.templateId)" mat-raised-button color="warn">Delete</button>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <ng-template #other_content>
+            <mat-spinner style="left: 50%;"></mat-spinner>
+        </ng-template>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+
 </div>
 
 <!-- <ag-grid-angular style="width: 500px; height: 150px;" class="ag-theme-alpine" [rowData]="rowData"

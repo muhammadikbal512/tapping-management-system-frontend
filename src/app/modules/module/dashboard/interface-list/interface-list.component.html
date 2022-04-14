@@ -1,0 +1,60 @@
+<div class="table-container">
+  <div *ngIf="this.dataSource.data.length != 0;else other">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" (matSortChange)="announceSortChange($event)">
+        <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ipAddress">
+            <th mat-header-cell *matHeaderCellDef> IP Address </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.address}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="openDialog(interfacesDialog)" mat-mini-fab color="warn" aria-label="Example icon button with a bookmark icon">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                <!-- <i  class="pi pi-angle-double-up cursor-pointer"></i> -->
+            </td>
+        </ng-container>
+
+        <ng-template #interfacesDialog>
+            <div *ngFor="let title of interfaceDialogTitle; let index = index">
+              <div
+                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 0.5rem">
+                <span style="white-space: nowrap; width: 220px; font-size: 14px">{{title}}</span>
+                <input
+                  class="tw-bg-gray-200 tw-appearance-none tw-border-2 tw-border-gray-200 tw-rounded tw-py-[5px] tw-px-4 tw-w-full tw-text-gray-700 tw-leading-[0] tw-text-[14px] focus:tw-outline-none"
+                  type="text" [value]="dialogInterfaceValue(title, index)" readonly>
+              </div>
+            </div>
+            <mat-dialog-actions align="end">
+              <button mat-raised-button [mat-dialog-close]="interfacesDialog" color="warn">Close</button>
+            </mat-dialog-actions>
+          </ng-template>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <ng-template #other>
+    <mat-spinner style="left: 50%;"></mat-spinner>
+  </ng-template>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
+
+
+<!-- <ag-grid-angular style="width: 500px; height: 150px;" class="ag-theme-alpine" [rowData]="rowData"
+        [columnDefs]="columnDefs">
+    </ag-grid-angular> -->

@@ -15,9 +15,13 @@ export class Iso8583DialectComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  refresh() {
+    location.reload();
+  }
+
   openDialog() {
     this.dialog.open(CreateUpdateIso8583DialectComponent, {
-      width: "600px"
+      width: "700px", height: '350px'
     })
   }
 

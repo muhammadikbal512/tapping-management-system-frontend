@@ -1,0 +1,25 @@
+<form #addMsgFormat="ngForm" class="p-8">
+    <div>
+        <div class="input-container">
+            <input ngModel type="text" name="currentMsgFormat" class="peer" placeholder=" "
+                required="" disabled>
+            <!-- <p-message *ngIf="messageFormat.touched && !messageFormat.hasError('required')" severity="success">
+            </p-message> -->
+            <!-- <p-message *ngIf="messageFormat.touched && messageFormat.hasError('required')" severity="error"></p-message> -->
+            <label for="messageFormat" class="input-label">Current Message Format</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input ngModel type="text" name="newMsgFormat" class="peer" placeholder=" ">
+            <label for="description" class="input-label">New Message Format</label>
+        </div>
+        <div class="input-container">
+            <input ngModel type="text" name="newMsgDescription" class="peer" placeholder=" ">
+            <label for="description" class="input-label">New Description</label>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn-submit-form">Save</button>
+    </div>
+</form>

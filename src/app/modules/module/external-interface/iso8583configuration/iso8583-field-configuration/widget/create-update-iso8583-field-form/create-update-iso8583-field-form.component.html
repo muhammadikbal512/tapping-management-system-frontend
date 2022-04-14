@@ -1,1 +1,67 @@
-<p>create-update-iso8583-field-form works!</p>
+<div class="container">
+    <form #addIso8583FieldConfig="ngForm" (onSubmit)="AddIso8583FieldConfig(addIso8583FieldConfig.value)">
+        <div class="field">
+            <label class="required-icon">Dialect</label>
+            <div style="width: 100%">
+                <p-dropdown ngModel [options]="dialect" appendTo="body" filterBy="name" placeholder="Select Dialect"
+                    optionLabel="nameType" optionValue="templateId" styleClass="dialect"></p-dropdown>
+            </div>
+        </div>
+        <div class="field-iso mt-4 mb-4">
+            <label class="required-icon" for="">ISO8583 Field Configuration</label>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Field Data
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            This is a summary of the content
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-form-field appearance="outline" style="margin-right: 20px;">
+                        <mat-label>Field Id</mat-label>
+                        <input ngModel name="fieldId" matInput>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline" style="margin-right: 20px;">
+                        <mat-label>Field Format</mat-label>
+                        <input matInput name="fieldFormat" ngModel>
+                        <mat-error>Field Format should be fill</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="margin-right: 20px;">
+                        <mat-label>Description</mat-label>
+                        <input ngModel name="description" matInput autocomplete="off">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Length</mat-label>
+                        <input ngModel name="fieldLength" matInput autocomplete="off" maxlength="5">
+                        <mat-error>Length should be fill</mat-error>
+                    </mat-form-field>
+
+                    <!-- <div class="has-child-container">
+                        <label for="" class="has-child-label">Add Child Field: </label>
+                        <div class="option-group">
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="subField"></mat-radio-button>
+                                <mat-radio-button value="taggedField"></mat-radio-button>
+                                <mat-radio-button value="none"></mat-radio-button>
+                            </mat-radio-group>
+
+
+                        </div>
+                    </div> -->
+
+                </mat-expansion-panel>
+                
+            </mat-accordion>
+           
+        </div>
+        <div class="text-center">
+            <button type="submit" mat-raised-button class="bg-blue-500 mt-5 text-white" >Create</button>
+        </div>
+    </form>
+</div>

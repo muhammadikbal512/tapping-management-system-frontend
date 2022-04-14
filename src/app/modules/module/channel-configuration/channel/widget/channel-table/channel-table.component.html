@@ -1,30 +1,70 @@
+<mat-form-field>
+  <mat-label>
+    Filter
+  </mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Search here">
+</mat-form-field>
 <div class="table-container">
-    <table class="min-w-full">
-        <thead class="bg-gray-50 dark:bg-gray-700">
-            <tr>
-                <th scope="col">
-                    Channel Id
-                </th>
-                <th scope="col">
-                    Channel Type
-                </th>
-                <th scope="col">
-                    Ip Address
-                </th>
-                <th scope="col">
-                    Port
-                </th>
-                <th scope="col">
-                    Channel Status
-                </th>
-                <th scope="col">
-                    Is On Premise
-                </th>
-                <th scope="col">
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+  <div *ngIf="this.dataSource.data.length != 0; else other_content">
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="channelId">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> Channel Id </th>
+          <td mat-cell *matCellDef="let element">{{element.channelId}}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="ipAddress">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> IP Address </th>
+          <td mat-cell *matCellDef="let element">{{element.ipAddress}}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="port">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> Port </th>
+          <td mat-cell *matCellDef="let element">{{element.port}}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="onPremise">
+          <th mat-header-cell *matHeaderCellDef>On Premise</th>
+          <td mat-cell class="text-center" *matCellDef="let element">
+            <div *ngIf="element.isOnPremise; else Offline">
+              <span class="dot"></span>
+          </div>
+          <ng-template #Offline>
+              <span class="dotElse"></span>
+          </ng-template>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="channelStatus">
+          <th mat-header-cell *matHeaderCellDef> Channel Status </th>
+          <td mat-cell class="text-center" *matCellDef="let element">{{element.channelStatus}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="channelType">
+          <th mat-header-cell *matHeaderCellDef> Channel Type </th>
+          <td mat-cell class="text-center" *matCellDef="let element">{{element.channelType.channelType}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="editRecord">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell class="text-center" *matCellDef="let element">
+              <button mat-raised-button color="accent">Edit</button>
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="deleteRecord">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell class="text-center" *matCellDef="let element">
+              <button (click)="onDeleteChannel(element.id)" mat-raised-button color="warn">Delete</button>
+          </td>
+      </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>
+  <ng-template #other_content>
+    <mat-spinner style="left: 50%;"></mat-spinner>
+  </ng-template>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
 </div>
