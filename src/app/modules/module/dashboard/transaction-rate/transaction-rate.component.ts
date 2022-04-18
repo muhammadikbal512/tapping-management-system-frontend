@@ -9,15 +9,15 @@ import { WebsocketService } from '../../../services/websocket-service/websocket-
 })
 export class TransactionRateComponent implements OnInit, OnDestroy {
   constructor(
-    
+    public transactionRateService: TransactionRateChartService
   ) {}
 
   ngOnInit(): void {
-    // this.transactionRateService.chartRateTimer();
+    this.transactionRateService.chartRateTimer();
     // this.webSocketService.openSocket();
   }
 
   ngOnDestroy() {
-    // clearInterval(this.transactionRateService.interval);
+    clearInterval(this.transactionRateService.interval);
   }
 }

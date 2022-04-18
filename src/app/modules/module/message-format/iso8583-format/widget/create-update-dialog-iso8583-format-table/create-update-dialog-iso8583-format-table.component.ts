@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Iso8583FormatModel } from 'src/app/model/modules-model/iso8583-format.model';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-MessageFormatService
 
 
 @Component({

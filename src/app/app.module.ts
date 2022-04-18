@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
+import { StateConfigurationModule } from './state-configuration/state-configuration.module';
 import 'flowbite';
 
 import { AgGridModule } from 'ag-grid-angular';
@@ -66,7 +67,10 @@ import { EditDialogIso8583FormatComponent } from './modules/module/message-forma
 import { UserTableComponent } from './modules/module/user-management/user/widgets/user-table/user-table.component';
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 import { CreateUpdateDialogChannelComponent } from './modules/module/channel-configuration/channel/widget/create-update-dialog/create-update-dialog.component';
-
+import { OverlayLoadingComponent } from './modules/global-widget/overlay-loading/overlay-loading.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { NotificationService } from './modules/services/notification-service/notification.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -123,13 +127,16 @@ import { CreateUpdateDialogChannelComponent } from './modules/module/channel-con
     EditDialogIso8583FormatComponent,
     UserTableComponent,
     InterfaceListComponent,
-    CreateUpdateDialogChannelComponent
+    CreateUpdateDialogChannelComponent,
+    OverlayLoadingComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
     HttpClientModule,
     MaterialModule,
     AgGridModule.withComponents([]),
@@ -137,9 +144,11 @@ import { CreateUpdateDialogChannelComponent } from './modules/module/channel-con
     SweetAlert2Module.forRoot(),
     DropdownModule,
     FormsModule,
-    MessageModule
+    MessageModule,
+    ProgressSpinnerModule,
+    StateConfigurationModule
   ],
-  providers: [],
+  providers: [NotificationService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

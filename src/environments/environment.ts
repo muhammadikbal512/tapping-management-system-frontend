@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  ws: 'http://192.168.0.112:8080/ws',
-  core236: 'http://192.168.0.113:8080',
+  ws: 'http://192.168.0.116:8080/ws',
+  core236: 'http://192.168.0.116:8080',
 };
 
 /*

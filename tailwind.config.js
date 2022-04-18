@@ -1,6 +1,6 @@
 module.exports = {
   // prefix: 'tw-',
-  content: ['./src/**/*.{html,ts}', "./node_modules/flowbite/**/*.js"],
+  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
   theme: {
     extend: {},
     screens: {
@@ -21,6 +21,6 @@ module.exports = {
     }
   },
   plugins: [
-    require('flowbite/plugin')
+    require('tw-elements/dist/plugin')
 ]
 }

@@ -1,221 +1,246 @@
-<aside class="sidebar">
-  <div class="sidebar-header">
-    <div class="sidebar-logo">
-      <a routerLink="dashboard">
-        <img src="../../../assets/logo/logo-tms.png" class="w-10 h-10" alt="" />
-        <span class="leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase">TMS</span>
-      </a>
-    </div>
-  </div>
-  <div class="sidebar-content">
-    <ul class="sidebar-items">
-      <li class="items-sidebar">
-        <button routerLink="dashboard" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          </svg>
-          <span>Dashboard</span>
-        </button>
+<nav id="sidebar">
+  <div class="dropend relative" id="sidenavSecExample">
+    <ul>
+      <li>
+        <a routerLink="">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-3">home</mat-icon>
+          <p>Dashboard</p>
+        </a>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-Investigation" data-dropdown-placement="right" data-dropdown-toggle="dropdown-investigation"
-          type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>Investigation</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-investigation" class="hidden item">
-          <ul aria-labelledby="Button-Investigation" class="py-2 space-y-2">
-            <li>
-              <a class="block" routerLink="acquirer/terminal-list">Alert Analysis</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-investigation">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-investigation">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>Investigation</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-investigation"
+          aria-labelledby="dropdown-investigation" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="investigation/alert-analysis" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Alert Analysis</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-Acquirer" data-dropdown-placement="right" data-dropdown-toggle="dropdown-acquirer"
-          type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-          </svg>
-          <span>Acquirer</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-acquirer" class="hidden item">
-          <ul aria-labelledby="Button-Acquirer" class="py-2 space-y-2">
-            <li>
-              <a class="block" routerLink="acquirer/terminal-list">Terminal List</a>
-            </li>
-            <li>
-              <a routerLink="acquirer/alert" class="block">Alert</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-acquirer">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-acquirer">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>Acquirer</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-acquirer"
+          aria-labelledby="dropdown-acquirer" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="acquirer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Terminal List</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="acquirer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Alert</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-Issuer" data-dropdown-placement="right" data-dropdown-toggle="dropdown-issuer" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-              clip-rule="evenodd" />
-          </svg>
-          <span>Issuer</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-issuer" class="hidden item">
-          <ul aria-labelledby="Button-Issuer" class="py-2 space-y-2">
-            <li>
-              <a routerLink="issuer/terminal-list" class="block">Terminal List</a>
-            </li>
-            <li>
-              <a routerLink="issuer/alert" class="block">Alert</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-issuer">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-issuer">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-3 w-3 mr-1">description</mat-icon>
+          <p>Issuer</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-issuer"
+          aria-labelledby="dropdown-issuer" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="issuer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Terminal List</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="issuer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Alert</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-Message-Format" data-dropdown-placement="right"
-          data-dropdown-toggle="dropdown-message-format" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-          </svg>
-          <span>Message Format</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-message-format" class="hidden item">
-          <ul aria-labelledby="Button-Message-Format" class="py-2 space-y-2">
-            <li>
-              <a routerLink="message-format/iso8583-format" class="block">ISO8583 Format</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-message-format">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-message-format">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>Message Format</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-message-format"
+          aria-labelledby="dropdown-message-format" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="message-format/iso8583-format" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>ISO8583 Format</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-External-Interfaces" data-dropdown-placement="right"
-          data-dropdown-toggle="dropdown-External-Interfaces" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-          </svg>
-          <span>External Interfaces</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-External-Interfaces" class="hidden item">
-          <ul aria-labelledby="Button-External-Interfaces" class="py-2 space-y-2">
-            <li class="dropdown ml-3">
-              <a class="whitespace-no-wrap" style="background-color: black;" href="#">Iso8583 Configuration 
-              <i class="arrow down"></i>
-              </a>
-              
-              <ul class="dropdown-content absolute hidden text-gray-700 pl-5 ml-40 -mt-10" style="width: 120%;">
-                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-dialect">Iso8583 Dialect</a>
-                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration">Iso8583 Field Configuration</a>
-                <li><a class="whitespace-no-wrap" routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping">Iso8583 Response Mapping</a>
-              </ul>
-            </li>
-            <li>
-              <a routerLink="external-interfaces/iso20022" class="block">ISO20022</a>
-            </li>
-            <li>
-              <a routerLink="external-interfaces/json-configuration" class="block">JSON Configuration</a>
-            </li>
-            <li>
-              <a routerLink="external-interfaces/NDC" class="block">NDC</a>
-            </li>
-            <li>
-              <a routerLink="external-interfaces/xml-configuration" class="block">XML Configuration</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-external-interfaces">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-external-interfaces">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>External Interfaces</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-external-interfaces"
+          aria-labelledby="dropdown-external-interfaces" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse"
+              routerLink="external-interfaces/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>ISO Config</p>
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more
+              </mat-icon>
+            </a>
+            <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-iso-config">
+              <li>
+                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+                  <p>Dialect</p>
+                </a>
+              </li>
+              <li>
+                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+                  <p>Field Config</p>
+                </a>
+              </li>
+              <li>
+                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+                  <p>Response Mapping</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>ISO 20022</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>JSON Config</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>NDC</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>XML Config</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-Channel" data-dropdown-placement="right" data-dropdown-toggle="dropdown-channel"
-          type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
-              clip-rule="evenodd" />
-          </svg>
-          <span>Channel Configuration</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-channel" class="hidden item">
-          <ul aria-labelledby="Button-Channel" class="py-2 space-y-2">
-            <li>
-              <a routerLink="channel-configuration/channel" class="block">Channel</a>
-            </li>
-            <li>
-              <a routerLink="channel-configuration/channel-type" class="block">Channel Type</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-channel-configuration">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-channel-configuration">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>Channel Config</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-channel-configuration"
+          aria-labelledby="dropdown-channel-configuration" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="channel-configuration/channel" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Channel</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="channel-configuration/channel-type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Channel Type</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button routerLink="transaction" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-          </svg>
-          <span>Transaction</span>
-        </button>
+
+      <li id="dropdown-transaction">
+        <a routerLink="transaction" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>Transaction</p>
+        </a>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-User-Management" data-dropdown-placement="right"
-          data-dropdown-toggle="dropdown-User-Management" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <span>User Management</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-User-Management" class="hidden item">
-          <ul aria-labelledby="Button-User-Management" class="py-2 space-y-2">
-            <li>
-              <a routerLink="user-management/private-scheme" class="block">Private Schemes</a>
-            </li>
-            <li>
-              <a routerLink="user-management/roles" class="block">Roles</a>
-            </li>
-            <li>
-              <a routerLink="user-management/user" class="block">User</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-user-management">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-user-management">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>User Management</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-user-management"
+          aria-labelledby="dropdown-user-management" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="user-management/private-scheme" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Scheme</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="user-management/roles" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>Roles</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="user-management/user" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>User</p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="items-sidebar">
-        <button id="Button-System" data-dropdown-placement="right" data-dropdown-toggle="dropdown-System" type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-          </svg>
-          <span>System</span>
-          <i class="arrow down"></i>
-        </button>
-        <div id="dropdown-System" class="hidden item">
-          <ul aria-labelledby="Button-System" class="py-2 space-y-2">
-            <li>
-              <a routerLink="system/arp" class="block">ARP</a>
-            </li>
-            <li>
-              <a routerLink="system/system-parameters" class="block">System Parameters</a>
-            </li>
-          </ul>
-        </div>
+
+      <li id="dropdown-system">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-system">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 mr-1">description</mat-icon>
+          <p>System</p>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-system"
+          aria-labelledby="dropdown-system" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="system/arp" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>ARP</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="system/system-parameters" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2 mr-3">folder</mat-icon>
+              <p>System Params</p>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
-</aside>
+</nav>

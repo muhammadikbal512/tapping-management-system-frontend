@@ -25,7 +25,8 @@
 }
 
 .grid-3 {
-  @apply overflow-x-auto
+  @apply 
+  overflow-x-auto
     sm:-mx-6 
     lg:-mx-8;
 }
@@ -39,7 +40,8 @@
 }
 
 .modal-container {
-  @apply overflow-y-auto 
+  @apply 
+  overflow-y-auto 
     overflow-x-hidden 
     fixed 
     right-0 
@@ -48,7 +50,7 @@
     z-50 
     justify-center 
     items-center 
-    h-modal 
+    /* h-modal  */
     md:h-full 
     md:inset-0;
 }
