@@ -5,6 +5,7 @@ import { MessageFormatState } from './modules/message-format/message-format.stat
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
+import { ChannelState } from './modules/channel-configuration/channel/channel.state';
 
 @NgModule({
   declarations: [],
@@ -14,7 +15,7 @@ import { NgxsResetPluginModule } from 'ngxs-reset-plugin';
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsResetPluginModule.forRoot(),
-    NgxsModule.forRoot([MessageFormatState]),
+    NgxsModule.forRoot([MessageFormatState, ChannelState]),
   ],
 })
 export class StateConfigurationModule {}

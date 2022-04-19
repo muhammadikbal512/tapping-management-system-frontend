@@ -20,6 +20,7 @@ import {
 } from '@angular-material-components/datetime-picker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MaterialComponents = [
   MatFormFieldModule,
@@ -40,7 +41,8 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatSortModule,
   MatProgressSpinnerModule,
-  MatIconModule
+  MatIconModule,
+  MatMenuModule
 ];
 
 @NgModule({

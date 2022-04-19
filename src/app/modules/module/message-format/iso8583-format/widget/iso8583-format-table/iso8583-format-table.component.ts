@@ -3,6 +3,7 @@ import { MessageFormatService } from 'src/app/modules/services/module-services/m
 import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format-table.service';
 import {GridReadyEvent, RowClickedEvent} from "ag-grid-community";
 
+
 @Component({
   selector: 'app-iso8583-format-table',
   templateUrl: './iso8583-format-table.component.html',

@@ -6,6 +6,12 @@
 @import "~ag-grid-community/dist/styles/ag-grid";
 @import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
+@import "~boxicons/css/boxicons.css";
+@import "~primeng/resources/primeng.min.css";
+@import "~primeng/resources/themes/tailwind-light/theme.css";
+@import "~primeicons/primeicons.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~primeflex/primeflex.css";
 
 body {
     margin: 0;

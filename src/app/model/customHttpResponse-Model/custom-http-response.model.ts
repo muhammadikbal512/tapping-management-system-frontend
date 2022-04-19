@@ -4,4 +4,5 @@ export interface CustomHttpResponseModel {
     httpStatus: number;
     reason: string;
     message: string;
-}
+  }
+  

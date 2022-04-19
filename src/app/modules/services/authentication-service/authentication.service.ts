@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../notification-service/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +20,16 @@ export class AuthenticationService {
   private loggedInUsername: string = '';
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private notificationService: NotificationService) {}
 
-  public login(user: UserModel): Observable<HttpResponse<any> | HttpErrorResponse> {
-    return this.http.post<HttpResponse<any> | HttpErrorResponse>
-    (`${this.host}/user/login`, user, {observe: `response`});
+  public login(
+    user: UserModel
+  ): Observable<HttpResponse<any> | HttpErrorResponse> {
+    return this.http.post<HttpResponse<any> | HttpErrorResponse>(
+      `${this.host}/user/login`,
+      user,
+      { observe: `response` }
+    );
   }
 
   public logout(): void {
@@ -62,7 +68,7 @@ export class AuthenticationService {
       if (this.jwtHelper.decodeToken(this.token).sub != null || '') {
         if (this.jwtHelper.isTokenExpired(this.token)) {
           this.logout();
-          this.router.navigate(['/login'])
+          this.router.navigate(['/login']);
           window.location.reload();
           // this.notificationService.errorNotification('Your session time was expired, Please try to login again.', 0);
         } else {

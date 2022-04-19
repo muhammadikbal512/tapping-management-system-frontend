@@ -2,17 +2,21 @@ import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
-import { PopupMessageServiceService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
-
+import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
   selector: 'app-action-button-group-iso8583-format',
   templateUrl: './action-button-group-iso8583-format.component.html',
   styleUrls: ['./action-button-group-iso8583-format.component.css'],
 })
-export class ActionButtonGroupIso8583FormatComponent implements AgRendererComponent {
+export class ActionButtonGroupIso8583FormatComponent
+  implements AgRendererComponent
+{
   cellValue: string = '';
-  constructor(private iso8583FormatService: MessageFormatService, private confirmationService: PopupMessageServiceService) {}
+  constructor(
+    private iso8583FormatService: MessageFormatService,
+    private confirmationService: PopupMessageService
+  ) {}
 
   agInit(params: ICellRendererParams): void {
     this.cellValue = this.getValueToDisplay(params);
@@ -32,7 +36,9 @@ export class ActionButtonGroupIso8583FormatComponent implements AgRendererCompon
   }
 
   deleteButton(event: Event) {
-    this.confirmationService.messageFormatConfirm(event, this.iso8583FormatService)
+    this.confirmationService.messageFormatConfirm(
+      event,
+      this.iso8583FormatService
+    );
   }
-  
 }

@@ -79,9 +79,7 @@ export class MessageFormatService {
   }
 
   onDeleteIso8583Format() {
-    this.messageFormatDispatch._MessageFormatDeleteDispatch(
-      this.existingData.messageFormatId
-    );
+    this.messageFormatDispatch._MessageFormatDeleteDispatch(this.existingData.messageFormatId);
   }
 
   createIso8583FormatFormData(

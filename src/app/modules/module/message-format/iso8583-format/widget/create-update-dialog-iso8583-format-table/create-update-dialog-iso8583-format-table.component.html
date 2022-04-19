@@ -1,19 +1,33 @@
-<form #addMsgFormat="ngForm" class="p-8" (ngSubmit)="onAddMsgFormat(addMsgFormat.value)">
+<form [formGroup]="form" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input ngModel type="text" name="messageFormat" class="peer" placeholder=" "
-                required="">
+            <input formControlName="messageFormat" type="text" class="peer" placeholder=" ">
+            <label class="input-label">Message Format</label>
             <p-message *ngIf="messageFormat.touched && !messageFormat.hasError('required')" severity="success">
             </p-message>
-            <p-message *ngIf="messageFormat.touched && messageFormat.hasError('required')" severity="error"></p-message>
-            <label for="messageFormat" class="input-label">Message Format</label>
+            <p-message *ngIf="messageFormat.touched && messageFormat.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="messageFormat.touched && messageFormat.hasError('required')" class="p-error">Message Format
+                should be
+                fill.</small>
         </div>
         <div class="input-container">
-            <input ngModel type="text" name="description" class="peer" placeholder=" ">
+            <input formControlName="description" type="text" class="peer" placeholder=" ">
             <label for="description" class="input-label">Description</label>
         </div>
     </div>
-    <div class="text-center">
-        <button type="submit" class="btn-submit-form-create">Create</button>
-    </div>
+    <mat-dialog-actions>
+        <p-button class="cancel-button"
+            label="Cancel"
+            mat-dialog-close="true"
+            styleClass="p-button-sm"></p-button>
+  <p-button (onClick)="onCreateIso8583Format()" *ngIf="iso8583FormatService.buttonStatus == 'create'"
+            [disabled]="form.invalid"
+            class="create-button" label="Create"
+            styleClass="p-button-sm"></p-button>
+  <p-button (onClick)="onUpdateIso8583Format()" *ngIf="iso8583FormatService.buttonStatus == 'edit'"
+            [disabled]="disableButton" class="create-button"
+            label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
 </form>

@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { StateConfigurationModule } from './state-configuration/state-configuration.module';
 import 'flowbite';
 
+import { ToastModule } from 'primeng/toast';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { RippleModule } from 'primeng/ripple';
+import { DropdownModule } from 'primeng/dropdown';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { PasswordModule } from 'primeng/password';
+import { TagModule } from 'primeng/tag';
+
 import { AgGridModule } from 'ag-grid-angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DropdownModule } from 'primeng/dropdown';
-import { MessageModule } from 'primeng/message';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -70,7 +81,7 @@ import { CreateUpdateDialogChannelComponent } from './modules/module/channel-con
 import { OverlayLoadingComponent } from './modules/global-widget/overlay-loading/overlay-loading.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NotificationService } from './modules/services/notification-service/notification.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { TagComponent } from './modules/global-widget/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -129,10 +140,12 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     InterfaceListComponent,
     CreateUpdateDialogChannelComponent,
     OverlayLoadingComponent,
+    TagComponent,
   ],
 
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
@@ -146,7 +159,15 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     FormsModule,
     MessageModule,
     ProgressSpinnerModule,
-    StateConfigurationModule
+    StateConfigurationModule,
+    ButtonModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
+    ToastModule,
+    RippleModule,
+    MessagesModule,
+    PasswordModule,
+    TagModule,
   ],
   providers: [NotificationService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

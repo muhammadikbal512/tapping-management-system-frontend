@@ -32,7 +32,7 @@ export class ChannelTypeTableComponent implements OnInit {
   }
 
   onGetAllChannelTypeList() {
-    this.channelTypeService.getAllChannelTypeList().subscribe((response) => {
+    this.channelTypeService.getAllChannelType().subscribe((response) => {
       console.log(response)
       this.dataSource.data = response
     })

@@ -1,69 +1,133 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
 import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
 import { ChannelTypeModel } from 'src/app/model/modules-model/channel-type.model';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { ChannelTypeGroupInterface } from 'src/app/interface/modules/channel-type-group';
+import { ChannelState } from 'src/app/state-configuration/modules/channel-configuration/channel/channel.state';
+import { ChannelModel } from 'src/app/model/modules-model/channel.model';
 
 @Component({
   selector: 'app-create-update-dialog',
   templateUrl: './create-update-dialog.component.html',
-  styleUrls: ['./create-update-dialog.component.css']
+  styleUrls: ['./create-update-dialog.component.css'],
 })
-export class CreateUpdateDialogChannelComponent implements OnInit {
-  channelType: ChannelTypeModel[] = []
-  constructor(private channelService: ChannelService, private channelTypeService: ChannelTypeService) { }
+export class CreateUpdateDialogChannelComponent
+  implements OnInit, AfterViewInit
+{
+  // @Select(ChannelState.channelTypes) channelTypes$!: Observable<ChannelTypeGroupInterface[]>
 
-  ngOnInit(): void {
-    this.getAllChannelType();
-  }
+  form!: FormGroup;
+  showClear: boolean = false;
+  disableStatus: boolean = false;
+  channelModel: ChannelModel = new ChannelModel();
+  channelTypeGroupInterface: ChannelTypeGroupInterface[] = [];
+  constructor(
+    private fb: FormBuilder,
+    public channelService: ChannelService,
+    public changeDetectorRef: ChangeDetectorRef
+  ) {}
 
-  getAllChannelType() {
-    this.channelTypeService.getAllChannelTypeList().subscribe((response) => {
-      this.channelType = response
-      console.log(this.channelType)
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {}
+
+  createForm() {
+    this.form = this.fb.group({
+      channelId: ['', Validators.required],
+      ipAddress: ['', [Validators.required, Validators.pattern('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')]],
+      port: ['', [Validators.required, Validators.pattern('[0-9]')]],
+      channelType: ['', Validators.required],
+      isOnPremise: ['']
     })
   }
 
-  onAddChannel(data: any, id: number) {
-    this.channelService.addChannel(data, id).subscribe((response) => {
-      console.log(data)
-      console.log(response)
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: 'success',
-        title: 'Created !',
-      });
-      location.reload();
-    },
-    (error) => {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: 'error',
-        title: `${error.value}`,
-      });
-    }
-    )
+  onChange($event: any) {
+    this.showClear = $event != '' && $event != null;
   }
 
+  onCheckingFormHasChange() {
+    this.disableStatus = !this.form.dirty;
+    this.form.valueChanges.subscribe(value => {
+      if (
+        this.existingChannelId != value.channelId || this.existingIpAddress != value.ipAddress ||
+        this.existingPort != value.port || this.existingChannelType != value.channelType || this.existingOnPremise != value.isOnPremise
+      ) {
+        this.disableStatus = false;
+      }
+
+      if (
+        this.existingChannelId == value.channelId && this.existingIpAddress == value.ipAddress &&
+        this.existingPort == value.port && this.existingChannelType == value.channelType.name && this.existingOnPremise == value.isOnPremise
+      ) {
+        this.disableStatus = true;
+      }
+    })
+  }
+
+  setExistingDataToDialog() {
+    this.channelId.setValue(this.existingChannelId)
+    this.ipAddress.setValue(this.existingIpAddress)
+    this.port.setValue(this.existingPort)
+    this.onPremise.setValue(this.existingOnPremise)
+    this.channelType.setValue({
+      name: this.existingChannelType.channelType,
+      code: String(this.existingChannelType.channelTypeId)
+    })
+  }
+
+  onCreateChannel() {
+
+  }
+
+  onUpdateChannel() {
+
+  }
+
+  get channelId() {
+    return this.form.controls['channelId'];
+  }
+
+  get channelType() {
+    return this.form.controls['channelType'];
+  }
+
+  get ipAddress() {
+    return this.form.controls['ipAddress'];
+  }
+
+  get port() {
+    return this.form.controls['port'];
+  }
+
+  get onPremise() {
+    return this.form.controls['isOnPremise'];
+  }
+
+  get existingChannelId() {
+    return this.channelService.existingData.channelId;
+  }
+
+  get existingIpAddress() {
+    return this.channelService.existingData.ipAddress;
+  }
+
+  get existingPort() {
+    return this.channelService.existingData.port;
+  }
+
+  get existingChannelType() {
+    return this.channelService.existingData.channelType;
+  }
+
+  get existingOnPremise() {
+    return this.channelService.existingData.isOnPremise;
+  }
 }
