@@ -44,18 +44,20 @@
                 fill.</small>
         </div>
         <div class="m-auto space-x-2">
-            <mat-checkbox class="example-margin" formControlName="isOnPremise" style="font-weight: 600">
-                Onpremise
-            </mat-checkbox>
+            <section>
+                <mat-checkbox class="example-margin" formControlName="isOnPremise" style="font-weight: 600">
+                  Onpremise
+                </mat-checkbox>
+              </section>
         </div>
     </div>
     <div class="text-center">
         <mat-dialog-actions align="end">
             <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
             <p-button (onClick)="onCreateChannel()" *ngIf="channelService.buttonStatus == 'create'"
-                [disabled]="form.invalid" class="create-button" label="Create" styleClass="p-button-sm"></p-button>
+                [disabled]="form.invalid" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
             <p-button (onClick)="onUpdateChannel()" *ngIf="channelService.buttonStatus == 'edit'"
-                [disabled]="disableStatus" class="create-button" label="Save" styleClass="p-button-sm"></p-button>
+                [disabled]="disableStatus" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
         </mat-dialog-actions>
     </div>
 </form>

@@ -1,75 +1,70 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { ChannelTypeModel } from 'src/app/model/modules-model/channel-type.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-type-table.service';
+import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-channel-type-table',
   templateUrl: './channel-type-table.component.html',
-  styleUrls: ['./channel-type-table.component.css']
+  styleUrls: ['./channel-type-table.component.css'],
 })
-export class ChannelTypeTableComponent implements OnInit {
-  @Input('ELEMENT_DATA') ELEMENT_DATA!: ChannelTypeModel[]
-  displayedColumns: string[] = ['channelType', 'msgTemplate', 'description', 'editRecord', 'deleteRecord']
-  dataSource = new MatTableDataSource<ChannelTypeModel>(this.ELEMENT_DATA)
-  @ViewChild(MatPaginator) paginator!: MatPaginator
-  @ViewChild(MatSort) sort!: MatSort
-
-
-  constructor(private channelTypeService: ChannelTypeService) { }
+export class ChannelTypeTableComponent implements OnInit, OnDestroy {
+  constructor(
+    private channelTypeService: ChannelTypeService,
+    private channelTypeTableService: ChannelTypeTableService
+  ) {}
 
   ngOnInit(): void {
-    this.onGetAllChannelTypeList();
+    
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator
-    this.dataSource.sort = this.sort
+  ngOnDestroy(): void {
+    this.channelTypeTableService.destroyGrid();
+    this.channelTypeService.dialectMsgTemplateList.length = 0;
   }
 
-  onGetAllChannelTypeList() {
-    this.channelTypeService.getAllChannelType().subscribe((response) => {
-      console.log(response)
-      this.dataSource.data = response
-    })
+  onGridReady(params: GridReadyEvent) {
+    this.channelTypeTableService.gridApi = params.api;
+    this.channelTypeTableService.gridColumnApi = params.columnApi;
+    this.runService();
   }
+
+  onCellClicked(data: RowClickedEvent) {
+    this.channelTypeService.ExistingData = data.data;
+  }
+
+  runService() {
+    this.channelTypeTableService.showTableLoading();
+    this.channelTypeService.getAllChannelTypeWithDelay();
+  }
+
+  get animateRow() {
+    return this.channelTypeTableService.animateRow;
+  }
+
+  get columnDefs() {
+    return this.channelTypeTableService.columnDefs;
+  }
+
+  get defaultColDef() {
+    return this.channelTypeTableService.defaultColDef;
+  }
+
+  get rowHeight() {
+    return this.channelTypeTableService.rowHeight;
+  }
+
+  get headerHeight() {
+    return this.channelTypeTableService.headerHeight;
+  }
+
+  get overlayLoadingTemplate() {
+    return this.channelTypeTableService.overlayLoadingTemplate;
+  }
+
+  get frameworkComponents() {
+    return this.channelTypeTableService.frameworkComponents;
+  }
+
   
-  onDeleteChannelType(id: number) {
-    Swal.fire({
-      title: 'Are you sure ?',
-      showDenyButton: true,
-      confirmButtonText: 'Delete',
-      denyButtonText: `Cancel`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.channelTypeService
-          .deleteChannelType(id)
-          .subscribe((response) => {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer);
-                toast.addEventListener('mouseleave', Swal.resumeTimer);
-              },
-            });
-            Toast.fire({
-              icon: 'success',
-              title: 'Success !',
-            });
-            this.onGetAllChannelTypeList();
-          });
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
-  }
-
 }

@@ -1,3 +1,4 @@
+import { ChannelState } from 'src/app/state-configuration/modules/channel-configuration/channel/channel.state';
 import {
   Component,
   OnInit,
@@ -5,48 +6,61 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
-import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
 import { ChannelTypeModel } from 'src/app/model/modules-model/channel-type.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ChannelTypeGroupInterface } from 'src/app/interface/modules/channel-type-group';
-import { ChannelState } from 'src/app/state-configuration/modules/channel-configuration/channel/channel.state';
 import { ChannelModel } from 'src/app/model/modules-model/channel.model';
+import { ChannelTypeState } from 'src/app/state-configuration/modules/channel-configuration/channel-type/channel-type.state';
 
 @Component({
   selector: 'app-create-update-dialog',
   templateUrl: './create-update-dialog.component.html',
   styleUrls: ['./create-update-dialog.component.css'],
 })
-export class CreateUpdateDialogChannelComponent
-  implements OnInit, AfterViewInit
+export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
 {
-  // @Select(ChannelState.channelTypes) channelTypes$!: Observable<ChannelTypeGroupInterface[]>
-
+  @Select(ChannelTypeState.responseMessage) channelType$!: Observable<
+    ChannelTypeGroupInterface[]
+  >;
   form!: FormGroup;
   showClear: boolean = false;
   disableStatus: boolean = false;
   channelModel: ChannelModel = new ChannelModel();
-  channelTypeGroupInterface: ChannelTypeGroupInterface[] = [];
+  channelTypeGroupInterfaces: ChannelTypeGroupInterface[] = [];
+  
   constructor(
     private fb: FormBuilder,
     public channelService: ChannelService,
-    public changeDetectorRef: ChangeDetectorRef
-  ) {}
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createForm();
+    this.channelService.onGetAllTerminalType();
+    // this.channelType$.subscribe(data => {
+    //   this.ChannelTypeGroupInterfaces = data.sort((a, b) => a.name.localeCompare(b.name));
+    // })
+  }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    if (this.channelService.buttonStatus == 'edit') {
+      this.setExistingDataToDialog();
+      this.onCheckingFormHasChange();
+      this.changeDetectorRef.detectChanges();
+    }
+  }
 
   createForm() {
     this.form = this.fb.group({
       channelId: ['', Validators.required],
       ipAddress: ['', [Validators.required, Validators.pattern('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')]],
-      port: ['', [Validators.required, Validators.pattern('[0-9]')]],
+      port: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       channelType: ['', Validators.required],
       isOnPremise: ['']
-    })
+    });
   }
 
   onChange($event: any) {
@@ -73,22 +87,39 @@ export class CreateUpdateDialogChannelComponent
   }
 
   setExistingDataToDialog() {
-    this.channelId.setValue(this.existingChannelId)
-    this.ipAddress.setValue(this.existingIpAddress)
-    this.port.setValue(this.existingPort)
-    this.onPremise.setValue(this.existingOnPremise)
+    this.channelId.setValue(this.existingChannelId);
+    this.ipAddress.setValue(this.existingIpAddress);
+    this.port.setValue(this.existingPort);
+    this.onPremise.setValue(this.existingOnPremise);
     this.channelType.setValue({
       name: this.existingChannelType.channelType,
       code: String(this.existingChannelType.channelTypeId)
     })
   }
 
-  onCreateChannel() {
+  setNewDataToModel(): ChannelModel {
+    this.channelModel.channelId = this.channelId.value;
+    this.channelModel.ipAddress = this.ipAddress.value;
+    this.channelModel.port = this.port.value;
+    this.channelModel.channelType = new ChannelTypeModel(Number(this.channelType.value.code))
+    this.channelModel.isOnPremise = this.onPremise.value;
+    if (this.onPremise.value == '' || this.onPremise.value == null) {
+      this.channelModel.isOnPremise = false;
+    }
+    return this.channelModel;
+  }
 
+  onCreateChannel() {
+    this.channelService.onCreateChannel(this.setNewDataToModel());
   }
 
   onUpdateChannel() {
+    const newData = this.channelService.createChannelFormData(String(this.existingChannelId), this.setNewDataToModel())
+    this.channelService.onUpdateChannel(newData, this.setNewDataToModel());
+  }
 
+  set ChannelTypeGroupInterfaces(optionList: ChannelTypeGroupInterface[]) {
+    this.channelTypeGroupInterfaces = optionList;
   }
 
   get channelId() {
@@ -131,3 +162,4 @@ export class CreateUpdateDialogChannelComponent
     return this.channelService.existingData.isOnPremise;
   }
 }
+

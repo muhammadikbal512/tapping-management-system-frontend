@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
+import { ChannelTypeService } from '../module-services/channel-type.service';
 import { ChannelService } from '../module-services/channel.service';
 import { MessageFormatService } from '../module-services/message-format.service';
 
@@ -27,6 +28,17 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteChannel();
+      }
+    })
+  }
+
+  channelTypeConfirm(event: Event, onDelete: ChannelTypeService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this record?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteChannelType();
       }
     })
   }

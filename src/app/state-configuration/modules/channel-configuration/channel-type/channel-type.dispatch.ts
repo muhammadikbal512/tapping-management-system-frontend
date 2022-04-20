@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import {
   ChannelTypeAdd,
@@ -32,26 +32,22 @@ export class ChannelTypeDispatch {
   }
 
   @Dispatch()
-  public _channelTypeUpdateDispatch(
-    payload: FormData,
-    id: number,
-    stateData: ChannelTypeModel
-  ) {
+  public _ChannelTypeUpdateDispatch(payload: FormData, id: number, stateData: ChannelTypeModel) {
     return new ChannelTypeUpdate(id, payload, stateData);
   }
 
   @Dispatch()
-  public _channelTypeDelete(id: number) {
+  public _ChannelTypeDelete(id: number) {
     return new ChannelTypeDelete(id);
   }
 
   @Dispatch()
   public _ChannelTypeSuccessStateDispatch(message: CustomHttpResponseModel) {
-      return new ChannelTypeSuccessState(message)
+    return new ChannelTypeSuccessState(message);
   }
 
   @Dispatch()
   public _ChannelTypeErrorStateDispatch(message: CustomHttpResponseModel) {
-      return new ChannelTypeErrorState(message)
+    return new ChannelTypeErrorState(message);
   }
 }

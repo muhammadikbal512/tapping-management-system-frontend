@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { StateConfigurationModule } from './state-configuration/state-configuration.module';
 import 'flowbite';
@@ -82,6 +82,10 @@ import { OverlayLoadingComponent } from './modules/global-widget/overlay-loading
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NotificationService } from './modules/services/notification-service/notification.service';
 import { TagComponent } from './modules/global-widget/tag/tag.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ChannelService } from './modules/services/module-services/channel.service';
+import { ChannelTypeService } from './modules/services/module-services/channel-type.service';
+
 
 @NgModule({
   declarations: [
@@ -159,7 +163,6 @@ import { TagComponent } from './modules/global-widget/tag/tag.component';
     FormsModule,
     MessageModule,
     ProgressSpinnerModule,
-    StateConfigurationModule,
     ButtonModule,
     ConfirmPopupModule,
     ConfirmDialogModule,
@@ -168,8 +171,16 @@ import { TagComponent } from './modules/global-widget/tag/tag.component';
     MessagesModule,
     PasswordModule,
     TagModule,
+    StateConfigurationModule,
   ],
-  providers: [NotificationService, MessageService, ConfirmationService],
+  providers: [
+    NotificationService,
+    MessageService,
+    ConfirmationService,
+    ChannelService,
+    ChannelTypeService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

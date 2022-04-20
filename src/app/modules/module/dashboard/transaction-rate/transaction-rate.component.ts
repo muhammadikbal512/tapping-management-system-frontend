@@ -20,4 +20,6 @@ export class TransactionRateComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     clearInterval(this.transactionRateService.interval);
   }
+
+  
 }

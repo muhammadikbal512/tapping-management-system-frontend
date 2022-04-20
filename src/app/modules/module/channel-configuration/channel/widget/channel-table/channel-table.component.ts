@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { ChannelTableService } from 'src/app/modules/services/module-services/channel-table.service';
 import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
-
+import {Store} from "@ngxs/store";
 
 @Component({
   selector: 'app-channel-table',
@@ -11,6 +11,7 @@ import { ChannelService } from 'src/app/modules/services/module-services/channel
 })
 export class ChannelTableComponent implements OnInit, OnDestroy {
   constructor(
+    private store: Store,
     private channelTableService: ChannelTableService,
     private channelService: ChannelService
   ) {}

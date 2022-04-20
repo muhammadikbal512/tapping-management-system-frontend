@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
+import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-type-table.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateUpdateDialogTypeComponent } from './widget/create-update-dialog-type/create-update-dialog-type.component';
 
 @Component({
   selector: 'app-channel-type',
   templateUrl: './channel-type.component.html',
-  styleUrls: ['./channel-type.component.css']
+  styleUrls: ['./channel-type.component.css'],
 })
 export class ChannelTypeComponent implements OnInit {
+  constructor(
+    private dialog: MatDialog,
+    private channelTypeService: ChannelTypeService, private channelTypeTableService: ChannelTypeTableService
+  ) {}
 
-  constructor(private dialog: MatDialog) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  refreshTable() {
+    this.channelTypeService.getAllChannelTypeWithDelay();
   }
 
-  refresh() {
-    location.reload();
-  }
-
-  applyFilter($event: any) {
-    const filterValue = ($event.target as HTMLInputElement).value
-
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log($event)
+  onFilterTextBoxChanged() {
+    this.channelTypeTableService.onFilter('search-filter')
   }
 
   openDialog() {
-    this.dialog.open(CreateUpdateDialogTypeComponent, {
-      width: "700px", height: '350px'
-    })
+    this.channelTypeService.buttonStatus = 'create';
+    this.channelTypeService.openDialog();
   }
 }

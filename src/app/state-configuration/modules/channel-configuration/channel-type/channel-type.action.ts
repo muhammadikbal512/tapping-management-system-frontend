@@ -6,8 +6,10 @@ export class ChannelTypesGet {
 }
 
 export class ChannelTypeGetDialect {
-  static readonly type = ['ChannelType] GetDialect Template'];
+  static readonly type ='[ChannelType] GetDialectTemplate';
 }
+
+
 
 export class ChannelTypeAdd {
   static readonly type = '[ChannelType] Add';
@@ -29,8 +31,8 @@ export class ChannelTypeDelete {
 }
 
 export class ChannelTypeSuccessState {
-    static readonly type = '[ChannelType] Success'
-    constructor(public successMessage: CustomHttpResponseModel) {}
+  static readonly type ='[ChannelType] Success';
+  constructor(public successMessage: CustomHttpResponseModel) {}
 }
 
 export class ChannelTypeErrorState {

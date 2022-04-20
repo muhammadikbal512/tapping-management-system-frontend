@@ -3,40 +3,40 @@ import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 import { ActionButtonGroupChannelTypeComponent } from '../../module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChannelTypeTableService {
-gridApi!: GridApi;
-gridColumnApi!: ColumnApi;
-animateRow: boolean = true;
-rowHeight: number = 40;
-headerHeight: number = 40;
-overlayLoadingTemplate: string = 'overlayLoading';
-frameworkComponents = {
-  actionButtonGroup: ActionButtonGroupChannelTypeComponent,
-  overlayLoading: OverlayLoadingComponent
-}
-defaultColDef: ColDef = {
-  flex: 1,
-  editable: false,
-  sortable: true,
-  headerClass: 'channel-type-header-color'
-};
+  gridApi!: GridApi;
+  gridColumnApi!: ColumnApi;
+  animateRow: boolean = true;
+  rowHeight: number = 40;
+  headerHeight: number = 40;
+  overlayLoadingTemplate: string = 'overlayLoading';
+  frameworkComponents = {
+    actionButtonGroup: ActionButtonGroupChannelTypeComponent,
+    overlayLoading: OverlayLoadingComponent
+  };
+  defaultColDef: ColDef = {
+    flex: 1,
+    editable: false,
+    sortable: true,
+    headerClass: 'channel-type-header-color'
+  };
+  columnDefs: ColDef[] = [
+    {field: 'id', hide: true},
+    {field: 'channelType', sort: 'asc'},
+    {field: 'dialectMessageTemplate.nameType', headerName: 'Message Template'},
+    {field: 'description', width: 200},
+    {field: 'actions', maxWidth: 100, cellRenderer: 'actionButtonGroup'}
+  ]
 
-columnDefs: ColDef[] = [
-  {field: 'id', hide: true},
-  {field: 'channelType', sort: 'asc'},
-  {field: 'dialectMessageTemplate.nameType', headerName: 'Message Template'},
-  {field: 'actions', maxWidth: 100, cellRenderer: 'actionButtonGroup'}
-]
-
-
-  constructor() { }
+  constructor() {}
 
   onFilter(searchInputClass: string) {
-    this.gridApi.setQuickFilter((document.getElementById(searchInputClass) as HTMLInputElement)?. value)
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement)?.value
+    );
   }
 
   showTableLoading() {
@@ -52,11 +52,11 @@ columnDefs: ColDef[] = [
   }
 
   setAutoHeightTable() {
-    this.gridApi.setDomLayout('autoHeight')
+    this.gridApi.setDomLayout('autoHeight');
   }
 
   setRowData(data: any[]) {
-    this.gridApi.setRowData(data)
+    this.gridApi.setRowData(data);
   }
 
   destroyGrid() {

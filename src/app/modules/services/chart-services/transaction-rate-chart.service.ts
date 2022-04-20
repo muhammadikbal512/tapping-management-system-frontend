@@ -132,6 +132,6 @@ export class TransactionRateChartService {
           },
         ],
       };
-    }, 1000);
+    }, 3000);
   }
 }
