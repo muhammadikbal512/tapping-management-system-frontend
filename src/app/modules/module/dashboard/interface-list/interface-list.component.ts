@@ -57,6 +57,7 @@ export class InterfaceListComponent implements OnInit {
   }
 
   dataHandler(response: any) {
+    console.log(response);
     const keyValue = Object.keys(response)[0];
     let removeFirstAndLastEl = keyValue.substring(1, keyValue.length - 1)
     const arrayKeyValue = removeFirstAndLastEl.split(",");

@@ -1,45 +1,19 @@
-.dashboard-card {
+.grid-container {
     @apply
-    flex 
-    items-center 
-    justify-between 
-    p-4 
+     
     bg-white 
-    rounded-md 
-}
-
-.dashboard-card h6 {
-    @apply
-    text-xs 
-    font-medium 
-    leading-none 
-    tracking-wider 
-    text-gray-500 
-    uppercase 
-}
-
-.card-value {
-    @apply
-    text-xl 
-    font-semibold
-}
-
-.card-updated {
-    @apply
-    inline-block 
-    px-2 
-    py-px 
-    ml-2 
-    text-xs 
     rounded-md
 }
 
-.dashboard-container {
+.grid-header {
     @apply
-    grid 
-    grid-cols-1 
-    gap-8 
     p-4 
-    lg:grid-cols-2 
-    xl:grid-cols-4
+    border-b 
+}
+
+.grid-header h4 {
+    @apply
+    text-lg 
+    font-semibold 
+    text-gray-500 
 }

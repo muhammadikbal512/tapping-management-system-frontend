@@ -22,6 +22,7 @@ import { DialectState } from './modules/external-interfaces/iso8583configuration
     NgxsModule.forRoot([
       ChannelState,
       ChannelTypeState,
+      DialectState,
       MessageFormatState
     ])
   ],

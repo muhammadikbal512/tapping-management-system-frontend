@@ -40,9 +40,9 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
   ngOnInit(): void {
     this.createForm();
     this.channelService.onGetAllTerminalType();
-    // this.channelType$.subscribe(data => {
-    //   this.ChannelTypeGroupInterfaces = data.sort((a, b) => a.name.localeCompare(b.name));
-    // })
+    this.channelType$.subscribe(data => {
+      this.ChannelTypeGroupInterfaces = data.sort((a, b) => a.name.localeCompare(b.name));
+    })
   }
 
   ngAfterViewInit(): void {

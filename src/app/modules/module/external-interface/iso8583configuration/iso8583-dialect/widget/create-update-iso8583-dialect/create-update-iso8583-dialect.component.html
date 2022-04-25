@@ -1,21 +1,40 @@
-<form #addIso8583Format="ngForm" class="p-8" (ngSubmit)="onAddIso8583FormatMessage(addIso8583Format.value, addIso8583Format.value.messageFormatId )">
-        <div class="form-filled-container">
-            <div class="input-container">
-                <input ngModel type="text" name="nameType" class="peer" placeholder=" "
-                    required="">
-                <label for="floating_first_name" class="input-label">Name Type</label>
-            </div>
-            <div class="m-auto space-x-2 text-center pb-5">
-                <p>Message Format</p>
-                <p-dropdown ngModel name="messageFormatId" optionValue="messageFormatId" [options]="msgFormat" optionLabel="messageFormat"></p-dropdown>
-            </div>
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="nameType" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Name Type</label>
+            <p-message *ngIf="nameType.touched && !nameType.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="nameType.touched && nameType.hasError('required')" severity="error"></p-message>
+            <small *ngIf="nameType.touched && nameType.hasError('required')" class="p-error">Name Type should be
+                fill.</small>
         </div>
-            <div class="input-container">
-                <input ngModel type="text" name="description" class="peer" placeholder=" "
-                    required="">
-                <label for="floating_first_name" class="input-label">Description</label>
-            </div>
+        <div class="m-auto space-x-2 text-center pb-5">
+            <p>Message Format</p>
+            <p-dropdown [filter]="true" [options]="msgFormatOptionList" appendTo="body" filterBy="name"
+                placeholder="Select Message Format" optionLabel="name" [showClear]="showClearButton"
+                styleClass="msgFormat" (onChange)="onChange($event)" formControlName="msgFormatId"></p-dropdown>
+            <p-message *ngIf="msgFormatId.touched && !msgFormatId.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="msgFormatId.touched && msgFormatId.hasError('required')" severity="error"></p-message>
+            <small *ngIf="msgFormatId.touched && msgFormatId.hasError('required')" class="p-error">Name Type should be
+                fill.</small>
+        </div>
+    </div>
+    <div class="input-container">
+        <input formControlName="description" type="text" name="description" class="peer" placeholder=" " required="">
+        <label class="input-label">Description</label>
+        <p-message *ngIf="description.touched && !description.hasError('required')" severity="success"></p-message>
+        <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
+        <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should be
+            fill.</small>
+        <small *ngIf="description.touched && !description.hasError('pattern')">Description format is invalid !</small>
+    </div>
     <div class="text-center">
-        <button type="submit" class="btn-submit-form">Create</button>
+        <mat-dialog-actions>
+            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onCreateIso8583Dialect()" *ngIf="iso8583DialectService.buttonStatus == 'create'"
+                [disabled]="form.invalid" class="create-button" label="Create" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onUpdateIso8583Dialect()" *ngIf="iso8583DialectService.buttonStatus == 'edit'"
+                [disabled]="disableButton" class="create-button" label="Save" styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
     </div>
 </form>

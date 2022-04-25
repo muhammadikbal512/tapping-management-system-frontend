@@ -2,7 +2,7 @@
   <div class="dropend relative" id="sidenavSecExample">
     <ul>
       <li>
-        <a routerLink="">
+        <a routerLink="/TMS-Home/dashboard">
           <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4">home</mat-icon>
           <p>Dashboard</p>
         </a>
@@ -11,15 +11,15 @@
       <li id="dropdown-investigation">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-investigation">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-book mr-1"></i>
           <p>Investigation</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-investigation"
           aria-labelledby="dropdown-investigation" data-bs-parent="#sidenavSecExample">
           <li>
             <a routerLink="investigation/alert-analysis" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-exclamation-circle mr-1"></i>
               <p>Alert Analysis</p>
             </a>
           </li>
@@ -29,21 +29,21 @@
       <li id="dropdown-acquirer">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-acquirer">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-paperclip mr-1"></i>
           <p>Acquirer</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-acquirer"
           aria-labelledby="dropdown-acquirer" data-bs-parent="#sidenavSecExample">
           <li>
             <a routerLink="acquirer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-sitemap"></i>
               <p>Terminal List</p>
             </a>
           </li>
           <li>
             <a routerLink="acquirer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-exclamation-circle mr-1"></i>
               <p>Alert</p>
             </a>
           </li>
@@ -53,21 +53,21 @@
       <li id="dropdown-issuer">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-issuer">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-3 w-3 ">description</mat-icon>
+          <i class="pi pi-tag mr-1"></i>
           <p>Issuer</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-issuer"
           aria-labelledby="dropdown-issuer" data-bs-parent="#sidenavSecExample">
           <li>
             <a routerLink="issuer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-sitemap"></i>
               <p>Terminal List</p>
             </a>
           </li>
           <li>
             <a routerLink="issuer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-exclamation-circle mr-1"></i>
               <p>Alert</p>
             </a>
           </li>
@@ -77,9 +77,9 @@
       <li id="dropdown-message-format">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-message-format">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-file-o mr-1"></i>
           <p>Message Format</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-message-format"
           aria-labelledby="dropdown-message-format" data-bs-parent="#sidenavSecExample">
@@ -95,62 +95,60 @@
       <li id="dropdown-external-interfaces">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-external-interfaces">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-desktop mr-1"></i>
           <p>External Interfaces</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-external-interfaces"
           aria-labelledby="dropdown-external-interfaces" data-bs-parent="#sidenavSecExample">
           <li>
-            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse"
-              routerLink="external-interfaces/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-cog"></i>
               <p>ISO Config</p>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more
-              </mat-icon>
+              <i class="pi pi-angle-down ml-auto ml-auto"></i>
             </a>
             <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-iso-config">
               <li>
-                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-dialect" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <i class="pi pi-percentage mr-1"></i>
                   <p>Dialect</p>
                 </a>
               </li>
               <li>
-                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <i class="pi pi-cog mr-1"></i>
                   <p>Field Config</p>
                 </a>
               </li>
               <li>
-                <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                  <i class="pi pi-share-alt mr-1"></i>
                   <p>Response Mapping</p>
                 </a>
               </li>
             </ul>
           </li>
           <li>
-            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+            <a routerLink="external-interfaces/iso20022" data-mdb-ripple="true" data-mdb-ripple-color="primary">
               <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
               <p>ISO 20022</p>
             </a>
           </li>
           <li>
-            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+            <a routerLink="external-interfaces/json-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-cog mr-1"></i>
               <p>JSON Config</p>
             </a>
           </li>
           <li>
-            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+            <a routerLink="external-interfaces/NDC" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-circle-off mr-1"></i>
               <p>NDC</p>
             </a>
           </li>
           <li>
-            <a routerLink="external-interfaces/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+            <a routerLink="external-interfaces/xml-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-cog mr-1"></i>
               <p>XML Config</p>
             </a>
           </li>
@@ -160,21 +158,21 @@
       <li id="dropdown-channel-configuration">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-channel-configuration">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-config mr-1"></i>
           <p>Channel Config</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-channel-configuration"
           aria-labelledby="dropdown-channel-configuration" data-bs-parent="#sidenavSecExample">
           <li>
             <a routerLink="channel-configuration/channel" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-key mr-1"></i>
               <p>Channel</p>
             </a>
           </li>
           <li>
             <a routerLink="channel-configuration/channel-type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-key mr-1"></i>
               <p>Channel Type</p>
             </a>
           </li>
@@ -183,7 +181,7 @@
 
       <li id="dropdown-transaction">
         <a routerLink="transaction" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-money-bill mr-1"></i>
           <p>Transaction</p>
         </a>
       </li>
@@ -191,27 +189,27 @@
       <li id="dropdown-user-management">
         <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
           data-bs-target="#collapsedropdown-user-management">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ">description</mat-icon>
+          <i class="pi pi-users mr-1"></i>
           <p>User Management</p>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-4 w-4 ml-auto">expand_more</mat-icon>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-user-management"
           aria-labelledby="dropdown-user-management" data-bs-parent="#sidenavSecExample">
           <li>
             <a routerLink="user-management/private-scheme" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-th-large mr-1"></i>
               <p>Scheme</p>
             </a>
           </li>
           <li>
             <a routerLink="user-management/roles" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-sort mr-1"></i>
               <p>Roles</p>
             </a>
           </li>
           <li>
             <a routerLink="user-management/user" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" class="h-2 w-2">folder</mat-icon>
+              <i class="pi pi-user mr-1"></i>
               <p>User</p>
             </a>
           </li>
