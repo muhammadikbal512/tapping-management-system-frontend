@@ -1,11 +1,11 @@
 <!-- component -->
 
 <div class="default-container">
-  <div [ngClass]="showSidebar ? 'hidden' : ''" style="z-index:100;">
+  <div style="z-index:100;">
     <app-sidebar></app-sidebar>
   </div>
   <main class="main">
-    <app-header (btnClick)="getOnClick()">
+    <app-header>
     </app-header>
     <div class="main-content">
       <div class="main-content-board">

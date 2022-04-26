@@ -85,6 +85,7 @@ import { TagComponent } from './modules/global-widget/tag/tag.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ChannelService } from './modules/services/module-services/channel.service';
 import { ChannelTypeService } from './modules/services/module-services/channel-type.service';
+import { HpanDialogComponent } from './modules/module/transaction/widget-transaction/hpan-dialog/hpan-dialog.component';
 
 
 @NgModule({
@@ -145,6 +146,7 @@ import { ChannelTypeService } from './modules/services/module-services/channel-t
     CreateUpdateDialogChannelComponent,
     OverlayLoadingComponent,
     TagComponent,
+    HpanDialogComponent,
   ],
 
   imports: [

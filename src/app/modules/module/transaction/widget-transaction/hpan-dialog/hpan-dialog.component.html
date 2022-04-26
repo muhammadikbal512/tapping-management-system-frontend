@@ -1,0 +1,11 @@
+<span>
+    <a (click)="buttonClicked(hpanDialog)" class="masked-hpan">
+        {{cellValue}}
+    </a>
+</span>
+<ng-template #hpanDialog>
+    <div class="hpan-dialog-container">
+        <span>Clear HPAN</span>
+        <input type="text" class="hpan-dialog-clear" [value]="clearHPAN">
+    </div>
+</ng-template>

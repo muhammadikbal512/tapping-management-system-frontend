@@ -1,84 +1,84 @@
-<form class="p-8">
+<form [formGroup]="form" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
+            <input formControlName="MTI" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">MTI</label>
+            <label class="input-label">MTI</label>
         </div>
         <div class="input-container">
-            <input type="text" name="floating_last_name" id="floating_last_name" class="peer" placeholder=" "
+            <input formControlName="responseCode" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_last_name" class="input-label">Response Code</label>
+            <label class="input-label">Response Code</label>
         </div>
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" name="floating_phone" id="floating_phone" class="peer" placeholder=" " required="">
-            <label for="floating_phone" class="input-label">HPAN</label>
+            <input formControlName="HPAN" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">HPAN</label>
         </div>
         <div class="input-container">
-            <input type="text" name="floating_company" id="floating_company" class="peer" placeholder=" " required="">
-            <label for="floating_company" class="input-label">Transaction Id</label>
-        </div>
-    </div>
-    <div class="form-filled-container">
-        <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
-                required="">
-            <label for="floating_first_name" class="input-label">Terminal Id</label>
-        </div>
-        <div class="input-container">
-            <input type="text" name="floating_last_name" id="floating_last_name" class="peer" placeholder=" "
-                required="">
-            <label for="floating_last_name" class="input-label">Network Id</label>
+            <input formControlName="transactionId" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Transaction Id</label>
         </div>
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
+            <input formControlName="terminalId" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">Merchant Id</label>
+            <label class="input-label">Terminal Id</label>
         </div>
         <div class="input-container">
-            <input type="text" name="floating_last_name" id="floating_last_name" class="peer" placeholder=" "
+            <input formControlName="networkId" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_last_name" class="input-label">RRN</label>
-        </div>
-    </div>
-    <div class="form-filled-container">
-        <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
-                required="">
-            <label for="floating_first_name" class="input-label">Merchant Type</label>
-        </div>
-        <div class="input-container">
-            <input type="text" name="floating_last_name" id="floating_last_name" class="peer" placeholder=" "
-                required="">
-            <label for="floating_last_name" class="input-label">Source Account</label>
+            <label class="input-label">Network Id</label>
         </div>
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
+            <input formControlName="merchantId" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">Currency Code</label>
+            <label class="input-label">Merchant Id</label>
         </div>
         <div class="input-container">
-            <input type="text" name="floating_last_name" id="floating_last_name" class="peer" placeholder=" "
+            <input formControlName="RRN" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_last_name" class="input-label">Destination Account</label>
+            <label class="input-label">RRN</label>
         </div>
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" name="floating_first_name" id="floating_first_name" class="peer" placeholder=" "
+            <input formControlName="merchantType" type="text" class="peer" placeholder=" "
                 required="">
-            <label for="floating_first_name" class="input-label">Amount</label>
+            <label class="input-label">Merchant Type</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="srcAccount" type="text" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Source Account</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="currencyCode" type="text" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Currency Code</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="destAccount" type="text" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Destination Account</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="amount" type="text" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Amount</label>
         </div>
     </div>
     <div class="text-center">
-        <button type="submit" class="btn-submit-form">Search</button>
-        <button type="submit" class="btn-submit-form ml-5">Clear</button>
+        <button type="submit" (click)="searchButton()" mat-raised-button color="primary">Search</button>
+        <button type="submit" style="margin-left: 20px;" (click)="clearButton()" mat-raised-button color="warn">Clear</button>
     </div>
 </form>
 <!-- <div class="p-6 space-y-6">

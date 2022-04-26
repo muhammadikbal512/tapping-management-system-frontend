@@ -1,13 +1,13 @@
 <div class="container-transaction">
   <div class="container-grid">
     <div class="container-grid-header text-center">
-      <app-date-picker></app-date-picker>
+      <app-date-picker [form]="searchFilterForm"></app-date-picker>
     </div>
     <div class="grid-1">
       <div class="grid-2">
         <div class="grid-3">
           <div class="grid-4 text-center">
-            <button mat-raised-button class="bg-indigo-500 text-white" (click)="openDialog()">Open</button>
+            <button  mat-raised-button color="primary" (click)="openDialog()">Open</button>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
   </div>
   <div class="container-grid">
     <div class="container-grid-header">
-      <button type="button">
+      <button (click)="onExport()" type="button">
         Export data as XLS
       </button>
     </div>
@@ -23,29 +23,114 @@
       <div class="grid-2">
         <div class="grid-3">
           <div class="grid-4">
-            <app-table></app-table>
+            <app-table [headerColHeight]="transactionTableService.headerColHeight"
+              [paginationSize]="transactionTableService.paginationSize"
+              [defaultColDef]="transactionTableService.defaultColDef" [columnDefs]="transactionTableService.columnDefs">
+            </app-table>
+            <div class="page-size-container">
+              Page Size:
+              <select (change)="onPageSizeChanged()" id="page-size">
+                <option value="5" selected="">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container-grid">
-    <div class="grid-1">
-      <div class="grid-2">
-        <div class="grid-3">
-          <div class="grid-4">
-            <div class="shadow-md sm:rounded-lg">
-              <mat-tab-group>
-                <mat-tab label="Transaction Summary">
-                  <app-transaction-summary></app-transaction-summary>
-                </mat-tab>
-                <mat-tab label="Second"> Content 2 </mat-tab>
-                <mat-tab label="Third"> Content 3 </mat-tab>
-              </mat-tab-group>
+  <div class="container-grid additional-data">
+    <div class="shadow-md sm:rounded-lg">
+      <mat-tab-group>
+        <mat-tab label="Transaction Summary" headerStyleClass="transaction-summary">
+          <div class="transaction-summary-container">
+            <div class="summary-left">
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input [value]="this.transactionTableService.additionalData?.transactionDate" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Network Date</span>
+                <input [value]="this.transactionTableService.additionalData?.networkDate" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Id</span>
+                <input [value]="this.transactionTableService.additionalData?.transactionId" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Network Id</span>
+                <input [value]="this.transactionTableService.additionalData?.networkId" readonly>
+              </div>
+              <div class="summary-item">
+                <span>RRN</span>
+                <input [value]="this.transactionTableService.additionalData?.RRN" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Amount</span>
+                <input [value]="this.transactionTableService.additionalData?.amount" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Currency Code</span>
+                <input [value]="this.transactionTableService.additionalData?.currencyCode" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Type</span>
+                <input [value]="this.transactionTableService.additionalData?.transType" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Protocol</span>
+                <input value="">
+              </div>
+            </div>
+            <div class="summary-right">
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
+              <div class="summary-item">
+                <span>Transaction Date</span>
+                <input>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </mat-tab>
+        <mat-tab label="Second"> Content 2 </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>
