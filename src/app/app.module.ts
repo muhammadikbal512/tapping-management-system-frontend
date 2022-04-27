@@ -41,7 +41,6 @@ import { Iso20022Component } from './modules/module/external-interface/iso20022/
 import { XmlConfigurationComponent } from './modules/module/external-interface/xml-configuration/xml-configuration.component';
 import { NdcComponent } from './modules/module/external-interface/ndc/ndc.component';
 import { Iso8583configurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583configuration.component';
-import { InterfaceComponent } from './modules/module/transaction/interface/interface.component';
 import { PrivateSchemeComponent } from './modules/module/user-management/private-scheme/private-scheme.component';
 import { RolesComponent } from './modules/module/user-management/roles/roles.component';
 import { UserComponent } from './modules/module/user-management/user/user.component';
@@ -86,6 +85,10 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ChannelService } from './modules/services/module-services/channel.service';
 import { ChannelTypeService } from './modules/services/module-services/channel-type.service';
 import { HpanDialogComponent } from './modules/module/transaction/widget-transaction/hpan-dialog/hpan-dialog.component';
+import { TransactionParametersComponent } from './modules/module/transaction/transaction-parameters/transaction-parameters.component';
+import { TransactionParamDialogComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-dialog/transaction-param-dialog.component';
+import { TransactionParamActionButtonComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-action-button/transaction-param-action-button.component';
+import { TransactionParamTableComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-table/transaction-param-table.component';
 
 
 @NgModule({
@@ -107,7 +110,6 @@ import { HpanDialogComponent } from './modules/module/transaction/widget-transac
     XmlConfigurationComponent,
     NdcComponent,
     Iso8583configurationComponent,
-    InterfaceComponent,
     PrivateSchemeComponent,
     RolesComponent,
     UserComponent,
@@ -147,6 +149,10 @@ import { HpanDialogComponent } from './modules/module/transaction/widget-transac
     OverlayLoadingComponent,
     TagComponent,
     HpanDialogComponent,
+    TransactionParametersComponent,
+    TransactionParamDialogComponent,
+    TransactionParamActionButtonComponent,
+    TransactionParamTableComponent,
   ],
 
   imports: [

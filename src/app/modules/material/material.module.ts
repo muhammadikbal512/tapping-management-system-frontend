@@ -44,7 +44,7 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatIconModule,
   MatMenuModule,
-  MatCheckboxModule
+  MatCheckboxModule,
 ];
 
 @NgModule({

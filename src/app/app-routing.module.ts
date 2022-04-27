@@ -26,6 +26,7 @@ import { ChannelTypeComponent } from './modules/module/channel-configuration/cha
 import { Iso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component'
 import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component'
 import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component'
+import { TransactionParametersComponent } from './modules/module/transaction/transaction-parameters/transaction-parameters.component';
 
 
 
@@ -146,7 +147,16 @@ const routes: Routes = [
       },
       {
         path: 'transaction',
-        component: TransactionComponent,
+        children: [
+          {
+            path: 'transaction',
+            component: TransactionComponent
+          },
+          {
+            path: 'transaction-parameters',
+            component: TransactionParametersComponent
+          }
+        ]
       },
       {
         path: 'user-management',
