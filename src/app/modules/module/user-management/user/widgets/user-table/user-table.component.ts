@@ -1,73 +1,61 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { UserModel } from 'src/app/model/user-model/user.model';
-import Swal from 'sweetalert2';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
+import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-user-table',
   templateUrl: './user-table.component.html',
-  styleUrls: ['./user-table.component.css']
+  styleUrls: ['./user-table.component.css'],
 })
 export class UserTableComponent implements OnInit {
-  @Input('ELEMENT_DATA') ELEMENT_DATA!: UserModel[];
-  displayedColumns: string[] = ['username', 'email', 'role', 'lastLogin', 'active', 'actions'];
-  dataSource = new MatTableDataSource<UserModel>(this.ELEMENT_DATA);
+  constructor(
+    private userService: UserService,
+    private userTableService: UserTableService
+  ) {}
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  ngOnInit(): void {}
 
-  @ViewChild(MatSort) sort = new MatSort();
-  lists: any;
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.showData();
+  onGridReady(params: GridReadyEvent) {
+    this.userTableService.GridApi = params;
+    this.userTableService.GridcolumnApi = params;
+    this.runService()
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  onCellClicked(data: RowClickedEvent) {
+    this.userService.ExistingData = data
   }
 
-  showData() {
-    this.userService.getAllUsers().subscribe((response) => {
-      this.lists = response;
-      this.dataSource.data = response as UserModel[];
-      console.log(this.dataSource.data)
-    });
+  runService() {
+    this.userTableService.showTableLoading();
+    this.userService.getAllUserWithDelay();
   }
 
-  deleteUser(id: number) {
-    Swal.fire({
-      title: 'Are you sure ?',
-      showDenyButton: true,
-      confirmButtonText: 'Delete',
-      denyButtonText: `Cancel`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.userService
-          .deleteUser(id)
-          .subscribe((response) => {
-            Swal.fire('Saved!', '', 'success');
-            this.showData();
-          });
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
+  get animateRow() {
+    return this.userTableService.animateRow;
   }
 
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
+  get columnDefs() {
+    return this.userTableService.columnDef;
   }
 
+  get defaultColDef() {
+    return this.userTableService.defaultColDef
+  }
+
+  get rowHeight() {
+    return this.userTableService.rowHeight;
+  }
+
+  get headerHeight() {
+    return this.userTableService.headerHeight;
+  }
+
+  get overlayLoadingTemplate() {
+    return this.userTableService.overlayLoadingTemplate;
+  }
+
+  get frameworkComponents() {
+    return this.userTableService.frameworkComponents;
+  }
 }
