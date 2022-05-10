@@ -1,0 +1,31 @@
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="firstName" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">First Name</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="lastName" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Last Name</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="username" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Username</label>
+        </div>
+        <div class="input-container">
+            <input type="email" class="peer" formControlName="email" placeholder=" " required="">
+            <label class="input-label">Email</label>
+        </div>
+    </div>
+    <div class="text-center">
+        <mat-dialog-actions align="end">
+            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onCreateUser()" *ngIf="userService.buttonStatus == 'create'"
+                [disabled]="form.invalid" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onUpdateUser()" *ngIf="userService.buttonStatus == 'edit'"
+                [disabled]="disableButton" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
+    </div>
+</form>

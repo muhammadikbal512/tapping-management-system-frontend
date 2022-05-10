@@ -29,7 +29,7 @@ export class UserActionButtonComponent implements AgRendererComponent {
   }
 
   deleteButton(event: Event) {
-    // this.confirmationService.transactionParametersConfirm(event, this.userService)
+    this.confirmationService.userConfirm(event, this.userService)
   }
 
 }

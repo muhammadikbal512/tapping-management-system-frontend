@@ -1,5 +1,6 @@
 import {
   UserGet,
+  UserAdd,
   UserDelete,
   UserErrorState,
   UserSuccessState,
@@ -16,6 +17,11 @@ export class UserDispatch {
     @Dispatch()
     public _UserGetDispatch() {
         return new UserGet;
+    }
+
+    @Dispatch()
+    public _UserAddDispatch(payload: UserModel) {
+        return new UserAdd(payload);
     }
 
     @Dispatch()

@@ -19,7 +19,13 @@ export class UserComponent implements OnInit {
     this.userTableService.onFilter('search-filter')
   }
 
+  showDialog() {
+    this.userService.buttonStatus = 'create';
+    this.userService.openDialog();
+  }
+
   refreshTable() {
     this.userService.getAllUserWithDelay()
   }
+
 }
