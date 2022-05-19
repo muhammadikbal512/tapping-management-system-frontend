@@ -7,11 +7,15 @@
 
 .table-container th {
   @apply
-  py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
+  py-3 text-center text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
 }
+
 
 table {
   width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
 }
 
 .mat-header-cell {

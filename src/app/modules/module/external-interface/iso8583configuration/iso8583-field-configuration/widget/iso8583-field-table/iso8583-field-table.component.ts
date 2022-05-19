@@ -1,37 +1,66 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Iso8583FieldModel } from 'src/app/model/modules-model/iso8583-field.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/iso-field-configuration-table.service';
+
 
 @Component({
   selector: 'app-iso8583-field-table',
   templateUrl: './iso8583-field-table.component.html',
-  styleUrls: ['./iso8583-field-table.component.css']
+  styleUrls: ['./iso8583-field-table.component.css'],
 })
-export class Iso8583FieldTableComponent implements OnInit {
-  @Input('ELEMENT_DATA')ELEMENT_DATA!: Iso8583FieldModel[]
-  displayedColumns: string[] = ['name', 'dialectTemplate', 'action']
-  dataSource = new MatTableDataSource<Iso8583FieldModel>(this.ELEMENT_DATA)
-  @ViewChild(MatPaginator) paginator!: MatPaginator
-  @ViewChild(MatSort) sort!: MatSort
+export class Iso8583FieldTableComponent implements OnInit, OnDestroy {
+  constructor(
+    private isoFieldConfigurationService: IsoFieldConfigurationService,
+    private isoFieldConfigurationTableService: IsoFieldConfigurationTableService
+  ) {}
 
+  ngOnInit(): void {}
 
-  constructor(private isoFieldConfigurationService: IsoFieldConfigurationService) { }
-
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.isoFieldConfigurationTableService.gridApi.destroy();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator
-    this.dataSource.sort = this.sort
+  onGridReady(params: GridReadyEvent) {
+    this.isoFieldConfigurationTableService.gridApi = params.api;
+    this.isoFieldConfigurationTableService.gridColumnApi = params.columnApi
+    this.runService();
   }
 
-  onGetAllIsoFieldConfiguration() {
-    this.isoFieldConfigurationService.getAllIsoFieldConfiguration().subscribe((response) => {
-      this.dataSource.data = response
-    })
+  onCellClicked(data: RowClickedEvent) {
+    this.isoFieldConfigurationService.ExistingData = data.data
   }
 
+  runService() {
+    this.isoFieldConfigurationTableService.showTableLoading();
+    this.isoFieldConfigurationService.getAllIsoFieldConfigurationWithDelay();
+  }
+
+  get animateRow() {
+    return this.isoFieldConfigurationTableService.animateRow;
+  }
+
+  get columnDefs() {
+    return this.isoFieldConfigurationTableService.columnDefs;
+  }
+
+  get defaultColDef() {
+    return this.isoFieldConfigurationTableService.defaultColDef;
+  }
+
+  get rowHeight() {
+    return this.isoFieldConfigurationTableService.rowHeight;
+  }
+
+  get headerHeight() {
+    return this.isoFieldConfigurationTableService.headerHeight;
+  }
+
+  get overlayLoadingTemplate() {
+    return this.isoFieldConfigurationTableService.overlayLoadingTemplate;
+  }
+
+  get frameworkComponents() {
+    return this.isoFieldConfigurationTableService.frameworkComponents;
+  }
 }

@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import * as echarts from 'echarts';
 import { WebsocketService } from '../../../modules/services/websocket-service/websocket-service.service';
+import { DashboardService } from '../module-services/dashboard.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionRateChartService {
-  constructor(private websocketService: WebsocketService) {}
-
+  constructor(
+    private websocketService: WebsocketService,
+    private dashboardService: DashboardService
+  ) {}
+  
+  address: string = '192.168.0.113'
   interval: any;
   public _updateOptions: any;
 
@@ -93,7 +98,7 @@ export class TransactionRateChartService {
       {
         name: 'SYN',
         type: 'bar',
-        data: this.data,
+        data: this.data
         // showSymbol: false,
       },
       {

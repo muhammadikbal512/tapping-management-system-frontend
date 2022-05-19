@@ -12,7 +12,8 @@ import { DialectState } from './modules/external-interfaces/iso8583configuration
 import { TransactionParametersState } from './modules/transaction-parameters/transaction-parameters.state';
 import { ISO8583FieldState } from './modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.state';
 import { UserState } from './modules/user-management/user/user.state';
-
+import { RolesState } from './modules/user-management/roles/roles.state';
+import { EventCollectorState } from './modules/event-collector/event-collector.state';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { UserState } from './modules/user-management/user/user.state';
       TransactionParametersState,
       ISO8583FieldState,
       UserState,
-      MessageFormatState
+      MessageFormatState,
+      RolesState,
+      EventCollectorState
     ])
   ],
 })

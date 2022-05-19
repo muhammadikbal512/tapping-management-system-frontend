@@ -22,6 +22,7 @@ import { TagModule } from 'primeng/tag';
 import { AgGridModule } from 'ag-grid-angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -89,7 +90,32 @@ import { TransactionParametersComponent } from './modules/module/transaction/tra
 import { TransactionParamDialogComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-dialog/transaction-param-dialog.component';
 import { TransactionParamActionButtonComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-action-button/transaction-param-action-button.component';
 import { TransactionParamTableComponent } from './modules/module/transaction/transaction-parameters/widget/transaction-param-table/transaction-param-table.component';
-
+import { ActionButtonIso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/action-button-iso8583-field-configuration/action-button-iso8583-field-configuration.component';
+import { TerminalListIssuerTableComponent } from './modules/module/issuer/terminal-list/widget/terminal-list-issuer-table/terminal-list-issuer-table.component';
+import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-list/terminal-list.component';
+import { CreateDialogTerminalListIssuerComponent } from './modules/module/issuer/terminal-list/widget/create-dialog-terminal-list-issuer/create-dialog-terminal-list-issuer.component';
+import { ActionButtonTerminalListIssuerComponent } from './modules/module/issuer/terminal-list/widget/action-button-terminal-list-issuer/action-button-terminal-list-issuer.component';
+import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
+import { AlertIssuerTableComponent } from './modules/module/issuer/alert-issuer/widget/alert-issuer-table/alert-issuer-table.component';
+import { CreateDialogAlertIssuerComponent } from './modules/module/issuer/alert-issuer/widget/create-dialog-alert-issuer/create-dialog-alert-issuer.component';
+import { ActionButtonAlertIssuerComponent } from './modules/module/issuer/alert-issuer/widget/action-button-alert-issuer/action-button-alert-issuer.component';
+import { UserActionButtonComponent } from './modules/module/user-management/user/widgets/user-action-button/user-action-button.component';
+import { AlertAcquirerTableComponent } from './modules/module/acquirer/alert/widget/alert-acquirer-table/alert-acquirer-table.component';
+import { CreateDialogAcquirerComponent } from './modules/module/acquirer/alert/widget/create-dialog-acquirer/create-dialog-acquirer.component';
+import { ActionButtonAcquirerAlertComponent } from './modules/module/acquirer/alert/widget/action-button-acquirer-alert/action-button-acquirer-alert.component';
+import { TerminalListAcquirerTableComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-table/terminal-list-acquirer-table.component';
+import { TerminalListAcquirerActionButtonComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-action-button/terminal-list-acquirer-action-button.component';
+import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
+import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
+import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
+import { UserCreateDialogComponent } from './modules/module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
+import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
+import { EventCollectorTableComponent } from './modules/module/event-collector/widget/event-collector-table/event-collector-table.component';
+import { CreateDialogEventCollectorComponent } from './modules/module/event-collector/widget/create-dialog-event-collector/create-dialog-event-collector.component';
+import { ActionButtonEventCollectorComponent } from './modules/module/event-collector/widget/action-button-event-collector/action-button-event-collector.component';
+import { TableRolesComponent } from './modules/module/user-management/roles/widgets/table-roles/table-roles.component';
+import { ActionButtonRolesComponent } from './modules/module/user-management/roles/widgets/action-button-roles/action-button-roles.component';
+import { CreateDialogRolesComponent } from './modules/module/user-management/roles/widgets/create-dialog-roles/create-dialog-roles.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +179,32 @@ import { TransactionParamTableComponent } from './modules/module/transaction/tra
     TransactionParamDialogComponent,
     TransactionParamActionButtonComponent,
     TransactionParamTableComponent,
+    ActionButtonIso8583FieldConfigurationComponent,
+    TerminalListIssuerComponent,
+    TerminalListIssuerTableComponent,
+    CreateDialogTerminalListIssuerComponent,
+    ActionButtonTerminalListIssuerComponent,
+    AlertIssuerComponent,
+    AlertIssuerTableComponent,
+    CreateDialogAlertIssuerComponent,
+    ActionButtonAlertIssuerComponent,
+    UserActionButtonComponent,
+    AlertAcquirerTableComponent,
+    CreateDialogAcquirerComponent,
+    ActionButtonAcquirerAlertComponent,
+    TerminalListAcquirerTableComponent,
+    TerminalListAcquirerActionButtonComponent,
+    Iso8583ResponseMappingTableComponent,
+    Iso8583ResponseMappingActionButtonComponent,
+    Iso8583ResponseMappingCreateDialogComponent,
+    UserCreateDialogComponent,
+    EventCollectorComponent,
+    EventCollectorTableComponent,
+    CreateDialogEventCollectorComponent,
+    ActionButtonEventCollectorComponent,
+    TableRolesComponent,
+    ActionButtonRolesComponent,
+    CreateDialogRolesComponent,
   ],
 
   imports: [
@@ -180,6 +232,7 @@ import { TransactionParamTableComponent } from './modules/module/transaction/tra
     PasswordModule,
     TagModule,
     StateConfigurationModule,
+    MatTableExporterModule
   ],
   providers: [
     NotificationService,

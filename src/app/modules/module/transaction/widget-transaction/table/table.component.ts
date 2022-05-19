@@ -7,23 +7,36 @@ import { TransactionService } from 'src/app/modules/services/module-services/tra
 import { HpanDialogComponent } from '../hpan-dialog/hpan-dialog.component';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { NotificationTypeEnum } from 'src/app/enum/notification-type';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() headerColHeight: any;
   @Input() paginationSize: any;
   @Input() defaultColDef: any;
+  @Input() masterDetail: any;
   @Input() columnDefs: any;
   @Input() autoHeight: string = '';
+  date = new Date();
   rowData: TransactionMessageInterface[] = [];
   frameworkComponents: any;
-
+  clickedRows = new Set<TransactionMessageInterface>();
   overlayLoadingTemplate = '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
 
   constructor(
@@ -37,6 +50,43 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.frameworkComponents = {
       medalCellRenderer: HpanDialogComponent,
     };
+    this.allTransaction();
+  }
+
+  ELEMENT_DATA: TransactionMessageInterface[] = [];
+  columnsToDisplay = [
+    'action',
+    'amount',
+    'currencyCode',
+    'destAccount',
+    'HPAN',
+    'clearHPAN',
+    'merchantId',
+    'merchantType',
+    'MTI',
+    'networkDate',
+    'networkId',
+    'responseCode',
+    'RRN',
+    'srcAccount',
+    'terminalId',
+    'transactionDate',
+    'transactionId',
+    'transType',
+  ];
+  expandedElement = [];
+  dataSource = new MatTableDataSource<TransactionMessageInterface>(
+    this.ELEMENT_DATA
+  );
+
+  allTransaction() {
+    this.transactionService
+      .getAllTransactionList()
+      .subscribe((response) => {
+        this.dataSource.data = response as any;
+
+        console.log('table',this.dataSource.data);
+      });
   }
 
   onCellClicked(data: RowClickedEvent) {

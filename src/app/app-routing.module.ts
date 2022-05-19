@@ -27,9 +27,9 @@ import { Iso8583DialectComponent } from './modules/module/external-interface/iso
 import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component'
 import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component'
 import { TransactionParametersComponent } from './modules/module/transaction/transaction-parameters/transaction-parameters.component';
-
-
-
+import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-list/terminal-list.component';
+import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
+import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 
 const routes: Routes = [
   {
@@ -68,11 +68,11 @@ const routes: Routes = [
         children: [
           {
             path: 'alert',
-            component: AlertComponent,
+            component: AlertIssuerComponent,
           },
           {
             path: 'terminal-list',
-            component: TerminalListComponent,
+            component: TerminalListIssuerComponent,
           },
         ],
       },
@@ -188,6 +188,10 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: 'event-collector',
+        component: EventCollectorComponent
+      }
     ],
   },
 

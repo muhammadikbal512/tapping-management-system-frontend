@@ -1,10 +1,11 @@
 <div class="container">
-    <form #addIso8583FieldConfig="ngForm" (onSubmit)="AddIso8583FieldConfig(addIso8583FieldConfig.value)">
+    <form [formGroup]="form">
         <div class="field">
             <label class="required-icon">Dialect</label>
             <div style="width: 100%">
-                <p-dropdown ngModel [options]="dialect" appendTo="body" filterBy="name" placeholder="Select Dialect"
-                    optionLabel="nameType" optionValue="templateId" styleClass="dialect"></p-dropdown>
+                <p-dropdown [filter]="true" [options]="dialect" appendTo="body" filterBy="name"
+                placeholder="Select Message Format" optionLabel="nameType" [showClear]="showClearButton"
+                styleClass="msgFormat" (onChange)="onChange($event)" formControlName="msgFormatId"></p-dropdown>
             </div>
         </div>
         <div class="field-iso mt-4 mb-4">
@@ -20,25 +21,26 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Field Id</mat-label>
-                        <input ngModel name="fieldId" matInput>
+                        <mat-label>Attribute</mat-label>
+                        <input formControlName="attributeId" name="fieldId" matInput>
+                        
                     </mat-form-field>
 
 
                     <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Field Format</mat-label>
-                        <input matInput name="fieldFormat" ngModel>
+                        <mat-label>Is Tag Number</mat-label>
+                        <input matInput name="fieldFormat" formControlName="isTagNumber">
                         <mat-error>Field Format should be fill</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Description</mat-label>
-                        <input ngModel name="description" matInput autocomplete="off">
+                        <mat-label>Iso Field</mat-label>
+                        <input name="description" matInput autocomplete="off" formControlName="isoFieldId">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
-                        <mat-label>Length</mat-label>
-                        <input ngModel name="fieldLength" matInput autocomplete="off" maxlength="5">
+                        <mat-label>Tag Number</mat-label>
+                        <input name="fieldLength" matInput autocomplete="off" maxlength="5" formControlName="tagNumber">
                         <mat-error>Length should be fill</mat-error>
                     </mat-form-field>
 
@@ -61,7 +63,11 @@
            
         </div>
         <div class="text-center">
-            <button type="submit" mat-raised-button class="bg-blue-500 mt-5 text-white" >Create</button>
+            <mat-dialog-actions align="end">
+                <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+                <p-button (onClick)="onCreateIsoField()"
+                     class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
+            </mat-dialog-actions>
         </div>
     </form>
 </div>

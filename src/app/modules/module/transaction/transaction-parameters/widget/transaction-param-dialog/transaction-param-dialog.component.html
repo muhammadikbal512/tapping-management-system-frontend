@@ -1,0 +1,33 @@
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="attributeName" type="text" class="peer" placeholder=" ">
+            <label class="input-label">Attribute Name</label>
+            <p-message *ngIf="attributeName.touched && !attributeName.hasError('required')" severity="success">
+            </p-message>
+            <p-message *ngIf="attributeName.touched && attributeName.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="attributeName.touched && attributeName.hasError('required')" class="p-error">Attribute Name
+                should be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" ">
+            <label for="description" class="input-label">Description</label>
+        </div>
+    </div>
+    <mat-dialog-actions>
+        <p-button class="cancel-button"
+            label="Cancel"
+            mat-dialog-close="true"
+            styleClass="p-button-sm"></p-button>
+  <p-button (onClick)="onCreateTransactionParameters()" *ngIf="transactionParametersService.buttonStatus == 'create'"
+            [disabled]="form.invalid"
+            class="create-button" label="Create"
+            styleClass="p-button-sm"></p-button>
+  <p-button (onClick)="onUpdateTransactionParameters()" *ngIf="transactionParametersService.buttonStatus == 'edit'"
+            [disabled]="disableButton" class="create-button"
+            label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
+</form>

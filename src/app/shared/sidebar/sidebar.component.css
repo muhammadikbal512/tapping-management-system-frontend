@@ -13,8 +13,8 @@
   padding: 0px 15px 0px 15px;
   @apply
   list-none
-  
 }
+
 #sidebar a {
   transition: all 0.3s;
   @apply

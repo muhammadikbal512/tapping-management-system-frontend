@@ -16,4 +16,12 @@ export class DashboardService {
       return response;
     }));
   }
+
+  startInterface(address: string) {
+    return this.http.get<any>(`${this.apiUrl}/apps/` + address)
+  }
+
+  stopInterface() {
+    return this.http.get<any>(`${this.apiUrl}/apps/action`)
+  }
 }

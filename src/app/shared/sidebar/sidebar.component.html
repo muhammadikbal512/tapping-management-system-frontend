@@ -102,26 +102,30 @@
         <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-external-interfaces"
           aria-labelledby="dropdown-external-interfaces" data-bs-parent="#sidenavSecExample">
           <li>
-            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse" data-mdb-ripple="true"
+              data-mdb-ripple-color="primary">
               <i class="pi pi-cog"></i>
               <p>ISO Config</p>
               <i class="pi pi-angle-down ml-auto ml-auto"></i>
             </a>
             <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-iso-config">
               <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso8583-dialect" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-dialect" data-mdb-ripple="true"
+                  data-mdb-ripple-color="primary">
                   <i class="pi pi-percentage mr-1"></i>
                   <p>Dialect</p>
                 </a>
               </li>
               <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration"
+                  data-mdb-ripple="true" data-mdb-ripple-color="primary">
                   <i class="pi pi-cog mr-1"></i>
                   <p>Field Config</p>
                 </a>
               </li>
               <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <a routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping"
+                  data-mdb-ripple="true" data-mdb-ripple-color="primary">
                   <i class="pi pi-share-alt mr-1"></i>
                   <p>Response Mapping</p>
                 </a>
@@ -135,7 +139,8 @@
             </a>
           </li>
           <li>
-            <a routerLink="external-interfaces/json-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+            <a routerLink="external-interfaces/json-configuration" data-mdb-ripple="true"
+              data-mdb-ripple-color="primary">
               <i class="pi pi-cog mr-1"></i>
               <p>JSON Config</p>
             </a>
@@ -147,7 +152,8 @@
             </a>
           </li>
           <li>
-            <a routerLink="external-interfaces/xml-configuration" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+            <a routerLink="external-interfaces/xml-configuration" data-mdb-ripple="true"
+              data-mdb-ripple-color="primary">
               <i class="pi pi-cog mr-1"></i>
               <p>XML Config</p>
             </a>
@@ -180,10 +186,27 @@
       </li>
 
       <li id="dropdown-transaction">
-        <a routerLink="transaction" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-transaction">
           <i class="pi pi-money-bill mr-1"></i>
           <p>Transaction</p>
+          <i class="pi pi-angle-down ml-auto"></i>
         </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-transaction"
+          aria-labelledby="dropdown-transaction" data-bs-parent="#sidenavSecExample">
+          <li>
+            <a routerLink="transaction/transaction" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-key mr-1"></i>
+              <p>Transaction</p>
+            </a>
+          </li>
+          <li>
+            <a routerLink="transaction/transaction-parameters" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <i class="pi pi-key mr-1"></i>
+              <p>Transaction Parameters</p>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li id="dropdown-user-management">
@@ -238,6 +261,13 @@
             </a>
           </li>
         </ul>
+      </li>
+
+      <li>
+        <a routerLink="/TMS-Home/event-collector">
+          <i class="pi pi-undo mr-1"></i>
+          <p>Event Collector</p>
+        </a>
       </li>
     </ul>
   </div>

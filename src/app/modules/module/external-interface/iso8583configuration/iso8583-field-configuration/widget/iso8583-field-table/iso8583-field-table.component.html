@@ -1,29 +1,21 @@
 <div class="table-container">
-    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
-
-        <ng-container matColumnDef="name">
-            <th mat-header-cell mat-sort-header="" *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="dialectTemplate">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Dialect Template </th>
-            <td mat-cell *matCellDef="let element"> {{element.dialectTemplate}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element">
-                <i class="pi pi-pencil cursor-pointer"></i>
-                <i class="pi pi-trash cursor-pointer ml-3"></i>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
-    </mat-paginator>
+    <ag-grid-angular 
+    style="width: 100%; height: 500px" 
+    class="ag-theme-alpine" 
+    rowSelection="single"
+    enableCellTextSelection 
+    suppressDragLeaveHidesColumns 
+    [animateRows]="animateRow" 
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef" 
+    [rowHeight]="rowHeight" 
+    [headerHeight]="headerHeight"
+    [loadingOverlayComponent]="overlayLoadingTemplate" 
+    [frameworkComponents]="frameworkComponents"
+    [pagination]="true"
+    (gridReady)="onGridReady($event)" 
+    (rowClicked)="onCellClicked($event)">
+    </ag-grid-angular>
 
 </div>
 

@@ -1,20 +1,88 @@
 .table-container {
-    @apply
-    overflow-hidden 
-    shadow-md 
-    sm:rounded-lg
+  width: 1100px;
+  @apply 
+  shadow-md 
+  overflow-x-auto  
+  sm:rounded-lg;
 }
 
 .table-container th {
-    @apply
-    py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
+  @apply py-3 px-6 text-xs tracking-wider text-left text-gray-700 uppercase dark:text-gray-400;
 }
 
-table {
-    width: 100%;
+.table-container td {
+  @apply py-3 px-6 text-center;
 }
 
 .mat-header-cell {
-    @apply
-    bg-gray-300
-  }
+  @apply bg-gray-300;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-table {
+  width: 1200px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  display: table;
+  border-collapse: collapse;
+  margin: 0px;
+ }
+ 
+ .mat-row,
+ .mat-header-row {
+  display: table-row;
+ }
+
+ .mat-cell,
+ .mat-header-cell {
+  cursor: pointer;
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 5px;
+  line-break: unset;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+ }
+
+/* .mat-table {
+  overflow-x: scroll;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
+} */

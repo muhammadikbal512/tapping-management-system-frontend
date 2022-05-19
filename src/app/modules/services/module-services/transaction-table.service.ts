@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
+import { ColDef, ColumnApi, GridApi, IDetailCellRendererParams } from 'ag-grid-community';
 import { ColumnListTransactionInterface } from 'src/app/interface/modules/column-list-transaction';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 
@@ -14,6 +14,7 @@ export class TransactionTableService {
   gridColumnApi!: ColumnApi;
   headerColHeight: number = 30;
   paginationSize = 5;
+  masterDetail: boolean = true;
   defaultColDef = {
     flex: 1,
     minWidth: 110,
@@ -23,6 +24,7 @@ export class TransactionTableService {
   columnDefs: ColDef[] = [
     {
       field: 'transactionDate',
+      
       sortable: true,
       sort: 'desc',
       minWidth: 200,
@@ -40,7 +42,7 @@ export class TransactionTableService {
       cellRenderer: 'medalCellRenderer'
     },
     {field: 'terminalId', sortable: true, minWidth: 150, maxWidth: 200, headerClass: 'transaction-header-color'},
-    {field: 'merchantId', sortable: true, minWidth: 200, maxWidth: 230, headerClass: 'transaction-header-color'},
+    {field: 'merchantId', cellRenderer: 'agGroupCellRenderer', sortable: true, minWidth: 200, maxWidth: 230, headerClass: 'transaction-header-color'},
     {field: 'merchantType', sortable: true, minWidth: 150, maxWidth: 200, headerClass: 'transaction-header-color'},
     {field: 'currencyCode', sortable: true, minWidth: 150, maxWidth: 200, headerClass: 'transaction-header-color'},
     {field: 'amount', sortable: true, minWidth: 150, maxWidth: 200, headerClass: 'transaction-header-color'},

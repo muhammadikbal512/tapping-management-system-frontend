@@ -34,6 +34,7 @@ export class Iso8583FormatTableComponent implements OnInit {
     this.iso8583FormatService.getAllIso8583FormatWithDelay();
   }
 
+
   get animateRow() {
     return this.iso8583FormatTableService.animateRow;
   }
@@ -60,6 +61,14 @@ export class Iso8583FormatTableComponent implements OnInit {
 
   get frameworkComponents() {
     return this.iso8583FormatTableService.frameworkComponents;
+  }
+
+  get autoGroupColumnDef() {
+    return this.iso8583FormatTableService.autoGroupColumnDef;
+  }
+
+  get groupDefaultExpanded() {
+    return this.iso8583FormatTableService.groupDefaultExpanded;
   }
 
   

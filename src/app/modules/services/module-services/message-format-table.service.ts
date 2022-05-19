@@ -32,7 +32,7 @@ export class MessageFormatTableService {
   };
   columnDefs: ColDef[] = [
     { field: 'messageFormatId', hide: true },
-    { field: 'messageFormat', headerName: 'Message Format', sort: 'asc' },
+    { field: 'messageFormat', headerName: 'Message Format', sort: 'asc', },
     { field: 'description' },
     {
       field: 'actions',
@@ -41,6 +41,12 @@ export class MessageFormatTableService {
       cellRenderer: 'actionButtonGroup',
     },
   ];
+
+  autoGroupColumnDef: ColDef = {
+    minWidth: 200,
+  };
+
+  groupDefaultExpanded = 1;
 
   constructor() {}
 

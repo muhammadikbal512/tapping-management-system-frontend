@@ -3,6 +3,7 @@ export class Iso8583Model {
   }
   
   export class Iso8583FieldModel {
+    id: number = 0;
     fieldId: string = '';
     fieldFormat: string = '';
     length: string = '';

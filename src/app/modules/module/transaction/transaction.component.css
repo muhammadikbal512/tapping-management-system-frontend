@@ -1,4 +1,4 @@
-.container-transaction {
+/* .container-transaction {
   @apply 
     grid 
     grid-cols-1 
@@ -6,7 +6,7 @@
     p-4 
     lg:grid-cols-2 
     xl:grid-cols-1;
-}
+} */
 
 .container-grid {
   @apply col-span-1 
