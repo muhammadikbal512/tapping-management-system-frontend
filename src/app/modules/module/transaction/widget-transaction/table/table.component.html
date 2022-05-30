@@ -2,11 +2,11 @@
   (click)="exporter.exportTable('xlsx', {fileName:'Transaction Excel', sheet: 'Transaction', Props: {Author: 'TMS'}})">Export
   data as XLS</button>
 
-<ul>
+<!-- <ul>
   <li *ngFor="let clickedRow of clickedRows">
     Clicked on {{clickedRow.amount}}
   </li>
-</ul>
+</ul> -->
 <div class="table-container mt-4">
   <table matTableExporter #exporter="matTableExporter" mat-table [dataSource]="dataSource" multiTemplateDataRows
     class="mat-elevation-z8">
@@ -24,7 +24,7 @@
       </ng-template>
     </ng-container>
 
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
         <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">

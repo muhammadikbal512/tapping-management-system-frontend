@@ -25,7 +25,7 @@ export class RolesTableService {
   }
   columnDef: ColDef[] = [
     {field: 'id', hide: true},
-    {field: 'role'},
+    {field: 'roles'},
     {field: 'description'}
   ]
 

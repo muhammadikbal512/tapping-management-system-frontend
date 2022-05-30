@@ -12,6 +12,7 @@ import { PopupMessageService } from 'src/app/modules/services/popup-message-serv
 export class ActionButtonGroupIso8583FormatComponent
   implements AgRendererComponent
 {
+  date = new Date();
   cellValue: string = '';
   constructor(
     private iso8583FormatService: MessageFormatService,
