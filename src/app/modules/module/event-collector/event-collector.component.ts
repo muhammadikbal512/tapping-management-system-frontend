@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventCollectorTableService } from '../../services/module-services/event-collector-table.service';
 import { EventCollectorService } from '../../services/module-services/event-collector.service';
 
 @Component({
@@ -8,9 +9,13 @@ import { EventCollectorService } from '../../services/module-services/event-coll
 })
 export class EventCollectorComponent implements OnInit {
 
-  constructor(public eventCollectorService: EventCollectorService) { }
+  constructor(public eventCollectorService: EventCollectorService, private eventCollectorTableService: EventCollectorTableService) { }
 
   ngOnInit(): void {
+  }
+
+  onTextBoxChange() {
+    this.eventCollectorTableService.onFilter('search-filter');
   }
 
   refreshTable() {

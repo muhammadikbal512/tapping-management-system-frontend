@@ -1,6 +1,17 @@
-import { Component, OnInit, AfterViewInit, Input, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  OnDestroy,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { RowClickedEvent } from 'ag-grid-community';
-import { maskHPAN, TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
+import {
+  maskHPAN,
+  TransactionTableService,
+} from 'src/app/modules/services/module-services/transaction-table.service';
 import { TransactionMessageModel } from 'src/app/model/modules-model/transaction-message-model';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
@@ -8,8 +19,13 @@ import { HpanDialogComponent } from '../hpan-dialog/hpan-dialog.component';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { NotificationTypeEnum } from 'src/app/enum/notification-type';
 import { MatTableDataSource } from '@angular/material/table';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-table',
@@ -24,7 +40,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       ),
     ]),
   ],
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() headerColHeight: any;
@@ -33,18 +49,21 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() masterDetail: any;
   @Input() columnDefs: any;
   @Input() autoHeight: string = '';
+
   date = new Date();
+  resultsLength = 0;
+  isLoading = true;
   rowData: TransactionMessageInterface[] = [];
   frameworkComponents: any;
   clickedRows = new Set<TransactionMessageInterface>();
-  overlayLoadingTemplate = '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
+  overlayLoadingTemplate =
+    '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
 
   constructor(
     private transactionTableService: TransactionTableService,
     private transactionService: TransactionService,
     private notifierService: NotificationService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.frameworkComponents = {
@@ -80,13 +99,12 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   );
 
   allTransaction() {
-    this.transactionService
-      .getAllTransactionList()
-      .subscribe((response) => {
-        this.dataSource.data = response as any;
-
-        console.log('table',this.dataSource.data);
-      });
+    this.transactionService.getAllTransactionList().subscribe((response) => {
+      this.dataSource.data = response as any;
+      this.isLoading = false;
+      this.resultsLength = response.length;
+      console.log('table', this.dataSource.data);
+    });
   }
 
   onCellClicked(data: RowClickedEvent) {
@@ -102,20 +120,22 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       setTimeout(() => {
         this.transactionService.getAllTransactionList().subscribe({
           next: this.responseHandler.bind(this),
-          error: this.errorHandler.bind(this)
+          error: this.errorHandler.bind(this),
         });
-      }, 500)
+      }, 500);
     }
   }
 
   //Api
   responseHandler(response: TransactionMessageModel[]) {
-    const transactionTable = document.querySelector('.ag-theme-alpine') as HTMLElement;
+    const transactionTable = document.querySelector(
+      '.ag-theme-alpine'
+    ) as HTMLElement;
     let responseData: TransactionMessageInterface[] = [];
     if (response.length == 0) {
       this.transactionTableService.gridApi.showNoRowsOverlay();
     }
-    response.forEach(x => {
+    response.forEach((x) => {
       responseData.push({
         amount: x.amount,
         currencyCode: x.countryCode,
@@ -133,23 +153,25 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
         terminalId: x.terminalId,
         transactionDate: x.TrxDate,
         transactionId: x.transactionId,
-        transType: x.transType
+        transType: x.transType,
       });
       this.rowData = responseData;
       transactionTable.style.height = 'auto';
       this.transactionTableService.gridApi.setDomLayout('autoHeight');
       this.transactionTableService.gridApi.hideOverlay();
-    })
+    });
   }
 
   errorHandler(error: any) {
     this.transactionTableService.gridApi.showNoRowsOverlay();
-    this.notifierService.notify(NotificationTypeEnum.ERROR, 'status: ' + error.status + ' message: ' + error.statusText, error.status)
+    this.notifierService.notify(
+      NotificationTypeEnum.ERROR,
+      'status: ' + error.status + ' message: ' + error.statusText,
+      error.status
+    );
   }
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
 
   ngOnDestroy(): void {
     this.transactionTableService.gridApi.destroy();

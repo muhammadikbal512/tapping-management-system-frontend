@@ -17,7 +17,7 @@ export class ResponseMappingDelete {
 
 export class ResponseMappingUpdate {
     static readonly type = '[ResponseMapping] Update';
-    constructor(public id: number, payload: FormData, stateData: ResponseMappingModel) {}
+    constructor(public id: number, public payload: FormData, public stateData: ResponseMappingModel) {}
 }
 
 export class ResponseMappingSuccessState {

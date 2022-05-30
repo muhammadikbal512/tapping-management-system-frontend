@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertIssuerService } from 'src/app/modules/services/module-services/alert-issuer.service';
+
 
 @Component({
   selector: 'app-alert-issuer',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertIssuerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertService: AlertIssuerService) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    this.alertService.showDialog();
   }
 
 }

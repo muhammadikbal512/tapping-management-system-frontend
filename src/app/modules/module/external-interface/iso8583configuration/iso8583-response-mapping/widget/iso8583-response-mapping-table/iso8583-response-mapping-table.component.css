@@ -1,0 +1,7 @@
+.table-container {
+    @apply
+    overflow-hidden 
+    shadow-md 
+    sm:rounded-lg
+  }
+  

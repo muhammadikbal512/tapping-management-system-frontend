@@ -25,6 +25,7 @@
     "@ngxs-labs/dispatch-decorator": "^4.0.2",
     "@ngxs/logger-plugin": "^3.7.3",
     "@ngxs/store": "^3.7.3",
+    "@rxweb/reactive-form-validators": "^2.1.7",
     "@stomp/stompjs": "^6.1.2",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "@syncfusion/ej2-angular-treegrid": "^20.1.48",

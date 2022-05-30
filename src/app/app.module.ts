@@ -116,6 +116,10 @@ import { ActionButtonEventCollectorComponent } from './modules/module/event-coll
 import { TableRolesComponent } from './modules/module/user-management/roles/widgets/table-roles/table-roles.component';
 import { ActionButtonRolesComponent } from './modules/module/user-management/roles/widgets/action-button-roles/action-button-roles.component';
 import { CreateDialogRolesComponent } from './modules/module/user-management/roles/widgets/create-dialog-roles/create-dialog-roles.component';
+import { EditDialogRolesComponent } from './modules/module/user-management/roles/widgets/edit-dialog-roles/edit-dialog-roles.component';
+import { AlertAnalysisTableComponent } from './modules/module/investigation/alert-analysis/widgets/alert-analysis-table/alert-analysis-table.component';
+import { CreateDialogAlertAnalysisComponent } from './modules/module/investigation/alert-analysis/widgets/create-dialog-alert-analysis/create-dialog-alert-analysis.component';
+import { ActionButtonAlertAnalysisComponent } from './modules/module/investigation/alert-analysis/widgets/action-button-alert-analysis/action-button-alert-analysis.component';
 
 @NgModule({
   declarations: [
@@ -205,6 +209,10 @@ import { CreateDialogRolesComponent } from './modules/module/user-management/rol
     TableRolesComponent,
     ActionButtonRolesComponent,
     CreateDialogRolesComponent,
+    EditDialogRolesComponent,
+    AlertAnalysisTableComponent,
+    CreateDialogAlertAnalysisComponent,
+    ActionButtonAlertAnalysisComponent,
   ],
 
   imports: [

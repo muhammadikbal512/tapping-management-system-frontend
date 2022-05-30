@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventCollectorService } from 'src/app/modules/services/module-services/event-collector.service';
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-dialog-event-collector',

@@ -86,3 +86,129 @@ tr.example-element-row:not(.example-expanded-row):active {
 .mat-header-row {
   display: table-row;
 } */
+
+/* .container-transaction {
+  @apply 
+    grid 
+    grid-cols-1 
+    gap-8 
+    p-4 
+    lg:grid-cols-2 
+    xl:grid-cols-1;
+} */
+
+.container-grid {
+  @apply col-span-1 
+    bg-white 
+    rounded-md;
+}
+
+.grid-1 {
+  @apply
+    p-4;
+}
+
+.grid-2 {
+  @apply flex 
+    flex-col;
+}
+
+.grid-3 {
+  @apply 
+  overflow-x-auto
+    sm:-mx-6 
+    lg:-mx-8;
+}
+
+.grid-4 {
+  @apply inline-block 
+    py-2 
+    min-w-full 
+    sm:px-6 
+    lg:px-8;
+}
+
+.modal-container {
+  @apply 
+  overflow-y-auto 
+    overflow-x-hidden 
+    fixed 
+    right-0 
+    left-0 
+    top-4 
+    z-50 
+    justify-center 
+    items-center 
+    /* h-modal  */
+    md:h-full 
+    md:inset-0;
+}
+
+
+
+.container-grid-header {
+    @apply
+    p-4 
+    border-b 
+}
+
+.container-grid-header button {
+    @apply
+    bg-blue-500 
+    text-white 
+    py-2 
+    px-4
+}
+
+.transaction-summary-container {
+  @apply
+  p-12
+  flex
+  flex-row
+}
+
+.summary-left {
+  width: 50%;
+  @apply
+  flex
+  flex-col
+}
+
+.summary-item {
+  justify-content: space-between;
+  @apply
+  flex
+  flex-row
+  items-center
+  mb-2
+}
+
+.summary-item span {
+  white-space: nowrap; width: 190px; font-size: 14px
+}
+
+.summary-item input {
+  @apply
+  
+  bg-gray-200 
+  appearance-none 
+  border-2 
+  border-gray-200 
+  rounded 
+  py-[5px] 
+  px-4 
+  w-full 
+  text-gray-700 
+  leading-[0] 
+  text-[14px] 
+  mr-[25px] 
+  focus:outline-none
+}
+
+.summary-right {
+  width: 50%;
+  @apply
+  flex flex-col
+  ml-5
+}
+

@@ -1,25 +1,19 @@
-<form action="" class="p8">
+<form class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input type="text" class="peer" required placeholder="Name">
-            <label for="" class="input-label">Name</label>
+            <input formControlName="name" type="text" class="peer" placeholder=" ">
+            <label class="input-label">Name</label>
         </div>
         <div class="input-container">
-            <input type="text" class="peer" required placeholder="Description">
-            <label for="" class="input-label">Description</label>
+            <input formControlName="description" type="text" class="peer" placeholder=" ">
+            <label for="description" class="input-label">Description</label>
         </div>
     </div>
     <mat-dialog-actions>
-        <p-button class="cancel-button"
-            label="Cancel"
-            mat-dialog-close="true"
-            styleClass="p-button-sm"></p-button>
-  <p-button (onClick)="onCreateEventCollector()" *ngIf="eventService.buttonStatus == 'create'"
-            class="create-button" label="Create"
-            styleClass="p-button-sm"></p-button>
-  <p-button (onClick)="onUpdateEventCollector()" *ngIf="eventService.buttonStatus == 'edit'"
-            class="create-button"
-            label="Save"
-            styleClass="p-button-sm"></p-button>
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onCreateEventCollector()" *ngIf="eventService.buttonStatus == 'create'"
+            class="create-button" label="Create" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onUpdateEventCollector()" *ngIf="eventService.buttonStatus == 'edit'" class="create-button"
+            label="Save" styleClass="p-button-sm"></p-button>
     </mat-dialog-actions>
 </form>

@@ -1,5 +1,4 @@
 <div class="wrapper">
-
   <div class="container-grid mb-4">
     <div class="container-grid-header text-center">
       <app-date-picker [form]="searchFilterForm"></app-date-picker>
@@ -27,7 +26,7 @@
         [columnDefs]="transactionTableService.columnDefs">
       </app-table> -->
       <app-table></app-table>
-      <div class="page-size-container mt-3">
+      <!-- <div class="page-size-container mt-3">
         Page Size:
         <select (change)="onPageSizeChanged()" id="page-size">
           <option value="5" selected="">5</option>
@@ -39,7 +38,7 @@
           <option value="100">100</option>
           <option value="500">500</option>
         </select>
-      </div>
+      </div> -->
     </div>
   </div>
 

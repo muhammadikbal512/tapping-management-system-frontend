@@ -13,7 +13,7 @@ import { TransactionParametersState } from './modules/transaction-parameters/tra
 import { ISO8583FieldState } from './modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.state';
 import { UserState } from './modules/user-management/user/user.state';
 import { RolesState } from './modules/user-management/roles/roles.state';
-import { EventCollectorState } from './modules/event-collector/event-collector.state';
+import { ResponseMappingState } from './modules/external-interfaces/iso8583configuration/iso8583-response-mapping/response-mapping.state';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { EventCollectorState } from './modules/event-collector/event-collector.s
       UserState,
       MessageFormatState,
       RolesState,
-      EventCollectorState
+      ResponseMappingState
     ])
   ],
 })

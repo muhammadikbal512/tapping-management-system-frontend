@@ -5,6 +5,7 @@ import { ChannelService } from '../module-services/channel.service';
 import { IsoFieldConfigurationService } from '../module-services/iso-field-configuration.service';
 import { Iso8583DialectService } from '../module-services/iso8583-dialect.service';
 import { MessageFormatService } from '../module-services/message-format.service';
+import { ResponseMappingService } from '../module-services/response-mapping.service';
 import { RolesService } from '../module-services/roles.service';
 import { TransactionParametersService } from '../module-services/transaction-parameters.service';
 import { UserService } from '../module-services/user.service';
@@ -99,6 +100,17 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteRole();
+      }
+    })
+  }
+
+  responseConfirm(event: Event, onDelete: ResponseMappingService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this record ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteResponseMapping();
       }
     })
   }

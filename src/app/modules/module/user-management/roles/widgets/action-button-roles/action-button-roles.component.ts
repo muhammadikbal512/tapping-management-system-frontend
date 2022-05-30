@@ -26,6 +26,10 @@ export class ActionButtonRolesComponent implements AgRendererComponent {
     return params.valueFormatted ? params.valueFormatted : params.value;
   }
 
+  editButton() {
+    this.rolesService.editDialog();
+  }
+
   deleteButton(event: Event) {
     this.confirmationService.roleConfirm(event, this.rolesService);
   }

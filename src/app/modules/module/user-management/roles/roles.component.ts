@@ -23,6 +23,10 @@ export class RolesComponent implements OnInit {
     this.roleService.getAllRolesWithDelay();
   }
 
+  editDialog() {
+    this.roleService.editDialog();
+  }
+
   showDialog() {
     this.roleService.buttonStatus = 'create';
     this.roleService.openDialog();

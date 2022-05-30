@@ -1,31 +1,31 @@
 import { CustomHttpResponseModel } from "src/app/model/customHttpResponse-Model/custom-http-response.model";
-import { EventCollectorInterface } from "src/app/interface/modules/event-collector";
+import { EventCollectorModel } from "src/app/model/modules-model/event-collector.model";
 
 export class EventCollectorGet {
-    static readonly type = '[EventCollector] Get';
+    static readonly type = '[Event] Get';
 }
 
 export class EventCollectorAdd {
-    static readonly type = '[EventCollector] Add';
-    constructor(public payload: EventCollectorInterface) {}
+    static readonly type = '[Event] Add';
+    constructor(public payload: EventCollectorModel) {}
 }
 
 export class EventCollectorDelete {
-    static readonly type = '[EventCollector] Delete';
+    static readonly type = '[Event] Delete';
     constructor(public id: number) {}
 }
 
 export class EventCollectorUpdate {
-    static readonly type = '[EventCollector] Update';
-    constructor(public id: number, public payload: FormData, public stateData: EventCollectorInterface) {}
+    static readonly type = '[Event] Update';
+    constructor(public id: number, public payload: FormData, public stateData: EventCollectorModel) {}
 }
 
 export class EventCollectorSuccessState {
-    static readonly type = '[EventCollector] Success';
-    constructor(public Successmessage: CustomHttpResponseModel) {}
+    static readonly type = '[Event] Success';
+    constructor(public successMessage: CustomHttpResponseModel) {}
 }
 
 export class EventCollectorErrorState {
-    static readonly type = '[EventCollector] Error';
-    constructor(public Errormessage: CustomHttpResponseModel) {}
+    static readonly type = '[Event] Error';
+    constructor(public errorMessage: CustomHttpResponseModel) {}
 }

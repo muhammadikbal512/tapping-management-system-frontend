@@ -8,11 +8,11 @@
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
             </span>
-            <input type="text" class="search-input" placeholder="Search">
+            <input (input)="onFilterTextBoxChange()" id="search-filter" type="text" class="search-input" placeholder="Search">
         </div>
         <div class="grid-header-right">
-            <p-button icon="pi pirefresh"></p-button>
-            <p-button label="Create" class="mr-3"></p-button>
+            <p-button (onClick)="refreshTable()" icon="pi pirefresh"></p-button>
+            <p-button (onClick)="showDialog()" label="Create" class="mr-3"></p-button>
         </div>
     </div>
     <div class="p-4">

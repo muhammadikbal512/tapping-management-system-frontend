@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertAcquirerTableService } from 'src/app/modules/services/module-services/alert-acquirer-table.service';
+import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-alert-acquirer-table',
@@ -7,9 +9,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertAcquirerTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertTable: AlertAcquirerTableService) { }
 
   ngOnInit(): void {
+  }
+
+  onGridReady(params: GridReadyEvent) {
+
+  }
+
+  onCellClicked(data: RowClickedEvent) {
+
+  }
+
+  get animateRow() {
+    return this.alertTable.animateRow;
+  }
+
+  get headerHeight() {
+    return this.alertTable.headerHeight;
+  }
+
+  get rowHeight() {
+    return this.alertTable.rowHeight;
+  }
+
+  get defaultColDef() {
+    return this.alertTable.defaultColDef;
+  }
+
+  get columnDefs() {
+    return this.alertTable.columnDefs;
+  }
+
+  get overlayLoadingTemplate() {
+    return this.alertTable.overlayLoadingTemplate;
+  }
+
+  get frameworkComponents() {
+    return this.alertTable.frameworkComponents;
   }
 
 }

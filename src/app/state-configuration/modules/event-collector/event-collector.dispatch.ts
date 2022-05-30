@@ -6,14 +6,15 @@ import {
   EventCollectorSuccessState,
   EventCollectorUpdate,
 } from './event-collector.action';
-import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
-import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { Injectable } from '@angular/core';
+import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
 
 @Injectable({
     providedIn: 'root'
 })
+
 export class EventCollectorDispatch {
 
     @Dispatch()
@@ -22,7 +23,7 @@ export class EventCollectorDispatch {
     }
 
     @Dispatch()
-    public _EventCollectorAddDispatch(payload: EventCollectorInterface) {
+    public _EventCollectorAddDispatch(payload: EventCollectorModel) {
         return new EventCollectorAdd(payload);
     }
 
@@ -32,18 +33,17 @@ export class EventCollectorDispatch {
     }
 
     @Dispatch()
-    public _EventCollectorUpdateDispatch(id: number, payload: FormData, stateData: EventCollectorInterface) {
-        return new EventCollectorUpdate(id, payload, stateData)
+    public _EventCollectorUpdateDispatch(id: number, payload: FormData, stateData: EventCollectorModel) {
+        return new EventCollectorUpdate(id, payload, stateData);
     }
 
     @Dispatch()
-    public _EventCollectorSuccessState(message: CustomHttpResponseModel) {
+    public _EventCollectorSuccessDispatch(message: CustomHttpResponseModel) {
         return new EventCollectorSuccessState(message);
     }
 
     @Dispatch()
-    public _EventcollectorErrorState(message: CustomHttpResponseModel) {
+    public _EventCollectorErrorDispatch(message: CustomHttpResponseModel) {
         return new EventCollectorErrorState(message);
     }
-
 }

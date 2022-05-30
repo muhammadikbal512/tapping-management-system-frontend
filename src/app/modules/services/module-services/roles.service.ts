@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
 import { RolesTableService } from './roles-table.service';
 import { RowClickedEvent } from 'ag-grid-community';
 import { CreateDialogRolesComponent } from '../../module/user-management/roles/widgets/create-dialog-roles/create-dialog-roles.component';
+import { EditDialogRolesComponent } from '../../module/user-management/roles/widgets/edit-dialog-roles/edit-dialog-roles.component'
+
 
 @Injectable({
   providedIn: 'root',
@@ -62,6 +64,10 @@ export class RolesService {
 
   openDialog() {
     this.dialog.open(CreateDialogRolesComponent, this.dialogConfig);
+  }
+
+  editDialog() {
+    this.dialog.open(EditDialogRolesComponent, this.dialogConfig);
   }
 
   getCurrentStatusDialog() {
