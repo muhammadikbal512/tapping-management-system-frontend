@@ -120,6 +120,9 @@ import { EditDialogRolesComponent } from './modules/module/user-management/roles
 import { AlertAnalysisTableComponent } from './modules/module/investigation/alert-analysis/widgets/alert-analysis-table/alert-analysis-table.component';
 import { CreateDialogAlertAnalysisComponent } from './modules/module/investigation/alert-analysis/widgets/create-dialog-alert-analysis/create-dialog-alert-analysis.component';
 import { ActionButtonAlertAnalysisComponent } from './modules/module/investigation/alert-analysis/widgets/action-button-alert-analysis/action-button-alert-analysis.component';
+import { SchemeTableComponent } from './modules/module/user-management/private-scheme/widgets/scheme-table/scheme-table.component';
+import { CreateDialogSchemeComponent } from './modules/module/user-management/private-scheme/widgets/create-dialog-scheme/create-dialog-scheme.component';
+import { ActionButtonSchemeComponent } from './modules/module/user-management/private-scheme/widgets/action-button-scheme/action-button-scheme.component';
 
 @NgModule({
   declarations: [
@@ -213,6 +216,9 @@ import { ActionButtonAlertAnalysisComponent } from './modules/module/investigati
     AlertAnalysisTableComponent,
     CreateDialogAlertAnalysisComponent,
     ActionButtonAlertAnalysisComponent,
+    SchemeTableComponent,
+    CreateDialogSchemeComponent,
+    ActionButtonSchemeComponent,
   ],
 
   imports: [
