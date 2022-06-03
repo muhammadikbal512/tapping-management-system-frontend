@@ -26,7 +26,8 @@ export class RolesTableService {
   columnDef: ColDef[] = [
     {field: 'id', hide: true},
     {field: 'roles'},
-    {field: 'description'}
+    {field: 'description'},
+    {field: 'actions', cellRenderer: 'actionButtonGroup'}
   ]
 
   constructor() { }

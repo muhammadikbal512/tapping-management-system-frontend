@@ -24,8 +24,19 @@ export class EventCollectorTableService {
   };
   columnDefs: ColDef[] = [
     { field: 'id', hide: true },
-    { field: 'name' },
-    { field: 'description' },
+    { field: 'ackNumber' },
+    { field: 'dstAddress' },
+    { field: 'dstPort' },
+    { field: 'flag' },
+    { field: 'messageHexa' },
+    { field: ' networkId' },
+    { field: 'protocol' },
+    { field: 'sequenceNumber' },
+    { field: 'srcAddress' },
+    { field: 'srcPort' },
+    { field: 'timestamp' },
+    { field: 'typeMessage' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
   constructor() {}
 

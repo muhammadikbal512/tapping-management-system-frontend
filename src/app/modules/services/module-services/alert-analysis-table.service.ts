@@ -26,8 +26,13 @@ export class AlertAnalysisTableService {
   }
   columnDefs: ColDef[] = [
     {field: 'id', hide: true},
-    {field: 'name'},
-    {field: 'description'}
+    {field: 'alertType'},
+    {field: 'destAddress'},
+    {field: 'detailsInfo'},
+    {field: 'sourceAddress'},
+    {field: 'thresHold'},
+    {field: 'timeStamp'},
+    {field: 'actions', cellRenderer: 'actionButtonGroup'}
   ]
 
   constructor() { }

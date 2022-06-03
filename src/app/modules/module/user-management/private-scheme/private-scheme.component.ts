@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SchemeServiceService } from 'src/app/modules/services/module-services/scheme-service.service';
+
 
 @Component({
   selector: 'app-private-scheme',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateSchemeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private schemeService : SchemeServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.schemeService.openDialog();
+    
   }
 
 }

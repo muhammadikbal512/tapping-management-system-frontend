@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
 import { ColDef, GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
-import { ActionButtonSchemeComponent } from '../../module/user-management/private-scheme/widgets/action-button-scheme/action-button-scheme.component';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
+import { ActionButtonArpComponent } from '../../module/system/application-parameters/arp/widgets/action-button-arp/action-button-arp.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SchemeTableService {
+export class AppParametersTableService {
   gridApi!: GridApi;
   gridColumnApi!: ColumnApi;
   animateRow: boolean = true;
+  headerHeight: number = 40;
   rowHeight: number = 40;
-  headerHeight:number = 40;
-  overlayLoadingTemplate = 'overlayLoading';
-  frameworkComponents = {
-    actionButtonGroup: ActionButtonSchemeComponent,
-    overlayLoading: OverlayLoadingComponent
-  };
   defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
-    lockPosition: true
-  };
+    lockPosition: true,
+  }
   columnDefs: ColDef[] = [
     {field: 'id', hide: true},
-    {field: 'name'},
-    {field: 'description'}
-  ];
+    {field: 'nameSettings'},
+    {field: 'value'},
+    {field: 'actions'}
+  ]
+  overlayLoadingTemplate: string = 'overlayLoading';
+  frameworkComponents = {
+    actionButtonGroup: ActionButtonArpComponent,
+    overlayLoading: OverlayLoadingComponent
+  }
   constructor() { }
 
   showTableLoading() {
@@ -41,15 +42,19 @@ export class SchemeTableService {
     this.gridApi.setDomLayout('autoHeight');
   }
 
-  setRowData(data: any[]) {
+  SetRowData(data: any[]) {
     this.gridApi.setRowData(data);
   }
 
-  showNoRowData() {
+  ShowNoRowData() {
     this.gridApi.showNoRowsOverlay();
   }
 
-  set GridApi (params: GridReadyEvent) {
+  destroyGrid() {
+    this.gridApi.destroy();
+  }
+
+  set GridApi(params: GridReadyEvent) {
     this.gridApi = params.api;
   }
 

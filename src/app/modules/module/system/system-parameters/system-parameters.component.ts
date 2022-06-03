@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
+import { SystemParametersService } from 'src/app/modules/services/module-services/system-parameters.service';
+
 
 @Component({
   selector: 'app-system-parameters',
@@ -9,34 +9,13 @@ import { CreateUpdateDialogComponent } from './create-update-dialog/create-updat
 })
 export class SystemParametersComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public systemService: SystemParametersService) { }
 
   ngOnInit(): void {
   }
 
-  columnDefs = [
-    {
-      headerName: 'Country', field: 'Country'
-    },
-    
-    {
-      headerName: 'Code', field: 'Code'
-    }
-  ]
-
-  rowData = [
-    {
-      Country: 'Indonesia', Code: '62'
-    },
-    {
-      Country: 'Singapore', Code: '61'
-    }
-  ]
-
-  openDialog() {
-    this.dialog.open(CreateUpdateDialogComponent, {
-      width: '500px',
-    });
+  showDialog() {
+    this.systemService.openDialog();
   }
 
 }

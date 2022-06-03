@@ -1,81 +1,74 @@
 .login-container {
-    @apply
-    font-sans 
-    text-gray-700
+  @apply font-sans 
+    text-gray-700;
 }
 
 .container-box {
-    @apply
-    mx-auto 
+  @apply mx-auto 
     p-20 
-    flex
+    flex;
 }
 
+/* .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: white;
+} */
 
 .container-header {
-    zoom: 0.8;
-    @apply
-    max-w-md 
+  zoom: 0.8;
+  @apply max-w-md 
     w-full 
-    mx-auto
+    mx-auto;
 }
 
 .container-header img {
-    @apply
-    mx-auto 
-    py-2
+  @apply mx-auto 
+    py-2;
 }
 
 .box-forms {
-    @apply
-    bg-white 
+  @apply bg-white 
     rounded-lg 
     overflow-hidden 
-    shadow-2xl
+    shadow-2xl;
 }
 
 .forms-input div {
-    @apply
-    mb-5
+  @apply mb-5;
 }
 
 .forms-input label {
-    @apply
-    block
+  @apply block
     mb-2 
     text-sm 
     font-medium 
-    text-gray-600
+    text-gray-600;
 }
 
 .forms-input input {
-    @apply
-    block 
+  @apply block 
     w-full 
     p-3 
     rounded 
     bg-gray-200 
     border border-transparent 
-    focus:outline-none
+    focus:outline-none;
 }
 
 .forms-input button {
-    @apply
-    w-full 
+  @apply w-full 
     p-3 
     mt-4 
     bg-indigo-600 
     text-white 
     rounded 
-    shadow
+    shadow;
 }
 
 .forms-footer {
-    @apply
-    text-center 
+  @apply text-center 
     p-8 
     text-sm 
     border-t 
     border-gray-300 
-    bg-gray-100
+    bg-gray-100;
 }

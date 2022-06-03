@@ -12,7 +12,7 @@ export class TerminalIssuerTableService {
   animateRow: boolean = true;
   headerHeight: number = 40;
   rowHeight: number = 40;
-  overlayLoadingTemplate: string = 'Loading';
+  overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonTerminalListIssuerComponent,
     overlayLoading: OverlayLoadingComponent

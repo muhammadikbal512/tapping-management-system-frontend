@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateUpdateDialogComponent } from './create-update-dialog.component';
+import { ActionButtonArpComponent } from './action-button-arp.component';
 
-describe('CreateUpdateDialogComponent', () => {
-  let component: CreateUpdateDialogComponent;
-  let fixture: ComponentFixture<CreateUpdateDialogComponent>;
+describe('ActionButtonArpComponent', () => {
+  let component: ActionButtonArpComponent;
+  let fixture: ComponentFixture<ActionButtonArpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateUpdateDialogComponent ]
+      declarations: [ ActionButtonArpComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateUpdateDialogComponent);
+    fixture = TestBed.createComponent(ActionButtonArpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

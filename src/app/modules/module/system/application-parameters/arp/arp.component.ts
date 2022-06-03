@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppParametersService } from 'src/app/modules/services/module-services/app-parameters.service';
+
 
 @Component({
   selector: 'app-arp',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appService: AppParametersService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.appService.openDialog();
   }
 
 }

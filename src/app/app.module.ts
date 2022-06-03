@@ -49,7 +49,6 @@ import { TransactionRateComponent } from './modules/module/dashboard/transaction
 import { TerminalComponent } from './modules/module/terminal-configuration/terminal/terminal.component';
 import { ArpComponent } from './modules/module/system/application-parameters/arp/arp.component';
 import { SystemParametersComponent } from './modules/module/system/system-parameters/system-parameters.component';
-import { CreateUpdateDialogComponent } from './modules/module/system/system-parameters/create-update-dialog/create-update-dialog.component';
 import { TransactionStatusComponent } from './modules/module/dashboard/transaction-status/transaction-status.component';
 import { DatePickerComponent } from './modules/module/transaction/widget-transaction/date-picker/date-picker.component';
 import { TableComponent } from './modules/module/transaction/widget-transaction/table/table.component';
@@ -123,6 +122,13 @@ import { ActionButtonAlertAnalysisComponent } from './modules/module/investigati
 import { SchemeTableComponent } from './modules/module/user-management/private-scheme/widgets/scheme-table/scheme-table.component';
 import { CreateDialogSchemeComponent } from './modules/module/user-management/private-scheme/widgets/create-dialog-scheme/create-dialog-scheme.component';
 import { ActionButtonSchemeComponent } from './modules/module/user-management/private-scheme/widgets/action-button-scheme/action-button-scheme.component';
+import { TableSystemParametersComponent } from './modules/module/system/system-parameters/widgets/table-system-parameters/table-system-parameters.component';
+import { ActionButtonSystemParametersComponent } from './modules/module/system/system-parameters/widgets/action-button-system-parameters/action-button-system-parameters.component';
+import { CreateUpdateSystemParametersComponent } from './modules/module/system/system-parameters/widgets/create-update-system-parameters/create-update-system-parameters.component';
+import { UserTagComponent } from './modules/global-widget/user-tag/user-tag.component';
+import { TableArpComponent } from './modules/module/system/application-parameters/arp/widgets/table-arp/table-arp.component';
+import { CreateUpdateArpComponent } from './modules/module/system/application-parameters/arp/widgets/create-update-arp/create-update-arp.component';
+import { ActionButtonArpComponent } from './modules/module/system/application-parameters/arp/widgets/action-button-arp/action-button-arp.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +156,6 @@ import { ActionButtonSchemeComponent } from './modules/module/user-management/pr
     TerminalComponent,
     ArpComponent,
     SystemParametersComponent,
-    CreateUpdateDialogComponent,
     TransactionStatusComponent,
     DatePickerComponent,
     TableComponent,
@@ -219,6 +224,13 @@ import { ActionButtonSchemeComponent } from './modules/module/user-management/pr
     SchemeTableComponent,
     CreateDialogSchemeComponent,
     ActionButtonSchemeComponent,
+    TableSystemParametersComponent,
+    ActionButtonSystemParametersComponent,
+    CreateUpdateSystemParametersComponent,
+    UserTagComponent,
+    TableArpComponent,
+    CreateUpdateArpComponent,
+    ActionButtonArpComponent,
   ],
 
   imports: [

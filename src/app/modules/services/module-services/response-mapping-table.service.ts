@@ -27,7 +27,7 @@ export class ResponseMappingTableService {
     { field: 'id', hide: true },
     { field: 'name' },
     { field: 'description' },
-    { field: 'actions' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
   constructor() {}
 

@@ -1,7 +1,8 @@
 .form-filled-container {
-  @apply grid 
-  xl:grid-cols-1
-  xl:gap-6;
+  @apply
+  grid 
+  xl:grid-cols-2 
+  xl:gap-6
 }
 
 .input-container {

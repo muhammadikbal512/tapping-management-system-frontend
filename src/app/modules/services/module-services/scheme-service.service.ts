@@ -10,7 +10,6 @@ export class SchemeServiceService {
   buttonStatus: string = '';
   matDialogConfig: MatDialogConfig = {
     width: '55%',
-    disableClose: true,
     autoFocus: true
   }
   constructor(private dialog: MatDialog) { }
