@@ -1,22 +1,27 @@
-.table-container {
+ .table-container {
   width: 1100px;
-  @apply 
-  shadow-md 
-  overflow-x-auto  
-  sm:rounded-lg;
+  position: relative;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .table-container th {
-  @apply py-3 px-6 text-xs tracking-wider text-left text-gray-700 uppercase dark:text-gray-400;
+  @apply  text-xs tracking-wider text-left text-gray-700 uppercase dark:text-gray-400;
 }
 
 .table-container td {
-  @apply py-3 px-6 text-center;
+  @apply  text-center;
 }
-
+/*
 .mat-header-cell {
   @apply bg-gray-300;
+} */
+
+table {
+  width: 1100px;
 }
+
 
 tr.example-detail-row {
   height: 0;
@@ -40,12 +45,9 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .mat-table {
-  width: 1200px;
-  max-width: 100%;
-  margin-bottom: 1rem;
   display: table;
   border-collapse: collapse;
-  margin: 0px;
+  
  }
  
  .mat-row,
@@ -65,6 +67,10 @@ tr.example-element-row:not(.example-expanded-row):active {
   overflow: hidden;
   vertical-align: middle;
  }
+ 
+ .filter {
+  display: block;
+}
 
 /* .mat-table {
   overflow-x: scroll;

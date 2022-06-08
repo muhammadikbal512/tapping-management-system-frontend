@@ -129,6 +129,12 @@ import { UserTagComponent } from './modules/global-widget/user-tag/user-tag.comp
 import { TableArpComponent } from './modules/module/system/application-parameters/arp/widgets/table-arp/table-arp.component';
 import { CreateUpdateArpComponent } from './modules/module/system/application-parameters/arp/widgets/create-update-arp/create-update-arp.component';
 import { ActionButtonArpComponent } from './modules/module/system/application-parameters/arp/widgets/action-button-arp/action-button-arp.component';
+import { TableIso20022Component } from './modules/module/external-interface/iso20022/widgets/table-iso20022/table-iso20022.component';
+import { CreateUpdateIso20022Component } from './modules/module/external-interface/iso20022/widgets/create-update-iso20022/create-update-iso20022.component';
+import { ActionButtonIso20022Component } from './modules/module/external-interface/iso20022/widgets/action-button-iso20022/action-button-iso20022.component';
+import { TableJsonComponent } from './modules/module/external-interface/json-configuration/widgets/table-json/table-json.component';
+import { ActionButtonJsonComponent } from './modules/module/external-interface/json-configuration/widgets/action-button-json/action-button-json.component';
+import { CreateDialogJsonComponent } from './modules/module/external-interface/json-configuration/widgets/create-dialog-json/create-dialog-json.component';
 
 @NgModule({
   declarations: [
@@ -231,6 +237,12 @@ import { ActionButtonArpComponent } from './modules/module/system/application-pa
     TableArpComponent,
     CreateUpdateArpComponent,
     ActionButtonArpComponent,
+    TableIso20022Component,
+    CreateUpdateIso20022Component,
+    ActionButtonIso20022Component,
+    TableJsonComponent,
+    ActionButtonJsonComponent,
+    CreateDialogJsonComponent,
   ],
 
   imports: [

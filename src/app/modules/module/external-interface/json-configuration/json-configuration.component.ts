@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
+
 
 @Component({
   selector: 'app-json-configuration',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JsonConfigurationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jsonService: JsonConfigurationService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.jsonService.openDialog();
   }
 
 }
