@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { XmlService } from 'src/app/modules/services/module-services/xml.service';
+
 
 @Component({
   selector: 'app-xml-configuration',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class XmlConfigurationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private xmlService: XmlService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.xmlService.openDialog();
   }
 
 }

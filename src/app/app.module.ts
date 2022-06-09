@@ -138,6 +138,9 @@ import { CreateDialogJsonComponent } from './modules/module/external-interface/j
 import { TableNdcComponent } from './modules/module/external-interface/ndc/widgets/table-ndc/table-ndc.component';
 import { CreateDialogNdcComponent } from './modules/module/external-interface/ndc/widgets/create-dialog-ndc/create-dialog-ndc.component';
 import { ActionButtonNdcComponent } from './modules/module/external-interface/ndc/widgets/action-button-ndc/action-button-ndc.component';
+import { TableXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/table-xml/table-xml.component';
+import { ActionButtonXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/action-button-xml/action-button-xml.component';
+import { CreateDialogXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/create-dialog-xml/create-dialog-xml.component';
 
 @NgModule({
   declarations: [
@@ -249,6 +252,9 @@ import { ActionButtonNdcComponent } from './modules/module/external-interface/nd
     TableNdcComponent,
     CreateDialogNdcComponent,
     ActionButtonNdcComponent,
+    TableXmlComponent,
+    ActionButtonXmlComponent,
+    CreateDialogXmlComponent,
   ],
 
   imports: [
