@@ -12,10 +12,10 @@
         </div>
         <div class="grid-header-right">
             <p-button icon="pi pi-refresh"></p-button>
-            <p-button label="Create" class="mr-3"></p-button>
+            <p-button (onClick)="showDialog()" label="Create" class="ml-3"></p-button>
         </div>
     </div>
     <div class="p-4">
-        Tabel
+        <app-table-ndc></app-table-ndc>
     </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NdcService } from 'src/app/modules/services/module-services/ndc.service';
+
 
 @Component({
   selector: 'app-ndc',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NdcComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ndcService: NdcService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.ndcService.openDialog();
   }
 
 }

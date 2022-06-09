@@ -135,6 +135,9 @@ import { ActionButtonIso20022Component } from './modules/module/external-interfa
 import { TableJsonComponent } from './modules/module/external-interface/json-configuration/widgets/table-json/table-json.component';
 import { ActionButtonJsonComponent } from './modules/module/external-interface/json-configuration/widgets/action-button-json/action-button-json.component';
 import { CreateDialogJsonComponent } from './modules/module/external-interface/json-configuration/widgets/create-dialog-json/create-dialog-json.component';
+import { TableNdcComponent } from './modules/module/external-interface/ndc/widgets/table-ndc/table-ndc.component';
+import { CreateDialogNdcComponent } from './modules/module/external-interface/ndc/widgets/create-dialog-ndc/create-dialog-ndc.component';
+import { ActionButtonNdcComponent } from './modules/module/external-interface/ndc/widgets/action-button-ndc/action-button-ndc.component';
 
 @NgModule({
   declarations: [
@@ -243,6 +246,9 @@ import { CreateDialogJsonComponent } from './modules/module/external-interface/j
     TableJsonComponent,
     ActionButtonJsonComponent,
     CreateDialogJsonComponent,
+    TableNdcComponent,
+    CreateDialogNdcComponent,
+    ActionButtonNdcComponent,
   ],
 
   imports: [

@@ -146,7 +146,7 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'transaction',
+        path: 'transactions',
         children: [
           {
             path: 'transaction',
