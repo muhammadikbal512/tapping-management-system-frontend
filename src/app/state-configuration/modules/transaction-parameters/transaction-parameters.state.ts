@@ -112,6 +112,32 @@ export class TransactionParametersState {
     );
   }
 
+  @Action(TransactionParametersUpdate, { cancelUncompleted: true })
+  updateDataFromState(
+    ctx: StateContext<TransactionParametersStateModel>,
+    { id, payload, stateData }: TransactionParametersUpdate
+  ) {
+    return this.transactionService.updateTransactionParameter(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new TransactionParametersSuccessState(response));
+
+        const dataList = [...ctx.getState().transactionParameters];
+        const updatedDataIndex = dataList.findIndex(
+          (x) => x.id === id
+        );
+        dataList[updatedDataIndex] = stateData;
+        ctx.setState({
+          ...ctx.getState(),
+          transactionParameters: dataList,
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TransactionParametersErrorState(response.error));
+      })
+    );
+  }
+
   @Action(TransactionParametersSuccessState)
   ifStateSuccess(
     ctx: StateContext<TransactionParametersStateModel>,

@@ -12,7 +12,7 @@ export class AlertAcquirerTableService {
   animateRow: boolean = true;
   headerHeight: number = 40;
   rowHeight: number = 40;
-  overlayLoadingTemplate = 'loadingOverlay';
+  overlayLoadingTemplate = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonAcquirerAlertComponent,
     overlayLoading: OverlayLoadingComponent

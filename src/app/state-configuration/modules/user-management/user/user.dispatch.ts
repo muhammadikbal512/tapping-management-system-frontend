@@ -2,6 +2,7 @@ import {
   UserGet,
   UserAdd,
   UserDelete,
+  UserUpdate,
   UserErrorState,
   UserSuccessState,
 } from './user.action';
@@ -27,6 +28,11 @@ export class UserDispatch {
     @Dispatch()
     public _UserDeleteDispatch(id: number) {
         return new UserDelete(id)
+    }
+
+    @Dispatch()
+    public _UserUpdateDispatch(id: number, payload: FormData, stateData: UserModel) {
+        return new UserUpdate(id, payload, stateData);
     }
 
     @Dispatch()

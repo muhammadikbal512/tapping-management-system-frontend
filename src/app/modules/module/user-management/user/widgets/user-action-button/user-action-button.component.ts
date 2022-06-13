@@ -32,4 +32,9 @@ export class UserActionButtonComponent implements AgRendererComponent {
     this.confirmationService.userConfirm(event, this.userService)
   }
 
+  editButton() {
+    this.userService.openDialog();
+    this.userService.buttonStatus = 'edit';
+  }
+
 }

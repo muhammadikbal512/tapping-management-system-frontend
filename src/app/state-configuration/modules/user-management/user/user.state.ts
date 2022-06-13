@@ -4,6 +4,7 @@ import {
   UserErrorState,
   UserSuccessState,
   UserAdd,
+  UserUpdate,
 } from './user.action';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
@@ -97,6 +98,29 @@ export class UserState {
         ctx.setState({
           ...ctx.getState(),
           User: filteredData,
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserUpdate, { cancelUncompleted: true })
+  updateDataFromState(
+    ctx: StateContext<UserStateModel>,
+    { id, payload, stateData }: UserUpdate
+  ) {
+    return this.userService.updateUser(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new UserSuccessState(response));
+        const dataList = [...ctx.getState().User];
+        const updatedDataIndex = dataList.findIndex((x) => x.id === id);
+        dataList[updatedDataIndex] = stateData;
+        ctx.setState({
+          ...ctx.getState(),
+          User: dataList,
           responseMessage: response,
         });
       }),

@@ -88,8 +88,8 @@ export class TransactionParametersService {
   ): FormData {
     const formData = new FormData();
     formData.append('currentAttributeName', currentAttributeName);
-    formData.append('attributeName', newData.attributeName);
-    formData.append('description', newData.description);
+    formData.append('newAttributeName', newData.attributeName);
+    formData.append('newDescription', newData.description);
     return formData;
   }
 

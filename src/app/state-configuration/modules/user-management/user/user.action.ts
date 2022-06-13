@@ -16,6 +16,11 @@ export class UserDelete {
     constructor(public id: number) {}
 }
 
+export class UserUpdate {
+    static readonly type = '[User] Update';
+    constructor(public id: number, public payload: FormData, public stateData: UserModel) {}
+}
+
 export class UserSuccessState {
     static readonly type = '[User] Success';
     constructor(public successMessage: CustomHttpResponseModel) {}

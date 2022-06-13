@@ -1,6 +1,6 @@
 export class UserModel {
-    id!: number;
-    userId!: string;
+    id: number;
+    userId: string;
     firstName: string;
     lastName: string;
     username: string;
@@ -14,6 +14,8 @@ export class UserModel {
     authorities: [];
 
     constructor() {
+        this.id = 0;
+        this.userId = '';
         this.firstName = '';
         this.lastName = '';
         this.username = '';

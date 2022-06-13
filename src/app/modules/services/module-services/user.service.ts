@@ -34,8 +34,8 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.http.get<CustomHttpResponseModel>(
-      `${this.apiUrl}/delete` + id
+    return this.http.delete<CustomHttpResponseModel>(
+      `${this.apiUrl}/delete/` + id
     );
   }
 
@@ -44,6 +44,22 @@ export class UserService {
       `${this.apiUrl}/user/register`,
       data
     );
+  }
+
+  updateUser(data: FormData) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/user/update`,
+      data
+    );
+  }
+
+  createUserFormData(currentUsername: string, newData: UserModel): FormData {
+    const formData = new FormData();
+    formData.append('currentUsername', currentUsername);
+    formData.append('firstName', newData.firstName);
+    formData.append('lastName', newData.lastName);
+    formData.append('username', newData.username);
+    return formData;
   }
 
   getAllUserWithDelay() {
@@ -58,11 +74,19 @@ export class UserService {
   }
 
   onCreateUser(data: UserModel) {
-    this.userDispatch._UserAddDispatch(data)
+    this.userDispatch._UserAddDispatch(data);
   }
 
   onDeleteUser() {
     this.userDispatch._UserDeleteDispatch(this.existingData.id);
+  }
+
+  onUpdateUser(data: FormData) {
+    this.userDispatch._UserUpdateDispatch(
+      this.existingData.id,
+      data,
+      this.existingData
+    );
   }
 
   openDialog() {
