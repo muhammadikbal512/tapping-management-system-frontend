@@ -93,6 +93,17 @@ export class PopupMessageService {
     })
   }
 
+  resetPassword(event: Event, onResetPassword: UserService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to reset password for this user ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onResetPassword.onResetPasswordUser();
+      }
+    })
+  }
+
   roleConfirm(event: Event, onDelete: RolesService) {
     this.confirmationService.confirm({
       target: event.target || undefined,

@@ -5,6 +5,7 @@ import {
   UserSuccessState,
   UserAdd,
   UserUpdate,
+  UserResetPassword,
 } from './user.action';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
@@ -98,6 +99,22 @@ export class UserState {
         ctx.setState({
           ...ctx.getState(),
           User: filteredData,
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserResetPassword, { cancelUncompleted: true })
+  resetPasswordFromState(ctx: StateContext<UserStateModel>, { email }: UserResetPassword) {
+    return this.userService.resetPasswordUser(email).pipe(
+      tap((response) => {
+        ctx.dispatch(new UserSuccessState(response));
+        ctx.setState({
+          ...ctx.getState(),
           responseMessage: response,
         });
       }),

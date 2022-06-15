@@ -48,7 +48,8 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
         this.existingUsername != value.username ||
         this.existingFirstName != value.firstName ||
         this.existingLastName != value.lastName ||
-        this.existingEmail != value.email
+        this.existingEmail != value.email ||
+        this.existingRole != value.role
       ) {
         this.disableButton = false;
       }
@@ -57,7 +58,8 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
         this.existingUsername == value.username &&
         this.existingFirstName == value.firstName &&
         this.existingLastName == value.lastName &&
-        this.existingEmail == value.email
+        this.existingEmail == value.email &&
+        this.existingRole == value.role
       ) {
         this.disableButton = true;
       }
@@ -69,6 +71,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.lastName.setValue(this.existingFirstName);
     this.firstName.setValue(this.existingFirstName);
     this.email.setValue(this.existingEmail);
+    this.role.setValue(this.existingRole);
+    this.isActive.setValue(this.existingIsActive);
+    this.isNonLocked.setValue(this.existingIsNonLocked);
   }
 
   private createFormat() {
@@ -77,6 +82,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
       lastName: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', Validators.required],
+      role: ['', Validators.required],
+      isActive: ['', Validators.required],
+      isNonLocked: ['', Validators.required],
     });
   }
 
@@ -85,6 +93,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.lastName = this.lastName.value;
     this.userModel.username = this.username.value;
     this.userModel.email = this.email.value;
+    this.userModel.role = this.role.value;
+    this.userModel.active = this.isActive.value;
+    this.userModel.notLocked = this.isNonLocked.value;
     return this.userModel;
   }
 
@@ -116,6 +127,18 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     return this.form.controls['email'];
   }
 
+  get role() {
+    return this.form.controls['role'];
+  }
+
+  get isActive() {
+    return this.form.controls['isActive'];
+  }
+
+  get isNonLocked() {
+    return this.form.controls['isNonLocked'];
+  }
+
   get existingUsername() {
     return this.userService.existingData.username;
   }
@@ -130,5 +153,17 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
 
   get existingEmail() {
     return this.userService.existingData.email;
+  }
+
+  get existingRole() {
+    return this.userService.existingData.role;
+  }
+
+  get existingIsActive() {
+    return this.userService.existingData.active;
+  }
+
+  get existingIsNonLocked() {
+    return this.userService.existingData.notLocked;
   }
 }

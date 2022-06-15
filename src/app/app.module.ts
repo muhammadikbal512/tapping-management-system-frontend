@@ -141,6 +141,7 @@ import { ActionButtonNdcComponent } from './modules/module/external-interface/nd
 import { TableXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/table-xml/table-xml.component';
 import { ActionButtonXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/action-button-xml/action-button-xml.component';
 import { CreateDialogXmlComponent } from './modules/module/external-interface/xml-configuration/widgets/create-dialog-xml/create-dialog-xml.component';
+import { UserTagLockComponent } from './modules/global-widget/user-tag-lock/user-tag-lock.component';
 
 @NgModule({
   declarations: [
@@ -255,6 +256,7 @@ import { CreateDialogXmlComponent } from './modules/module/external-interface/xm
     TableXmlComponent,
     ActionButtonXmlComponent,
     CreateDialogXmlComponent,
+    UserTagLockComponent,
   ],
 
   imports: [

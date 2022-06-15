@@ -11,9 +11,14 @@
   .edit-button {
     padding-top: .5rem;
   }
+
+  .reset-button {
+    padding-top: .5rem;
+  }
   
   .edit-button,
-  .delete-button {
+  .delete-button,
+  .reset-button {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -25,12 +30,14 @@
   }
   
   .edit-button:hover,
-  .delete-button:hover {
+  .delete-button:hover,
+  .reset-button:hover {
     /*background-color: #919aa3;*/
   }
   
   .edit-icon,
-  .delete-icon {
+  .delete-icon,
+  .reset-icon {
     margin: 0 10px;
     font-size: 20px;
   }

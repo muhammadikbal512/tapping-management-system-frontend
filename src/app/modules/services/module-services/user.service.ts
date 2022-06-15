@@ -53,12 +53,20 @@ export class UserService {
     );
   }
 
+  resetPasswordUser(email: string) {
+    return this.http.get<CustomHttpResponseModel>(`${this.apiUrl}/user/resetpassword/` + email)
+  }
+
   createUserFormData(currentUsername: string, newData: UserModel): FormData {
     const formData = new FormData();
     formData.append('currentUsername', currentUsername);
     formData.append('firstName', newData.firstName);
     formData.append('lastName', newData.lastName);
     formData.append('username', newData.username);
+    formData.append('email', newData.email);
+    formData.append('role', this.existingData.role);
+    formData.append('isActive', String(this.existingData.active));
+    formData.append('isNonLocked', String(this.existingData.notLocked));
     return formData;
   }
 
@@ -79,6 +87,10 @@ export class UserService {
 
   onDeleteUser() {
     this.userDispatch._UserDeleteDispatch(this.existingData.id);
+  }
+
+  onResetPasswordUser() {
+    this.userDispatch._UserResetPasswordDispatch(this.existingData.email);
   }
 
   onUpdateUser(data: FormData) {

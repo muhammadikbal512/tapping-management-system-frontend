@@ -5,6 +5,7 @@ import {
   UserUpdate,
   UserErrorState,
   UserSuccessState,
+  UserResetPassword,
 } from './user.action';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { UserModel } from 'src/app/model/user-model/user.model';
@@ -33,6 +34,11 @@ export class UserDispatch {
     @Dispatch()
     public _UserUpdateDispatch(id: number, payload: FormData, stateData: UserModel) {
         return new UserUpdate(id, payload, stateData);
+    }
+
+    @Dispatch()
+    public _UserResetPasswordDispatch(email: string) {
+        return new UserResetPassword(email);
     }
 
     @Dispatch()

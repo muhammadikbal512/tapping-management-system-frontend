@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
+import { UserTagLockComponent } from '../../global-widget/user-tag-lock/user-tag-lock.component';
 import { UserTagComponent } from '../../global-widget/user-tag/user-tag.component';
 import { UserActionButtonComponent } from '../../module/user-management/user/widgets/user-action-button/user-action-button.component';
 
@@ -17,7 +18,8 @@ export class UserTableService {
   frameworkComponents = {
     actionButtonGroup: UserActionButtonComponent,
     overlayLoading: OverlayLoadingComponent,
-    tag: UserTagComponent
+    tag: UserTagComponent,
+    lockTag: UserTagLockComponent
   };
   defaultColDef: ColDef = {
     flex: 1,
@@ -34,7 +36,7 @@ export class UserTableService {
     {field: 'firstName', headerName: 'First Name'},
     {field: 'lastName', headerName: 'Last Name'},
     {field: 'active', headerName: 'User Active', cellRenderer: 'tag', maxWidth: 100},
-    {field: 'notLocked', headerName: 'User not Locked', maxWidth: 100, cellRenderer:'tag'},
+    {field: 'notLocked', headerName: 'User not Locked', maxWidth: 100, cellRenderer:'lockTag',},
     {field: 'joinDate', headerName: 'Join Date'},
     {field: 'lastLoginDate', headerName: 'Last Login'},
     {field: 'action', cellRenderer: 'actionButtonGroup', sortable: false}

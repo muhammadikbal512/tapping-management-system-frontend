@@ -37,4 +37,8 @@ export class UserActionButtonComponent implements AgRendererComponent {
     this.userService.buttonStatus = 'edit';
   }
 
+  resetPassword(event: Event) {
+    this.confirmationService.resetPassword(event, this.userService);
+  }
+
 }
