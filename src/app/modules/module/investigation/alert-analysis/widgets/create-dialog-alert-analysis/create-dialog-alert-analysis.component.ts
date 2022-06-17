@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-create-dialog-alert-analysis',
   templateUrl: './create-dialog-alert-analysis.component.html',
@@ -11,5 +12,6 @@ export class CreateDialogAlertAnalysisComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

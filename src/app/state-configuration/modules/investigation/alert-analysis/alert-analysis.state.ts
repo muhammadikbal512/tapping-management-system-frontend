@@ -38,27 +38,32 @@ export class AlertAnalysisState {
 
   @Selector()
   static AlertAnalysis(state: AlertAnalysisStateModel) {
-      return state.AlertAnalysis;
+    return state.AlertAnalysis;
   }
 
   @Selector()
   static responseMessage(state: AlertAnalysisStateModel) {
-      return state.responseMessage;
+    return state.responseMessage;
   }
 
-  @Action(AlertAnalysisGet, {cancelUncompleted: true})getDataFromState() {
+  @Action(AlertAnalysisGet, { cancelUncompleted: true }) getDataFromState() {}
+
+  @Action(AlertAnalysisAdd, { cancelUncompleted: true }) addDataFromState() {}
+
+  @Action(AlertAnalysisDelete, { cancelUncompleted: true })
+  deleteDataFromState() {}
+
+  @Action(AlertAnalysisUpdate, { cancelUncompleted: true })
+  updateDataFromState() {}
+
+  @Action(AlertAnalysisSuccessState) ifSuccessFromState(
+    ctx: StateContext<AlertAnalysisStateModel>,
+    { successMessage }: AlertAnalysisSuccessState
+  ) {
 
   }
 
-  @Action(AlertAnalysisAdd, {cancelUncompleted: true})addDataFromState() {
+  @Action(AlertAnalysisErrorState)ifErrorFromState(ctx: StateContext<AlertAnalysisStateModel>, {errorMessage}: AlertAnalysisErrorState) {
 
-  }
-
-  @Action(AlertAnalysisDelete, {cancelUncompleted: true})deleteDataFromState() {
-
-  }
-
-  @Action(AlertAnalysisUpdate, {cancelUncompleted: true})updateDataFromState() {
-      
   }
 }

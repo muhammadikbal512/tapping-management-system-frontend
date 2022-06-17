@@ -3,7 +3,7 @@
     <div class="grid-container">
       
       <div class="p-4">
-        <div echarts [options]="this.transactionStatusChart._successFailed"
+        <div style="height: 300px;" echarts [options]="this.transactionStatusChart._successFailed"
           [merge]="this.transactionStatusChart._updateOptions"></div>
 
       </div>
@@ -11,7 +11,7 @@
     <div class="grid-container">
     
       <div class="p-4">
-        <div echarts [options]="this.transactionStatusChart._pendingTimeout"
+        <div style="height: 300px;" echarts [options]="this.transactionStatusChart._pendingTimeout"
         [merge]="this.transactionStatusChart._pendingOptions"></div>
       </div>
     </div>

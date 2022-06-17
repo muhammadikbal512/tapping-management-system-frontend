@@ -1,39 +1,30 @@
 .default-container {
-    /* zoom: 0.8; */
-    min-height: 100%;
-    @apply
-    flex 
+  /* zoom: 0.8; */
+  
+  @apply flex 
     flex-row 
     bg-gray-100 
-    text-gray-800
+    text-gray-800;
 }
 
 .main {
-    @apply
+  @apply 
     flex 
     flex-col 
-    w-full
+    w-full;
+    margin-left: 70px
+  
 }
 
 .main-content {
-    @apply
-    flex 
-    flex-col 
-    flex-grow 
-    p-2
+  @apply
+    p-2;
 }
 
 .main-content h1 {
-    @apply
-    font-bold 
+  @apply font-bold 
     text-2xl 
-    text-gray-700
+    text-gray-700;
 }
 
-.main-content-board {
-    @apply
-    flex 
-    flex-col 
-    flex-grow 
-    mt-4
-}
+

@@ -30,6 +30,7 @@ import { TransactionParametersComponent } from './modules/module/transaction/tra
 import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-list/terminal-list.component';
 import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
 import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
+import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,15 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'dashboard',
+        children: [
+          {
+            path: 'interface-list',
+            component: InterfaceListComponent
+          }
+        ]
       },
       {
         path: 'investigation',
@@ -149,7 +159,7 @@ const routes: Routes = [
         path: 'transactions',
         children: [
           {
-            path: 'transaction',
+            path: 'transaction-page',
             component: TransactionComponent
           },
           {

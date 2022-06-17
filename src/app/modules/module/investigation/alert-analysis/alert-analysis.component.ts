@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertAnalysisService } from 'src/app/modules/services/module-services/alert-analysis.service';
+
 
 @Component({
   selector: 'app-alert-analysis',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertAnalysisComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alertService: AlertAnalysisService) { }
 
   ngOnInit(): void {
+  }
+
+  showDialog() {
+    this.alertService.openDialog();
   }
 
 }

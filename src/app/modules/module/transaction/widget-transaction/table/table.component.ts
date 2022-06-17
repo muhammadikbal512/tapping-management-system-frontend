@@ -39,8 +39,43 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   paginator!: MatPaginator;
 
   amount = new FormControl('');
+  countryCode = new FormControl('');
+  destAccount = new FormControl('');
+  hpan = new FormControl('');
+  clearHPAN = new FormControl('');
+  merchantId = new FormControl('');
+  merchantType = new FormControl('');
+  messageAscii = new FormControl('');
+  messageHexa = new FormControl('');
+  mti = new FormControl('');
+  networkId = new FormControl('');
+  posDataCode = new FormControl('');
+  responseCode = new FormControl('');
+  rrn = new FormControl('');
+  sourceAccount = new FormControl('');
+  terminalId = new FormControl('');
+  trxDate = new FormControl('');
+  transactionId = new FormControl('');
+  transType = new FormControl('');
   filterValues = {
     amount: '',
+    countryCode: '',
+    destAccount: '',
+    hpan: '',
+    merchantId: '',
+    merchantType: '',
+    messageAscii: '',
+    messageHexa: '',
+    mti: '',
+    networkId: '',
+    posDataCode: '',
+    responseCode: '',
+    rrn: '',
+    sourceAccount: '',
+    terminalId: '',
+    trxDate: '',
+    transactionId: '',
+    transType: '',
   };
   date = new Date();
   totalRows = 0;
@@ -63,16 +98,121 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       this.filterValues.amount = amount;
       this.dataSource.filter = JSON.stringify(this.filterValues);
     });
+    this.countryCode.valueChanges.subscribe((countryCode) => {
+      this.filterValues.countryCode = countryCode;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.destAccount.valueChanges.subscribe((destAccount) => {
+      this.filterValues.destAccount = destAccount;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.hpan.valueChanges.subscribe((hpan) => {
+      this.filterValues.hpan = hpan;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.merchantId.valueChanges.subscribe((merchantId) => {
+      this.filterValues.merchantId = merchantId;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.merchantType.valueChanges.subscribe((merchantType) => {
+      this.filterValues.merchantType = merchantType;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.messageAscii.valueChanges.subscribe((messageAscii) => {
+      this.filterValues.messageAscii = messageAscii;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.messageHexa.valueChanges.subscribe((messageHexa) => {
+      this.filterValues.messageHexa = messageHexa;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.mti.valueChanges.subscribe((mti) => {
+      this.filterValues.mti = mti;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.networkId.valueChanges.subscribe((networkId) => {
+      this.filterValues.networkId = networkId;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.posDataCode.valueChanges.subscribe((posDataCode) => {
+      this.filterValues.posDataCode = posDataCode;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.responseCode.valueChanges.subscribe((responseCode) => {
+      this.filterValues.responseCode = responseCode;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.rrn.valueChanges.subscribe((rrn) => {
+      this.filterValues.rrn = rrn;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.sourceAccount.valueChanges.subscribe((sourceAccount) => {
+      this.filterValues.sourceAccount = sourceAccount;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.terminalId.valueChanges.subscribe((terminalId) => {
+      this.filterValues.terminalId = terminalId;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.trxDate.valueChanges.subscribe((trxDate) => {
+      this.filterValues.trxDate = trxDate;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.transactionId.valueChanges.subscribe((transactionId) => {
+      this.filterValues.transactionId = transactionId;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
+    this.transType.valueChanges.subscribe((transType) => {
+      this.filterValues.transType = transType;
+      this.dataSource.filter = JSON.stringify(this.filterValues);
+    });
     this.allTransaction();
   }
 
   createFilter(): (data: any, filter: string) => boolean {
     let filterFunction = function (
-      data: { amount: string },
+      data: {
+        amount: string;
+        countryCode: {toString: ()=> string; };
+        destAccount: string;
+        hpan: string;
+        merchantId: { toString: () => string; };
+        merchantType: string;
+        messageAscii: string;
+        messageHexa: string;
+        mti: string;
+        networkId: { toString: () => string; };
+        posDataCode: {toString: ()=> string; };
+        responseCode: string;
+        rrn: string;
+        sourceAccount: string;
+        terminalId: { toString: () => string; };
+        trxDate: string;
+        transactionId: { toString: () => string; };
+        transType: string;
+      },
       filter: string
     ): boolean {
       let searchTerms = JSON.parse(filter);
-      return data.amount.toLowerCase().indexOf(searchTerms.amount) !== -1;
+      return data.amount.toLowerCase().indexOf(searchTerms.amount) !== -1 
+      && data.countryCode.toString().toLowerCase().indexOf(searchTerms.countryCode) !== -1
+      && data.destAccount.toLowerCase().indexOf(searchTerms.destAccount) !== -1
+      && data.hpan.toLowerCase().indexOf(searchTerms.hpan) !== -1
+      && data.merchantId.toString().toLowerCase().indexOf(searchTerms.merchantId) !== -1
+      && data.merchantType.toLowerCase().indexOf(searchTerms.merchantType) !== -1
+      && data.messageAscii.toLowerCase().indexOf(searchTerms.messageAscii) !== -1
+      && data.messageHexa.toLowerCase().indexOf(searchTerms.messageHexa) !== -1
+      && data.mti.toLowerCase().indexOf(searchTerms.mti) !== -1
+      && data.networkId.toString().toLowerCase().indexOf(searchTerms.networkId) !== -1
+      && data.posDataCode.toString().toLowerCase().indexOf(searchTerms.posDataCode) !== -1
+      && data.responseCode.toLowerCase().indexOf(searchTerms.responseCode) !== -1
+      && data.rrn.toLowerCase().indexOf(searchTerms.rrn) !== -1
+      && data.sourceAccount.toLowerCase().indexOf(searchTerms.sourceAccount) !== -1
+      && data.terminalId.toString().toLowerCase().indexOf(searchTerms.terminalId) !== -1
+      // && data.trxDate.toLowerCase().indexOf(searchTerms.trxDate) !== -1
+      && data.transactionId.toString().toLowerCase().indexOf(searchTerms.transactionId) !== -1
+      && data.transType.toLowerCase().indexOf(searchTerms.transType) !== -1
+      
     };
     return filterFunction;
   }
@@ -81,20 +221,21 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   columnsToDisplay = [
     'action',
     'amount',
-    'currencyCode',
+    'countryCode',
     'destAccount',
     'HPAN',
-    'clearHPAN',
     'merchantId',
     'merchantType',
+    'messageAscii',
+    'messageHexa',
     'MTI',
-    'networkDate',
     'networkId',
+    'posDataCode',
     'responseCode',
-    'RRN',
-    'srcAccount',
+    'rrn',
+    'sourceAccount',
     'terminalId',
-    'transactionDate',
+    'trxDate',
     'transactionId',
     'transType',
   ];

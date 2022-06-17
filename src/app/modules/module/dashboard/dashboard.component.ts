@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/module-services/dashboard.service';
-import { Observable } from 'rxjs'; 
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,13 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   myDate = new Date();
-  constructor(private dashboardService: DashboardService) {
-  }
+  constructor(
+    private dashboardService: DashboardService,
+    
+  ) {}
 
-  ngOnInit(): void {
-  }
-  
-
-  
-
+  ngOnInit(): void {}
 }

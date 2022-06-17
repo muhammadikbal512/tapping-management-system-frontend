@@ -1,5 +1,5 @@
 header {
-  @apply bg-white shadow py-4 px-4;
+  @apply bg-gray-900 shadow py-4 px-4;
 }
 
 .header-content {
