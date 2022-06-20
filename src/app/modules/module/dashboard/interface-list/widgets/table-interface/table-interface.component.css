@@ -1,24 +1,29 @@
 .table-container {
-    @apply
-    overflow-hidden 
+  @apply overflow-hidden 
     shadow-md 
-    sm:rounded-lg
-  }
-  
-  .table-container th {
-    @apply
-    py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400
-  }
-  
-  .table-container td {
-    @apply
-    py-3
-    px-6
-  }
-  
-  table {
-    width: 100%;
-  }
-  th.mat-sort-header-sorted {
-    color: black;
-  }
+    sm:rounded-lg;
+}
+
+.table-container th {
+  @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400;
+}
+
+.table-container td {
+  @apply py-3
+    px-6;
+}
+
+.dot {
+  background-color: green;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}

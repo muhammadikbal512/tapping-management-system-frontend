@@ -1,8 +1,8 @@
 .grid-container {
     @apply
-     
     bg-white 
     rounded-md
+    shadow-xl
 }
 
 .grid-header {

@@ -25,7 +25,7 @@ export interface InterfaceModel {
 export class TableInterfaceComponent implements OnInit {
   interfaceDialogTitle: string[] = ['IP Address', 'Netmask', 'Broadcast Address']
   @Input('ELEMENT_DATA') ELEMENT_DATA!: InterfaceModel[];
-  displayedColumns: string[] = ['no', 'description', 'ipAddress', 'action'];
+  displayedColumns: string[] = ['no', 'description', 'ipAddress', 'status',  'action'];
   dataSource = new MatTableDataSource<InterfaceModel>(this.ELEMENT_DATA);
   interfaceList: InterfaceModel[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;

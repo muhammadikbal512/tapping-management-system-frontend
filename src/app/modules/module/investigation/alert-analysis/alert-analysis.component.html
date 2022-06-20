@@ -1,25 +1,46 @@
-<div class="grid-container">
-    <div class="grid-header">
-        <div class="search-container">
-            <span class="search-icon bx bx-search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </span>
-            <input type="text" class="search-input" placeholder="Search">
+<div class="container">
+    <div class="grid-container">
+        <div class="grid-header">
+            <div class="search-container">
+                <span class="search-icon bx bx-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+                <input type="text" class="search-input" placeholder="Search">
+            </div>
+            <div class="grid-header-right">
+                <p-button icon="pi pi-refresh" class="mr-3"></p-button>
+                <!-- <p-button (onClick)="showDialog()" label="Create"></p-button> -->
+            </div>
         </div>
-        <div class="grid-header-right">
-            <p-button icon="pi pi-refresh" class="mr-3"></p-button>
-            <p-button (onClick)="showDialog()" label="Create"></p-button>
+        <div class="p-4">
+            <app-alert-analysis-table></app-alert-analysis-table>
         </div>
     </div>
-    <div class="p-4">
-        <app-alert-analysis-table></app-alert-analysis-table>
+    <div class="grid grid-cols-2 gap-4">
+        <div class="grid-container">
+            <div class="grid-header">
+                <h4>Total Case</h4>
+            </div>
+            <div class="p-4">
+                <ag-grid-angular style="width: 100%; height: 500px" class="ag-theme-alpine" [columnDefs]="totalCase"
+                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
+                    (gridReady)="onGridReady($event)"></ag-grid-angular>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-header">
+                <h4>Cases in queue By Rule</h4>
+            </div>
+            <div class="p-4">
+                <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [columnDefs]="casesQueue"
+                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
+                    (gridReady)="onGridReady($event)">
+                </ag-grid-angular>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="grid grid-cols-4 gap-4">
-    
 </div>
