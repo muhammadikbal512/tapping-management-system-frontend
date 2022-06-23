@@ -45,6 +45,7 @@
 #sidebar:hover p {
   @apply
   block text-base
+  ml-4
 }
 
 #sidebar a:hover {

@@ -31,6 +31,8 @@ import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-li
 import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
 import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
+import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
+
 
 const routes: Routes = [
   {
@@ -201,6 +203,10 @@ const routes: Routes = [
       {
         path: 'event-collector',
         component: EventCollectorComponent
+      },
+      {
+        path: 'device-monitoring',
+        component: DeviceMonitoringComponent
       }
     ],
   },

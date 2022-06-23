@@ -144,6 +144,8 @@ import { CreateDialogXmlComponent } from './modules/module/external-interface/xm
 import { UserTagLockComponent } from './modules/global-widget/user-tag-lock/user-tag-lock.component';
 import { TableInterfaceComponent } from './modules/module/dashboard/interface-list/widgets/table-interface/table-interface.component';
 import { InterfaceListCardComponent } from './modules/module/dashboard/interface-list-card/interface-list-card.component';
+import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
+import { CardDeviceComponent } from './modules/module/device-monitoring/widgets/card-device/card-device.component';
 
 @NgModule({
   declarations: [
@@ -261,6 +263,8 @@ import { InterfaceListCardComponent } from './modules/module/dashboard/interface
     UserTagLockComponent,
     TableInterfaceComponent,
     InterfaceListCardComponent,
+    DeviceMonitoringComponent,
+    CardDeviceComponent,
   ],
 
   imports: [
