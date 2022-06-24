@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   AfterViewInit,
-  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
@@ -34,7 +33,7 @@ import { MatPaginator } from '@angular/material/paginator';
   ],
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -257,9 +256,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnDestroy(): void {
-    this.transactionTableService.gridApi.destroy();
-  }
+  // ngOnDestroy(): void {
+  //   this.transactionTableService.gridApi.destroy();
+  // }
 }
 
 export let additionalData: TransactionMessageInterface;

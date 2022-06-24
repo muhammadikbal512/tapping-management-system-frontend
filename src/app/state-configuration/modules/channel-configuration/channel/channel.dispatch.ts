@@ -15,7 +15,7 @@ import {
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ChannelDispatch {
   @Dispatch()
@@ -34,11 +34,7 @@ export class ChannelDispatch {
   }
 
   @Dispatch()
-  public _ChannelUpdate(
-    payload: FormData,
-    id: number,
-    stateData: ChannelModel
-  ) {
+  public _ChannelUpdate(payload: FormData, id: number, stateData: ChannelModel) {
     return new ChannelUpdate(id, payload, stateData);
   }
 

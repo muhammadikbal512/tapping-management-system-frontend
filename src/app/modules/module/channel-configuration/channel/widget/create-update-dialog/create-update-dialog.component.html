@@ -35,7 +35,7 @@
         <div class="input-container">
             <p-dropdown (onChange)="onChange($event)" [filter]="true" [options]="ChannelTypeGroupInterfaces"
                 [showClear]="showClear" appendTo="body" class="channel-type" filterBy="name"
-                formControlName="channelType" optionLabel="name" placeholder="Select Message Template"
+                formControlName="channelType" optionLabel="name" placeholder="Select Channel Type"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
             <p-message *ngIf="channelType.touched && !channelType.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="channelType.touched && channelType.hasError('required')" severity="error"></p-message>

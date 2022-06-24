@@ -81,27 +81,24 @@ export class ChannelState {
     );
   }
 
-  @Action(ChannelGetChannelType, { cancelUncompleted: true })
+  @Action(ChannelGetChannelType, {cancelUncompleted: true})
   getAdditionalDataFromState(ctx: StateContext<ChannelStateModel>) {
-    return this.channelTypeService.getAllChannelType().pipe(
-      tap((response) => {
-        let channelTypeParseList: ChannelTypeGroupInterface[] = [];
-        response.forEach((x) => {
-          channelTypeParseList.push({
-            name: x.channelType,
-            code: String(x.channelTypeId),
-          });
-        });
-
-        ctx.setState({
-          ...ctx.getState(),
-          channelTypes: channelTypeParseList,
-        });
-      }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new ChannelErrorState(response.error));
+    return this.channelTypeService.getAllChannelType().pipe(tap(response => {
+      let channelTypeParseList: ChannelTypeGroupInterface[] = [];
+      response.forEach(x => {
+        channelTypeParseList.push({
+          name: x.channelType,
+          code: String(x.channelTypeId)
+        })
       })
-    );
+
+      ctx.setState({
+        ...ctx.getState(),
+        channelTypes: channelTypeParseList
+      })
+    }), catchError((response: HttpErrorResponse) => {
+      return ctx.dispatch(new ChannelErrorState(response.error));
+    }))
   }
 
   @Action(ChannelAdd, { cancelUncompleted: true })

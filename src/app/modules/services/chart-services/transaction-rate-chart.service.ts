@@ -90,7 +90,7 @@ export class TransactionRateChartService {
     yAxis: [
       {
         type: 'value',
-        name: 'Price',
+        name: 'Value',
         boundaryGap: [0, 0],
       },
     ],

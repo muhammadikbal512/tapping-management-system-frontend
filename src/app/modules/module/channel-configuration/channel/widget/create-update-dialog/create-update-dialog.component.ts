@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { ChannelTypeGroupInterface } from 'src/app/interface/modules/channel-type-group';
 import { ChannelModel } from 'src/app/model/modules-model/channel.model';
 import { ChannelState } from 'src/app/state-configuration/modules/channel-configuration/channel/channel.state';
-import { ChannelTypeState } from 'src/app/state-configuration/modules/channel-configuration/channel-type/channel-type.state';
 
 @Component({
   selector: 'app-create-update-dialog',
@@ -15,7 +14,9 @@ import { ChannelTypeState } from 'src/app/state-configuration/modules/channel-co
   styleUrls: ['./create-update-dialog.component.css'],
 })
 export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit {
-  // @Select(ChannelState.channelType) channelTypes$!: Observable<ChannelTypeGroupInterface[]>;
+  // @Select(ChannelState.channelType) 
+  // channelTypes$!: Observable<ChannelTypeGroupInterface[]>
+  
   form!: FormGroup;
   showClear: boolean = false;
   disableStatus: boolean = false;
@@ -31,10 +32,8 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
   ngOnInit(): void {
     this.createForm();
     this.channelService.onGetAllTerminalType();
-    // this.channelTypes$.subscribe((data) => {
-    //   this.ChannelTypeGroupInterfaces = data.sort((a, b) =>
-    //     a.name.localeCompare(b.name)
-    //   );
+    // this.channelTypes$.subscribe(data => {
+    //   this.channelTypeGroupInterfaces = data.sort((a, b) => a.name.localeCompare(b.name));
     // });
   }
 
