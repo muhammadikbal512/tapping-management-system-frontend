@@ -12,6 +12,14 @@ export class AlertAnalysisComponent implements OnInit {
   constructor(private alertService: AlertAnalysisService) { }
   public gridApi!: GridApi;
 
+  public alertTable: ColDef[] = [
+    {field: 'entityValue'},
+    {field: 'forwarderToUser', width: 500},
+    {field: 'daysUntilAutoClassification'},
+    {field: 'entityType'},
+    {field: 'entityValue'}
+  ]
+
   public totalCase: ColDef[] = [
     {field: 'privateScheme'},
     {field: 'entityValue'},

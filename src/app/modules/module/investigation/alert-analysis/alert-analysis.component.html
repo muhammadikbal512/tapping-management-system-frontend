@@ -1,5 +1,9 @@
 <div class="container">
     <div class="grid-container">
+        <div class="pl-4 pt-2">
+            <input type="checkbox">
+            <label class="ml-3">Update every 60 seconds</label>
+        </div>
         <div class="grid-header">
             <div class="search-container">
                 <span class="search-icon bx bx-search">
@@ -27,8 +31,8 @@
             </div>
             <div class="p-4">
                 <ag-grid-angular style="width: 100%; height: 500px" class="ag-theme-alpine" [columnDefs]="totalCase"
-                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
-                    (gridReady)="onGridReady($event)"></ag-grid-angular>
+                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true"
+                    [rowData]="rowData" (gridReady)="onGridReady($event)"></ag-grid-angular>
             </div>
         </div>
         <div class="grid-container">
@@ -37,10 +41,17 @@
             </div>
             <div class="p-4">
                 <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [columnDefs]="casesQueue"
-                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
-                    (gridReady)="onGridReady($event)">
+                    [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true"
+                    [rowData]="rowData" (gridReady)="onGridReady($event)">
                 </ag-grid-angular>
             </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="p-4">
+            <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [columnDefs]="alertTable"
+                [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
+                (gridReady)="onGridReady($event)"></ag-grid-angular>
         </div>
     </div>
 </div>

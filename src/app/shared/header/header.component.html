@@ -2,17 +2,17 @@
   <div class="header-content">
     <p class="text-white">Tapping Management System</p>
     <div class="header-logout">
-      <button type="button" id="user-menu-button" type="button" data-dropdown-toggle="dropdown">
+      <button type="button" id="user-menu-button" type="button" data-bs-toggle="dropdown">
         <span class="sr-only">Open user menu</span>
         <img src="../../../assets/0.jpg" alt="user photo">
       </button>
       <!-- Dropdown menu -->
-      <div class="hidden user-dropdown-container" id="dropdown">
+      <div class="dropdown-menu hidden user-dropdown-container" id="user-menu-button">
         <div class="py-3 px-4">
           <span class="block user-dropdown-name">{{ dataUser.username }}</span>
           <span class="block user-dropdown-role">{{ dataUser.role }}</span>
         </div>
-        <ul class="user-dropdown-list" aria-labelledby="dropdown">
+        <ul class="user-dropdown-list" aria-labelledby="user-menu-button">
           <li>
             <a href="#" class="block">User
               Profile</a>
@@ -22,8 +22,8 @@
               Report</a>
           </li>
           <li>
-              <a (click)="onLogout()" class="block">Sign
-                out</a>
+            <a (click)="onLogout()" class="block">Sign
+              out</a>
           </li>
         </ul>
       </div>

@@ -57,7 +57,7 @@ const routes: Routes = [
         path: 'investigation',
         children: [
           {
-            path: 'alert-analysis',
+            path: 'alert-investigation',
             component: AlertAnalysisComponent,
           },
         ],
