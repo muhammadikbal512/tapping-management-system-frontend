@@ -18,7 +18,7 @@ export class DeviceConnectedChartService {
     },
     series: [
       {
-        name: 'Access From',
+        name: 'Device Connected',
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,

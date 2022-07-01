@@ -1,6 +1,11 @@
 export interface TransactionMessageInterface {
   amount: string;
   currencyCode: string;
+  location: string;
+  messageAscii: string;
+  messageHexa: string;
+  posDataCode: string;
+  sequenceNumber: number;
   destAccount: string;
   HPAN: string;
   clearHPAN: string;

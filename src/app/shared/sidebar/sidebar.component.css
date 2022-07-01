@@ -5,7 +5,7 @@
   height: 100%;  
   position: fixed;
   z-index: 999;
-  overflow-x: auto;
+  overflow-x:auto;
   
   @apply
   bg-gray-900

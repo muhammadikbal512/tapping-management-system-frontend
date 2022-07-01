@@ -1,19 +1,19 @@
 export interface TransactionMessageModel {
-    TrxDate: string;
+  TrxDate: string;
   amount: string;
   countryCode: string;
   hpan: string;
   id: number;
   location: string;
   merchantType: string;
-  msg_ASCII: string;
-  msg_HEXA: string;
+  messageAscii: string;
+  messageHexa: string;
   mti: string;
   networkID: string;
-  postDataCode: string;
+  posDataCode: string;
   responseCode: string;
   rrn: string;
-  seqNumb: number;
+  sequenceNumber: number;
   transType: string;
   transactionId: string;
   trxDate: string;

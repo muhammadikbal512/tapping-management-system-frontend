@@ -60,6 +60,11 @@ export class FormsTransactionComponent implements OnInit {
       responseData.push({
         amount: x.amount,
         currencyCode: x.countryCode,
+        location: x.location,
+        messageAscii: x.messageAscii,
+        messageHexa: x.messageHexa,
+        posDataCode: x.posDataCode,
+        sequenceNumber: x.sequenceNumber,
         destAccount: '',
         HPAN: maskHPAN(x.hpan, '*', 6, 4),
         clearHPAN: x.hpan,

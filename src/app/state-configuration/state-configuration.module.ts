@@ -14,9 +14,9 @@ import { ISO8583FieldState } from './modules/external-interfaces/iso8583configur
 import { UserState } from './modules/user-management/user/user.state';
 import { RolesState } from './modules/user-management/roles/roles.state';
 import { ResponseMappingState } from './modules/external-interfaces/iso8583configuration/iso8583-response-mapping/response-mapping.state';
-import { AlertAnalysisState } from './modules/investigation/alert-analysis/alert-analysis.state';
 import { AcquirerAlertState } from './modules/acquirer/alert/acquirer-alert.state';
 import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-terminal.state';
+import { AlertInvestigationState } from './modules/investigation/alert-investigation/alert-investigation.state';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-term
       MessageFormatState,
       RolesState,
       ResponseMappingState,
-      AlertAnalysisState,
+      AlertInvestigationState,
       AcquirerAlertState,
       
     ])

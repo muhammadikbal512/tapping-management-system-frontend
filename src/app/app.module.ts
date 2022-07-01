@@ -146,6 +146,8 @@ import { TableInterfaceComponent } from './modules/module/dashboard/interface-li
 import { InterfaceListCardComponent } from './modules/module/dashboard/interface-list-card/interface-list-card.component';
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
 import { CardDeviceComponent } from './modules/module/device-monitoring/widgets/card-device/card-device.component';
+import { TransactionFlowComponent } from './modules/global-widget/transaction-flow/transaction-flow.component';
+import { TransactionFlowTableComponent } from './modules/module/transaction/widget-transaction/transaction-flow-table/transaction-flow-table.component';
 
 @NgModule({
   declarations: [
@@ -265,6 +267,8 @@ import { CardDeviceComponent } from './modules/module/device-monitoring/widgets/
     InterfaceListCardComponent,
     DeviceMonitoringComponent,
     CardDeviceComponent,
+    TransactionFlowComponent,
+    TransactionFlowTableComponent,
   ],
 
   imports: [

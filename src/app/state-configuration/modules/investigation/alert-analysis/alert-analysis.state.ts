@@ -13,8 +13,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AlertAnalysisModel } from 'src/app/model/modules-model/alert-analysis.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
-import { AlertAnalysisService } from 'src/app/modules/services/module-services/alert-analysis.service';
-import { AlertAnalysisTableService } from 'src/app/modules/services/module-services/alert-analysis-table.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 
 export class AlertAnalysisStateModel {
   AlertAnalysis: AlertAnalysisModel[] = [];
@@ -32,8 +32,8 @@ State<AlertAnalysisStateModel>({
 @Injectable()
 export class AlertAnalysisState {
   constructor(
-    private alertService: AlertAnalysisService,
-    private alertTableService: AlertAnalysisTableService
+    private alertService: AlertInvestigationService,
+    private alertTableService: AlertInvestigationTableService
   ) {}
 
   @Selector()

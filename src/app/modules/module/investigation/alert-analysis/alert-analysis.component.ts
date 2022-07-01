@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertAnalysisService } from 'src/app/modules/services/module-services/alert-analysis.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { GridApi, ColDef, GridReadyEvent } from 'ag-grid-community';
 
 @Component({
@@ -9,7 +9,7 @@ import { GridApi, ColDef, GridReadyEvent } from 'ag-grid-community';
 })
 export class AlertAnalysisComponent implements OnInit {
 
-  constructor(private alertService: AlertAnalysisService) { }
+  constructor(private alertService: AlertInvestigationService) { }
   public gridApi!: GridApi;
 
   public alertTable: ColDef[] = [
@@ -47,11 +47,6 @@ export class AlertAnalysisComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  showDialog() {
-    this.alertService.openDialog();
-  }
-  
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
