@@ -19,12 +19,13 @@ export class TransactionTableService {
   additionalData: TransactionMessageInterface | undefined;
   gridApi!: GridApi;
   gridColumnApi!: ColumnApi;
-  headerColHeight: number = 30;
+  animateRow: boolean = true;
+  headerHeight: number = 40;
+  rowHeight: number = 40;
   paginationSize = 5;
-  masterDetail: boolean = true;
-  overlayLoadingTemplate = 'overlayLoading';
+  overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
-    overlayLoading: OverlayLoadingComponent,
+    overlayLoading: OverlayLoadingComponent
   };
   defaultColDef: ColDef = {
     flex: 1,
@@ -50,19 +51,21 @@ export class TransactionTableService {
       headerClass: 'transaction-header-color',
     },
     {
-      field: 'MTI',
+      field: 'mti',
       sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
+      headerName: 'MTI'
     },
     {
-      field: 'HPAN',
+      field: 'hpan',
       sortable: true,
       minWidth: 180,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
       cellRenderer: 'medalCellRenderer',
+      headerName: 'HPAN'
     },
     {
       field: 'terminalId',
@@ -90,7 +93,7 @@ export class TransactionTableService {
       filter: true
     },
     {
-      field: 'currencyCode',
+      field: 'countryCode',
       sortable: true,
       minWidth: 150,
       maxWidth: 200,
@@ -133,11 +136,12 @@ export class TransactionTableService {
       filter: true
     },
     {
-      field: 'RRN',
+      field: 'rrn',
       sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
+      headerName: 'RRN'
     },
     {
       field: 'location',
@@ -175,11 +179,12 @@ export class TransactionTableService {
       headerClass: 'transaction-header-color',
     },
     {
-      field: 'srcAccount',
+      field: 'sourceAccount',
       sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
+      headerName: 'srcAccount'
     },
     {
       field: 'destAccount',
@@ -189,27 +194,6 @@ export class TransactionTableService {
       headerClass: 'transaction-header-color',
     },
   ];
-  columnLists: ColumnListTransactionInterface[] = [
-    { value: 'transactionDate', viewValue: 'Transaction Date' },
-    { value: 'networkDate', viewValue: 'Network Date' },
-    { value: 'networkDate', viewValue: 'Network Date' },
-    { value: 'MTI', viewValue: 'MTI' },
-    { value: 'HPAN', viewValue: 'HPAN' },
-    { value: 'terminalId', viewValue: 'Terminal Id' },
-    { value: 'merchantId', viewValue: 'Merchant Id' },
-    { value: 'merchantType', viewValue: 'Merchant Type' },
-    { value: 'currencyCode', viewValue: 'Currency Code' },
-    { value: 'amount', viewValue: 'Amount' },
-    { value: 'responseCode', viewValue: 'Response Code' },
-    { value: 'transactionId', viewValue: 'Transaction Id' },
-    { value: 'networkId', viewValue: 'Network Id' },
-    { value: 'RRN', viewValue: 'RRN' },
-    { value: 'srcAccount', viewValue: 'Src Account' },
-    { value: 'destAccount', viewValue: 'Dest Account' },
-  ];
-  sortColumnList = this.columnLists.sort((a, b) =>
-    a.value.localeCompare(b.value)
-  );
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();

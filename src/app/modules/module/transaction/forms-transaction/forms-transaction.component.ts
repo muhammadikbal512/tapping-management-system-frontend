@@ -24,31 +24,7 @@ export class FormsTransactionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.searchFilterForm = this.dataFb.group({
-      dateFrom: [null],
-      dateTo: [null],
-      MTI: [null],
-      HPAN: [null],
-      terminalId: [null],
-      merchantId: [null],
-      merchantType: [null],
-      currencyCode: [null],
-      amount: [null],
-      responseCode: [null],
-      transactionId: [null],
-      networkId: [null],
-      RRN: [null],
-      srcAccount: [null],
-      destAccount: [null],
-    });
-
-    this.columnOption = this.dataFb.group({
-      column: [this.columnOptionValue]
-    });
-
-    this.transactionTableService.columnLists.forEach(x => {
-      this.columnOptionValue.push(x.value);
-    })
+   
   }
 
   responseHandler(response: TransactionMessageModel[]) {
@@ -59,23 +35,23 @@ export class FormsTransactionComponent implements OnInit {
     response.forEach(x => {
       responseData.push({
         amount: x.amount,
-        currencyCode: x.countryCode,
+        countryCode: x.countryCode,
         location: x.location,
         messageAscii: x.messageAscii,
         messageHexa: x.messageHexa,
         posDataCode: x.posDataCode,
         sequenceNumber: x.sequenceNumber,
         destAccount: '',
-        HPAN: maskHPAN(x.hpan, '*', 6, 4),
+        hpan: maskHPAN(x.hpan, '*', 6, 4),
         clearHPAN: x.hpan,
         merchantId: x.merchantId,
         merchantType: x.merchantType,
-        MTI: x.mti,
+        mti: x.mti,
         networkDate: x.TrxDate,
         networkId: x.networkID,
         responseCode: x.responseCode,
-        RRN: x.rrn,
-        srcAccount: '',
+        rrn: x.rrn,
+        sourceAccount: '',
         terminalId: x.terminalId,
         transactionDate: x.TrxDate,
         transactionId: x.transactionId,
@@ -113,7 +89,7 @@ export class FormsTransactionComponent implements OnInit {
     if (this.searchFilterForm.controls['MTI'].value != null && this.searchFilterForm.controls['MTI'].value != '') {
       transactionMessageData = transactionMessageData.filter(
         value => {
-          return value.MTI == valueMTI
+          return value.mti == valueMTI
         }
       )
     }
@@ -153,7 +129,7 @@ export class FormsTransactionComponent implements OnInit {
     if (this.searchFilterForm.controls['currencyCode'].value != null && this.searchFilterForm.controls['currencyCode'].value != '') {
       transactionMessageData = transactionMessageData.filter(
         value => {
-          return value.currencyCode == valueCurrencyCode
+          return value.countryCode == valueCurrencyCode
         }
       )
     }
@@ -193,7 +169,7 @@ export class FormsTransactionComponent implements OnInit {
     if (this.searchFilterForm.controls['RRN'].value != null && this.searchFilterForm.controls['RRN'].value != '') {
       transactionMessageData = transactionMessageData.filter(
         value => {
-          return value.RRN == valueRRN
+          return value.rrn == valueRRN
         }
       )
     }
@@ -201,7 +177,7 @@ export class FormsTransactionComponent implements OnInit {
     if (this.searchFilterForm.controls['srcAccount'].value != null && this.searchFilterForm.controls['srcAccount'].value != '') {
       transactionMessageData = transactionMessageData.filter(
         value => {
-          return value.srcAccount == valueSrcAccount
+          return value.sourceAccount == valueSrcAccount
         }
       )
     }

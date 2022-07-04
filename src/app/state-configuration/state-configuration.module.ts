@@ -17,6 +17,7 @@ import { ResponseMappingState } from './modules/external-interfaces/iso8583confi
 import { AcquirerAlertState } from './modules/acquirer/alert/acquirer-alert.state';
 import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-terminal.state';
 import { AlertInvestigationState } from './modules/investigation/alert-investigation/alert-investigation.state';
+import { TransactionState } from './modules/transaction/transaction.state';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { AlertInvestigationState } from './modules/investigation/alert-investiga
       ResponseMappingState,
       AlertInvestigationState,
       AcquirerAlertState,
-      
+      TransactionState
     ])
   ],
 })

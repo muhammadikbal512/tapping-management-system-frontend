@@ -1,22 +1,22 @@
 export interface TransactionMessageInterface {
   amount: string;
-  currencyCode: string;
+  countryCode: string;
   location: string;
   messageAscii: string;
   messageHexa: string;
   posDataCode: string;
   sequenceNumber: number;
   destAccount: string;
-  HPAN: string;
+  hpan: string;
   clearHPAN: string;
   merchantId: string;
   merchantType: string;
-  MTI: string;
+  mti: string;
   networkDate: string;
   networkId: string;
   responseCode: string;
-  RRN: string;
-  srcAccount: string;
+  rrn: string;
+  sourceAccount: string;
   terminalId: string;
   transactionDate: string;
   transactionId: string;

@@ -11,17 +11,13 @@
   </div> -->
 
   <div class="container-grid mb-4 shadow-md sm:rounded-lg">
-    <div class="container-grid-header">
-      <button (click)="onExport()" type="button">
-        Export data as XLS
-      </button>
+    <div class="container-grid-header flex flex-row">
+      <p-button (click)="onExport()" label="Export data as XLS" icon="pi pi-file-excel"></p-button>
+      <p-button (click)="refreshTable()" class="ml-3" icon="pi pi-refresh">
+      </p-button>
     </div>
     <div class="p-4">
-      <app-table [headerColHeight]="transactionTableService.headerColHeight"
-        [paginationSize]="transactionTableService.paginationSize"
-        [defaultColDef]="transactionTableService.defaultColDef" [columnDefs]="transactionTableService.columnDefs">
-      </app-table>
-
+      <app-table></app-table>
       <div class="page-size-container">
         Page Size:
         <select (change)="onPageSizeChanged()" id="page-size">
@@ -55,11 +51,11 @@
               </div>
               <div class="summary-item">
                 <span>MTI</span>
-                <input [value]="this.transactionTableService.additionalData?.MTI" readonly>
+                <input [value]="this.transactionTableService.additionalData?.mti" readonly>
               </div>
               <div class="summary-item">
                 <span>HPAN</span>
-                <input [value]="this.transactionTableService.additionalData?.HPAN" readonly>
+                <input [value]="this.transactionTableService.additionalData?.hpan" readonly>
               </div>
               <div class="summary-item">
                 <span>Terminal Id</span>
@@ -74,8 +70,8 @@
                 <input [value]="this.transactionTableService.additionalData?.merchantType" readonly>
               </div>
               <div class="summary-item">
-                <span>Currency Code</span>
-                <input [value]="this.transactionTableService.additionalData?.currencyCode" readonly>
+                <span>Country Code</span>
+                <input [value]="this.transactionTableService.additionalData?.countryCode" readonly>
               </div>
               <div class="summary-item">
                 <span>Amount</span>
@@ -97,11 +93,11 @@
               </div>
               <div class="summary-item">
                 <span>RRN</span>
-                <input [value]="this.transactionTableService.additionalData?.RRN" readonly>
+                <input [value]="this.transactionTableService.additionalData?.rrn" readonly>
               </div>
               <div class="summary-item">
                 <span>Src Account</span>
-                <input [value]="this.transactionTableService.additionalData?.srcAccount" readonly>
+                <input [value]="this.transactionTableService.additionalData?.sourceAccount" readonly>
               </div>
               <div class="summary-item">
                 <span>Dest Account</span>
@@ -122,6 +118,10 @@
               <div class="summary-item">
                 <span>Sequence Number</span>
                 <input [value]="this.transactionTableService.additionalData?.sequenceNumber" readonly>
+              </div>
+              <div class="summary-item">
+                <span>Pos Data Code</span>
+                <input [value]="this.transactionTableService.additionalData?.posDataCode" readonly>
               </div>
             </div>
           </div>
