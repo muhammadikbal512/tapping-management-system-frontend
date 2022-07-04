@@ -43,13 +43,13 @@ export class ChannelDispatch {
     return new ChannelDelete(id);
   }
 
-  @Dispatch()
-  public _ChannelSuccessStateDispatch(message: CustomHttpResponseModel) {
-    return new ChannelTypeSuccessState(message);
-  }
+  // @Dispatch()
+  // public _ChannelSuccessStateDispatch(message: CustomHttpResponseModel) {
+  //   return new ChannelTypeSuccessState(message);
+  // }
 
-  @Dispatch()
-  public _ChannelErrorStateDispatch(message: CustomHttpResponseModel) {
-    return new ChannelTypeErrorState(message);
-  }
+  // @Dispatch()
+  // public _ChannelErrorStateDispatch(message: CustomHttpResponseModel) {
+  //   return new ChannelTypeErrorState(message);
+  // }
 }

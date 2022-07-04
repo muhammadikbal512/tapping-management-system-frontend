@@ -18,6 +18,7 @@ import { AcquirerAlertState } from './modules/acquirer/alert/acquirer-alert.stat
 import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-terminal.state';
 import { AlertInvestigationState } from './modules/investigation/alert-investigation/alert-investigation.state';
 import { TransactionState } from './modules/transaction/transaction.state';
+import { JsonConfigurationState } from './modules/external-interfaces/json-configuration/json-configuration.state';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TransactionState } from './modules/transaction/transaction.state';
       ResponseMappingState,
       AlertInvestigationState,
       AcquirerAlertState,
-      TransactionState
+      TransactionState,
+      JsonConfigurationState
     ])
   ],
 })
