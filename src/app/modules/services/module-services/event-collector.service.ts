@@ -46,23 +46,23 @@ export class EventCollectorService {
     this.eventCollectorDispatch._EventCollectorGetDispatch();
   }
 
-  onCreateEventCollector(data: EventCollectorModel) {
-    this.eventCollectorDispatch._EventCollectorAddDispatch(data);
-  }
+  // onCreateEventCollector(data: EventCollectorModel) {
+  //   this.eventCollectorDispatch._EventCollectorAddDispatch(data);
+  // }
 
-  onDeleteEventCollector() {
-    this.eventCollectorDispatch._EventCollectorDeleteDispatch(
-      this.existingData.id
-    );
-  }
+  // onDeleteEventCollector() {
+  //   this.eventCollectorDispatch._EventCollectorDeleteDispatch(
+  //     this.existingData.id
+  //   );
+  // }
 
-  onUpdateEventCollector(data: FormData) {
-    this.eventCollectorDispatch._EventCollectorUpdateDispatch(
-      this.existingData.id,
-      data,
-      this.existingData
-    );
-  }
+  // onUpdateEventCollector(data: FormData) {
+  //   this.eventCollectorDispatch._EventCollectorUpdateDispatch(
+  //     this.existingData.id,
+  //     data,
+  //     this.existingData
+  //   );
+  // }
 
   openDialog() {
     this.dialog.open(CreateDialogEventCollectorComponent, this.dialogConfig);

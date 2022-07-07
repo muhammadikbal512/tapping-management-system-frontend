@@ -14,8 +14,8 @@ import { ChannelState } from 'src/app/state-configuration/modules/channel-config
   styleUrls: ['./create-update-dialog.component.css'],
 })
 export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit {
-  @Select(ChannelState.channelType) 
-  channelTypes$!: Observable<ChannelTypeGroupInterface[]>
+  // @Select(ChannelState.channelType) 
+  // channelTypes$!: Observable<ChannelTypeGroupInterface[]>
   
   form!: FormGroup;
   showClear: boolean = false;

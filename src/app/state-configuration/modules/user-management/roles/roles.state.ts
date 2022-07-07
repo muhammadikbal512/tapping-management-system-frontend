@@ -16,35 +16,61 @@ import { tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
 
-
 export class RolesStateModel {
-    Roles: RolesModel[] = [];
-    responseMessage: CustomHttpResponseModel | undefined;
+  Roles: RolesModel[] = [];
+  responseMessage: CustomHttpResponseModel | undefined;
 }
 
 @State<RolesStateModel>({
-    name: 'roles',
-    defaults: {
-        Roles: [],
-        responseMessage: undefined
-    }
+  name: 'roles',
+  defaults: {
+    Roles: [],
+    responseMessage: undefined,
+  },
 })
 @Injectable()
 export class RolesState {
-    constructor(
-        private rolesService: RolesService,
-        private rolesTableService: RolesTableService
-    ) {}
+  constructor(
+    private rolesService: RolesService,
+    private rolesTableService: RolesTableService
+  ) {}
 
-    @Selector()
-    static Roles(state: RolesStateModel) {
-        return state.Roles;
-    }
+  @Selector()
+  static Roles(state: RolesStateModel) {
+    return state.Roles;
+  }
 
-    @Selector()
-    static ResponseMessage(state: RolesStateModel) {
-        return state.responseMessage;
-    }
+  @Selector()
+  static ResponseMessage(state: RolesStateModel) {
+    return state.responseMessage;
+  }
 
-    
+  @Action(RolesGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<RolesStateModel>
+  ) {}
+
+  @Action(RolesAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<RolesStateModel>,
+    { payload }: RolesAdd
+  ) {}
+
+  @Action(RolesDelete, { cancelUncompleted: true }) deleteDataFromState(
+    ctx: StateContext<RolesStateModel>,
+    { id }: RolesDelete
+  ) {}
+
+  @Action(RolesUpdate, { cancelUncompleted: true }) updateDataFromState(
+    ctx: StateContext<RolesStateModel>,
+    { id, payload, stateData }: RolesUpdate
+  ) {}
+
+  @Action(RolesSuccessState) ifStateSuccess(
+    ctx: StateContext<RolesStateModel>,
+    { successMessage }: RolesSuccessState
+  ) {}
+
+  @Action(RolesErrorState) ifStateError(
+    ctx: StateContext<RolesStateModel>,
+    { errorMessage }: RolesErrorState
+  ) {}
 }

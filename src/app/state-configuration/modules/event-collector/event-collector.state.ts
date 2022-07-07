@@ -1,73 +1,57 @@
 import {
-  EventCollectorAdd,
-  EventCollectorDelete,
-  EventCollectorErrorState,
   EventCollectorGet,
   EventCollectorSuccessState,
-  EventCollectorUpdate,
+  EventCollectorErrorState,
 } from './event-collector.action';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
-import { EventCollectorService } from 'src/app/modules/services/module-services/event-collector.service';
-import { EventCollectorTableService } from 'src/app/modules/services/module-services/event-collector-table.service';
-import { tap } from 'rxjs';
-import { catchError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
+import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { EventService } from 'ag-grid-community';
+import { EventCollectorTableService } from 'src/app/modules/services/module-services/event-collector-table.service';
 
 export class EventCollectorStateModel {
-  eventCollectors: EventCollectorModel[] = [];
+  EventCollectors: EventCollectorModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
 @State<EventCollectorStateModel>({
-  name: 'eventCollector',
+  name: 'EventCollector',
   defaults: {
-    eventCollectors: [],
+    EventCollectors: [],
     responseMessage: undefined,
   },
 })
 @Injectable()
 export class EventCollectorState {
   constructor(
-    private eventService: EventCollectorService,
+    private notifierService: NotificationService,
+    private eventService: EventService,
     private eventTableService: EventCollectorTableService
   ) {}
 
   @Selector()
-  static eventCollectors(state: EventCollectorStateModel) {
-      return state.eventCollectors;
+  static EventCollectors(state: EventCollectorStateModel) {
+    return state.EventCollectors;
   }
 
   @Selector()
   static responseMessage(state: EventCollectorStateModel) {
-      return state.responseMessage
+    return state.responseMessage;
   }
 
-  @Action(EventCollectorGet, {cancelUncompleted: true})getDataFromState(ctx: StateContext<EventCollectorStateModel>){
+  @Action(EventCollectorGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<EventCollectorStateModel>
+  ) {}
 
-  }
+  @Action(EventCollectorSuccessState) ifStateSuccess(
+    ctx: StateContext<EventCollectorStateModel>,
+    { successMessage }: EventCollectorSuccessState
+  ) {}
 
-  @Action(EventCollectorAdd, {cancelUncompleted: true})addDataFromState(ctx: StateContext<EventCollectorStateModel>, {payload}: EventCollectorAdd) {
-
-  }
-
-  @Action(EventCollectorDelete, {cancelUncompleted: true})deleteDataFromState(ctx: StateContext<EventCollectorStateModel>, {id}: EventCollectorDelete){
-
-  }
-
-  @Action(EventCollectorUpdate, {cancelUncompleted: true})updateDataFromState(ctx: StateContext<EventCollectorStateModel>, {id, payload, stateData}: EventCollectorUpdate) {
-
-  }
-
-  @Action(EventCollectorSuccessState)ifStateSuccess(ctx: StateContext<EventCollectorStateModel>, {successMessage}: EventCollectorSuccessState) {
-
-  }
-
-  @Action(EventCollectorErrorState)ifStateError(ctx: StateContext<EventCollectorStateModel>, {errorMessage}: EventCollectorErrorState) {
-      
-  }
-
-
+  @Action(EventCollectorErrorState) ifStateError(
+    ctx: StateContext<EventCollectorErrorState>,
+    { errorMessage }: EventCollectorErrorState
+  ) {}
 }
