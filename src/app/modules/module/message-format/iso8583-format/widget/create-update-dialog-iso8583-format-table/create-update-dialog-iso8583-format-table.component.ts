@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  AfterViewInit,
+} from '@angular/core';
 import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Iso8583FormatModel } from 'src/app/model/modules-model/iso8583-format.model';
@@ -8,7 +13,9 @@ import { Iso8583FormatModel } from 'src/app/model/modules-model/iso8583-format.m
   templateUrl: './create-update-dialog-iso8583-format-table.component.html',
   styleUrls: ['./create-update-dialog-iso8583-format-table.component.css'],
 })
-export class CreateUpdateDialogIso8583FormatTableComponent implements OnInit, AfterViewInit {
+export class CreateUpdateDialogIso8583FormatTableComponent
+  implements OnInit, AfterViewInit
+{
   form!: FormGroup;
   iso8583FormatModel: Iso8583FormatModel = new Iso8583FormatModel();
   disableButton: boolean = false;
@@ -35,7 +42,7 @@ export class CreateUpdateDialogIso8583FormatTableComponent implements OnInit, Af
   private createFormat() {
     this.form = this.fb.group({
       messageFormat: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
     });
   }
 
@@ -44,19 +51,21 @@ export class CreateUpdateDialogIso8583FormatTableComponent implements OnInit, Af
   }
 
   onCheckingFormHasChange() {
-    this.form.valueChanges.subscribe(value => {
+    this.form.valueChanges.subscribe((value) => {
       if (
-        this.existingMessageFormat != value.messageFormat || this.existingDescription != value.description
+        this.existingMessageFormat != value.messageFormat ||
+        this.existingDescription != value.description
       ) {
         this.disableButton = false;
       }
 
       if (
-        this.existingMessageFormat == value.messageFormat && this.existingDescription == value.description
+        this.existingMessageFormat == value.messageFormat &&
+        this.existingDescription == value.description
       ) {
         this.disableButton = true;
       }
-    })
+    });
   }
 
   setExistingDataToDialog() {
@@ -75,7 +84,10 @@ export class CreateUpdateDialogIso8583FormatTableComponent implements OnInit, Af
   }
 
   onUpdateIso8583Format() {
-    const newData = this.iso8583FormatService.createIso8583FormatFormData(this.existingMessageFormat, this.setNewDataToModel());
+    const newData = this.iso8583FormatService.createIso8583FormatFormData(
+      this.existingMessageFormat,
+      this.setNewDataToModel()
+    );
     this.iso8583FormatService.onUpdateIso8583Format(newData);
   }
 

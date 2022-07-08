@@ -66,7 +66,7 @@ import { ChannelTypeTableComponent } from './modules/module/channel-configuratio
 import { ActionButtonGroupChannelTypeComponent } from './modules/module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
 import { Iso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component';
 import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component';
-import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
+
 import { Iso8583DialectTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/iso8583-dialect-table/iso8583-dialect-table.component';
 import { CreateUpdateIso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
 import { ActionButtonGroupIso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
@@ -104,9 +104,8 @@ import { CreateDialogAcquirerComponent } from './modules/module/acquirer/alert/w
 import { ActionButtonAcquirerAlertComponent } from './modules/module/acquirer/alert/widget/action-button-acquirer-alert/action-button-acquirer-alert.component';
 import { TerminalListAcquirerTableComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-table/terminal-list-acquirer-table.component';
 import { TerminalListAcquirerActionButtonComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-action-button/terminal-list-acquirer-action-button.component';
-import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
-import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
-import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
+
+
 import { UserCreateDialogComponent } from './modules/module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
 import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 import { EventCollectorTableComponent } from './modules/module/event-collector/widget/event-collector-table/event-collector-table.component';
@@ -148,6 +147,11 @@ import { DeviceMonitoringComponent } from './modules/module/device-monitoring/de
 import { CardDeviceComponent } from './modules/module/device-monitoring/widgets/card-device/card-device.component';
 import { TransactionFlowComponent } from './modules/global-widget/transaction-flow/transaction-flow.component';
 import { TransactionFlowTableComponent } from './modules/module/transaction/widget-transaction/transaction-flow-table/transaction-flow-table.component';
+import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
+import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
+import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
+import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
+
 
 @NgModule({
   declarations: [
@@ -192,7 +196,7 @@ import { TransactionFlowTableComponent } from './modules/module/transaction/widg
     ActionButtonGroupChannelTypeComponent,
     Iso8583DialectComponent,
     Iso8583FieldConfigurationComponent,
-    Iso8583ResponseMappingComponent,
+
     Iso8583DialectTableComponent,
     CreateUpdateIso8583DialectComponent,
     ActionButtonGroupIso8583DialectComponent,
@@ -225,9 +229,7 @@ import { TransactionFlowTableComponent } from './modules/module/transaction/widg
     ActionButtonAcquirerAlertComponent,
     TerminalListAcquirerTableComponent,
     TerminalListAcquirerActionButtonComponent,
-    Iso8583ResponseMappingTableComponent,
-    Iso8583ResponseMappingActionButtonComponent,
-    Iso8583ResponseMappingCreateDialogComponent,
+
     UserCreateDialogComponent,
     EventCollectorComponent,
     EventCollectorTableComponent,
@@ -269,6 +271,11 @@ import { TransactionFlowTableComponent } from './modules/module/transaction/widg
     CardDeviceComponent,
     TransactionFlowComponent,
     TransactionFlowTableComponent,
+    Iso8583ResponseMappingComponent,
+    Iso8583ResponseMappingCreateDialogComponent,
+    Iso8583ResponseMappingActionButtonComponent,
+    Iso8583ResponseMappingTableComponent,
+    
   ],
 
   imports: [

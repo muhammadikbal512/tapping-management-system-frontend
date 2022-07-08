@@ -1,5 +1,5 @@
 import { CustomHttpResponseModel } from "src/app/model/customHttpResponse-Model/custom-http-response.model";
-import { Iso8583FieldModel } from "src/app/model/modules-model/iso8583-field.model";
+import { IsoFieldConfigurationModel } from "src/app/model/modules-model/iso-field-configuration.model";
 
 
 export class Iso8583FieldGet {
@@ -16,12 +16,12 @@ export class Iso8583FieldGetAttribute {
 
 export class Iso8583FieldAdd {
     static readonly type = '[ISO8583-Field] Add'
-    constructor(public payload: Iso8583FieldModel) {}
+    constructor(public payload: IsoFieldConfigurationModel) {}
 }
 
 export class Iso8583FieldUpdate {
     static readonly type = '[ISO8583-Field] Update'
-    constructor(public id: number, public payload: FormData, public stateData: Iso8583FieldModel) {}
+    constructor(public id: number, public payload: FormData, public stateData: IsoFieldConfigurationModel) {}
 }
 
 export class Iso8583FieldDelete {

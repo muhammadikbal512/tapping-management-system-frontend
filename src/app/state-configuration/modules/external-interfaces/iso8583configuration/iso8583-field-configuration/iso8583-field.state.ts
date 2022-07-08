@@ -1,9 +1,7 @@
-import { Iso8583FieldModel } from 'src/app/model/modules-model/iso8583-field.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { Iso8583DialectService } from 'src/app/modules/services/module-services/iso8583-dialect.service';
 import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
 import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/iso-field-configuration-table.service';
 import {
@@ -19,18 +17,19 @@ import { tap } from 'rxjs';
 import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-template-group';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DialectStateModel } from '../iso8583-dialect/dialect.state';
+import { IsoFieldConfigurationModel } from 'src/app/model/modules-model/iso-field-configuration.model';
+import { Iso8583DialectService } from 'src/app/modules/services/module-services/iso8583-dialect.service';
 
-export class Iso8583FieldStateModel {
-  iso8583Fields: Iso8583FieldModel[] = [];
+export class IsoFieldConfigurationStateModel {
+  iso8583FieldConfiguration: IsoFieldConfigurationModel[] = [];
   dialects: DialectMsgTemplateGroup[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
-@State<Iso8583FieldStateModel>({
-  name: 'iso8583FieldState',
+@State<IsoFieldConfigurationStateModel>({
+  name: 'iso8583FieldConfigurationState',
   defaults: {
-    iso8583Fields: [],
+    iso8583FieldConfiguration: [],
     dialects: [],
     responseMessage: undefined,
   },
@@ -39,27 +38,28 @@ export class Iso8583FieldStateModel {
 export class ISO8583FieldState {
   constructor(
     private notifierService: NotificationService,
+    private dialectService: Iso8583DialectService,
     private iso8583FieldService: IsoFieldConfigurationService,
     private iso8583FieldTableService: IsoFieldConfigurationTableService
   ) {}
 
   @Selector()
-  static ISO8583Fields(state: Iso8583FieldStateModel) {
-    return state.iso8583Fields;
+  static ISO8583Fields(state: IsoFieldConfigurationStateModel) {
+    return state.iso8583FieldConfiguration;
   }
 
   @Selector()
-  static dialects(state: Iso8583FieldStateModel) {
+  static dialects(state: IsoFieldConfigurationStateModel) {
     return state.dialects;
   }
 
   @Selector()
-  static responseMessage(state: Iso8583FieldStateModel) {
+  static responseMessage(state: IsoFieldConfigurationStateModel) {
     return state.responseMessage;
   }
 
   @Action(Iso8583FieldGet, { cancelUncompleted: true }) getDataFromState(
-    ctx: StateContext<Iso8583FieldStateModel>
+    ctx: StateContext<IsoFieldConfigurationStateModel>
   ) {
     return this.iso8583FieldService.getAllIsoFieldConfiguration().pipe(
       tap((response) => {
@@ -73,7 +73,7 @@ export class ISO8583FieldState {
         }
         ctx.setState({
           ...ctx.getState(),
-          iso8583Fields: response,
+          iso8583FieldConfiguration: response,
         });
       }),
       catchError((response: HttpErrorResponse) => {
@@ -82,19 +82,45 @@ export class ISO8583FieldState {
     );
   }
 
-  @Action(Iso8583FieldDelete, {cancelUncompleted: true})deleteDataFromState(ctx: StateContext<Iso8583FieldStateModel>, {id}: Iso8583FieldDelete) {
-    return this.iso8583FieldService.deleteIsoFieldConfiguration(id).pipe(tap(response => {
-      ctx.dispatch(new Iso8583FieldSuccessState(response));
+  @Action(Iso8583FieldGetDialect, { cancelUncompleted: true })
+  getAdditionalDataFromState(ctx: StateContext<IsoFieldConfigurationStateModel>) {
+    return this.dialectService.getAllIso8583Dialect().pipe(tap(response => {
+      let dialectParseList: DialectMsgTemplateGroup[] = [];
+      response.forEach(x => {
+        dialectParseList.push({
+          name: x.nameType,
+          code: String(x.templateId)
+        })
+      })
+
       ctx.setState({
         ...ctx.getState(),
-        responseMessage: response,
-      });
-    }))
+        dialects: dialectParseList
+      })
+    }), catchError((response: HttpErrorResponse) => {
+      return ctx.dispatch(new Iso8583FieldErrorState(response.error));
+    })
+    )
+  }
+
+  @Action(Iso8583FieldDelete, { cancelUncompleted: true }) deleteDataFromState(
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
+    { id }: Iso8583FieldDelete
+  ) {
+    return this.iso8583FieldService.deleteIsoFieldConfiguration(id).pipe(
+      tap((response) => {
+        ctx.dispatch(new Iso8583FieldSuccessState(response));
+        ctx.setState({
+          ...ctx.getState(),
+          responseMessage: response,
+        });
+      })
+    );
   }
 
   @Action(Iso8583FieldSuccessState)
   ifStateSuccess(
-    ctx: StateContext<Iso8583FieldStateModel>,
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
     { successMessage }: Iso8583FieldSuccessState
   ) {
     if (this.iso8583FieldService.getCurrentStatusDialog().length != 0) {
@@ -112,7 +138,7 @@ export class ISO8583FieldState {
 
   @Action(Iso8583FieldErrorState)
   ifStateIsError(
-    ctx: StateContext<Iso8583FieldStateModel>,
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
     { errorMessage }: Iso8583FieldErrorState
   ) {
     this.notifierService.errorNotification(

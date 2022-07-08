@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
+import { MatDialog } from '@angular/material/dialog';
 import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
 
 @Component({
   selector: 'app-iso8583-response-mapping',
@@ -10,20 +11,21 @@ import { ResponseMappingTableService } from 'src/app/modules/services/module-ser
 export class Iso8583ResponseMappingComponent implements OnInit {
   constructor(
     private responseService: ResponseMappingService,
-    private responseTableService: ResponseMappingTableService
+    private responseTableService: ResponseMappingTableService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
 
   onFilterTextBoxChange() {
-    this.responseTableService.onFilter('search-filter')
+    this.responseTableService.onFilter('search-filter');
   }
 
   refreshTable() {
     this.responseService.getResponseMappingWithDelay();
   }
 
-  showDialog() {
+  openDialog() {
     this.responseService.buttonStatus = 'create';
     this.responseService.openDialog();
   }

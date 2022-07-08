@@ -3,9 +3,10 @@
         <div class="field">
             <label class="required-icon">Dialect</label>
             <div style="width: 100%">
-                <p-dropdown [filter]="true" [options]="dialect" appendTo="body" filterBy="name"
-                placeholder="Select Message Format" optionLabel="nameType" [showClear]="showClearButton"
-                styleClass="msgFormat" (onChange)="onChange($event)" formControlName="msgFormatId"></p-dropdown>
+                <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
+                filterBy="name" placeholder="Select Message Template"
+                optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
+                formControlName="dialectId"></p-dropdown>
             </div>
         </div>
         <div class="field-iso mt-4 mb-4">
@@ -23,7 +24,7 @@
                     <mat-form-field appearance="outline" style="margin-right: 20px;">
                         <mat-label>Attribute</mat-label>
                         <input formControlName="attributeId" name="fieldId" matInput>
-                        
+
                     </mat-form-field>
 
 
@@ -58,15 +59,18 @@
                     </div> -->
 
                 </mat-expansion-panel>
-                
+
             </mat-accordion>
-           
+
         </div>
         <div class="text-center">
             <mat-dialog-actions align="end">
-                <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
-                <p-button (onClick)="onCreateIsoField()"
-                     class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
+                <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm">
+                </p-button>
+                <p-button (onClick)="onCreateIsoField()" *ngIf="isoFieldConfigurationService.buttonStatus == 'create'"
+                    [disabled]="form.invalid" class="create-button" label="Create" styleClass="p-button-sm"></p-button>
+                <p-button (onClick)="onUpdateIsoField()" *ngIf="isoFieldConfigurationService.buttonStatus == 'edit'"
+                    [disabled]="disableButton" class="create-button" label="Save" styleClass="p-button-sm"></p-button>
             </mat-dialog-actions>
         </div>
     </form>

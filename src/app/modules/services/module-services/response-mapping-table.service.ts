@@ -12,7 +12,7 @@ export class ResponseMappingTableService {
   animateRow: boolean = true;
   rowHeight: number = 40;
   headerHeight: number = 40;
-  overlayLoadingTemplate: string = 'loading';
+  overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: Iso8583ResponseMappingActionButtonComponent,
     overlayLoading: OverlayLoadingComponent,

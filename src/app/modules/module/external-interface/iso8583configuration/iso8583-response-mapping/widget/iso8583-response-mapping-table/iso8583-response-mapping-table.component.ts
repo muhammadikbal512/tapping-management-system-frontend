@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
-import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
 
 @Component({
   selector: 'app-iso8583-response-mapping-table',
@@ -10,39 +10,39 @@ import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 })
 export class Iso8583ResponseMappingTableComponent implements OnInit {
   constructor(
-    private responseService: ResponseMappingService,
-    private responseTableService: ResponseMappingTableService
+    private responseTableService: ResponseMappingTableService,
+    private responseService: ResponseMappingService
   ) {}
 
   ngOnInit(): void {}
 
-
   onGridReady(params: GridReadyEvent) {
-
+    this.responseTableService.gridApi = params.api;
+    this.responseTableService.gridColumnApi = params.columnApi;
   }
 
-  onCellClicked(params: RowClickedEvent) {
-    
+  onCellClicked(data: RowClickedEvent) {
+    this.responseService.ExistingData = data.data;
   }
 
   get animateRow() {
     return this.responseTableService.animateRow;
   }
 
-  get headerHeight() {
-    return this.responseTableService.headerHeight;
-  }
-
   get rowHeight() {
     return this.responseTableService.rowHeight;
   }
 
-  get columnDefs() {
-    return this.responseTableService.columnDef;
+  get headerHeight() {
+    return this.responseTableService.headerHeight;
   }
 
   get defaultColDef() {
     return this.responseTableService.defaultColDef;
+  }
+
+  get columnDef() {
+    return this.responseTableService.columnDef;
   }
 
   get overlayLoadingTemplate() {

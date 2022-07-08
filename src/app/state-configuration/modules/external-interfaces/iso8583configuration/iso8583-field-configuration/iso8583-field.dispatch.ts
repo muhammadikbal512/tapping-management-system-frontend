@@ -1,4 +1,3 @@
-import { Iso8583FieldModel } from 'src/app/model/modules-model/iso8583-field.model';
 import {
   Iso8583FieldGet,
   Iso8583FieldGetDialect,
@@ -12,10 +11,11 @@ import {
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { IsoFieldConfigurationModel } from 'src/app/model/modules-model/iso-field-configuration.model';
 
 @Injectable({
-    providedIn: 'root'
-})
+    providedIn: 'root',
+  })
 export class Iso8583FieldDispatch {
     
     @Dispatch()
@@ -34,12 +34,12 @@ export class Iso8583FieldDispatch {
     }
 
     @Dispatch()
-    public _Iso8583FieldAddDispatch(payload: Iso8583FieldModel) {
+    public _Iso8583FieldAddDispatch(payload: IsoFieldConfigurationModel) {
         return new Iso8583FieldAdd(payload);
     }
 
     @Dispatch()
-    public _Iso8583FieldUpdateDispatch(id: number, payload: FormData, stateData: Iso8583FieldModel) {
+    public _Iso8583FieldUpdateDispatch(id: number, payload: FormData, stateData: IsoFieldConfigurationModel) {
         return new Iso8583FieldUpdate(id, payload, stateData)
     }
 
