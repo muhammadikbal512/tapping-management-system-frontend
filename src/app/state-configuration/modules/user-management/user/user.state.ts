@@ -10,7 +10,7 @@ import {
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
 import { UserModel } from 'src/app/model/user-model/user.model';
-import { Action, Select, State, StateContext, Selector } from '@ngxs/store';
+import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { tap } from 'rxjs';

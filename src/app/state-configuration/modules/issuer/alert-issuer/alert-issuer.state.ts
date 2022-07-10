@@ -37,13 +37,34 @@ export class AlertIssuerState {
 
   @Selector()
   static AlertIssuers(state: AlertIssuerStateModel) {
-      return state.AlertIssuers;
+    return state.AlertIssuers;
   }
 
   @Selector()
   static responseMessage(state: AlertIssuerStateModel) {
-      return state.responseMessage
+    return state.responseMessage;
   }
+
+  @Action(AlertIssuerGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<AlertIssuerStateModel>
+  ) {}
+
+  @Action(AlertIssuerAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<AlertIssuerStateModel>
+  ) {}
+
+  @Action(AlertIssuerDelete, { cancelUncompleted: true }) deleteDataFromState(
+    ctx: StateContext<AlertIssuerStateModel>
+  ) {}
+
+  @Action(AlertIssuerUpdate, { cancelUncompleted: true }) updateDataFromState(
+    ctx: StateContext<AlertIssuerStateModel>
+  ) {}
+
+  @Action(AlertIssuerSuccessState) ifStateSuccess(
+    ctx: StateContext<AlertIssuerStateModel>,
+    { successMessage }: AlertIssuerSuccessState
+  ) {}
+
+  @Action(AlertIssuerErrorState) ifStateError(ctx: StateContext<AlertIssuerStateModel>, {errorMessage}: AlertIssuerErrorState) {}
 }
-
-

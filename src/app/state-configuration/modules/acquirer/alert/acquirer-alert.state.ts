@@ -37,13 +37,37 @@ export class AcquirerAlertState {
 
   @Selector()
   public _AcquirerAlerts(state: AcquirerAlertStateModel) {
-      return state.AcquirerAlerts;
+    return state.AcquirerAlerts;
   }
 
   @Selector()
   public _responseMessage(state: AcquirerAlertStateModel) {
-      return state.responseMessage;
+    return state.responseMessage;
   }
 
-  
+  @Action(AcquirerAlertGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<AcquirerAlertStateModel>
+  ) {}
+
+  @Action(AcquirerAlertAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<AcquirerAlertStateModel>
+  ) {}
+
+  @Action(AcquirerAlertDelete, { cancelUncompleted: true }) deleteDataFromState(
+    ctx: StateContext<AcquirerAlertStateModel>
+  ) {}
+
+  @Action(AcquirerAlertUpdate, { cancelUncompleted: true }) updateDataFromState(
+    ctx: StateContext<AcquirerAlertStateModel>
+  ) {}
+
+  @Action(AcquirerAlertSuccessState) ifStateSuccess(
+    ctx: StateContext<AcquirerAlertStateModel>,
+    { successMessage }: AcquirerAlertSuccessState
+  ) {}
+
+  @Action(AcquirerAlertErrorState) ifStateError(
+    ctx: StateContext<AcquirerAlertStateModel>,
+    { errorMessage }: AcquirerAlertErrorState
+  ) {}
 }

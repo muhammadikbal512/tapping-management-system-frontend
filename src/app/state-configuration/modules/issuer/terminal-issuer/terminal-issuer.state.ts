@@ -42,6 +42,27 @@ export class TerminalIssuerState {
 
   @Selector()
   static responseMessage(state: TerminalIssuerStateModel) {
-      return state.responseMessage;
+    return state.responseMessage;
   }
+
+  @Action(TerminalIssuerGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<TerminalIssuerStateModel>
+  ) {}
+
+  @Action(TerminalIssuerAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<TerminalIssuerStateModel>
+  ) {}
+
+  @Action(TerminalIssuerDelete, { cancelUncompleted: true })
+  deleteDataFromState(ctx: StateContext<TerminalIssuerStateModel>) {}
+
+  @Action(TerminalIssuerUpdate, { cancelUncompleted: true })
+  updateDataFromState(ctx: StateContext<TerminalIssuerUpdate>) {}
+
+  @Action(TerminalIssuerSuccessState) ifStateSuccess(
+    ctx: StateContext<TerminalIssuerStateModel>,
+    { successMessage }: TerminalIssuerSuccessState
+  ) {}
+
+  @Action(TerminalIssuerErrorState)ifStateError(ctx: StateContext<TerminalIssuerStateModel>, {errorMessage}: TerminalIssuerErrorState){}
 }

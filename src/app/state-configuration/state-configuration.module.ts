@@ -32,9 +32,9 @@ import { JsonConfigurationState } from './modules/external-interfaces/json-confi
     NgxsModule.forRoot([
       ChannelState,
       ChannelTypeState,
+      ISO8583FieldState,
       DialectState,
       TransactionParametersState,
-      ISO8583FieldState,
       UserState,
       MessageFormatState,
       RolesState,
