@@ -26,7 +26,6 @@
         <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
         <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should be
             fill.</small>
-        <small *ngIf="description.touched && !description.hasError('pattern')">Description format is invalid !</small>
     </div>
     <div class="text-center">
         <mat-dialog-actions>

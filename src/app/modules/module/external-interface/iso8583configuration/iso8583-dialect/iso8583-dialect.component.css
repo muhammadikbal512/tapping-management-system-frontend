@@ -47,12 +47,3 @@
   text-gray-700 leading-[0] text-[14px]
   focus:outline-none focus:border-[#3f51b5]
 }
-
-.create-button {
-  background-color: #6875f5;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-}
