@@ -30,7 +30,7 @@ export class TransactionTableService {
   defaultColDef: ColDef = {
     flex: 1,
     maxWidth: 110,
-    editable: false,
+    editable: true,
     resizable: true,
     filter: true
   };
@@ -194,6 +194,76 @@ export class TransactionTableService {
       headerClass: 'transaction-header-color',
     },
   ];
+
+  rowData = [
+    {
+      transactionDate: '',
+      networkDate: '',
+      mti: '112',
+      hpan: '221',
+      terminalId: 1,
+      merchantId: 1,
+      merchantType: 'BCA',
+      countryCode: 1,
+      amount: '100.000',
+      responseCode: '06',
+      transactionId: 1,
+      networkId: 1,
+      rrn: 1234,
+      location: 'indonesia',
+      messageAscii: 'aaasdd',
+      messageHexa: 'aasddq',
+      posDataCode: 123,
+      sequenceNumber: 443,
+      sourceAccount: '192.168.1.7:8809',
+      destAccount: '192.168.42.3:6767'
+    },
+
+    {
+      transactionDate: '',
+      networkDate: '',
+      mti: '113',
+      hpan: '224',
+      terminalId: 2,
+      merchantId: 2,
+      merchantType: 'BTN',
+      countryCode: 1,
+      amount: '300.000',
+      responseCode: '00',
+      transactionId: 1,
+      networkId: 1,
+      rrn: 1234,
+      location: 'indonesia',
+      messageAscii: 'aaa112sdd',
+      messageHexa: '3321aa',
+      posDataCode: 112,
+      sequenceNumber: 223,
+      sourceAccount: '192.168.4.48:8809',
+      destAccount: '192.168.42.3:6767'
+    },
+    {
+      transactionDate: '',
+      networkDate: '',
+      mti: '113',
+      hpan: '224',
+      terminalId: 3,
+      merchantId: 3,
+      merchantType: 'Mandiri',
+      countryCode: 1,
+      amount: '500.000',
+      responseCode: '09',
+      transactionId: 3,
+      networkId: 3,
+      rrn: 4332,
+      location: 'indonesia',
+      messageAscii: 'aaa112sdd',
+      messageHexa: '3321aa',
+      posDataCode: 115,
+      sequenceNumber: 443,
+      sourceAccount: '192.168.6.18:8809',
+      destAccount: '192.168.42.3:6767'
+    }
+  ]
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();

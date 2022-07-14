@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertAnalysisTableService } from 'src/app/modules/services/module-services/alert-analysis-table.service';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 
 @Component({
   selector: 'app-alert-analysis-table',
@@ -9,7 +9,7 @@ import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 })
 export class AlertAnalysisTableComponent implements OnInit {
 
-  constructor(private alertTable: AlertAnalysisTableService) { }
+  constructor(private alertTable: AlertInvestigationTableService) { }
 
   ngOnInit(): void {
   }
@@ -48,6 +48,10 @@ export class AlertAnalysisTableComponent implements OnInit {
 
   get frameworkComponents() {
     return this.alertTable.frameworkComponents;
+  }
+
+  get rowData() {
+    return this.alertTable.rowData;
   }
 
 }

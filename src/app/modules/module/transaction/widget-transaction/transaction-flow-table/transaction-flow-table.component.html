@@ -1,8 +1,8 @@
 <div class="p-4">
-    <ag-grid-angular style="height: 500px; margin-bottom: 20px;" class="ag-theme-alpine" [rowData]="rowData" [columnDefs]="columnDefs"
-        [frameworkComponents]="frameworkComponents" [overlayLoadingTemplate]="overlayLoadingTemplate"
-        [animateRows]="animateRow" [defaultColDef]="defaultColDef" [headerHeight]="headerHeight"
-        [rowHeight]="rowHeight">
+    <ag-grid-angular style="height: 500px; margin-bottom: 20px;" class="ag-theme-alpine" [rowData]="rowData"
+        [columnDefs]="columnDefs" [frameworkComponents]="frameworkComponents"
+        [rowClassRules]="rowClassRules" [animateRows]="animateRow"
+        [overlayLoadingTemplate]="overlayLoadingTemplate" [defaultColDef]="defaultColDef">
     </ag-grid-angular>
     <p-button style="padding-left:50%;" label="View Details"></p-button>
 </div>

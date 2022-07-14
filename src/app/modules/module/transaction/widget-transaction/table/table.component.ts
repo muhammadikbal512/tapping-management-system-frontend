@@ -8,7 +8,7 @@ import {
 import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TableComponent implements OnInit, AfterViewInit {
   constructor(
     private transactionTableService: TransactionTableService,
     private transactionApiService: TransactionService,
@@ -42,9 +42,16 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {}
 
-  ngOnDestroy(): void {
-    this.transactionTableService.destroyGrid();
-  }
+  
+
+  public rowClassRules: RowClassRules = {
+    // row style function
+    'ag-bg-red': (params) => {
+      return params.data.responseCode === '06'
+    },
+    // row style expression
+    'ag-bg-yellow': 'data.responseCode === "09"',
+  };
 
   get animateRow() {
     return this.transactionTableService.animateRow;
@@ -76,6 +83,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   get paginationSize() {
     return this.transactionTableService.paginationSize;
+  }
+
+  get rowData() {
+    return this.transactionTableService.rowData;
   }
 }
 

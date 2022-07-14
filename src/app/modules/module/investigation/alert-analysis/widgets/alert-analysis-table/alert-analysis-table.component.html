@@ -3,5 +3,5 @@
         enableCellTextSelection suppressDragLeaveHidesColumns [animateRows]="animateRow" [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight"
         [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
-        (gridReady)="onGridReady($event)" [pagination]="true" (rowClicked)="onCellClicked($event)"></ag-grid-angular>
+        [rowData]="rowData" [pagination]="true" (rowClicked)="onCellClicked($event)"></ag-grid-angular>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { GridApi, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 
 @Component({
   selector: 'app-alert-analysis',
@@ -9,7 +9,7 @@ import { GridApi, ColDef, GridReadyEvent } from 'ag-grid-community';
 })
 export class AlertAnalysisComponent implements OnInit {
 
-  constructor(private alertService: AlertInvestigationService) { }
+  constructor(private alertTableService: AlertInvestigationTableService) { }
   public gridApi!: GridApi;
 
   public alertTable: ColDef[] = [
@@ -50,6 +50,10 @@ export class AlertAnalysisComponent implements OnInit {
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
+  }
+
+  searchFilter() {
+    this.alertTableService.onFilter('search-filter')
   }
 
 }
