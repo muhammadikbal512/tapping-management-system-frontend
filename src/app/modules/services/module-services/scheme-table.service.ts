@@ -4,30 +4,36 @@ import { ActionButtonSchemeComponent } from '../../module/user-management/privat
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SchemeTableService {
   gridApi!: GridApi;
   gridColumnApi!: ColumnApi;
   animateRow: boolean = true;
   rowHeight: number = 40;
-  headerHeight:number = 40;
+  headerHeight: number = 40;
   overlayLoadingTemplate = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonSchemeComponent,
-    overlayLoading: OverlayLoadingComponent
+    overlayLoading: OverlayLoadingComponent,
   };
   defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
-    lockPosition: true
+    lockPosition: true,
   };
   columnDefs: ColDef[] = [
-    {field: 'id', hide: true},
-    {field: 'name'},
-    {field: 'description'}
+    { field: 'id', hide: true },
+    { field: 'name' },
+    { field: 'description' },
   ];
-  constructor() { }
+  constructor() {}
+
+  onFilter(searchInputClass: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement).value
+    );
+  }
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();
@@ -49,11 +55,11 @@ export class SchemeTableService {
     this.gridApi.showNoRowsOverlay();
   }
 
-  set GridApi (params: GridReadyEvent) {
+  set GridApi(params: GridReadyEvent) {
     this.gridApi = params.api;
   }
 
-  set GridColumnApi (params: GridReadyEvent) {
-    this.gridColumnApi = params.columnApi
+  set GridColumnApi(params: GridReadyEvent) {
+    this.gridColumnApi = params.columnApi;
   }
 }

@@ -16,7 +16,7 @@ export class RolesComponent implements OnInit {
   ngOnInit(): void {}
 
   onFilterTextBoxChange() {
-    
+    this.roleTableService.onFilter('search-input')
   }
 
   refreshTable() {

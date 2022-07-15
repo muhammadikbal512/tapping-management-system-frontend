@@ -4,7 +4,7 @@ import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/ove
 import { ActionButtonRolesComponent } from '../../module/user-management/roles/widgets/action-button-roles/action-button-roles.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RolesTableService {
   gridApi!: GridApi;
@@ -15,22 +15,28 @@ export class RolesTableService {
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonRolesComponent,
-    overlayLoading: OverlayLoadingComponent
-  }
+    overlayLoading: OverlayLoadingComponent,
+  };
   defaultColDef: ColDef = {
     flex: 1,
     editable: true,
     sortable: true,
-    lockPosition: true
-  }
+    lockPosition: true,
+  };
   columnDef: ColDef[] = [
-    {field: 'id', hide: true},
-    {field: 'roles'},
-    {field: 'description'},
-    {field: 'actions', cellRenderer: 'actionButtonGroup'}
-  ]
+    { field: 'id', hide: true },
+    { field: 'roles' },
+    { field: 'description' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup' },
+  ];
 
-  constructor() { }
+  constructor() {}
+
+  onFilter(searchInputClass: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement).value
+    );
+  }
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();
@@ -57,10 +63,10 @@ export class RolesTableService {
   }
 
   set GridApi(params: GridReadyEvent) {
-    this.gridApi = params.api
+    this.gridApi = params.api;
   }
 
   set GridColumnApi(params: GridReadyEvent) {
-    this.gridColumnApi = params.columnApi
+    this.gridColumnApi = params.columnApi;
   }
 }
