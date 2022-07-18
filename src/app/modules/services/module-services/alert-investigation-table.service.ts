@@ -26,23 +26,26 @@ export class AlertInvestigationTableService {
 
   columnDefs: ColDef[] = [
     { field: 'id', hide: true },
-    { field: 'alertId' },
-    { field: 'destAddress' },
-    { field: 'detailsInfo' },
-    { field: 'sourceAddress' },
-    { field: 'thresHold' },
-    { field: 'timeStamp' },
+    { field: 'lockedByUser' },
+    { field: 'caseID' },
+    { field: 'caseCreationDate' },
+    { field: 'classificationType' },
+    { field: 'classificationStatus' },
+    { field: 'privateScheme' },
+    { field: 'daysUntilautoClassification', headerName: 'Days until auto Classification' },
     { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
 
   rowData = [
     {
       alertId: '1',
-      destAddress: '192.168.42.3:6767',
-      sourceAddress: '192.168.1.7:8809',
-      detailsInfo: 'TCP Disconnect',
-      thresHold: '1',
-      timeStamp: '11:00 AM',
+      lockedByUser: 'Admin',
+      caseID: '1',
+      caseCreationDate: '15 - June - 2022',
+      classificationType: 'Urgent',
+      classificationStatus: 'Error',
+      privateScheme: 'true',
+      daysUntilautoClassification: '16 - June - 2022'
     },
   ];
 
