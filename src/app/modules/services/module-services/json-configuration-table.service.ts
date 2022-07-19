@@ -3,9 +3,8 @@ import { ColDef, GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
 import { ActionButtonJsonComponent } from '../../module/external-interface/json-configuration/widgets/action-button-json/action-button-json.component';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JsonConfigurationTableService {
   gridApi!: GridApi;
@@ -16,7 +15,7 @@ export class JsonConfigurationTableService {
   overlayLoadingTemplate = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonJsonComponent,
-    overlayLoading: OverlayLoadingComponent
+    overlayLoading: OverlayLoadingComponent,
   };
   defaultColDef: ColDef = {
     flex: 1,
@@ -24,11 +23,17 @@ export class JsonConfigurationTableService {
     lockPosition: true,
   };
   columnDefs: ColDef[] = [
-    {field: 'id', hide: true},
-    {field: 'name'},
-    {field: 'description'}
+    { field: 'id', hide: true },
+    { field: 'name' },
+    { field: 'description' },
   ];
-  constructor() { }
+  constructor() {}
+
+  onFilter(searchInputClass: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement)?.value
+    );
+  }
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();

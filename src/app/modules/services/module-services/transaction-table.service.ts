@@ -31,28 +31,26 @@ export class TransactionTableService {
     flex: 1,
     maxWidth: 110,
     editable: true,
+    sortable: true,
     resizable: true,
     filter: true
   };
   columnDefs: ColDef[] = [
     {
-      field: 'transactionDate',
-      sortable: true,
-      sort: 'desc',
-      minWidth: 200,
-      maxWidth: 300,
+      field: 'destAccount',
+      minWidth: 150,
+      maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
-      field: 'networkDate',
-      sortable: true,
-      minWidth: 200,
-      maxWidth: 300,
+      field: 'sourceAccount',
+      minWidth: 150,
+      maxWidth: 200,
       headerClass: 'transaction-header-color',
+      headerName: 'srcAccount'
     },
     {
       field: 'mti',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -60,7 +58,6 @@ export class TransactionTableService {
     },
     {
       field: 'hpan',
-      sortable: true,
       minWidth: 180,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -69,7 +66,6 @@ export class TransactionTableService {
     },
     {
       field: 'terminalId',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -78,7 +74,6 @@ export class TransactionTableService {
     {
       field: 'merchantId',
       cellRenderer: 'agGroupCellRenderer',
-      sortable: true,
       minWidth: 200,
       maxWidth: 230,
       headerClass: 'transaction-header-color',
@@ -86,7 +81,6 @@ export class TransactionTableService {
     },
     {
       field: 'merchantType',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -94,7 +88,6 @@ export class TransactionTableService {
     },
     {
       field: 'countryCode',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -102,14 +95,12 @@ export class TransactionTableService {
     },
     {
       field: 'amount',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
       field: 'responseCode',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       valueParser: numberParser,
@@ -121,7 +112,6 @@ export class TransactionTableService {
     },
     {
       field: 'transactionId',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -129,7 +119,6 @@ export class TransactionTableService {
     },
     {
       field: 'networkId',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -137,7 +126,6 @@ export class TransactionTableService {
     },
     {
       field: 'rrn',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
@@ -145,54 +133,48 @@ export class TransactionTableService {
     },
     {
       field: 'location',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
       field: 'messageAscii',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
       field: 'messageHexa',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
       field: 'posDataCode',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
       field: 'sequenceNumber',
-      sortable: true,
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
     },
     {
-      field: 'sourceAccount',
-      sortable: true,
-      minWidth: 150,
-      maxWidth: 200,
+      field: 'transactionDate',
+      sort: 'desc',
+      minWidth: 200,
+      maxWidth: 300,
       headerClass: 'transaction-header-color',
-      headerName: 'srcAccount'
     },
     {
-      field: 'destAccount',
-      sortable: true,
-      minWidth: 150,
-      maxWidth: 200,
+      field: 'networkDate',
+      minWidth: 200,
+      maxWidth: 300,
       headerClass: 'transaction-header-color',
     },
+  
   ];
 
   rowData = [
