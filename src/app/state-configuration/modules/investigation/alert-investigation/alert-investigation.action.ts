@@ -4,6 +4,11 @@ export class AlertInvestigationGet {
     static readonly type = '[Alert] Get';
 }
 
+export class AlertInvestigationDelete {
+    static readonly type = '[Alert] Delete';
+    constructor(public id: number) {}
+}
+
 export class AlertInvestigationSuccessState {
     static readonly type = '[Alert] Success';
     constructor(public successMessage: CustomHttpResponseModel) {} 

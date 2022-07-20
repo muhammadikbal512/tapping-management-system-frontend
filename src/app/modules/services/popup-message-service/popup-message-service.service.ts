@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
+import { AlertInvestigationService } from '../module-services/alert-investigation.service';
 import { ChannelTypeService } from '../module-services/channel-type.service';
 import { ChannelService } from '../module-services/channel.service';
 import { IsoFieldConfigurationService } from '../module-services/iso-field-configuration.service';
@@ -122,6 +123,17 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteResponseMapping();
+      }
+    })
+  }
+
+  alertConfirm(event: Event, onDelete: AlertInvestigationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this record ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteAlert();
       }
     })
   }

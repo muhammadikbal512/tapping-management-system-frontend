@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
   selector: 'app-action-button-alert-analysis',
   templateUrl: './action-button-alert-analysis.component.html',
-  styleUrls: ['./action-button-alert-analysis.component.css']
+  styleUrls: ['./action-button-alert-analysis.component.css'],
 })
-export class ActionButtonAlertAnalysisComponent implements AgRendererComponent
-{
+export class ActionButtonAlertAnalysisComponent implements AgRendererComponent {
   date = new Date();
   cellValue: string = '';
   constructor(
-    private confirmationService: PopupMessageService
+    private confirmationService: PopupMessageService,
+    private alertService: AlertInvestigationService
   ) {}
 
   agInit(params: ICellRendererParams): void {
@@ -28,11 +29,9 @@ export class ActionButtonAlertAnalysisComponent implements AgRendererComponent
     return params.valueFormatted ? params.valueFormatted : params.value;
   }
 
-  editButton() {
-   
-  }
+  editButton() {}
 
   deleteButton(event: Event) {
-   
+    this.confirmationService.alertConfirm(event, this.alertService);
   }
 }

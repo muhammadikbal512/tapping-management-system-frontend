@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { RippleModule } from 'primeng/ripple';
+import { BadgeModule } from 'primeng/badge';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
@@ -105,7 +106,6 @@ import { ActionButtonAcquirerAlertComponent } from './modules/module/acquirer/al
 import { TerminalListAcquirerTableComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-table/terminal-list-acquirer-table.component';
 import { TerminalListAcquirerActionButtonComponent } from './modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-action-button/terminal-list-acquirer-action-button.component';
 
-
 import { UserCreateDialogComponent } from './modules/module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
 import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 import { EventCollectorTableComponent } from './modules/module/event-collector/widget/event-collector-table/event-collector-table.component';
@@ -151,7 +151,6 @@ import { Iso8583ResponseMappingComponent } from './modules/module/external-inter
 import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
 import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
 import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
-
 
 @NgModule({
   declarations: [
@@ -275,7 +274,6 @@ import { Iso8583ResponseMappingTableComponent } from './modules/module/external-
     Iso8583ResponseMappingCreateDialogComponent,
     Iso8583ResponseMappingActionButtonComponent,
     Iso8583ResponseMappingTableComponent,
-    
   ],
 
   imports: [
@@ -295,6 +293,7 @@ import { Iso8583ResponseMappingTableComponent } from './modules/module/external-
     MessageModule,
     ProgressSpinnerModule,
     ButtonModule,
+    BadgeModule,
     ConfirmPopupModule,
     ConfirmDialogModule,
     ToastModule,
@@ -303,7 +302,7 @@ import { Iso8583ResponseMappingTableComponent } from './modules/module/external-
     PasswordModule,
     TagModule,
     StateConfigurationModule,
-    MatTableExporterModule
+    MatTableExporterModule,
   ],
   providers: [
     NotificationService,

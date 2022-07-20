@@ -2,6 +2,16 @@
   <div class="header-content">
     <p class="text-white">Tapping Management System</p>
     <div class="header-logout">
+      <div class="header-notif my-auto mr-5">
+        <button type="button" id="notification" type="button" data-bs-toggle="dropdown">
+          <i class="pi pi-bell p-text-secondary" style="font-size: 20px; color:white;" pBadge value="1"></i>
+        </button>
+        <div class="dropdown-menu hidden user-dropdown-container" id="notification">
+          <div class="py-3 px-4">
+            <span class="cursor-pointer" routerLink="investigation/alert-investigation">Alert New !!</span>
+          </div>
+        </div>
+      </div>
       <button type="button" id="user-menu-button" type="button" data-bs-toggle="dropdown">
         <span class="sr-only">Open user menu</span>
         <img src="../../../assets/0.jpg" alt="user photo">
