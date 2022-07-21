@@ -1,5 +1,6 @@
 <ag-grid-angular style="width: 100%; height: 400px;" class="ag-theme-alpine transaction-ag-table" [pagination]="true"
   [animateRows]="true" rowSelection="single" enableCellTextSelection [frameworkComponents]="frameworkComponents"
-  [rowHeight]="rowHeight" [paginationPageSize]="paginationSize" [defaultColDef]="defaultColDef"
-  [columnDefs]="columnDefs" (rowClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)" [rowClassRules]="rowClassRules">
+  [rowHeight]="rowHeight" [paginationPageSize]="paginationSize" [defaultColDef]="defaultColDef" [overlayLoadingTemplate]="overlayLoadingTemplate"
+  [columnDefs]="columnDefs" (rowClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+  [rowClassRules]="rowClassRules">
 </ag-grid-angular>

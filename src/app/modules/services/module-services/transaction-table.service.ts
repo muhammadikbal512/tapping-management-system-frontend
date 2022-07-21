@@ -6,7 +6,6 @@ import {
   GridReadyEvent,
   IDetailCellRendererParams,
 } from 'ag-grid-community';
-import { ColumnListTransactionInterface } from 'src/app/interface/modules/column-list-transaction';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 
@@ -25,7 +24,7 @@ export class TransactionTableService {
   paginationSize = 5;
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
-    overlayLoading: OverlayLoadingComponent
+    overlayLoading: OverlayLoadingComponent,
   };
   defaultColDef: ColDef = {
     flex: 1,

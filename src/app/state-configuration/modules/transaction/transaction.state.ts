@@ -5,7 +5,11 @@ import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
 import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
-import { TransactionGet, TransactionSuccessState } from './transaction.action';
+import {
+  TransactionGet,
+  TransactionSuccessState,
+  TransactionErrorState,
+} from './transaction.action';
 import { tap } from 'rxjs';
 
 export class TransactionStateModel {
@@ -51,23 +55,42 @@ export class TransactionState {
           this.transactionTableService.showNoRowData();
         }
         ctx.setState({
-            ...ctx.getState(),
-            Transactions: response
-        })
+          ...ctx.getState(),
+          Transactions: response,
+        });
       })
     );
   }
 
-  @Action(TransactionSuccessState)ifStateSuccess(ctx: StateContext<TransactionStateModel>, {successMessage}: TransactionSuccessState) {
+  @Action(TransactionSuccessState) ifStateSuccess(
+    ctx: StateContext<TransactionStateModel>,
+    { successMessage }: TransactionSuccessState
+  ) {
     this.notifierService.successNotification(
-        successMessage?.message,
-        successMessage?.httpStatusCode
+      successMessage?.message,
+      successMessage?.httpStatusCode
     );
     this.transactionService.onGetAllTransactionList();
     ctx.patchState({
-        responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
-  
+  @Action(TransactionErrorState) ifStateError(
+    ctx: StateContext<TransactionStateModel>,
+    { errorMessage }: TransactionErrorState
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage?.message,
+      errorMessage?.httpStatusCode
+    );
+    if (this.transactionTableService.gridApi.getRenderedNodes().length == 0) {
+      this.transactionTableService.showNoRowData();
+    } else {
+      this.transactionTableService.hideTableLoading();
+    }
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
+  }
 }

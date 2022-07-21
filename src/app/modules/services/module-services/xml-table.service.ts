@@ -28,4 +28,10 @@ export class XmlTableService {
     { field: 'description' },
   ];
   constructor() {}
+
+  onFilter() {
+    this.gridApi.setQuickFilter(
+      (document.getElementById('search-input') as HTMLInputElement)?.value
+    );
+  }
 }
