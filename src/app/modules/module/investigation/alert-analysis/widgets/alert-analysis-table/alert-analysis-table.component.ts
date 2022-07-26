@@ -12,6 +12,7 @@ export class AlertAnalysisTableComponent implements OnInit {
   constructor(private alertTable: AlertInvestigationTableService) { }
 
   ngOnInit(): void {
+    console.log(this.rowData)
   }
 
   onGridReady(params: GridReadyEvent) {

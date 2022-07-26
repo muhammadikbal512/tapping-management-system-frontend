@@ -29,7 +29,7 @@
             </div>
             <button *ngIf="!showLoading" pButton type="button" label="Login" (click)="login(form.value)"
               [disabled]="form.invalid || showLoading"></button>
-            <button *ngIf="showLoading" pButton type="button" label="Loading" class="p-button-secondary"></button>
+            <button *ngIf="showLoading" disabled pButton type="button" label="Loading" class="p-button-secondary"></button>
           </form>
         </div>
         <div class="forms-footer">

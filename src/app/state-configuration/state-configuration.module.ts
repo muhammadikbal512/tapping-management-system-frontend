@@ -42,7 +42,7 @@ import { JsonConfigurationState } from './modules/external-interfaces/json-confi
       AlertInvestigationState,
       AcquirerAlertState,
       TransactionState,
-      JsonConfigurationState
+      JsonConfigurationState,
     ])
   ],
 })

@@ -38,9 +38,9 @@ export class AlertInvestigationTableService {
 
   rowData = [
     {
-      alertId: '1',
+      alertId: 1,
       lockedByUser: 'Admin',
-      caseID: '1',
+      caseID: 1,
       caseCreationDate: '15 - June - 2022',
       classificationType: 'Urgent',
       classificationStatus: 'Error',

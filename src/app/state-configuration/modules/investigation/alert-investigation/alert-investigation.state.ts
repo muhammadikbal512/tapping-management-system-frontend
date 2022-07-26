@@ -11,28 +11,40 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
 import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 
+
+
+
 export class AlertInvestigationStateModel {
-  AlertInvestigation: AlertInvestigationModel[] = [];
+  alertInvestigation: AlertInvestigationModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
-State<AlertInvestigationStateModel>({
+
+
+@State<AlertInvestigationStateModel>({
   name: 'alertInvestigation',
   defaults: {
-    AlertInvestigation: [],
+    alertInvestigation: [],
     responseMessage: undefined,
   },
-});
+})
+
 @Injectable()
 export class AlertInvestigationState {
+
   constructor(
     private notifierService: NotificationService,
     private alertService: AlertInvestigationService,
     private alertTableService: AlertInvestigationTableService
   ) {}
+
+  get rowData() {
+    return this.alertTableService.rowData;
+  }
+  
   @Selector()
-  static AlertInvestigation(state: AlertInvestigationStateModel) {
-    return state.AlertInvestigation;
+  static alertInvestigation(state: AlertInvestigationStateModel) {
+    return state.alertInvestigation;
   }
 
   @Selector()
@@ -41,7 +53,19 @@ export class AlertInvestigationState {
   }
 
   @Action(AlertInvestigationGet, { cancelUncompleted: true })
-  getDataFromState() {}
+  getDataFromState(ctx: StateContext<AlertInvestigationStateModel>) {
+    if (this.rowData?.length != 0) {
+      this.alertTableService.hideTableLoading();
+      this.alertTableService.setRowData(this.rowData);
+    } else {
+      this.alertTableService.setRowData(this.rowData);
+      this.alertTableService.showNoRowdata();
+    }
+    ctx.setState({
+      ...ctx.getState(),
+      alertInvestigation: this.rowData
+    })
+  }
 
   @Action(AlertInvestigationSuccessState) ifSuccessState(
     ctx: StateContext<AlertInvestigationStateModel>,

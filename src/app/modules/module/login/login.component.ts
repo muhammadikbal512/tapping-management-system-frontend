@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           });
           Toast.fire({
             icon: 'error',
-            title: 'Username or password is wrong !',
+            title: errorResponse.message
           });
           this.showLoading = false;
         }
