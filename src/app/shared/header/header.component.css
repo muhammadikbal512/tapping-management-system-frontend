@@ -1,5 +1,26 @@
 header {
-  @apply bg-gray-900 shadow py-4 px-4;
+  @apply bg-white shadow py-4 px-4;
+}
+
+.search-container {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.search-input {
+  @apply bg-white
+    appearance-none
+    border-2
+    border-gray-300
+    rounded py-[5px] pl-[30px] pr-4 w-full
+    text-gray-700 leading-[0] text-[14px]
+    focus:outline-none focus:border-[#3f51b5];
 }
 
 .header-content {

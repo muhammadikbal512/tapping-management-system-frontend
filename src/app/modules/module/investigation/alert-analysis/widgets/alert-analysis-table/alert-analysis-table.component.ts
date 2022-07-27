@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 
 @Component({
@@ -9,11 +9,20 @@ import { AlertInvestigationTableService } from 'src/app/modules/services/module-
 })
 export class AlertAnalysisTableComponent implements OnInit {
 
-  constructor(private alertTable: AlertInvestigationTableService) { }
+  constructor(private alertTable: AlertInvestigationTableService) {
+   }
 
   ngOnInit(): void {
-    console.log(this.rowData)
+    
   }
+
+  public rowClassRules: RowClassRules = {
+    // row style function
+    'ag-bg-investigation': (params) => {
+      return params.rowIndex % 2 === 0
+    },
+    // row style expression
+  };
 
   onGridReady(params: GridReadyEvent) {
 

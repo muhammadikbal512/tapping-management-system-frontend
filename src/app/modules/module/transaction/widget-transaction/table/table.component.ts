@@ -21,7 +21,8 @@ export class TableComponent implements OnInit, AfterViewInit {
     private transactionTableService: TransactionTableService,
     private transactionApiService: TransactionService,
     private notifierService: NotificationService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {}
 

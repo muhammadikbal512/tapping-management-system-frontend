@@ -32,20 +32,35 @@ export class AlertInvestigationTableService {
     { field: 'classificationType' },
     { field: 'classificationStatus' },
     { field: 'privateScheme' },
-    { field: 'daysUntilautoClassification', headerName: 'Days until auto Classification' },
-    { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
 
   rowData = [
     {
       alertId: 1,
       lockedByUser: 'Admin',
-      caseID: 1,
-      caseCreationDate: '15 - June - 2022',
-      classificationType: 'Urgent',
-      classificationStatus: 'Error',
-      privateScheme: 'true',
-      daysUntilautoClassification: '16 - June - 2022'
+      caseID: 8003,
+      caseCreationDate: '2022.07.25 16.01.28',
+      classificationType: 'Negative',
+      classificationStatus: 'Classified',
+      privateScheme: '',
+    },
+    {
+      alertId: 2,
+      lockedByUser: 'Admin',
+      caseID: 8004,
+      caseCreationDate: '2022.07.26 13.00.22',
+      classificationType: 'Negative',
+      classificationStatus: 'Classified',
+      privateScheme: '',
+    },
+    {
+      alertId: 2,
+      lockedByUser: 'Admin',
+      caseID: 8005,
+      caseCreationDate: '2022.07.26 19.24.03',
+      classificationType: 'Negative Field',
+      classificationStatus: 'Classified',
+      privateScheme: '',
     },
   ];
 

@@ -8,3 +8,19 @@
     lg:space-y-0 
     lg:grid-cols-1
 }
+
+
+.container-device {
+    background: linear-gradient(180deg, #3a7b80 0%, #22b1ba 100%);
+    border-radius: 26px;
+    box-shadow: 0px 16px 24px 4px rgba(90, 82, 128, 0.12);
+  }
+  
+  .device-content {
+    @apply flex items-center justify-between p-4 border-b
+  }
+  
+  .device-content h4 {
+      color: white;
+  }
+  

@@ -30,14 +30,15 @@ export class DeviceConnectedChartService {
           label: {
             show: true,
             fontSize: '40',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            color: 'white'
           }
         },
         labelLine: {
           show: false
         },
         data: [
-          { value: 50, name: 'Non Active' },
+          { value: 50, name: 'Non Active', },
           { value: 100, name: 'Active' },
         ]
       }

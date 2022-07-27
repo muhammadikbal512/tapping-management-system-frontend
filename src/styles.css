@@ -31,3 +31,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: yellow !important;
   color: black !important;
 }
+
+.ag-bg-investigation {
+  background-color: #0875921F !important;
+  color: #727272;
+}

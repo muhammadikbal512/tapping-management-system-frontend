@@ -1,8 +1,23 @@
 <header>
   <div class="header-content">
-    <p class="text-white">Tapping Management System</p>
+    <div class="search-container">
+      <span class="search-icon bx bx-search">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+      </span>
+      <input id="search-input" type="text" class="search-input" placeholder="Search">
+  </div>
     <div class="header-logout">
-      <div class="header-notif my-auto mr-5">
+      <div class="header-notif my-auto mr-5 flex space-x-6">
+        <button type="button" id="settings" type="button" data-bs-toggle="dropdown">
+          <i class="pi pi-cog p-text-secondary" style="font-size: 20px; color:white;"></i>
+        </button>
+        <button type="button" id="question" type="button" data-bs-toggle="dropdown">
+          <i class="pi pi-question p-text-secondary" style="font-size: 20px; color:white;"></i>
+        </button>
         <button type="button" id="notification" type="button" data-bs-toggle="dropdown">
           <i class="pi pi-bell p-text-secondary" style="font-size: 20px; color:white;" pBadge value="1"></i>
         </button>

@@ -151,6 +151,7 @@ import { Iso8583ResponseMappingComponent } from './modules/module/external-inter
 import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
 import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
 import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
+import { ActionButtonInterfaceComponent } from './modules/module/dashboard/interface-list-card/action-button-interface/action-button-interface.component';
 
 @NgModule({
   declarations: [
@@ -274,6 +275,7 @@ import { Iso8583ResponseMappingTableComponent } from './modules/module/external-
     Iso8583ResponseMappingCreateDialogComponent,
     Iso8583ResponseMappingActionButtonComponent,
     Iso8583ResponseMappingTableComponent,
+    ActionButtonInterfaceComponent,
   ],
 
   imports: [

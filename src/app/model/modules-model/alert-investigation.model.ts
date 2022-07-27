@@ -14,5 +14,4 @@ export class AlertInvestigationModel {
   classificationType: string = '';
   classificationStatus: string = '';
   privateScheme: string = '';
-  daysUntilautoClassification: string = '';
 }

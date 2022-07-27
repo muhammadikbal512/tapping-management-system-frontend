@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-3">
      <!-- Bar chart card -->
-     <div class="col-span-2 bg-white rounded-md dark:bg-darker shadow-xl">
+     <div class="col-span-3 container-rate">
           <!-- Card header -->
           <div class="flex items-center justify-between p-4 border-b dark:border-primary">
                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Transaction Rate</h4>
@@ -20,26 +20,5 @@
           </div>
      </div>
 
-     <!-- Doughnut chart card -->
-     <div class="bg-white rounded-md dark:bg-darker shadow-xl">
-          <!-- Card header -->
-          <div class="flex items-center justify-between p-4 border-b dark:border-primary">
-               <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Device Connected</h4>
-               <div class="flex items-center">
-
-               </div>
-          </div>
-          <!-- Chart -->
-          <div class="relative p-4 h-72">
-               <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                         <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                         <div class=""></div>
-                    </div>
-               </div>
-               <div style="height: 250px;" echarts [options]="this.deviceChart._option"></div>
-          </div>
-     </div>
+     
 </div>
