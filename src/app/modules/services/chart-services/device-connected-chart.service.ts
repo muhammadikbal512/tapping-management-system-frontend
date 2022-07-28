@@ -2,19 +2,17 @@ import { Injectable } from '@angular/core';
 import * as echarts from 'echarts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeviceConnectedChartService {
-
-  constructor() { }
+  constructor() {}
 
   public _option: echarts.EChartsOption = {
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
     },
     legend: {
-      
-      left: 'center'
+      left: 'center',
     },
     series: [
       {
@@ -24,24 +22,36 @@ export class DeviceConnectedChartService {
         avoidLabelOverlap: false,
         label: {
           show: false,
-          position: 'center'
+          position: 'center',
         },
         emphasis: {
           label: {
             show: true,
             fontSize: '40',
             fontWeight: 'bold',
-            color: 'white'
-          }
+            color: 'white',
+          },
         },
         labelLine: {
-          show: false
+          show: false,
         },
         data: [
-          { value: 50, name: 'Non Active', },
-          { value: 100, name: 'Active' },
-        ]
-      }
-    ]
-  }
+          {
+            value: 50,
+            name: 'Non Active',
+            itemStyle: {
+              color: 'red',
+            },
+          },
+          {
+            value: 100,
+            name: 'Active',
+            itemStyle: {
+              color: '#087592',
+            },
+          },
+        ],
+      },
+    ],
+  };
 }

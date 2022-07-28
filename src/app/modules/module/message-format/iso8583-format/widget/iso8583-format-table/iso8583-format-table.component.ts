@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
 import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format-table.service';
-import {GridReadyEvent, RowClickedEvent} from "ag-grid-community";
+import {GridReadyEvent, RowClassRules, RowClickedEvent} from "ag-grid-community";
 
 
 @Component({
@@ -17,6 +17,12 @@ export class Iso8583FormatTableComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  public rowClassRules: RowClassRules = {
+    'ag-bg-investigation' : (params) => {
+      return params.rowIndex % 2 == 0;
+    }
   }
 
   onGridReady(params: GridReadyEvent) {

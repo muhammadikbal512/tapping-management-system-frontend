@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   form!: FormGroup;
-  public showLoading?: boolean;
+  public showLoading: boolean = false;
 
   constructor(
     private router: Router,
