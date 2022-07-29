@@ -66,6 +66,7 @@ export class UserState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
+        console.log(response);
         return ctx.dispatch(new UserErrorState(response.error));
       })
     );

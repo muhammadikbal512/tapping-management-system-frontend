@@ -33,12 +33,8 @@ export class UserTableService {
     {field: 'username'},
     {field: 'role'},
     {field: 'email'},
-    {field: 'firstName', headerName: 'First Name'},
-    {field: 'lastName', headerName: 'Last Name'},
-    {field: 'active', headerName: 'User Active', cellRenderer: 'tag', maxWidth: 100},
-    {field: 'notLocked', headerName: 'User not Locked', maxWidth: 100, cellRenderer:'lockTag',},
-    {field: 'joinDate', headerName: 'Join Date'},
-    {field: 'lastLoginDate', headerName: 'Last Login'},
+    {field: 'active', headerName: 'Status', cellRenderer: 'tag', maxWidth: 100},
+    {field: 'lastLoginDate', headerName: 'Last Login',},
     {field: 'action', cellRenderer: 'actionButtonGroup', sortable: false}
   ]
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Iso8583DialectTableServiceService } from 'src/app/modules/services/module-services/iso8583-dialect-table-service.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { Iso8583DialectService } from 'src/app/modules/services/module-services/iso8583-dialect.service';
 
 
@@ -15,6 +15,12 @@ export class Iso8583DialectTableComponent implements OnInit, OnDestroy {
     private iso8583DialectService: Iso8583DialectService,
     private iso8583DialectTableService: Iso8583DialectTableServiceService
   ) {
+  }
+
+  public rowClassRules: RowClassRules = {
+    'ag-bg-investigation': (params) => {
+      return params.rowIndex % 2 == 0;
+    }
   }
 
   ngOnInit(): void {

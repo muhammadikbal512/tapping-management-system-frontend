@@ -103,6 +103,12 @@ header {
   cursor-pointer
 }
 
+.header-notif i {
+  @apply
+  text-white
+  p-1.5
+}
+
 /* .header-logout:hover > .user-dropdown-container {
 	display: block;
 } */
