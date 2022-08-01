@@ -152,6 +152,7 @@ import { Iso8583ResponseMappingCreateDialogComponent } from './modules/module/ex
 import { Iso8583ResponseMappingActionButtonComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
 import { Iso8583ResponseMappingTableComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
 import { ActionButtonInterfaceComponent } from './modules/module/dashboard/interface-list-card/action-button-interface/action-button-interface.component';
+import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
 
 @NgModule({
   declarations: [
@@ -276,6 +277,7 @@ import { ActionButtonInterfaceComponent } from './modules/module/dashboard/inter
     Iso8583ResponseMappingActionButtonComponent,
     Iso8583ResponseMappingTableComponent,
     ActionButtonInterfaceComponent,
+    TransactionVirtualComponent,
   ],
 
   imports: [

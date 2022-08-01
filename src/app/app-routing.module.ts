@@ -32,6 +32,7 @@ import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert
 import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
+import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
 
 
 const routes: Routes = [
@@ -167,6 +168,10 @@ const routes: Routes = [
           {
             path: 'transaction-parameters',
             component: TransactionParametersComponent
+          },
+          {
+            path: 'transaction-virtual',
+            component: TransactionVirtualComponent
           }
         ]
       },

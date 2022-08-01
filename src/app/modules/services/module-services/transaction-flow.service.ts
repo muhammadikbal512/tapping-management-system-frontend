@@ -38,6 +38,7 @@ export class TransactionFlowService {
   };
 
   columnDefs: ColDef[] = [
+    {field: 'hostName'},
     { field: 'srcAddress' },
     { field: 'dstAddress' },
     { field: 'time', maxWidth: 200 },
@@ -47,6 +48,7 @@ export class TransactionFlowService {
 
   rowData = [
     {
+      hostName: 'ATM',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -54,6 +56,7 @@ export class TransactionFlowService {
       description: 'TCP Connect Request - SYN',
     },
     {
+      hostName: 'Switching',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -61,6 +64,7 @@ export class TransactionFlowService {
       description: 'TCP Connect Response - SYN ACK',
     },
     {
+      hostName: 'ATM',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -68,6 +72,7 @@ export class TransactionFlowService {
       description: 'TCP ACK',
     },
     {
+      hostName: 'ATM',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -75,6 +80,39 @@ export class TransactionFlowService {
       description: 'Transaction Request PSH ACK',
     },
     {
+      hostName: 'ATM',
+      srcAddress: '192.168.1.7:8809',
+      dstAddress: '192.168.42.3:6767',
+      time: '0.000 sec',
+      flow: 'response',
+      description: 'TCP Connect Request - SYN',
+    },
+    {
+      hostName: 'Switching',
+      srcAddress: '192.168.1.7:8809',
+      dstAddress: '192.168.42.3:6767',
+      time: '0.000 sec',
+      flow: 'response',
+      description: 'Transaction Response SYN ACK',
+    },
+    {
+      hostName: 'ATM',
+      srcAddress: '192.168.1.7:8809',
+      dstAddress: '192.168.42.3:6767',
+      time: '0.000 sec',
+      flow: 'request',
+      description: 'TCP ACK',
+    },
+    {
+      hostName: 'ATM',
+      srcAddress: '192.168.1.7:8809',
+      dstAddress: '192.168.42.3:6767',
+      time: '0.000 sec',
+      flow: 'request',
+      description: 'Transaction Request PSH ACK',
+    },
+    {
+      hostName: 'Switching',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -82,6 +120,7 @@ export class TransactionFlowService {
       description: 'TCP ACK',
     },
     {
+      hostName: 'Switching',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
@@ -89,18 +128,12 @@ export class TransactionFlowService {
       description: 'Transaction Response PSH ACK',
     },
     {
+      hostName: '',
       srcAddress: '192.168.1.7:8809',
       dstAddress: '192.168.42.3:6767',
       time: '0.000 sec',
       flow: 'request',
-      description: 'TCP ACK - Piggyback',
-    },
-    {
-      srcAddress: '192.168.1.7:8809',
-      dstAddress: '192.168.42.3:6767',
-      time: '0.000 sec',
-      flow: 'request',
-      description: 'TCP Disconnect - FIN',
+      description: 'TCP ACK - PiggyBack',
     },
   ];
 

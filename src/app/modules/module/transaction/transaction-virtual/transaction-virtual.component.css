@@ -1,0 +1,8 @@
+.container {
+    @apply 
+      bg-white 
+      rounded-md
+      shadow-md
+      mt-3
+  }
+  

@@ -10,7 +10,8 @@ import {
   TransactionSuccessState,
   TransactionErrorState,
 } from './transaction.action';
-import { tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class TransactionStateModel {
   Transactions: TransactionMessageModel[] = [];
@@ -58,6 +59,9 @@ export class TransactionState {
           ...ctx.getState(),
           Transactions: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TransactionErrorState(response.error))
       })
     );
   }

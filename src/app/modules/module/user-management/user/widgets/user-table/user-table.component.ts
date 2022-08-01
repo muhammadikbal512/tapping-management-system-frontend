@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClickedEvent, RowClassRules } from 'ag-grid-community';
 
 @Component({
   selector: 'app-user-table',
@@ -13,6 +13,12 @@ export class UserTableComponent implements OnInit {
     private userService: UserService,
     private userTableService: UserTableService
   ) {}
+
+  public rowClassRules: RowClassRules = {
+    'ag-grid-investigation': (params) => {
+      return params.rowIndex % 2 == 0;
+    }
+  }
 
   ngOnInit(): void {}
 
