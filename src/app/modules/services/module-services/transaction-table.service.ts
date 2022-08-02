@@ -22,7 +22,7 @@ export class TransactionTableService {
   headerHeight: number = 40;
   rowHeight: number = 40;
   paginationSize = 5;
-  overlayLoadingTemplate: string = 'overlayLoading';
+  overlayLoadingTemplate = 'Loading...';
   frameworkComponents = {
     overlayLoading: OverlayLoadingComponent,
   };

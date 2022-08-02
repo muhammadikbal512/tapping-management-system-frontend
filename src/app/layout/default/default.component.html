@@ -2,17 +2,18 @@
 
 <div class="default-container">
 
-  
+
   <app-sidebar style="zoom: 0.9;"></app-sidebar>
-  
+
   <main class="main">
     <app-header>
     </app-header>
     <div class="main-content">
+      <h1>{{this.urlParams2 | uppercase}}</h1>
+      <p class="active-route">{{ this.urlParams1 | titlecase }} - {{ this.urlParams2 | titlecase }}</p>
       <router-outlet></router-outlet>
-      
     </div>
     <app-footer></app-footer>
   </main>
-  
+
 </div>

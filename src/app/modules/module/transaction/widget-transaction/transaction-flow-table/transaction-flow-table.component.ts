@@ -15,11 +15,9 @@ export class TransactionFlowTableComponent implements OnInit {
 
   public rowClassRules: RowClassRules = {
     // row style function
-    'ag-bg-red': (params) => {
-      return params.data.description === 'TCP Disconnect - FIN'
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0
     },
-    // row style expression
-    'sick-days-breach': 'data.sickDays == 2',
   };
 
   get animateRow() {

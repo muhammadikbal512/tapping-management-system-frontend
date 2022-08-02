@@ -1,24 +1,30 @@
 .default-container {
   /* zoom: 0.8; */
-  
+
   @apply flex 
     flex-row 
     bg-gray-100 
     text-gray-800;
 }
 
+.active-route {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  color: #968e7e;
+  font-size: 14px;
+  line-height: 21px;
+}
+
 .main {
-  @apply 
-    flex 
+  @apply flex 
     flex-col 
     w-full;
-    margin-left: 70px
-  
+  margin-left: 70px;
 }
 
 .main-content {
-  @apply
-    p-2;
+  @apply p-2;
 }
 
 .main-content h1 {
@@ -26,5 +32,3 @@
     text-2xl 
     text-gray-700;
 }
-
-

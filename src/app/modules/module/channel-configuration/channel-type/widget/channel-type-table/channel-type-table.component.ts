@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-type-table.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
 
 @Component({
@@ -16,6 +16,12 @@ export class ChannelTypeTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     
+  }
+
+  public RowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0
+    }
   }
 
   ngOnDestroy(): void {

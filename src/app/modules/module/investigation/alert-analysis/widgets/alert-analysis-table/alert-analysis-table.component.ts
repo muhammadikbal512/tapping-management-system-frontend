@@ -18,8 +18,8 @@ export class AlertAnalysisTableComponent implements OnInit {
 
   public rowClassRules: RowClassRules = {
     // row style function
-    'ag-bg-investigation': (params) => {
-      return params.rowIndex % 2 === 0
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0
     },
     // row style expression
   };
