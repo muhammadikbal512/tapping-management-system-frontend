@@ -8,15 +8,6 @@
     xl:grid-cols-1;
 } */
 
-.container-grid {
-  @apply 
-    bg-white 
-    rounded-md;
-}
-
-
-
-
 .container-grid-header {
     @apply
     p-4 

@@ -23,6 +23,7 @@ body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ag-bg-red {
+
   background-color: red !important;
   color: white !important;
 }
@@ -35,4 +36,70 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ag-bg-rowIndex {
   background-color: #0875921F !important;
   color: #727272;
+}
+
+.ag-theme-alpine {
+  /* disable all borders */
+  --ag-borders: none;
+}
+
+.grid-container {
+  border: 1px solid #087592;
+  @apply
+  col-span-1 
+  bg-white 
+  rounded-3xl
+}
+
+.grid-header {
+  justify-content: space-between;
+  border-bottom-color: #087592;
+  @apply
+  p-4 
+  border-b 
+  flex
+}
+
+.grid-header h4 {
+  @apply
+  text-lg 
+  font-semibold 
+  text-gray-500 
+}
+
+.grid-header-right {
+  @apply
+  flex
+  px-4
+}
+
+.search-container {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.search-input {
+  @apply
+  bg-white
+  appearance-none
+  border-2
+  border-gray-300
+  rounded py-[5px] pl-[30px] pr-4 w-full
+  text-gray-700 leading-[0] text-[14px]
+  focus:outline-none focus:border-[#3f51b5]
+}
+
+.create-button {
+  background-color: #6875f5;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
 }
