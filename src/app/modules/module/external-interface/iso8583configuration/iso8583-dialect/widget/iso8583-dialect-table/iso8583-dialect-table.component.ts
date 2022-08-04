@@ -18,7 +18,7 @@ export class Iso8583DialectTableComponent implements OnInit, OnDestroy {
   }
 
   public rowClassRules: RowClassRules = {
-    'ag-bg-investigation': (params) => {
+    'ag-bg-rowIndex': (params) => {
       return params.rowIndex % 2 == 0;
     }
   }

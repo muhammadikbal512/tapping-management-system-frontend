@@ -1,4 +1,4 @@
-.grid-container {
+.grid-container-dashboard {
     
   height: 191px;
   background: #ffffff;
@@ -7,7 +7,7 @@
 }
 
 
-.grid-header p {
+.grid-header-dashboard p {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -16,7 +16,7 @@
   color: #222222;
 }
 
-.grid-header span {
+.grid-header-dashboard span {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -25,7 +25,7 @@
   color: #858585;
 }
 
-.grid-header {
+.grid-header-dashboard {
   @apply p-4 
     border-b;
 }

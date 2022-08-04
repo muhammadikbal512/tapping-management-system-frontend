@@ -11,41 +11,36 @@
                 fill.</small>
         </div>
         <div class="m-auto space-x-2 text-center pb-5">
-            <p>Message Template</p>
-            <p-dropdown [filter]="true" [options]="dialectmsgTemplateOptionList" appendTo="body"
-                      filterBy="name" placeholder="Select Message Template"
-                      optionLabel="name" [showClear]="showClear" styleClass="msgTemplate" (onChange)="onChange($event)"
-                      formControlName="messageTemplate"></p-dropdown>
-          <p-message *ngIf="dialectMsgTemplate.touched && !dialectMsgTemplate.hasError('required')"
-                     severity="success"></p-message>
-          <p-message *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')"
-                     severity="error"></p-message>
-                     <small *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')" class="p-error">Message
-                        Template
-                        should be
-                        fill.</small>
+            <p>ISO Dialect</p>
+            <p-dropdown [filter]="true" [options]="dialectmsgTemplateOptionList" appendTo="body" filterBy="name"
+                placeholder="Select Message Template" optionLabel="name" [showClear]="showClear"
+                styleClass="msgTemplate" (onChange)="onChange($event)" formControlName="messageTemplate"></p-dropdown>
+            <p-message *ngIf="dialectMsgTemplate.touched && !dialectMsgTemplate.hasError('required')"
+                severity="success"></p-message>
+            <p-message *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')" class="p-error">ISO
+                Dialect
+                should be
+                fill.</small>
         </div>
     </div>
     <div>
         <div class="input-container">
-            <input formControlName="description" name="description" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="description" name="description" type="text" class="peer" placeholder=" "
+                required="">
             <label class="input-label">Description</label>
             <p-message *ngIf="description.touched && !description.hasError('required')" severity="success"></p-message>
-        <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
-        <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should be
-            fill.</small>
+            <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
+            <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should be
+                fill.</small>
         </div>
     </div>
     <mat-dialog-actions align="end">
-        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true"
-                  styleClass="p-button-sm"></p-button>
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
         <p-button (onClick)="onCreateTerminalType()" *ngIf="channelTypeService.buttonStatus== 'create'"
-                  [disabled]="formGroup.invalid"
-                  class="create-button" label="Create"
-                  styleClass="p-button-sm"></p-button>
+            [disabled]="formGroup.invalid" class="create-button" label="Create" styleClass="p-button-sm"></p-button>
         <p-button (onClick)="onUpdateTerminalType()" *ngIf="channelTypeService.buttonStatus == 'edit'"
-                  [disabled]="disableStatus" class="create-button"
-                  label="Save"
-                  styleClass="p-button-sm"></p-button>
-      </mat-dialog-actions>
+            [disabled]="disableStatus" class="create-button" label="Save" styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
 </form>
