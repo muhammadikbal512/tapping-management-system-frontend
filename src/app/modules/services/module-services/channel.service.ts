@@ -21,7 +21,7 @@ export class ChannelService {
   dialogConfig: MatDialogConfig = {
     autoFocus: false,
     disableClose: true,
-    width: '55%',
+    width: '65%',
   };
 
   constructor(

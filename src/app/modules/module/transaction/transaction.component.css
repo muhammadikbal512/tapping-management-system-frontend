@@ -9,50 +9,45 @@
 } */
 
 .container-grid-header {
-    @apply
-    p-4 
-    border-b 
+  @apply p-4 
+    border-b;
 }
 
 .container-grid-header button {
-    @apply
-    bg-blue-500 
+  @apply bg-blue-500 
     text-white 
     py-2 
-    px-4
+    px-4;
 }
 
 .transaction-summary-container {
-  @apply
-  p-12
+  @apply p-12
   flex
-  flex-row
+  flex-row;
 }
 
 .summary-left {
   width: 50%;
-  @apply
-  flex
-  flex-col
+  @apply flex
+  flex-col;
 }
 
 .summary-item {
   justify-content: space-between;
-  @apply
-  flex
+  @apply flex
   flex-row
   items-center
-  mb-2
+  mb-2;
 }
 
 .summary-item span {
-  white-space: nowrap; width: 190px; font-size: 14px
+  white-space: nowrap;
+  width: 190px;
+  font-size: 14px;
 }
 
 .summary-item input {
-  @apply
-  
-  bg-gray-200 
+  @apply bg-gray-200 
   appearance-none 
   border-2 
   border-gray-200 
@@ -64,13 +59,24 @@
   leading-[0] 
   text-[14px] 
   mr-[25px] 
-  focus:outline-none
+  focus:outline-none;
 }
 
 .summary-right {
   width: 50%;
-  @apply
-  flex flex-col
-  ml-5
+  @apply flex flex-col
+  ml-5;
 }
 
+:host ::ng-deep .p-button {
+  background-color: #087592;
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: #087576;
+}
+
+:host ::ng-deep .ag-theme-alpine .ag-paging-panel {
+  background: #dcdcdc;
+  border-radius: 10px;
+}

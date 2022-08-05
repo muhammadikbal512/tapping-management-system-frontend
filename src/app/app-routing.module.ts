@@ -43,6 +43,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        data: {title: 'Dashboard'},
         component: DashboardComponent,
       },
       {
@@ -50,6 +51,7 @@ const routes: Routes = [
         children: [
           {
             path: 'interface-list',
+            data: {title: 'Interface List'},
             component: InterfaceListComponent
           }
         ]
@@ -59,6 +61,7 @@ const routes: Routes = [
         children: [
           {
             path: 'alert-investigation',
+            data: {title: 'Alert Investigation'},
             component: AlertAnalysisComponent,
           },
         ],
@@ -68,10 +71,12 @@ const routes: Routes = [
         children: [
           {
             path: 'alert',
+            data: {title: 'Alert Acquirer'},
             component: AlertComponent,
           },
           {
             path: 'terminal-list',
+            data: {title: 'Terminal Acquirer'},
             component: TerminalListComponent,
           },
         ],
@@ -81,10 +86,12 @@ const routes: Routes = [
         children: [
           {
             path: 'alert',
+            data: {title: 'Alert Issuer'},
             component: AlertIssuerComponent,
           },
           {
             path: 'terminal-list',
+            data: {title: 'Terminal Acquirer'},
             component: TerminalListIssuerComponent,
           },
         ],
@@ -94,6 +101,7 @@ const routes: Routes = [
         children: [
           {
             path: 'iso8583-format',
+            data: {title: 'ISO8583 Format'},
             component: Iso8583FormatComponent,
           },
         ],
@@ -106,32 +114,39 @@ const routes: Routes = [
             children: [
               {
                 path: 'iso8583-dialect',
+                data: {title: 'ISO8583 Dialect'},
                 component: Iso8583DialectComponent
               },
               {
                 path: 'iso8583-field-configuration',
+                data: {title: 'ISO8583 Field Configuration'},
                 component: Iso8583FieldConfigurationComponent
               },
               {
                 path: 'iso8583-response-mapping',
+                data: {title: 'ISO8583 Response Mapping'},
                 component: Iso8583ResponseMappingComponent
               }
             ]
           },
           {
             path: 'iso20022',
+            data: {title: 'ISO20022'},
             component: Iso20022Component,
           },
           {
             path: 'json-configuration',
+            data: {title: 'JSON Configuration'},
             component: JsonConfigurationComponent,
           },
           {
             path: 'NDC',
+            data: {title: 'NDC'},
             component: NdcComponent,
           },
           {
             path: 'xml-configuration',
+            data: {title: 'XML Configuration'},
             component: XmlConfigurationComponent,
           },
         ],
@@ -141,10 +156,12 @@ const routes: Routes = [
         children: [
           {
             path: 'channel',
+            data: {title: 'Channel'},
             component: ChannelComponent
           },
           {
             path: 'channel-type',
+            data: {title: 'Channel Type'},
             component: ChannelTypeComponent
           }
         ]
@@ -163,14 +180,17 @@ const routes: Routes = [
         children: [
           {
             path: 'transaction-page',
+            data: {title: 'Transaction'},
             component: TransactionComponent
           },
           {
             path: 'transaction-parameters',
+            data: {title: 'Transaction Parameters'},
             component: TransactionParametersComponent
           },
           {
             path: 'transaction-virtual',
+            data: {title: 'Transaction Virtual'},
             component: TransactionVirtualComponent
           }
         ]
@@ -180,14 +200,17 @@ const routes: Routes = [
         children: [
           {
             path: 'private-scheme',
+            data: {title: 'Private Scheme'},
             component: PrivateSchemeComponent,
           },
           {
             path: 'roles',
+            data: {title: 'Roles'},
             component: RolesComponent,
           },
           {
             path: 'user',
+            data: {title: 'User'},
             component: UserComponent,
           },
         ],
@@ -197,10 +220,12 @@ const routes: Routes = [
         children: [
           {
             path: 'arp',
+            data: {title: 'Arp'},
             component: ArpComponent,
           },
           {
             path: 'system-parameters',
+            data: {title: 'System Parameters'},
             component: SystemParametersComponent,
           },
         ],
@@ -211,6 +236,7 @@ const routes: Routes = [
       },
       {
         path: 'device-monitoring',
+        data: {title: 'Device Monitoring'},
         component: DeviceMonitoringComponent
       }
     ],

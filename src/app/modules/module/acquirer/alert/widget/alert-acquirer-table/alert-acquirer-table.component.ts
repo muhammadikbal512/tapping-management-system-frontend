@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertAcquirerTableService } from 'src/app/modules/services/module-services/alert-acquirer-table.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-alert-acquirer-table',
@@ -20,6 +20,12 @@ export class AlertAcquirerTableComponent implements OnInit {
 
   onCellClicked(data: RowClickedEvent) {
 
+  }
+
+  public RowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0
+    }
   }
 
   get animateRow() {

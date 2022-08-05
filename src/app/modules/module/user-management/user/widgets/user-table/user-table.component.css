@@ -37,3 +37,11 @@
     border-radius: 50%;
     display: inline-block;
   }
+
+  :host ::ng-deep .ag-theme-alpine .ag-root-wrapper {
+    border: none;
+  }
+
+  :host ::ng-deep .ag-theme-alpine .ag-header-cell {
+    background: white;
+  }

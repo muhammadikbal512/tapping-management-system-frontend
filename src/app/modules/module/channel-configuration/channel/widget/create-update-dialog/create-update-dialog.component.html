@@ -1,5 +1,5 @@
 <form [formGroup]="form" class="p-8">
-    <div>
+    <div class="form-filled-container">
         <div class="input-container">
             <input formControlName="channelId" type="text" name="channelId" class="peer" placeholder=" " required="">
             <label for="floating_first_name" class="input-label">Channel Id</label>
@@ -7,6 +7,16 @@
             <p-message *ngIf="channelId.touched && channelId.hasError('required')" severity="error"></p-message>
             <small *ngIf="channelId.touched && channelId.hasError('required')" class="p-error">Channel Id should be
                 fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="port" type="text" name="port" class="peer" placeholder=" " required="">
+            <label for="floating_first_name" class="input-label">Port</label>
+            <p-message *ngIf="port.touched && (!port.hasError('required') && !port.hasError('pattern'))"
+                severity="success"></p-message>
+            <p-message *ngIf="port.touched && port.hasError('required')" severity="error"></p-message>
+            <p-message *ngIf="port.touched && port.hasError('pattern')" severity="error">Port format is invalid</p-message>
+            <small *ngIf="port.touched && port.hasError('required')" class="p-error">Port shoild be fill.</small>
+            <small *ngIf="port.touched && port.hasError('pattern')" class="p-error">Port format is invalid</small>
         </div>
     </div>
     <div class="form-filled-container">
@@ -23,19 +33,7 @@
                 invalid.</small>
         </div>
         <div class="input-container">
-            <input formControlName="port" type="text" name="port" class="peer" placeholder=" " required="">
-            <label for="floating_first_name" class="input-label">Port</label>
-            <p-message *ngIf="port.touched && (!port.hasError('required') && !port.hasError('pattern'))"
-                severity="success"></p-message>
-            <p-message *ngIf="port.touched && port.hasError('required')" severity="error"></p-message>
-            <p-message *ngIf="port.touched && port.hasError('pattern')" severity="error">Port format is invalid</p-message>
-            <small *ngIf="port.touched && port.hasError('required')" class="p-error">Port shoild be fill.</small>
-            <small *ngIf="port.touched && port.hasError('pattern')" class="p-error">Port format is invalid</small>
-        </div>
-    </div>
-    <div class="form-filled-container">
-        <div class="input-container">
-            <p-dropdown (onChange)="onChange($event)" [filter]="true" [options]="ChannelTypeGroupInterfaces"
+            <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true" [options]="ChannelTypeGroupInterfaces"
                 [showClear]="showClear" appendTo="body" class="channel-type" filterBy="name"
                 formControlName="channelType" optionLabel="name" placeholder="Select Channel Type"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
@@ -45,12 +43,17 @@
                 should be
                 fill.</small>
         </div>
-        <div class="m-auto space-x-2">
-            <section>
-                <mat-checkbox class="example-margin" formControlName="isOnPremise" style="font-weight: 600">
-                  Onpremise
-                </mat-checkbox>
-              </section>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container"></div>
+        <div class="input-container">
+            <div class="m-auto space-x-2">
+                <section>
+                    <mat-checkbox class="example-margin" formControlName="isOnPremise">
+                      On premise
+                    </mat-checkbox>
+                  </section>
+            </div>
         </div>
     </div>
     <div class="text-center">

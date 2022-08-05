@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TerminalListTableService } from 'src/app/modules/services/module-services/terminal-list-table.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-terminal-list-acquirer-table',
@@ -16,6 +16,12 @@ export class TerminalListAcquirerTableComponent implements OnInit {
 
   onGridReady(params: GridReadyEvent) {
 
+  }
+
+  public RowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0
+    }
   }
 
   onCellClicked(data: RowClickedEvent) {

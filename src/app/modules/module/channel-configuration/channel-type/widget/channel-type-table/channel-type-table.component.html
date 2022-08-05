@@ -1,20 +1,5 @@
-<div class="table-container">
-    <ag-grid-angular
-    style="width: 100%; height: 500px"
-    class="ag-theme-alpine"
-    rowSelection="single"
-    enableCellTextSelection
-    suppressDragLeaveHidesColumns
-    [rowClassRules]="RowClassRules"
-    [animateRows]="animateRow"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [rowHeight]="rowHeight"
-    [headerHeight]="headerHeight"
-    [loadingOverlayComponent]="overlayLoadingTemplate"
-    [frameworkComponents]="frameworkComponents"
-    [pagination]="true"
-    (gridReady)="onGridReady($event)"
-    (rowClicked)="onCellClicked($event)"
-  ></ag-grid-angular>
-  </div>
+<ag-grid-angular style="width: 100%; height: 500px" class="ag-theme-alpine" rowSelection="single"
+  enableCellTextSelection suppressDragLeaveHidesColumns [rowClassRules]="RowClassRules" [animateRows]="animateRow"
+  [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight"
+  [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents" [pagination]="true"
+  (gridReady)="onGridReady($event)" (rowClicked)="onCellClicked($event)"></ag-grid-angular>

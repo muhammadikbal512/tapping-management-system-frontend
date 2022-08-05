@@ -38,11 +38,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #727272;
 }
 
-.ag-theme-alpine {
-  /* disable all borders */
-  --ag-borders: none;
-}
-
 .grid-container {
   border: 1px solid #087592;
   @apply
@@ -95,3 +90,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   focus:outline-none focus:border-[#3f51b5]
 }
 
+:host ::ng-deep .ag-theme-alpine .ag-root-wrapper {
+  border: none;
+}
+
+
+
+.ag-theme-alpine .ag-root-wrapper {
+  border: none !important;
+}
+
+.ag-theme-alpine .ag-header {
+  background: transparent !important;
+}

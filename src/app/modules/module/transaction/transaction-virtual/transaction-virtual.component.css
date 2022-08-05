@@ -1,8 +1,14 @@
 .container {
-    @apply 
-      bg-white 
+  @apply bg-white 
       rounded-md
       shadow-md
-      mt-3
-  }
-  
+      mt-3;
+}
+
+:host ::ng-deep .p-button {
+  background-color: #087592;
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: #087576;
+}

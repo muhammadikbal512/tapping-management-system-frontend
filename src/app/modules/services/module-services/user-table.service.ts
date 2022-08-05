@@ -33,7 +33,7 @@ export class UserTableService {
     {field: 'username'},
     {field: 'role'},
     {field: 'email'},
-    {field: 'active', headerName: 'Status', cellRenderer: 'tag', maxWidth: 100},
+    {field: 'active', headerName: 'Status', cellRenderer: 'tag'},
     {field: 'lastLoginDate', headerName: 'Last Login',},
     {field: 'action', cellRenderer: 'actionButtonGroup', sortable: false}
   ]
