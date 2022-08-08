@@ -41,7 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .grid-container {
   border: 1px solid #087592;
   @apply
-  col-span-1 
+   
   bg-white 
   rounded-3xl
 }

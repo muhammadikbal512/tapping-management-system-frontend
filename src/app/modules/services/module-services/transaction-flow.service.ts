@@ -24,17 +24,10 @@ export class TransactionFlowService {
     flow: TransactionFlowComponent,
   };
 
-  rowClassRules: RowClassRules = {
-    'error-transaction': (params) => {
-      return params.data.description === 'TCP Disconnect - FIN';
-    },
-  };
-
   defaultColDef: ColDef = {
-    
     sortable: true,
     editable: true,
-    lockPosition: true,
+    flex: 1
   };
 
   columnDefs: ColDef[] = [
@@ -42,9 +35,9 @@ export class TransactionFlowService {
     { field: 'dstHostName' },
     { field: 'srcAddress' },
     { field: 'dstAddress' },
-    { field: 'time', maxWidth: 200 },
-    { field: 'flow', cellRenderer: 'flow', headerName: '', maxWidth: 100 },
-    { field: 'description', maxWidth: 250 },
+    { field: 'time' },
+    { field: 'flow', cellRenderer: 'flow', headerName: '', },
+    { field: 'description' },
   ];
 
   rowData = [
