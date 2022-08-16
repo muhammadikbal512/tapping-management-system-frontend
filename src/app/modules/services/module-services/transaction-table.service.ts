@@ -27,12 +27,10 @@ export class TransactionTableService {
     overlayLoading: OverlayLoadingComponent,
   };
   defaultColDef: ColDef = {
-    flex: 1,
-    maxWidth: 110,
     editable: true,
     sortable: true,
     resizable: true,
-    filter: true
+    filter: true,
   };
   columnDefs: ColDef[] = [
     {
@@ -46,14 +44,14 @@ export class TransactionTableService {
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      headerName: 'srcAccount'
+      headerName: 'srcAccount',
     },
     {
       field: 'mti',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      headerName: 'MTI'
+      headerName: 'MTI',
     },
     {
       field: 'hpan',
@@ -61,14 +59,14 @@ export class TransactionTableService {
       maxWidth: 200,
       headerClass: 'transaction-header-color',
       cellRenderer: 'medalCellRenderer',
-      headerName: 'HPAN'
+      headerName: 'HPAN',
     },
     {
       field: 'terminalId',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'merchantId',
@@ -76,21 +74,21 @@ export class TransactionTableService {
       minWidth: 200,
       maxWidth: 230,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'merchantType',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'countryCode',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'amount',
@@ -107,28 +105,28 @@ export class TransactionTableService {
       cellClassRules: {
         'rag-red': 'x != 00',
       },
-      filter: true
+      filter: true,
     },
     {
       field: 'transactionId',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'networkId',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      filter: true
+      filter: true,
     },
     {
       field: 'rrn',
       minWidth: 150,
       maxWidth: 200,
       headerClass: 'transaction-header-color',
-      headerName: 'RRN'
+      headerName: 'RRN',
     },
     {
       field: 'location',
@@ -173,7 +171,6 @@ export class TransactionTableService {
       maxWidth: 300,
       headerClass: 'transaction-header-color',
     },
-  
   ];
 
   rowData = [
@@ -197,7 +194,7 @@ export class TransactionTableService {
       posDataCode: 123,
       sequenceNumber: 443,
       sourceAccount: '192.168.1.7:8809',
-      destAccount: '192.168.42.3:6767'
+      destAccount: '192.168.42.3:6767',
     },
 
     {
@@ -220,7 +217,7 @@ export class TransactionTableService {
       posDataCode: 112,
       sequenceNumber: 223,
       sourceAccount: '192.168.4.48:8809',
-      destAccount: '192.168.42.3:6767'
+      destAccount: '192.168.42.3:6767',
     },
     {
       transactionDate: '',
@@ -242,9 +239,13 @@ export class TransactionTableService {
       posDataCode: 115,
       sequenceNumber: 443,
       sourceAccount: '192.168.6.18:8809',
-      destAccount: '192.168.42.3:6767'
-    }
-  ]
+      destAccount: '192.168.42.3:6767',
+    },
+  ];
+
+  onFilter(searchInputClass: string) {
+    this.gridApi.setQuickFilter((document.getElementById(searchInputClass) as HTMLInputElement)?.value)
+  }
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();

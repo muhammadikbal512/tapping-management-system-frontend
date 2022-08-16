@@ -15,7 +15,7 @@ export class UserTableComponent implements OnInit {
   ) {}
 
   public rowClassRules: RowClassRules = {
-    'ag-grid-investigation': (params) => {
+    'ag-bg-rowIndex': (params) => {
       return params.rowIndex % 2 == 0;
     }
   }

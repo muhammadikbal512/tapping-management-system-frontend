@@ -136,22 +136,22 @@ export class ISO8583FieldState {
     });
   }
 
-  // @Action(Iso8583FieldErrorState)
-  // ifStateIsError(
-  //   ctx: StateContext<IsoFieldConfigurationStateModel>,
-  //   { errorMessage }: Iso8583FieldErrorState
-  // ) {
-  //   this.notifierService.errorNotification(
-  //     errorMessage?.message,
-  //     errorMessage?.httpStatusCode
-  //   );
-  //   if (this.iso8583FieldTableService.gridApi.getRenderedNodes().length == 0) {
-  //     this.iso8583FieldTableService.showNoRowData();
-  //   } else {
-  //     this.iso8583FieldTableService.hideTableLoading();
-  //   }
-  //   ctx.patchState({
-  //     responseMessage: errorMessage,
-  //   });
-  // }
+  @Action(Iso8583FieldErrorState)
+  ifStateIsError(
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
+    { errorMessage }: Iso8583FieldErrorState
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage?.message,
+      errorMessage?.httpStatusCode
+    );
+    if (this.iso8583FieldTableService.gridApi.getRenderedNodes().length == 0) {
+      this.iso8583FieldTableService.showNoRowData();
+    } else {
+      this.iso8583FieldTableService.hideTableLoading();
+    }
+    ctx.patchState({
+      responseMessage: errorMessage,
+    });
+  }
 }

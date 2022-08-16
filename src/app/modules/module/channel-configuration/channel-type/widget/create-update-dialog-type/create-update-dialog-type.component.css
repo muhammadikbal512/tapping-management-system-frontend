@@ -36,12 +36,14 @@
     peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
 }
 
-:host ::ng-deep .create-button {
+:host ::ng-deep .create-button .p-button {
   background-color: #087592;
+  border-color: #087592;
 }
 
-:host ::ng-deep .create-button:hover {
+:host ::ng-deep  .create-button .p-button:hover {
   background-color: #087576;
+  border-color: #087576;
 }
 
 :host ::ng-deep .p-inline-message.p-inline-message-error,

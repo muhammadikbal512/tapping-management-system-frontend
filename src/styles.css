@@ -41,7 +41,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .grid-container {
   border: 1px solid #087592;
   @apply
-   
   bg-white 
   rounded-3xl
 }
@@ -103,3 +102,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ag-theme-alpine .ag-header {
   background: transparent !important;
 }
+

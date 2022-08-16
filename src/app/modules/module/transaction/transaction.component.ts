@@ -16,6 +16,7 @@ import { FormsTransactionComponent } from './forms-transaction/forms-transaction
 })
 export class TransactionComponent implements OnInit {
   additionalData: TransactionMessageInterface = additionalData;
+  rangeDates!: Date[];
   constructor(
     private papa: Papa,
     public transactionTableService: TransactionTableService,
@@ -23,10 +24,16 @@ export class TransactionComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   ngAfterViewInit(): void {
     this.stylingAgFooter();
+  }
+
+  onFilterTextBoxChange() {
+    this.transactionTableService.onFilter('search-filter');
   }
 
   refreshTable() {

@@ -6,8 +6,10 @@
     <app-header>
     </app-header>
     <div class="main-content">
-      <h1>{{this.urlParams2 | uppercase}}</h1>
-      <p class="active-route">{{ this.urlParams1 | titlecase }} - {{ this.urlParams2 | titlecase }}</p>
+      <div class="px-3">
+        <p class="text-lg font-semibold">{{this.urlParams2 | uppercase}}</p>
+        <p class="active-route">{{ this.urlParams1 | titlecase }} - {{ this.urlParams2 | titlecase }}</p>
+      </div>
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>

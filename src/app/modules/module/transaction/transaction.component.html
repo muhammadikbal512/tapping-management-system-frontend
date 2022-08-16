@@ -1,21 +1,32 @@
 <div class="container-transaction">
-  <!-- <div class="container-grid mb-4">
-    <div class="container-grid-header text-center">
-      <app-date-picker [form]="searchFilterForm"></app-date-picker>
-    </div>
-
-    <div class="grid-4 text-center p-4">
-      <button mat-raised-button (click)="openDialog()" color="primary">Open</button>
-    </div>
-
-  </div> -->
-
   <div class="grid-container mb-4 shadow-md">
-    <div class="container-grid-header flex flex-row">
-      <p-button (click)="onExport()" label="Export data as XLS" icon="pi pi-file-excel"></p-button>
-      <p-button (click)="refreshTable()" class="ml-3" icon="pi pi-refresh">
-      </p-button>
+    <div class="container-grid-header flex" style="justify-content: space-between;">
+      <div class="button">
+        <p-button (click)="onExport()" label="Export data as XLS" icon="pi pi-file-excel"></p-button>
+        <p-button (click)="refreshTable()" class="ml-3" icon="pi pi-refresh">
+        </p-button>
+      </div>
+      <div class="date flex flex-col">
+        <p-calendar dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" [showIcon]="true"></p-calendar>
+        <div class="button mt-3 space-x-3 mx-auto">
+          <p-button class="p-button-sm" label="Search"></p-button>
+          <p-button class="p-button-sm" label="Clear"></p-button>
+        </div>
+      </div>
+      <div class="grid-header-right">
+        <div class="search-transaction-container">
+          <span class="search-icon-transaction bx bx-search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </span>
+          <input (input)="onFilterTextBoxChange()" id="search-filter" class="search-input" type="text"
+            placeholder="Search">
+        </div>
+      </div>
     </div>
+
     <div class="p-4">
       <app-table></app-table>
       <div class="page-size-container">

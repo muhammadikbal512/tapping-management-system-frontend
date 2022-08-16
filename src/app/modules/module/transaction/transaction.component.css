@@ -80,3 +80,14 @@
   background: #dcdcdc;
   border-radius: 10px;
 }
+
+.search-transaction-container {
+  width: 300px;
+  align-items: center;
+}
+
+.search-icon-transaction {
+  position:absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+}

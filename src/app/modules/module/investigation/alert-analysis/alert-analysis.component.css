@@ -18,8 +18,7 @@
   border-radius: 10px;
   @apply p-2  
     flex
-    mx-4
-    
+    mx-4;
 }
 
 .input-label {
@@ -42,6 +41,10 @@
   @apply w-28;
 }
 
-.p-dropdown {
-  width: 100%;
+:host ::ng-deep .p-button {
+  background-color:#087592;
+}
+
+:host ::ng-deep .p-button:hover{
+  background-color: #087576;
 }
