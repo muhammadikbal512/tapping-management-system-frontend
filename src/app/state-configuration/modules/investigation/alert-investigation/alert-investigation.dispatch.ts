@@ -2,7 +2,7 @@ import {
   AlertInvestigationGet,
   AlertInvestigationErrorState,
   AlertInvestigationSuccessState,
-  AlertInvestigationDelete
+  AlertInvestigationDelete,
 } from './alert-investigation.action';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -18,18 +18,17 @@ export class AlertInvestigationDispatch {
   }
 
   @Dispatch()
+  public _AlertInvestigationDeleteDispatch(id: number) {
+    return new AlertInvestigationDelete(id);
+  }
+  
+  @Dispatch()
   public _AlertInvestigationSuccessDispatch(message: CustomHttpResponseModel) {
     return new AlertInvestigationSuccessState(message);
   }
 
-  @Dispatch() 
-    public _AlertInvestigationDeleteDispatch(id: number) {
-      return new AlertInvestigationDelete(id)
-    }
-  
-
   @Dispatch()
   public _AlertInvestigationErrorDispatch(message: CustomHttpResponseModel) {
-      return new AlertInvestigationErrorState(message);
+    return new AlertInvestigationErrorState(message);
   }
 }

@@ -3,21 +3,23 @@ import { AlertInvestigationDispatch } from 'src/app/state-configuration/modules/
 import { AlertInvestigationModel } from 'src/app/model/modules-model/alert-investigation.model';
 import { HttpClient } from '@angular/common/http';
 import { AlertInvestigationTableService } from './alert-investigation-table.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertInvestigationService {
   existingData: AlertInvestigationModel = new AlertInvestigationModel();
+  apiUrl: string = environment.core236
   constructor(
     private alertDispatch: AlertInvestigationDispatch,
     private http: HttpClient,
     private alertTableService: AlertInvestigationTableService
   ) {}
 
-  getAllIso8583Format() {
+  getAllAlertInvestigation() {
     return this.http.get<AlertInvestigationModel[]>(
-      'test'
+      `${this.apiUrl}/alertInvestigation`
     );
   }
 
@@ -25,5 +27,10 @@ export class AlertInvestigationService {
     this.alertDispatch._AlertInvestigationDeleteDispatch(
       this.existingData.alertId
     );
+  }
+
+  onGetAllAlertInvestigation() {
+   this.alertTableService.showTableLoading();
+   this.alertDispatch._AlertInvestigationGetDispatch();
   }
 }

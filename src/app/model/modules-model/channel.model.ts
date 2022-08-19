@@ -7,6 +7,6 @@ export class ChannelModel {
   port: string = '';
   timeTrace: string = '';
   isOnPremise: boolean = false;
-  channelStatus: string = '';
+  channelStatus: boolean = false;
   channelType!: ChannelTypeModel
 }

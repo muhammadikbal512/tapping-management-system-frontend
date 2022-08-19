@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 import { RolesTableService } from './roles-table.service';
 import { RowClickedEvent } from 'ag-grid-community';
 import { CreateDialogRolesComponent } from '../../module/user-management/roles/widgets/create-dialog-roles/create-dialog-roles.component';
-import { EditDialogRolesComponent } from '../../module/user-management/roles/widgets/edit-dialog-roles/edit-dialog-roles.component'
-
+import { EditDialogRolesComponent } from '../../module/user-management/roles/widgets/edit-dialog-roles/edit-dialog-roles.component';
 
 @Injectable({
   providedIn: 'root',
@@ -26,14 +25,34 @@ export class RolesService {
   constructor(
     private rolesTableService: RolesTableService,
     private rolesDispatch: RolesDispatch,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private http: HttpClient
   ) {}
 
-  getAllRoles() {}
+  getAllRoles() {
+    return this.http.get<RolesModel[]>(`${this.apiUrl}/roles/list`);
+  }
 
-  deleteRole() {}
+  addRoles(data: RolesModel) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/roles/add`,
+      data
+    );
+  }
 
-  updateRole() {}
+  deleteRole(id: number) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/roles/delete`,
+      id
+    );
+  }
+
+  updateRole(data: FormData) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/roles/update`,
+      data
+    );
+  }
 
   getAllRolesWithDelay() {
     setTimeout(() => {

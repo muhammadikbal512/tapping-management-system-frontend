@@ -120,7 +120,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     }
     this.channelModel.channelStatus = this.channelStatus.value;
     if (this.channelStatus.value == '' || this.channelStatus.value == null) {
-      this.channelModel.channelStatus = '';
+      this.channelModel.channelStatus = false;
     }
     return this.channelModel;
   }

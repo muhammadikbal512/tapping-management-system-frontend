@@ -70,7 +70,16 @@ export class AlertInvestigationState {
   @Action(AlertInvestigationSuccessState) ifSuccessState(
     ctx: StateContext<AlertInvestigationStateModel>,
     { successMessage }: AlertInvestigationSuccessState
-  ) {}
+  ) {
+    this.notifierService.successNotification(
+      successMessage.message,
+      successMessage.httpStatusCode
+    );
+    this.alertService.onGetAllAlertInvestigation();
+    ctx.patchState({
+      responseMessage: successMessage
+    })
+  }
 
   @Action(AlertInvestigationErrorState) ifErrorState(
     ctx: StateContext<AlertInvestigationStateModel>,

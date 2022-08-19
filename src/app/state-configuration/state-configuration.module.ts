@@ -19,6 +19,7 @@ import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-term
 import { AlertInvestigationState } from './modules/investigation/alert-investigation/alert-investigation.state';
 import { TransactionState } from './modules/transaction/transaction.state';
 import { JsonConfigurationState } from './modules/external-interfaces/json-configuration/json-configuration.state';
+import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.state';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { JsonConfigurationState } from './modules/external-interfaces/json-confi
       MessageFormatState,
       RolesState,
       ResponseMappingState,
+      Iso20022State,
       AlertInvestigationState,
       AcquirerAlertState,
       TransactionState,

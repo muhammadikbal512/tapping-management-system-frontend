@@ -100,6 +100,7 @@ export class ChannelService {
       String(newData.channelType.channelTypeId)
     );
     formData.append('isOnPremise', String(newData.isOnPremise));
+    formData.append('channelStatus', String(newData.channelStatus));
     return formData;
   }
 

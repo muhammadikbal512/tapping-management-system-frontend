@@ -1,1 +1,34 @@
-<p>create-update-iso20022 works!</p>
+<form [formGroup]="form" class="p-8">
+    
+        <div class="input-container">
+            <input formControlName="messageFormat" type="text" class="peer" placeholder=" ">
+            <label class="input-label">Message Format</label>
+            <!-- <p-message *ngIf="messageFormat.touched && !messageFormat.hasError('required')" severity="success">
+            </p-message>
+            <p-message *ngIf="messageFormat.touched && messageFormat.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="messageFormat.touched && messageFormat.hasError('required')" class="p-error">Message Format
+                should be
+                fill.</small> -->
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" ">
+            <label for="description" class="input-label">Description</label>
+        </div>
+    <div class="text-center">
+        <mat-dialog-actions align="end">
+            <p-button class="cancel-button"
+                label="Cancel"
+                mat-dialog-close="true"
+                styleClass="p-button-sm"></p-button>
+      <p-button *ngIf="iso20022Service.buttonStatus == 'create'"
+                [disabled]="form.invalid"
+                class="create-button ml-3" label="Create"
+                styleClass="p-button-sm"></p-button>
+      <p-button *ngIf="iso20022Service.buttonStatus == 'edit'"
+                [disabled]="disableButton" class="create-button"
+                label="Save"
+                styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
+    </div>
+</form>

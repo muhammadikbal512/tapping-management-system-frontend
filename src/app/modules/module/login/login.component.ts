@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse)
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
