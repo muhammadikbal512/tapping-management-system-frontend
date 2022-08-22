@@ -19,8 +19,8 @@
 .main {
   @apply flex 
     flex-col 
-    w-full;
-  margin-left: 70px;
+    w-full
+    ml-16;
 }
 
 .main-content {

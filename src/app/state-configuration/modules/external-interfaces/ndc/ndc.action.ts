@@ -4,6 +4,11 @@ export class NdcGet {
   static readonly type = '[NDC] Get';
 }
 
+export class NdcDelete {
+  static readonly type = '[NDC] Delete';
+  constructor(public id: number) {}
+}
+
 export class NdcSuccessState {
   constructor(public successMessage: CustomHttpResponseModel) {}
 

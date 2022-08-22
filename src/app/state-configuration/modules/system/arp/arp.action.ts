@@ -4,6 +4,11 @@ export class ArpGet {
     static readonly type = '[ARP] Get';
 }
 
+export class ArpDelete {
+    static readonly type = '[ARP] Delete';
+    constructor(public id: number) {}
+}
+
 export class ArpSuccessState {
     static readonly type = '[ARP] Success';
     constructor(public successMessage: CustomHttpResponseModel) {}

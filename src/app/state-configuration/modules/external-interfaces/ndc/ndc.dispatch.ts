@@ -1,6 +1,6 @@
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Injectable } from '@angular/core';
-import { NdcGet, NdcSuccessState, NdcErrorState } from './ndc.action';
+import { NdcGet, NdcSuccessState, NdcErrorState, NdcDelete } from './ndc.action';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 
 
@@ -11,6 +11,11 @@ export class NdcDispatch {
     @Dispatch()
     public _NdcGetDispatch() {
         return new NdcGet();
+    }
+
+    @Dispatch()
+    public _NdcDeleteDispatch(id: number) {
+        return new NdcDelete(id);
     }
 
     @Dispatch()

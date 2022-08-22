@@ -1,23 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent } from 'ag-grid-community';
 import { NdcTableService } from 'src/app/modules/services/module-services/ndc-table.service';
-
-
+import { NdcService } from 'src/app/modules/services/module-services/ndc.service';
 
 @Component({
   selector: 'app-table-ndc',
   templateUrl: './table-ndc.component.html',
-  styleUrls: ['./table-ndc.component.css']
+  styleUrls: ['./table-ndc.component.css'],
 })
 export class TableNdcComponent implements OnInit {
+  constructor(
+    private ndcTableService: NdcTableService,
+    private ndcService: NdcService
+  ) {}
 
-  constructor(private ndcTableService: NdcTableService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onGridReady(params: GridReadyEvent) {
-    
+    this.ndcTableService.gridApi = params.api;
+    this.ndcTableService.gridColumnApi = params.columnApi;
+    this.runService();
+  }
+
+  runService() {
+    this.ndcTableService.showTableLoading();
+    this.ndcService.getAllNdcWithDelay();
   }
 
   get animateRow() {
@@ -47,5 +54,4 @@ export class TableNdcComponent implements OnInit {
   get frameworkComponents() {
     return this.ndcTableService.frameworkComponents;
   }
-
 }

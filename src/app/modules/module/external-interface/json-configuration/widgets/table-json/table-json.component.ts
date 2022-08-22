@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { JsonConfigurationTableService } from 'src/app/modules/services/module-services/json-configuration-table.service';
-
-
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
 
 @Component({
   selector: 'app-table-json',
   templateUrl: './table-json.component.html',
-  styleUrls: ['./table-json.component.css']
+  styleUrls: ['./table-json.component.css'],
 })
 export class TableJsonComponent implements OnInit {
+  constructor(
+    private jsonTableService: JsonConfigurationTableService,
+    private jsonService: JsonConfigurationService
+  ) {}
 
-  constructor(private jsonTableService: JsonConfigurationTableService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onGridReady(params: GridReadyEvent) {
-
+    this.jsonTableService.gridApi = params.api;
+    this.jsonTableService.gridColumnApi = params.columnApi;
+    this.runService();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    
+  runService() {
+    this.jsonTableService.showTableLoading();
+    this.jsonService.getAllJsonConfigWithDelay();
   }
+
+  onCellClicked(data: RowClickedEvent) {}
 
   get animateRow() {
     return this.jsonTableService.animateRow;

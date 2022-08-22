@@ -42,4 +42,12 @@ export class JsonConfigurationTableService {
   hideTableLoading() {
     this.gridApi.hideOverlay();
   }
+
+  setRowData(data: any[]) {
+    this.gridApi.setRowData(data);
+  }
+
+  showNoRowData() {
+    this.gridApi.showNoRowsOverlay();
+  }
 }

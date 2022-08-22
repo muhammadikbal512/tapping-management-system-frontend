@@ -20,6 +20,7 @@ export class JsonConfigurationComponent implements OnInit {
   }
 
   showDialog() {
+    this.jsonService.buttonStatus = 'create'
     this.jsonService.openDialog();
   }
 }

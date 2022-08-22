@@ -20,10 +20,11 @@ import { AlertInvestigationState } from './modules/investigation/alert-investiga
 import { TransactionState } from './modules/transaction/transaction.state';
 import { JsonConfigurationState } from './modules/external-interfaces/json-configuration/json-configuration.state';
 import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.state';
+import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
+import { ArpState } from './modules/system/arp/arp.state';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     NgxsLoggerPluginModule.forRoot(),
@@ -45,7 +46,9 @@ import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.s
       AcquirerAlertState,
       TransactionState,
       JsonConfigurationState,
-    ])
+      NdcState,
+      ArpState,
+    ]),
   ],
 })
 export class StateConfigurationModule {}

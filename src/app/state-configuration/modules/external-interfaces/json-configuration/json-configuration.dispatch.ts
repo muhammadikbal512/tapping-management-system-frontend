@@ -1,5 +1,6 @@
 import {
   JsonConfigurationGet,
+  JsonConfigurationDelete,
   JsonConfigurationSuccessState,
   JsonConfigurationErrorState,
 } from './json-configuration.action';
@@ -15,6 +16,11 @@ export class JsonConfigurationDispatch {
     @Dispatch()
     public _JsonConfigurationGetDispatch() {
         return new JsonConfigurationGet();
+    }
+
+    @Dispatch()
+    public _JsonConfigurationDeleteDispatch(id: number) {
+        return new JsonConfigurationDelete(id);
     }
 
     @Dispatch()

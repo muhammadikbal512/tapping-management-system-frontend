@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { AppParametersTableService } from 'src/app/modules/services/module-services/app-parameters-table.service';
-
+import { AppParametersService } from 'src/app/modules/services/module-services/app-parameters.service';
 
 @Component({
   selector: 'app-table-arp',
   templateUrl: './table-arp.component.html',
-  styleUrls: ['./table-arp.component.css']
+  styleUrls: ['./table-arp.component.css'],
 })
 export class TableArpComponent implements OnInit {
+  constructor(
+    private appTableService: AppParametersTableService,
+    private appService: AppParametersService
+  ) {}
 
-  constructor(private appTableService: AppParametersTableService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onGridReady(params: GridReadyEvent) {
+    this.appTableService.gridApi = params.api;
+    this.appTableService.gridColumnApi = params.columnApi;
+    this.runeService();
   }
 
-  onGridReady(event: GridReadyEvent) {
-    
+  runeService() {
+    this.appTableService.showTableLoading();
+    this.appService.getArpAllWithDelay();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-
-  }
+  onCellClicked(data: RowClickedEvent) {}
 
   get animateRow() {
     return this.appTableService.animateRow;
@@ -50,5 +56,4 @@ export class TableArpComponent implements OnInit {
   get frameworkComponents() {
     return this.appTableService.frameworkComponents;
   }
-
 }

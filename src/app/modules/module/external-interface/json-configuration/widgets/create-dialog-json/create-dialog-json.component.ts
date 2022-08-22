@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
 
 @Component({
   selector: 'app-create-dialog-json',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-dialog-json.component.css']
 })
 export class CreateDialogJsonComponent implements OnInit {
-
-  constructor() { }
+  disableButton: boolean = false;
+  constructor(public jsonService: JsonConfigurationService) { }
 
   ngOnInit(): void {
   }

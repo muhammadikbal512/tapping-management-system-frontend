@@ -34,4 +34,16 @@ export class NdcTableService {
       (document.getElementById(searchInputClass) as HTMLInputElement).value
     );
   }
+
+  setRowData(data: any[]) {
+    this.gridApi.setRowData(data);
+  }
+
+  showTableLoading() {
+    this.gridApi.showLoadingOverlay();
+  }
+
+  showNoRowData() {
+    this.gridApi.showNoRowsOverlay();
+  }
 }
