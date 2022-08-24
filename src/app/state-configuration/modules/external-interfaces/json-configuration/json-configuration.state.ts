@@ -97,7 +97,7 @@ export class JsonConfigurationState {
       successMessage.message,
       successMessage.httpStatusCode
     );
-
+    this.jsonService.onGetAllJsonConfig();
     ctx.patchState({
       responseMessage: successMessage
     })

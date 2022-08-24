@@ -22,6 +22,7 @@ import { JsonConfigurationState } from './modules/external-interfaces/json-confi
 import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.state';
 import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
 import { ArpState } from './modules/system/arp/arp.state';
+import { AppParameterState } from './modules/application-parameters/app-parameters.state';
 
 @NgModule({
   declarations: [],
@@ -48,6 +49,7 @@ import { ArpState } from './modules/system/arp/arp.state';
       JsonConfigurationState,
       NdcState,
       ArpState,
+      AppParameterState
     ]),
   ],
 })

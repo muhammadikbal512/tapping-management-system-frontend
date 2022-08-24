@@ -75,7 +75,7 @@ export class NdcState {
     return this.ndcService.deleteNdc(id).pipe(
       tap((response) => {
         ctx.dispatch(new NdcSuccessState(response));
-        const filteredData = ctx.getState().NDC.filter((data) => data.id == id);
+        const filteredData = ctx.getState().NDC.filter((data) => data.id !== id);
         ctx.patchState({
           ...ctx.getState(),
           NDC: filteredData,
@@ -93,7 +93,7 @@ export class NdcState {
       successMessage.message,
       successMessage.httpStatusCode
     )
-
+    this.ndcService.onGetAllNdc();
     ctx.patchState({
       responseMessage: successMessage
     })

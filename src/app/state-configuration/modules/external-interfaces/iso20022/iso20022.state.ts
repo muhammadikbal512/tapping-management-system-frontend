@@ -145,7 +145,7 @@ export class Iso20022State {
       successMessage.message,
       successMessage.httpStatusCode
     )
-
+    this.iso20022Service.onGetAllIso20022();
     ctx.patchState({
       responseMessage: successMessage
     })

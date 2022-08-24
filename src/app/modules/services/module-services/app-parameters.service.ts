@@ -30,6 +30,10 @@ export class AppParametersService {
     return this.http.get<ArpModel[]>(`${this.apiUrl}/ARP/list`);
   }
 
+  addArp(data: AppsParametersModel) {
+    return this.http.post<CustomHttpResponseModel>(`${this.apiUrl}/ARP/add`, data)
+  }
+
   deleteArp(id: number) {
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/ARP/delete`,
