@@ -132,7 +132,6 @@ import { UserTagLockComponent } from '../modules/global-widget/user-tag-lock/use
 import { TableInterfaceComponent } from '../modules/module/dashboard/interface-list/widgets/table-interface/table-interface.component';
 import { InterfaceListCardComponent } from '../modules/module/dashboard/interface-list-card/interface-list-card.component';
 import { DeviceMonitoringComponent } from '../modules/module/device-monitoring/device-monitoring.component';
-import { CardDeviceComponent } from '../modules/module/device-monitoring/widgets/card-device/card-device.component';
 import { TransactionFlowComponent } from '../modules/global-widget/transaction-flow/transaction-flow.component';
 import { TransactionFlowTableComponent } from '../modules/module/transaction/widget-transaction/transaction-flow-table/transaction-flow-table.component';
 import { Iso8583ResponseMappingComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
@@ -156,6 +155,7 @@ import { AuthenticationService } from './services/authentication-service/authent
 import { UserService } from './services/module-services/user.service';
 import { AuthenticationGuard } from '../guard/authentication.guard';
 import { RouterModule } from '@angular/router';
+import { TableDeviceMonitoringComponent } from './module/device-monitoring/widgets/table-device-monitoring/table-device-monitoring.component';
 
 
 
@@ -266,7 +266,6 @@ import { RouterModule } from '@angular/router';
     TableInterfaceComponent,
     InterfaceListCardComponent,
     DeviceMonitoringComponent,
-    CardDeviceComponent,
     TransactionFlowComponent,
     TransactionFlowTableComponent,
     Iso8583ResponseMappingComponent,
@@ -275,6 +274,7 @@ import { RouterModule } from '@angular/router';
     Iso8583ResponseMappingTableComponent,
     ActionButtonInterfaceComponent,
     TransactionVirtualComponent,
+    TableDeviceMonitoringComponent,
   ],
   imports: [
     CommonModule,

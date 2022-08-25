@@ -8,6 +8,7 @@ import { additionalData } from './widget-transaction/table/table.component';
 import { TransactionService } from '../../services/module-services/transaction.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormsTransactionComponent } from './forms-transaction/forms-transaction.component';
+import { EventCollectorService } from '../../services/module-services/event-collector.service';
 
 @Component({
   selector: 'app-transaction',
@@ -21,11 +22,12 @@ export class TransactionComponent implements OnInit {
     private papa: Papa,
     public transactionTableService: TransactionTableService,
     public transactionApiService: TransactionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private eventCollectorService: EventCollectorService
   ) {}
 
   ngOnInit(): void {
-    
+    this.eventCollectorService.getEventCollectorWithDelay();
   }
 
   ngAfterViewInit(): void {

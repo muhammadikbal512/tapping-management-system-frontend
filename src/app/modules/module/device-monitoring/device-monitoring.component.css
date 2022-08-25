@@ -1,10 +1,47 @@
-.dashboard-content {
-    @apply
-    grid 
-    grid-cols-1 
-    p-4 
-    space-y-8 
-    lg:gap-8 
-    lg:space-y-0 
-    lg:grid-cols-1
-}
+.transaction-summary-container {
+    @apply p-12
+    flex
+    flex-row;
+  }
+  
+  .summary-left {
+    width: 50%;
+    @apply flex
+    flex-col;
+  }
+  
+  .summary-item {
+    justify-content: space-between;
+    @apply flex
+    flex-row
+    items-center
+    mb-2;
+  }
+  
+  .summary-item span {
+    white-space: nowrap;
+    width: 190px;
+    font-size: 14px;
+  }
+  
+  .summary-item input {
+    @apply bg-gray-200 
+    appearance-none 
+    border-2 
+    border-gray-200 
+    rounded 
+    py-[5px] 
+    px-4 
+    w-full 
+    text-gray-700 
+    leading-[0] 
+    text-[14px] 
+    mr-[25px] 
+    focus:outline-none;
+  }
+  
+  .summary-right {
+    width: 50%;
+    @apply flex flex-col
+    ml-5;
+  }

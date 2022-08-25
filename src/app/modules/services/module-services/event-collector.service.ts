@@ -28,7 +28,11 @@ export class EventCollectorService {
     private eventCollectorDispatch: EventCollectorDispatch
   ) {}
 
-  getAllEventCollector() {}
+  getAllEventCollector() {
+    return this.http.get<EventCollectorModel[]>(
+      `${this.apiUrl}/eventCollector/list`
+    );
+  }
 
   addEventCollector() {}
 
@@ -38,7 +42,7 @@ export class EventCollectorService {
 
   getEventCollectorWithDelay() {
     setTimeout(() => {
-      this.onGetAllEventCollector()
+      this.onGetAllEventCollector();
     }, 500);
   }
 
@@ -77,6 +81,6 @@ export class EventCollectorService {
   }
 
   set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data
+    this.existingData = data.data;
   }
 }

@@ -246,19 +246,23 @@
               <p>ARP</p>
             </a>
           </li>
+        </ul>
+      </li>
+      <li id="dropdown-device-monitoring">
+        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+          data-bs-target="#collapsedropdown-device-monitoring">
+          <i class="pi pi-th-large mr-1"></i>
+          <p>Device Monitoring</p>
+          <i class="pi pi-angle-down ml-auto"></i>
+        </a>
+        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-device-monitoring"
+          aria-labelledby="dropdown-device-monitoring" data-bs-parent="#sidenavSecExample">
           <li>
-            <a routerLink="system/system-parameters" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              
-              <p>System Params</p>
+            <a routerLink="device-monitoring/all-devices" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+              <p>All Devices</p>
             </a>
           </li>
         </ul>
-      </li>
-      <li class="mb-4">
-        <a routerLink="/TMS-Home/device-monitoring">
-          <i class="pi pi-undo mr-1"></i>
-          <p>Device Monitoring</p>
-        </a>
       </li>
     </ul>
   </div>

@@ -23,6 +23,7 @@ import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.s
 import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
 import { ArpState } from './modules/system/arp/arp.state';
 import { AppParameterState } from './modules/application-parameters/app-parameters.state';
+import { EventCollectorState } from './modules/event-collector/event-collector.state';
 
 @NgModule({
   declarations: [],
@@ -49,7 +50,8 @@ import { AppParameterState } from './modules/application-parameters/app-paramete
       JsonConfigurationState,
       NdcState,
       ArpState,
-      AppParameterState
+      AppParameterState,
+      EventCollectorState,
     ]),
   ],
 })
