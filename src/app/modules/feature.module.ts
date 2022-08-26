@@ -156,6 +156,7 @@ import { UserService } from './services/module-services/user.service';
 import { AuthenticationGuard } from '../guard/authentication.guard';
 import { RouterModule } from '@angular/router';
 import { TableDeviceMonitoringComponent } from './module/device-monitoring/widgets/table-device-monitoring/table-device-monitoring.component';
+import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-tag/device-monitoring-tag.component';
 
 
 
@@ -275,6 +276,7 @@ import { TableDeviceMonitoringComponent } from './module/device-monitoring/widge
     ActionButtonInterfaceComponent,
     TransactionVirtualComponent,
     TableDeviceMonitoringComponent,
+    DeviceMonitoringTagComponent,
   ],
   imports: [
     CommonModule,

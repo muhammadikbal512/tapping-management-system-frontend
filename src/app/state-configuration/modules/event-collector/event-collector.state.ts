@@ -8,7 +8,6 @@ import { EventCollectorModel } from 'src/app/model/modules-model/event-collector
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { EventService } from 'ag-grid-community';
 import { EventCollectorTableService } from 'src/app/modules/services/module-services/event-collector-table.service';
 import { EventCollectorService } from 'src/app/modules/services/module-services/event-collector.service';
 import { catchError, tap } from 'rxjs';
@@ -49,6 +48,13 @@ export class EventCollectorState {
   ) {
     return this.eventService.getAllEventCollector().pipe(
       tap((response) => {
+        if (response.length != 0) {
+          this.eventTableService.showTableLoading();
+          this.eventTableService.setRowData(response);
+        } else {
+          this.eventTableService.showNoRowData();
+          this.eventTableService.setRowData(response);
+        }
         ctx.patchState({
           ...ctx.getState(),
           EventCollectors: response,

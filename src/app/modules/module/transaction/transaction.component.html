@@ -7,7 +7,8 @@
         </p-button>
       </div>
       <div class="date flex flex-col">
-        <p-calendar dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" [showIcon]="true"></p-calendar>
+        <p-calendar dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
+          inputId="range" [showIcon]="true"></p-calendar>
         <div class="button mt-3 space-x-3 mx-auto">
           <p-button class="p-button-sm" label="Search"></p-button>
           <p-button class="p-button-sm" label="Clear"></p-button>
@@ -139,86 +140,54 @@
           <div class="transaction-summary-container">
             <div class="summary-left">
               <div class="summary-item">
-                <span>Transaction Date</span>
-                <input [value]="this.transactionTableService.additionalData?.transactionDate" readonly disabled>
+                <span>Dst Address</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].dstAddress" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>Network Date</span>
-                <input [value]="this.transactionTableService.additionalData?.networkDate" readonly disabled>
+                <span>Dst Port</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].dstPort" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>MTI</span>
-                <input [value]="this.transactionTableService.additionalData?.mti" readonly disabled>
+                <span>Flag</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].flag" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>HPAN</span>
-                <input [value]="this.transactionTableService.additionalData?.hpan" readonly disabled>
+                <span>Message Hexa</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].messageHexa" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>Terminal Id</span>
-                <input [value]="this.transactionTableService.additionalData?.terminalId" readonly disabled>
+                <span>Network ID</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].networkId" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>Merchant Id</span>
-                <input [value]="this.transactionTableService.additionalData?.merchantId" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Merchant Type</span>
-                <input [value]="this.transactionTableService.additionalData?.merchantType" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Country Code</span>
-                <input [value]="this.transactionTableService.additionalData?.countryCode" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Amount</span>
-                <input [value]="this.transactionTableService.additionalData?.amount" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Response Code</span>
-                <input [value]="this.transactionTableService.additionalData?.responseCode" readonly disabled>
+                <span>Protocol</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].protocol" readonly disabled>
               </div>
             </div>
             <div class="summary-right">
               <div class="summary-item">
-                <span>Transaction Id</span>
-                <input [value]="this.transactionTableService.additionalData?.transactionId" readonly disabled>
+                <span>Type Message</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].typeMessage" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>Network Id</span>
-                <input [value]="this.transactionTableService.additionalData?.networkId" readonly disabled>
+                <span>Src Address</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].srcAddress" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>RRN</span>
-                <input [value]="this.transactionTableService.additionalData?.rrn" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Src Account</span>
-                <input [value]="this.transactionTableService.additionalData?.sourceAccount" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Dest Account</span>
-                <input [value]="this.transactionTableService.additionalData?.destAccount" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Message Ascii</span>
-                <input [value]="this.transactionTableService.additionalData?.messageAscii" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Message Hexa</span>
-                <input [value]="this.transactionTableService.additionalData?.messageHexa" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Location</span>
-                <input [value]="this.transactionTableService.additionalData?.location" readonly disabled>
+                <span>Src Port</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].srcPort" readonly disabled>
               </div>
               <div class="summary-item">
                 <span>Sequence Number</span>
-                <input [value]="this.transactionTableService.additionalData?.sequenceNumber" readonly disabled>
+                <input [value]="this.eventCollectorTableService.rowData[0].sequenceNumber" readonly disabled>
               </div>
               <div class="summary-item">
-                <span>Pos Data Code</span>
-                <input [value]="this.transactionTableService.additionalData?.posDataCode" readonly disabled>
+                <span>Ack Number</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].ackNumber" readonly disabled>
+              </div>
+              <div class="summary-item">
+                <span>Timestamp</span>
+                <input [value]="this.eventCollectorTableService.rowData[0].timestamp" readonly disabled>
               </div>
             </div>
           </div>

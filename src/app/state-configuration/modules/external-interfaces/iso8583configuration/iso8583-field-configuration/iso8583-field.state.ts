@@ -82,25 +82,73 @@ export class ISO8583FieldState {
     );
   }
 
-  @Action(Iso8583FieldGetDialect, { cancelUncompleted: true })
-  getAdditionalDataFromState(ctx: StateContext<IsoFieldConfigurationStateModel>) {
-    return this.dialectService.getAllIso8583Dialect().pipe(tap(response => {
-      let dialectParseList: DialectMsgTemplateGroup[] = [];
-      response.forEach(x => {
-        dialectParseList.push({
-          name: x.nameType,
-          code: String(x.templateId)
-        })
+  @Action(Iso8583FieldAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
+    { payload }: Iso8583FieldAdd
+  ) {
+    return this.iso8583FieldService.addIsoFieldConfiguration(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new Iso8583FieldSuccessState(response));
+        ctx.patchState({
+          ...ctx.getState(),
+          iso8583FieldConfiguration: [
+            ...ctx.getState().iso8583FieldConfiguration,
+          ],
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new Iso8583FieldSuccessState(response.error));
       })
+    );
+  }
 
-      ctx.setState({
-        ...ctx.getState(),
-        dialects: dialectParseList
+  @Action(Iso8583FieldUpdate) updateDataFromState(
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
+    { id, payload, stateData }: Iso8583FieldUpdate
+  ) {
+    return this.iso8583FieldService.updateIsoFieldConfiguration(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new Iso8583FieldSuccessState(response));
+        const dataList = [...ctx.getState().iso8583FieldConfiguration];
+        const updatedDataIndex = dataList.findIndex((data) => data.id === id);
+        dataList[updatedDataIndex] = stateData;
+
+        ctx.patchState({
+          ...ctx.getState(),
+          iso8583FieldConfiguration: dataList,
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new Iso8583FieldSuccessState(response.error));
       })
-    }), catchError((response: HttpErrorResponse) => {
-      return ctx.dispatch(new Iso8583FieldErrorState(response.error));
-    })
-    )
+    );
+  }
+
+  @Action(Iso8583FieldGetDialect, { cancelUncompleted: true })
+  getAdditionalDataFromState(
+    ctx: StateContext<IsoFieldConfigurationStateModel>
+  ) {
+    return this.dialectService.getAllIso8583Dialect().pipe(
+      tap((response) => {
+        let dialectParseList: DialectMsgTemplateGroup[] = [];
+        response.forEach((x) => {
+          dialectParseList.push({
+            name: x.nameType,
+            code: String(x.templateId),
+          });
+        });
+
+        ctx.setState({
+          ...ctx.getState(),
+          dialects: dialectParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new Iso8583FieldErrorState(response.error));
+      })
+    );
   }
 
   @Action(Iso8583FieldDelete, { cancelUncompleted: true }) deleteDataFromState(

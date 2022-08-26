@@ -9,6 +9,7 @@ import { TransactionService } from '../../services/module-services/transaction.s
 import { MatDialog } from '@angular/material/dialog';
 import { FormsTransactionComponent } from './forms-transaction/forms-transaction.component';
 import { EventCollectorService } from '../../services/module-services/event-collector.service';
+import { EventCollectorTableService } from '../../services/module-services/event-collector-table.service';
 
 @Component({
   selector: 'app-transaction',
@@ -23,7 +24,8 @@ export class TransactionComponent implements OnInit {
     public transactionTableService: TransactionTableService,
     public transactionApiService: TransactionService,
     private dialog: MatDialog,
-    private eventCollectorService: EventCollectorService
+    private eventCollectorService: EventCollectorService,
+    public eventCollectorTableService: EventCollectorTableService
   ) {}
 
   ngOnInit(): void {

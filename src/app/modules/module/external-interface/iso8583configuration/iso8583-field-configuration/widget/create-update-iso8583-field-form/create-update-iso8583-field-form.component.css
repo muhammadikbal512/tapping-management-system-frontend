@@ -26,4 +26,11 @@
   .save-button {
     margin-right: 20px;
   }
+
+  /*PrimeNg deep styles*/
+:host ::ng-deep .cancel-button .p-button,
+:host ::ng-deep .cancel-button .p-button:enabled:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
   

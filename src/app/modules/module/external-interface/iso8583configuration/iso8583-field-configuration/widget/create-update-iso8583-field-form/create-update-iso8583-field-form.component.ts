@@ -10,6 +10,7 @@ import { IsoFieldConfigurationModel } from 'src/app/model/modules-model/iso-fiel
 import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-template-group';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
+import { ISO8583FieldState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.state';
 
 @Component({
   selector: 'app-create-update-iso8583-field-form',
@@ -19,9 +20,9 @@ import { Select } from '@ngxs/store';
 export class CreateUpdateIso8583FieldFormComponent
   implements OnInit, AfterViewInit
 {
-  // @Select(ISO8583FieldState.dialects) dialects$!: Observable<
-  //   DialectMsgTemplateGroup[]
-  // >;
+  @Select(ISO8583FieldState.dialects) dialects$!: Observable<
+    DialectMsgTemplateGroup[]
+  >;
 
   form!: FormGroup;
   disableButton: boolean = false;
@@ -39,9 +40,9 @@ export class CreateUpdateIso8583FieldFormComponent
   ngOnInit(): void {
     this.createForm();
     this.isoFieldConfigurationService.onGetAllDialect();
-    // this.dialects$.subscribe(data => {
-    //   this.DialectMsgTemplateOptionList = data.sort((a, b) => a.name.localeCompare(b.name));
-    // });
+    this.dialects$.subscribe(data => {
+      this.DialectMsgTemplateOptionList = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
   }
 
   ngAfterViewInit(): void {
@@ -117,7 +118,9 @@ export class CreateUpdateIso8583FieldFormComponent
     this.isoFieldConfigurationService.onUpdateIsoFieldConfiguration(newData);
   }
 
-  onCreateIsoField() {}
+  onCreateIsoField() {
+    this.isoFieldConfigurationService.onCreateIsoFieldConfiguration(this.setNewDataToModel())
+  }
 
   AddIso8583FieldConfig(data: any) {}
 

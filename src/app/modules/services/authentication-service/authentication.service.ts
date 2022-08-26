@@ -20,7 +20,11 @@ export class AuthenticationService {
   private loggedInUsername: string = '';
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router, private notificationService: NotificationService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
 
   public login(
     user: UserModel

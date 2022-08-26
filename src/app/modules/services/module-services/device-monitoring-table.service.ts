@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GridApi, ColumnApi, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { DeviceMonitoringInterface } from 'src/app/interface/modules/device-monitoring';
+import { DeviceMonitoringTagComponent } from '../../global-widget/device-monitoring-tag/device-monitoring-tag.component';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 
 @Injectable({
@@ -16,6 +17,7 @@ export class DeviceMonitoringTableService {
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     overlayLoading: OverlayLoadingComponent,
+    tag: DeviceMonitoringTagComponent,
   };
   defaultColDef: ColDef = {
     sortable: true,
@@ -25,24 +27,39 @@ export class DeviceMonitoringTableService {
     { field: 'id', hide: true },
     { field: 'deviceId', headerName: 'Device ID' },
     { field: 'deviceType' },
-    { field: 'status' },
+    { field: 'status', cellRenderer: 'tag' },
     { field: 'lastUpdate' },
+    { field: 'city', hide: true },
+    { field: 'activationDate', hide: true },
+    { field: 'remoteAddress', hide: true },
+    { field: 'port', hide: true },
+    { field: 'model', hide: true },
   ];
 
   rowData = [
     {
       id: 1,
-      deviceId: 'Jakarta',
+      deviceId: '1',
       deviceType: 'JKT - 04',
-      status: 'active',
+      status: 'true',
       lastUpdate: '10/06/2022, 00:18',
+      city: 'Jakarta',
+      activationDate: '09/06/2022, 10:22',
+      remoteAddress: '192.168.2.34',
+      port: '8884',
+      model: 'Switch'
     },
     {
       id: 2,
-      deviceId: 'Bogor',
+      deviceId: '2',
       deviceType: 'BGR - 04',
-      status: 'active',
+      status: 'false',
       lastUpdate: '20/06/2022, 00:18',
+      city: 'Bogor',
+      activationDate: '08/06/2022, 10:22',
+      remoteAddress: '192.168.2.12',
+      port: '8884',
+      model: 'PC'
     },
   ];
 

@@ -38,6 +38,54 @@ export class EventCollectorTableService {
     { field: 'typeMessage' },
     { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
+
+  rowData = [
+    {
+      id: 1,
+      ackNumber: 123,
+      dstAddress: '192.168.2.19',
+      dstPort: '4440',
+      flag: 'Test',
+      messageHexa: 'a20c',
+      networkId: 12,
+      protocol: 'Test',
+      sequenceNumber: 223,
+      srcAddress: '192.168.2.40',
+      srcPort: '8080',
+      timestamp: '10/06/2022, 16:22',
+      typeMessage: 'Test'
+    },
+    {
+      id: 2,
+      ackNumber: 123,
+      dstAddress: '192.168.2.19',
+      dstPort: '4440',
+      flag: 'Test',
+      messageHexa: 'a20c',
+      networkId: 12,
+      protocol: 'Test',
+      sequenceNumber: 223,
+      srcAddress: '192.168.2.40',
+      srcPort: '8080',
+      timestamp: '10/06/2022, 16:22',
+      typeMessage: 'Test'
+    },
+    {
+      id: 3,
+      ackNumber: 123,
+      dstAddress: '192.168.2.19',
+      dstPort: '4440',
+      flag: 'Test',
+      messageHexa: 'a20c',
+      networkId: 12,
+      protocol: 'Test',
+      sequenceNumber: 223,
+      srcAddress: '192.168.2.40',
+      srcPort: '8080',
+      timetamp: '10/06/2022, 16:22',
+      typeMessage: 'Test'
+    },
+  ];
   constructor() {}
 
   onFilter(searchInputClass: string) {
