@@ -10,23 +10,33 @@ import { PopupMessageService } from 'src/app/modules/services/popup-message-serv
   styleUrls: ['./action-button-group-terminal.component.css'],
 })
 export class ActionButtonGroupTerminalComponent implements AgRendererComponent {
+  cellValue: string = '';
   constructor(
     private channelService: ChannelService,
     private confirmationService: PopupMessageService
   ) {}
 
-  agInit(params: ICellRendererParams): void {}
+  agInit(params: ICellRendererParams): void {
+    this.cellValue = this.getValueToDisplay(params);
+  }
 
   refresh(params: ICellRendererParams): boolean {
     return false;
   }
 
+  getValueToDisplay(params: ICellRendererParams) {
+    return params.valueFormatted ? params.valueFormatted : params.value;
+  }
+
   editButton() {
     this.channelService.openDialog();
-    this.channelService.buttonStatus = 'edit'
+    this.channelService.buttonStatus = 'edit';
   }
 
   deleteButton(event: Event) {
-    this.confirmationService.channelConfirm(event, this.channelService)
+    this.confirmationService.channelConfirm(
+      event,
+      this.channelService
+    );
   }
 }

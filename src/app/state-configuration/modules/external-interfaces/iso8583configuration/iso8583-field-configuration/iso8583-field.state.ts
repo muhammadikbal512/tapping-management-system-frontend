@@ -98,7 +98,7 @@ export class ISO8583FieldState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new Iso8583FieldSuccessState(response.error));
+        return ctx.dispatch(new Iso8583FieldErrorState(response.error));
       })
     );
   }

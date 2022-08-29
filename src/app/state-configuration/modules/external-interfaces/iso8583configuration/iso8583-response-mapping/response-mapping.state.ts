@@ -33,7 +33,8 @@ export class ResponseMappingStateModel {
 export class ResponseMappingState {
   constructor(
     private responseService: ResponseMappingService,
-    private responseTableService: ResponseMappingTableService
+    private responseTableService: ResponseMappingTableService,
+    private notifierService: NotificationService
   ) {}
 
   @Selector()
@@ -46,27 +47,79 @@ export class ResponseMappingState {
     return state.responseMessage;
   }
 
-  @Action(ResponseMappingGet, {cancelUncompleted: true})getDataFromState(ctx: StateContext<ResponseMappingGet>) {
+  @Action(ResponseMappingGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<ResponseMappingGet>
+  ) {
+    return this.responseService.getAllResponseMapping().pipe(
+      tap((response) => {
+        if (response.length != 0) {
+          this.responseTableService.showTableLoading();
+          this.responseTableService.setRowData(response);
+        } else {
+          this.responseTableService.setRowData(response);
+          this.responseTableService.showNorowData();
+        }
 
+        ctx.patchState({
+          ...ctx.getState(),
+          responseMappings: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new ResponseMappingErrorState(response.error));
+      })
+    );
   }
 
-  @Action(ResponseMappingAdd, {cancelUncompleted: true})addDataFromState(ctx: StateContext<ResponseMappingAdd>, {payload}: ResponseMappingAdd) {
+  @Action(ResponseMappingAdd, { cancelUncompleted: true }) addDataFromState(
+    ctx: StateContext<ResponseMappingAdd>,
+    { payload }: ResponseMappingAdd
+  ) {}
 
-  }
+  @Action(ResponseMappingDelete, { cancelUncompleted: true })
+  deleteDataFromState(
+    ctx: StateContext<ResponseMappingDelete>,
+    { id }: ResponseMappingDelete
+  ) {}
 
-  @Action(ResponseMappingDelete, {cancelUncompleted: true})deleteDataFromState(ctx: StateContext<ResponseMappingDelete>, {id}: ResponseMappingDelete) {
+  @Action(ResponseMappingUpdate, { cancelUncompleted: true })
+  updateDataFromState(
+    ctx: StateContext<ResponseMappingUpdate>,
+    { id, payload, stateData }: ResponseMappingUpdate
+  ) {}
 
-  }
-
-  @Action(ResponseMappingUpdate, {cancelUncompleted: true})updateDataFromState(ctx: StateContext<ResponseMappingUpdate>, {id, payload, stateData}: ResponseMappingUpdate) {
-
-  }
-
-  @Action(ResponseMappingSuccessState)ifSuccessState(ctx: StateContext<ResponseMappingSuccessState>, {successMessage}: ResponseMappingSuccessState){
-
-  }
-
-  @Action(ResponseMappingErrorState)ifErrorState(ctx: StateContext<ResponseMappingErrorState>, {errorMessage}: ResponseMappingErrorState) {
+  @Action(ResponseMappingSuccessState) ifSuccessState(
+    ctx: StateContext<ResponseMappingStateModel>,
+    { successMessage }: ResponseMappingSuccessState
+  ) {
+    this.notifierService.successNotification(
+      successMessage.message,
+      successMessage.httpStatusCode
+    )
     
+    this.responseService.onGetAllResponseMapping();
+    ctx.patchState({
+      responseMessage: successMessage
+    })
+  }
+
+  @Action(ResponseMappingErrorState) ifErrorState(
+    ctx: StateContext<ResponseMappingStateModel>,
+    { errorMessage }: ResponseMappingErrorState
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage.message,
+      errorMessage.httpStatusCode
+    )
+
+    if (this.responseTableService.gridApi.getRenderedNodes().length == 0) {
+      this.responseTableService.showNorowData();
+    } else {
+      this.responseTableService.showTableLoading();
+    }
+
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
   }
 }

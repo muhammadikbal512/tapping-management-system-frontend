@@ -9,7 +9,7 @@
                 fill.</small>
         </div>
         <div class="input-container">
-            <input formControlName="port" type="text" name="port" class="peer" placeholder=" " required="">
+            <input formControlName="port" type="number" name="port" class="peer" placeholder=" " required="">
             <label for="floating_first_name" class="input-label">Port</label>
             <p-message *ngIf="port.touched && (!port.hasError('required') && !port.hasError('pattern'))"
                 severity="success"></p-message>
@@ -49,7 +49,7 @@
         <div class="input-container">
             <div class="m-auto space-x-2">
                 <section>
-                    <mat-checkbox class="example-margin" formControlName="channelStatus">
+                    <mat-checkbox class="example-margin" formControlName="channelstatus">
                         Channel Status
                     </mat-checkbox>
                 </section>

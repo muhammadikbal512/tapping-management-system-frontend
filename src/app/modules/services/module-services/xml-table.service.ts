@@ -34,4 +34,32 @@ export class XmlTableService {
       (document.getElementById('search-input') as HTMLInputElement)?.value
     );
   }
+
+  showTableLoading() {
+    this.gridApi.showLoadingOverlay();
+  }
+
+  hideTableLoading() {
+    this.gridApi.hideOverlay();
+  }
+
+  showNoRowData() {
+    this.gridApi.showNoRowsOverlay();
+  }
+
+  setAutoHeightTable() {
+    this.gridApi.setDomLayout('autoHeight');
+  }
+
+  setRowData(data: any[]) {
+    this.gridApi.setRowData(data);
+  }
+
+  set GridApi(params: GridReadyEvent) {
+    this.gridApi = params.api
+  }
+
+  set GridColumnApi(params: GridReadyEvent) {
+    this.gridColumnApi = params.columnApi;
+  }
 }

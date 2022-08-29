@@ -78,11 +78,11 @@ export class ChannelService {
   }
 
   onUpdateChannel(data: FormData, dataState: ChannelModel) {
-    this.channelDispatch._ChannelUpdate(data, this.existingData.id, dataState);
+    this.channelDispatch._ChannelUpdate(data, this.existingData.channelId, dataState);
   }
 
   onDeleteChannel() {
-    this.channelDispatch._ChannelDelete(this.existingData.id);
+    this.channelDispatch._ChannelDelete(this.existingData.channelId);
   }
 
   onGetAllTerminalType() {
@@ -100,7 +100,7 @@ export class ChannelService {
       String(newData.channelType.channelTypeId)
     );
     formData.append('isOnPremise', String(newData.isOnPremise));
-    formData.append('channelStatus', String(newData.channelStatus));
+    formData.append('channelStatus', String(newData.channelstatus));
     return formData;
   }
 
@@ -115,6 +115,7 @@ export class ChannelService {
   getCurrentStatusDialog() {
     return this.dialog.openDialogs;
   }
+
 
   set ExistingData(data: ChannelModel) {
     this.existingData = data;

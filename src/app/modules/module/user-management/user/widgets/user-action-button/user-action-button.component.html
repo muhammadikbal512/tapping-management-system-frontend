@@ -1,18 +1,19 @@
-<button [matMenuTriggerFor]="menu" aria-label="Example icon-button" mat-icon-button>
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu" class="button-group">
-    <button class="delete-button" (click)="deleteButton($event)">
-      <i class="delete-icon pi pi-trash"></i>
-      <span class="delete-text">Delete</span>
+<div class="action-button">
+  <button [matMenuTriggerFor]="menu" aria-label="Example icon-button" mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <button class="edit-button" (click)="editButton()">
-      <i class="edit-icon pi pi-check"></i>
-      <span>Edit</span>
-    </button>
-    <button class="reset-button" (click)="resetPassword($event)">
-      <i class="reset-icon pi pi-sync"></i>
-      <span>Reset Password</span>
-    </button>
-  </mat-menu>
-  
+    <mat-menu #menu="matMenu" class="button-group">
+      <button class="delete-button" (click)="deleteButton($event)">
+        <i class="delete-icon pi pi-trash"></i>
+        <span class="delete-text">Delete</span>
+      </button>
+      <button class="edit-button" (click)="editButton()">
+        <i class="edit-icon pi pi-check"></i>
+        <span>Edit</span>
+      </button>
+      <button class="reset-button" (click)="resetPassword($event)">
+        <i class="reset-icon pi pi-sync"></i>
+        <span>Reset Password</span>
+      </button>
+    </mat-menu>
+</div>

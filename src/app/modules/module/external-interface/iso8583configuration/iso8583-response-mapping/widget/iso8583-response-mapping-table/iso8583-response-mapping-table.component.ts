@@ -19,6 +19,12 @@ export class Iso8583ResponseMappingTableComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {
     this.responseTableService.gridApi = params.api;
     this.responseTableService.gridColumnApi = params.columnApi;
+    this.runService();
+  }
+
+  runService() {
+    this.responseTableService.showTableLoading();
+    this.responseService.getResponseMappingWithDelay();
   }
 
   onCellClicked(data: RowClickedEvent) {

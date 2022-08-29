@@ -36,7 +36,7 @@ export class ChannelTableService {
     {field: 'timeTrace', hide: true},
     {field: 'channelStatus', cellRenderer: 'tag'},
     {field: 'isOnPremise', cellRenderer: 'tag'},
-    {field: 'action', resizable: false, cellRenderer: 'actionButtonGroup'}
+    {field: 'actions', maxWidth: 100, cellRenderer: 'actionButtonGroup'}
   ];
 
   constructor() { }

@@ -22,6 +22,7 @@ export class AlertInvestigationTableService {
     flex: 1,
     sortable: true,
     lockPosition: true,
+    filter: true
   };
 
   columnDefs: ColDef[] = [

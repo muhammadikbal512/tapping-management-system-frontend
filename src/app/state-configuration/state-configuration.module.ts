@@ -24,6 +24,8 @@ import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
 import { ArpState } from './modules/system/arp/arp.state';
 import { AppParameterState } from './modules/application-parameters/app-parameters.state';
 import { EventCollectorState } from './modules/event-collector/event-collector.state';
+import { SchemeState } from './modules/user-management/scheme/scheme.state';
+import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
 
 @NgModule({
   declarations: [],
@@ -52,6 +54,9 @@ import { EventCollectorState } from './modules/event-collector/event-collector.s
       ArpState,
       AppParameterState,
       EventCollectorState,
+      ResponseMappingState,
+      SchemeState,
+      XmlConfigState
     ]),
   ],
 })

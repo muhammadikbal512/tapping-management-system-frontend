@@ -1,13 +1,15 @@
-<button [matMenuTriggerFor]="menu" aria-label="Example icon-button" mat-icon-button>
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu" class="button-group">
-  <button class="edit-button" (click)="editButton()">
-    <i class="edit-icon pi pi-check"></i>
-    <span>Edit</span>
+<div class="action-button">
+  <button [matMenuTriggerFor]="menu" aria-label="Example icon-button" mat-icon-button>
+    <mat-icon>more_vert</mat-icon>
   </button>
-  <button class="delete-button" (click)="deleteButton($event)">
-    <i class="delete-icon pi pi-trash"></i>
-    <span class="delete-text">Delete</span>
-  </button>
-</mat-menu>
+  <mat-menu #menu="matMenu" class="button-group">
+    <button class="edit-button" (click)="editButton()">
+      <i class="edit-icon pi pi-check"></i>
+      <span>Edit</span>
+    </button>
+    <button class="delete-button" (click)="deleteButton($event)">
+      <i class="delete-icon pi pi-trash"></i>
+      <span class="delete-text">Delete</span>
+    </button>
+  </mat-menu>
+</div>

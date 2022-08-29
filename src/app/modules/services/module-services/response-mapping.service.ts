@@ -24,10 +24,13 @@ export class ResponseMappingService {
   constructor(
     private responseDispatch: ResponseMappingDispatch,
     private responseTable: ResponseMappingTableService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private http: HttpClient
   ) {}
 
-  getAllResponseMapping() {}
+  getAllResponseMapping() {
+    return this.http.get<ResponseMappingModel[]>(`${this.apiUrl}/responseMapping/list`);
+  }
 
   addResponseMapping() {}
 

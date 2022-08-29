@@ -1,26 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { SchemeServiceService } from 'src/app/modules/services/module-services/scheme-service.service';
 import { SchemeTableService } from 'src/app/modules/services/module-services/scheme-table.service';
 
 @Component({
   selector: 'app-scheme-table',
   templateUrl: './scheme-table.component.html',
-  styleUrls: ['./scheme-table.component.css']
+  styleUrls: ['./scheme-table.component.css'],
 })
 export class SchemeTableComponent implements OnInit {
+  constructor(
+    private schemeTable: SchemeTableService,
+    private schemeService: SchemeServiceService
+  ) {}
 
-  constructor(private schemeTable: SchemeTableService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onGridReady(params: GridReadyEvent) {
-
+    this.schemeTable.gridApi = params.api;
+    this.schemeTable.gridColumnApi = params.columnApi;
+    this.runService();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    
+  runService() {
+    this.schemeTable.showTableLoading();
+    this.schemeService.getAllSchemeWithDelay();
   }
+
+  onCellClicked(data: RowClickedEvent) {}
 
   get animateRow() {
     return this.schemeTable.animateRow;
@@ -49,5 +56,4 @@ export class SchemeTableComponent implements OnInit {
   get frameworkComponents() {
     return this.schemeTable.frameworkComponents;
   }
-
 }
