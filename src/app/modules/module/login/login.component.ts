@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           });
           Toast.fire({
             icon: 'error',
-            title: errorResponse.message
+            title: errorResponse.error.message
           });
           this.showLoading = false;
         }

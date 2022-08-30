@@ -102,7 +102,7 @@ export class ChannelTypeState {
       }),
       catchError((response) => {
         console.log(response)
-        return ctx.dispatch(new ChannelTypeErrorState(response));
+        return ctx.dispatch(new ChannelTypeErrorState(response.message));
       })
     );
   }

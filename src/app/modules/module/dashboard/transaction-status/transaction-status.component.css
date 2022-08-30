@@ -1,5 +1,4 @@
 .grid-container-dashboard {
-    
   height: 191px;
   background: #ffffff;
   box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
@@ -26,8 +25,9 @@
 }
 
 .grid-header-dashboard {
-  @apply p-4 
-    border-b;
+  @apply p-2 
+    border-b
+    justify-between;
 }
 
 .grid-content {

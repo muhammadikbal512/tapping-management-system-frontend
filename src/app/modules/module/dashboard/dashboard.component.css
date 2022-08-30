@@ -1,12 +1,9 @@
 .dashboard-content {
     @apply
     grid 
-    grid-cols-1 
-    p-4 
+    grid-cols-12 
+    p-4
     space-y-8 
-    lg:gap-8 
-    lg:space-y-0 
-    lg:grid-cols-1
 }
 
 

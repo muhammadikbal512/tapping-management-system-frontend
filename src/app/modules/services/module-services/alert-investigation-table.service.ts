@@ -22,7 +22,7 @@ export class AlertInvestigationTableService {
     flex: 1,
     sortable: true,
     lockPosition: true,
-    filter: true
+    filter: true,
   };
 
   columnDefs: ColDef[] = [
@@ -33,6 +33,7 @@ export class AlertInvestigationTableService {
     { field: 'classificationType' },
     { field: 'classificationStatus' },
     { field: 'privateScheme' },
+    { field: 'actions' },
   ];
 
   rowData = [

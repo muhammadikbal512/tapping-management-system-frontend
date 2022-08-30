@@ -45,3 +45,8 @@
     @apply flex flex-col
     ml-5;
   }
+
+.summary-item span {
+  background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
+              border-radius: 5px; padding:10px; margin-right: 10px; width: 50%; color: white;
+}

@@ -76,7 +76,8 @@ export class ChannelState {
           channels: response,
         });
       }),
-      catchError((response: HttpErrorResponse) => {
+      catchError((response) => {
+        console.log(response)
         return ctx.dispatch(new ChannelErrorState(response.error));
       })
     );
@@ -225,7 +226,7 @@ export class ChannelState {
       this.channelTableService.hideTableLoading();
     }
     ctx.patchState({
-      responseMessage: errorMessage,
+      responseMessage: errorMessage
     });
   }
 }

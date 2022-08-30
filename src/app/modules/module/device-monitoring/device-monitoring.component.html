@@ -5,50 +5,51 @@
     <div class="p-4">
         <app-table-device-monitoring></app-table-device-monitoring>
     </div>
-</div>
-
-<div class="grid-container">
-    <div class="grid-header">
-        <h3>Detail Information Devices</h3>
-    </div>
-    <div class="p">
-        <div class="transaction-summary-container">
-            <div class="summary-left">
-              <div class="summary-item">
-                <span>City</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.city" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Device ID</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.deviceId" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Last Update</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.lastUpdate" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Activation Date</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.activationDate" readonly disabled>
-              </div>
+    <div class="p-4 ml-4 text-white" style="background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
+    border-radius: 10px; width: 250px;">
+      <h3>Detail Information Devices</h3>
+  </div>
+  <div class="p">
+      <div class="transaction-summary-container">
+          <div class="summary-left">
+            <div class="summary-item">
+              <span>City</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.city" readonly disabled>
             </div>
-            <div class="summary-right">
-              <div class="summary-item">
-                <span>Remote Address</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.remoteAddress" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Port</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.port" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Model</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.model" readonly disabled>
-              </div>
-              <div class="summary-item">
-                <span>Device Type</span>
-                <input [value]="this.deviceMonitoringTableService.additionalData?.deviceType" readonly disabled>
-              </div>
+            <div class="summary-item">
+              <span>Device ID</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.deviceId" readonly disabled>
+            </div>
+            <div class="summary-item">
+              <span>Last Update</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.lastUpdate" readonly disabled>
+            </div>
+            <div class="summary-item">
+              <span>Activation Date</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.activationDate" readonly disabled>
             </div>
           </div>
-    </div>
+          <div class="summary-right">
+            <div class="summary-item">
+              <span>Remote Address</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.remoteAddress" readonly disabled>
+            </div>
+            <div class="summary-item">
+              <span>Port</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.port" readonly disabled>
+            </div>
+            <div class="summary-item">
+              <span>Model</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.model" readonly disabled>
+            </div>
+            <div class="summary-item">
+              <span>Device Type</span>
+              <input [value]="this.deviceMonitoringTableService.additionalData?.deviceType" readonly disabled>
+            </div>
+          </div>
+        </div>
+  </div>
 </div>
+
+
+  

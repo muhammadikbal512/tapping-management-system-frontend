@@ -22,7 +22,7 @@ export class UserTableService {
     lockTag: UserTagLockComponent
   };
   defaultColDef: ColDef = {
-    
+    flex: 1,
     editable: false,
     sortable: true,
     lockPosition: true
