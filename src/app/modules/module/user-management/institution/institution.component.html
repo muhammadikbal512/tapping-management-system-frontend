@@ -7,17 +7,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-            </span> 
-            <input (input)="onFilterTextBoxChange()" id="search-input" type="text" class="search-input" placeholder="Search">
+            </span>
+            <input id="search-filter" class="search-input" type="text" placeholder="Search">
         </div>
         <div class="grid-header-right">
-            <p-button (onClick)="refreshTable()" icon="pi pi-refresh" class="mr-3"></p-button>
-            <p-button (onClick)="editDialog()" class="mr-3" label="Edit"></p-button>
-            <p-button icon="pi pi-plus" (onClick)="showDialog()" label="Create"></p-button>
+            <p-button label="Click" icon="pi pi-plus" ></p-button>
+            <p-button icon="pi pi-refresh" class="ml-3" ></p-button>
         </div>
     </div>
     <div class="p-4">
-        <app-table-roles></app-table-roles>
+        <app-table-institution></app-table-institution>
     </div>
-
 </div>
