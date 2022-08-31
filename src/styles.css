@@ -23,7 +23,6 @@ body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ag-bg-red {
-
   background-color: red !important;
   color: white !important;
 }
@@ -102,8 +101,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :host ::ng-deep .ag-theme-alpine .ag-root-wrapper {
   border: none;
 }
-
-
 
 .ag-theme-alpine .ag-root-wrapper {
   border: none !important;
