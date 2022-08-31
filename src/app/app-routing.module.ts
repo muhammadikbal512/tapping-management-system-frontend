@@ -33,7 +33,7 @@ import { EventCollectorComponent } from './modules/module/event-collector/event-
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
 import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
-
+import { InstitutionComponent } from './modules/module/user-management/institution/institution.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -211,6 +211,11 @@ const routes: Routes = [
             path: 'user',
             data: { title: 'User' },
             component: UserComponent,
+          },
+          {
+            path: 'institution',
+            data: { title: 'Institution' },
+            component: InstitutionComponent,
           },
         ],
       },
