@@ -30,6 +30,7 @@ export class CreateUpdateIso8583FieldFormComponent
   DialectMsgTemplateOptionList: DialectMsgTemplateGroup[] = [];
   IsoFieldConfigurationModel: IsoFieldConfigurationModel =
     new IsoFieldConfigurationModel();
+  showLoading: boolean = false;
 
   constructor(
     public isoFieldConfigurationService: IsoFieldConfigurationService,
@@ -109,6 +110,7 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   onUpdateIsoField() {
+    this.showLoading = true;
     const newData =
       this.isoFieldConfigurationService.createIsoFieldConfigurationFormData(
         String(this.existingIsoFieldId),
@@ -119,10 +121,12 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   onCreateIsoField() {
+    this.showLoading = true;
     this.isoFieldConfigurationService.onCreateIsoFieldConfiguration(this.setNewDataToModel())
   }
 
-  AddIso8583FieldConfig(data: any) {}
+  AddIso8583FieldConfig(data: any) {
+  }
 
   get isoFieldId() {
     return this.form.controls['attributeId'];

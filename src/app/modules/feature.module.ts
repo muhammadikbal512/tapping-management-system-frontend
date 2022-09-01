@@ -157,11 +157,9 @@ import { AuthenticationGuard } from '../guard/authentication.guard';
 import { RouterModule } from '@angular/router';
 import { TableDeviceMonitoringComponent } from './module/device-monitoring/widgets/table-device-monitoring/table-device-monitoring.component';
 import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-tag/device-monitoring-tag.component';
-import { InstitutionComponent } from './module/user-management/institution/institution.component';
 import { TableInstitutionComponent } from './module/user-management/institution/widgets/table-institution/table-institution.component';
 import { InstitutionCreateDialogComponent } from './module/user-management/institution/widgets/institution-create-dialog/institution-create-dialog.component';
-
-
+import { InstitutionComponent } from './module/user-management/institution/institution.component';
 
 @NgModule({
   declarations: [

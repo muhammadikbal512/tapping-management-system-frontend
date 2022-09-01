@@ -102,7 +102,7 @@ export class ChannelTypeState {
       }),
       catchError((response) => {
         console.log(response)
-        return ctx.dispatch(new ChannelTypeErrorState(response.message));
+        return ctx.dispatch(new ChannelTypeErrorState(response));
       })
     );
   }
@@ -220,7 +220,7 @@ export class ChannelTypeState {
   ) {
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.httpStatusCode
+      errorMessage?.statusText
     );
     if (this.channelTypeTableService.gridApi.getRenderedNodes().length == 0) {
       this.channelTypeTableService.showNoRowData();

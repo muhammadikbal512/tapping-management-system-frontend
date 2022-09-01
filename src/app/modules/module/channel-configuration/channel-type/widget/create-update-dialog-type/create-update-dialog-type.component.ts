@@ -28,7 +28,7 @@ export class CreateUpdateDialogTypeComponent implements OnInit, AfterViewInit {
   disableStatus: boolean = false;
   dialectmsgTemplateOptionList: DialectMsgTemplateGroup[] = [];
   terminalTypeModel: ChannelTypeModel = new ChannelTypeModel();
-
+  public showLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
     public channelTypeService: ChannelTypeService,
@@ -102,10 +102,12 @@ export class CreateUpdateDialogTypeComponent implements OnInit, AfterViewInit {
   }
 
   onCreateTerminalType() {
+    this.showLoading = true;
     this.channelTypeService.onAddChannelType(this.setNewDataToModel());
   }
 
   onUpdateTerminalType() {
+    this.showLoading = true;
     const newData = this.channelTypeService.createChannelTypeFormData(
       this.existingChannelType,
       this.setNewDataToModel()

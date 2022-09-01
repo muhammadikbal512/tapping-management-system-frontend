@@ -23,7 +23,7 @@
                 mat-dialog-close="true"
                 styleClass="p-button-sm"></p-button>
       <p-button (onClick)="onCreateIso8583Format()" *ngIf="iso8583FormatService.buttonStatus == 'create'"
-                [disabled]="form.invalid"
+                [disabled]="form.invalid" [loading]="showLoading"
                 class="create-button" label="Create"
                 styleClass="p-button-sm"></p-button>
       <p-button (onClick)="onUpdateIso8583Format()" *ngIf="iso8583FormatService.buttonStatus == 'edit'"

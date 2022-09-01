@@ -20,6 +20,7 @@ export class CreateUpdateDialogIso8583FormatTableComponent
   iso8583FormatModel: Iso8583FormatModel = new Iso8583FormatModel();
   disableButton: boolean = false;
   showClearButton: boolean = false;
+  showLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef,
@@ -80,6 +81,7 @@ export class CreateUpdateDialogIso8583FormatTableComponent
   }
 
   onCreateIso8583Format() {
+    this.showLoading = true;
     this.iso8583FormatService.onCreateIso8583Format(this.setNewDataToModel());
   }
 

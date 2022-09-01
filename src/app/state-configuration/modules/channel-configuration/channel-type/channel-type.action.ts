@@ -37,5 +37,5 @@ export class ChannelTypeSuccessState {
 
 export class ChannelTypeErrorState {
     static readonly type = '[ChannelType] Error'
-    constructor(public errorMessage: CustomHttpResponseModel) {}
+    constructor(public errorMessage: any) {}
 }

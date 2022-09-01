@@ -18,6 +18,7 @@ export class TransactionParamDialogComponent implements OnInit, AfterViewInit {
   transactionParametersModel: TransactionParametersModel = new TransactionParametersModel();
   disableButton: boolean = false;
   showClearButton: boolean = false;
+  showLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -79,10 +80,12 @@ export class TransactionParamDialogComponent implements OnInit, AfterViewInit {
   }
 
   onCreateTransactionParameters() {
+    this.showLoading = true;
     this.transactionParametersService.onCreateTransactionParameters(this.setNewDataToModel());
   }
 
   onUpdateTransactionParameters() {
+    this.showLoading = true;
     const newData =
       this.transactionParametersService.createTransactionParametersFormData(
         this.existingAttributeName,

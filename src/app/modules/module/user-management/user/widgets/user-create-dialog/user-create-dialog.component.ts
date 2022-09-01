@@ -18,6 +18,7 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   userModel: UserModel = new UserModel();
   showClearButton: boolean = false;
   disableButton: boolean = false;
+  showLoading: boolean = false;
   constructor(
     public userService: UserService,
     private fb: FormBuilder,
@@ -100,10 +101,12 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   }
 
   onCreateUser() {
+    this.showLoading = true;
     this.userService.onCreateUser(this.NewDataToModel());
   }
 
   onUpdateUser() {
+    this.showLoading = true;
     const newData = this.userService.createUserFormData(
       this.existingUsername,
       this.NewDataToModel()

@@ -22,6 +22,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
   disableStatus: boolean = false;
   channelModel: ChannelModel = new ChannelModel();
   channelTypeGroupInterfaces: ChannelTypeGroupInterface[] = [];
+  showLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -126,10 +127,12 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
   }
 
   onCreateChannel() {
+    this.showLoading = true;
     this.channelService.onCreateChannel(this.setNewDataToModel());
   }
 
   onUpdateChannel() {
+    this.showLoading = true;
     const newData = this.channelService.createChannelFormData(
       String(this.existingChannelId),
       this.setNewDataToModel()

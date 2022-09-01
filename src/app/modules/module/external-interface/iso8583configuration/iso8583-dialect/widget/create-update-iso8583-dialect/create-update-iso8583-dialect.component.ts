@@ -23,6 +23,7 @@ export class CreateUpdateIso8583DialectComponent implements OnInit, AfterViewIni
   disableButton: boolean = false;
   msgFormatOptionList: MessageFormatGroupInterface[] = []
   iso8583DialectModel: Iso8583DialectMsgTemplate = new Iso8583DialectMsgTemplate();
+  showLoading: boolean = false;
 
   constructor(
   private fb: FormBuilder,
@@ -94,10 +95,12 @@ export class CreateUpdateIso8583DialectComponent implements OnInit, AfterViewIni
   }
 
   onCreateIso8583Dialect() {
+    this.showLoading = true;
     this.iso8583DialectService.onCreateIso8583Dialect(this.setNewDataToModel());
   }
 
   onUpdateIso8583Dialect() {
+    this.showLoading = true;
     const newData = this.iso8583DialectService.createIso8583DialectFormData(this.existingNameType, this.setNewDataToModel());
     this.iso8583DialectService.onUpdateIso8583Dialect(newData, this.setNewDataToModel());
   }

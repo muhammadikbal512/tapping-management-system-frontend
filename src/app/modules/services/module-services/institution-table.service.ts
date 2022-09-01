@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GridApi, ColumnApi, ColDef } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
-import { UserTagLockComponent } from '../../global-widget/user-tag-lock/user-tag-lock.component';
-import { UserTagComponent } from '../../global-widget/user-tag/user-tag.component';
-import { UserActionButtonComponent } from '../../module/user-management/user/widgets/user-action-button/user-action-button.component';
-
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +24,9 @@ export class InstitutionTableService {
   };
 
   columnDef: ColDef[] = [
-    {field: 'Institutionname'},
+    {field: 'InstitutionName'},
     {field: 'description'},
+    {field: 'Actions'}
   ]
 
   rowData = [
