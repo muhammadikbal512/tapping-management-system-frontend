@@ -180,7 +180,9 @@ export class ChannelState {
     return this.channelService.deleteChannel(id).pipe(
       tap((response) => {
         ctx.dispatch(new ChannelSuccessState(response));
-        const filteredData = ctx.getState().channels.filter((data) => data.channelId !== id);
+        const filteredData = ctx
+          .getState()
+          .channels.filter((data) => data.channelId !== id);
         ctx.setState({
           ...ctx.getState(),
           channels: filteredData,

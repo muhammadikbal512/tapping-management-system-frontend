@@ -49,18 +49,11 @@
         <div class="input-container">
             <div class="m-auto space-x-2">
                 <section>
-                    <mat-checkbox class="example-margin" formControlName="channelstatus">
-                        Channel Status
-                    </mat-checkbox>
-                </section>
-            </div>
-        </div>
-        <div class="input-container">
-            <div class="m-auto space-x-2">
-                <section>
-                    <mat-checkbox class="example-margin" formControlName="isOnPremise">
+                    <p-checkbox [binary]="true" formControlName="isOnPremise"></p-checkbox>
+                    <label for="">On Premise</label>
+                    <!-- <mat-checkbox class="example-margin" formControlName="isOnPremise">
                         On premise
-                    </mat-checkbox>
+                    </mat-checkbox> -->
                 </section>
             </div>
         </div>

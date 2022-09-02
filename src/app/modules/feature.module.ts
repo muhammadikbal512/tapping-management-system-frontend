@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../modules/material/material.module';
@@ -12,6 +10,7 @@ import { BadgeModule } from 'primeng/badge';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { PasswordModule } from 'primeng/password';
 import { TagModule } from 'primeng/tag';
@@ -160,6 +159,7 @@ import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-
 import { TableInstitutionComponent } from './module/user-management/institution/widgets/table-institution/table-institution.component';
 import { InstitutionCreateDialogComponent } from './module/user-management/institution/widgets/institution-create-dialog/institution-create-dialog.component';
 import { InstitutionComponent } from './module/user-management/institution/institution.component';
+import { ActionButtonInstitutionComponent } from './module/user-management/institution/widgets/action-button-institution/action-button-institution.component';
 
 @NgModule({
   declarations: [
@@ -281,6 +281,7 @@ import { InstitutionComponent } from './module/user-management/institution/insti
     InstitutionComponent,
     TableInstitutionComponent,
     InstitutionCreateDialogComponent,
+    ActionButtonInstitutionComponent,
   ],
   imports: [
     CommonModule,
@@ -304,6 +305,7 @@ import { InstitutionComponent } from './module/user-management/institution/insti
     TagModule,
     MatTableExporterModule,
     CalendarModule,
+    CheckboxModule
   ],
   providers: [
     WebsocketService,
@@ -319,7 +321,7 @@ import { InstitutionComponent } from './module/user-management/institution/insti
     AuthenticationService,
     UserService,
     AuthenticationGuard,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-  ]
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
 })
-export class FeatureModule { }
+export class FeatureModule {}

@@ -26,6 +26,7 @@ import { AppParameterState } from './modules/application-parameters/app-paramete
 import { EventCollectorState } from './modules/event-collector/event-collector.state';
 import { SchemeState } from './modules/user-management/scheme/scheme.state';
 import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
+import { InstitutionState } from './modules/user-management/institution/institution.state';
 
 @NgModule({
   declarations: [],
@@ -56,7 +57,8 @@ import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-con
       EventCollectorState,
       ResponseMappingState,
       SchemeState,
-      XmlConfigState
+      XmlConfigState,
+      InstitutionState
     ]),
   ],
 })

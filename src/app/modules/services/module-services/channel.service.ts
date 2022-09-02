@@ -94,7 +94,7 @@ export class ChannelService {
     formData.append('currentChannelId', currentChannelId);
     formData.append('newChannelId', String(newData.channelId));
     formData.append('newIpAddress', newData.ipAddress);
-    formData.append('newPort', newData.port);
+    formData.append('newPort', String(newData.port));
     formData.append(
       'newChannelType',
       String(newData.channelType.channelTypeId)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RowClassRules, GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { InstitutionTableService } from 'src/app/modules/services/module-services/institution-table.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
 
 @Component({
   selector: 'app-table-institution',
@@ -9,7 +10,8 @@ import { InstitutionTableService } from 'src/app/modules/services/module-service
 })
 export class TableInstitutionComponent implements OnInit {
   constructor(
-    private instutitionTableService: InstitutionTableService
+    private instutitionTableService: InstitutionTableService,
+    private institutionService: InstitutionService
   ) {}
 
   public rowClassRules: RowClassRules = {
@@ -20,10 +22,16 @@ export class TableInstitutionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // onGridReady(params: GridReadyEvent) {
-  //   this.instutitionTableService.gridApi = params.api;
-  //   this.instutitionTableService.gridColumnApi = params.columnApi;
-  // }
+  onGridReady(params: GridReadyEvent) {
+    this.instutitionTableService.gridApi = params.api;
+    this.instutitionTableService.gridColumnApi = params.columnApi;
+    this.runService();
+  }
+
+  runService() {
+    this.instutitionTableService.showTableLoading();
+    this.institutionService.getAllInstitutionWithDelay();
+  }
 
   onCellClicked(data: RowClickedEvent) {
   }

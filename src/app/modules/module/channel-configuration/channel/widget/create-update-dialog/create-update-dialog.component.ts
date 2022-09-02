@@ -77,7 +77,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
         this.existingIpAddress != value.ipAddress ||
         this.existingPort != value.port ||
         this.existingChannelType != value.channelType ||
-        this.existingOnPremise != value.isOnPremise ||
+        this.existingisOnPremise != value.isOnPremise ||
         this.existingchannelstatus != value.channelstatus
       ) {
         this.disableStatus = false;
@@ -88,7 +88,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
         this.existingIpAddress == value.ipAddress &&
         this.existingPort == value.port &&
         this.existingChannelType == value.channelType.name &&
-        this.existingOnPremise == value.isOnPremise &&
+        this.existingisOnPremise == value.isOnPremise &&
         this.existingchannelstatus == value.channelstatus
       ) {
         this.disableStatus = true;
@@ -100,8 +100,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     this.channelId.setValue(this.existingChannelId);
     this.ipAddress.setValue(this.existingIpAddress);
     this.port.setValue(this.existingPort);
-    this.onPremise.setValue(this.existingOnPremise);
-    this.channelstatus.setValue(this.existingchannelstatus);
+    this.isOnPremise.setValue(this.existingisOnPremise);
     this.channelType.setValue({
       name: this.existingChannelType.channelType,
       code: String(this.existingChannelType.channelTypeId),
@@ -115,14 +114,11 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     this.channelModel.channelType = new ChannelTypeModel(
       Number(this.channelType.value.code)
     );
-    this.channelModel.isOnPremise = this.onPremise.value;
-    if (this.onPremise.value == '' || this.onPremise.value == null) {
+    this.channelModel.isOnPremise = this.isOnPremise.value;
+    if (this.isOnPremise.value == '' || this.isOnPremise.value == null) {
       this.channelModel.isOnPremise = false;
     }
-    this.channelModel.channelstatus = this.channelstatus.value;
-    if (this.channelstatus.value == '' || this.channelstatus.value == null) {
-      this.channelModel.channelstatus = false;
-    }
+   
     return this.channelModel;
   }
 
@@ -160,12 +156,8 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     return this.form.controls['port'];
   }
 
-  get onPremise() {
+  get isOnPremise() {
     return this.form.controls['isOnPremise'];
-  }
-
-  get channelstatus() {
-    return this.form.controls['channelstatus'];
   }
 
   get existingChannelId() {
@@ -184,7 +176,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     return this.channelService.existingData.channelType;
   }
 
-  get existingOnPremise() {
+  get existingisOnPremise() {
     return this.channelService.existingData.isOnPremise;
   }
 

@@ -3,6 +3,7 @@ import { ConfirmationService } from 'primeng/api';
 import { AlertInvestigationService } from '../module-services/alert-investigation.service';
 import { ChannelTypeService } from '../module-services/channel-type.service';
 import { ChannelService } from '../module-services/channel.service';
+import { InstitutionService } from '../module-services/institution.service';
 import { IsoFieldConfigurationService } from '../module-services/iso-field-configuration.service';
 import { Iso8583DialectService } from '../module-services/iso8583-dialect.service';
 import { MessageFormatService } from '../module-services/message-format.service';
@@ -135,6 +136,14 @@ export class PopupMessageService {
       accept: () => {
         onDelete.onDeleteAlert();
       }
+    })
+  }
+
+  institutionConfirm(event: Event, onDelete: InstitutionService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this institution ?',
+      icon: 'pi pi-exclamation-triangle'
     })
   }
 }

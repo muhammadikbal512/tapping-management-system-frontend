@@ -57,4 +57,46 @@ export class InstitutionState {
     ctx: StateContext<InstitutionStateModel>,
     { id }: InstitutionDelete
   ) {}
+
+  @Action(InstitutionUpdate, { cancelUncompleted: true }) updateDataFromState(
+    ctx: StateContext<InstitutionStateModel>,
+    { id, payload, stateData }: InstitutionUpdate
+  ) {}
+
+  @Action(InstitutionStateSuccess) ifStateSuccess(
+    ctx: StateContext<InstitutionStateModel>,
+    { successMessage }: InstitutionStateSuccess
+  ) {
+    if (this.institutionService.getCurrentStatusDialog().length != 0) {
+      this.institutionService.closeDialog();
+    }
+    this.notifierService.successNotification(
+      successMessage.message,
+      successMessage.httpStatusCode
+    );
+
+    ctx.patchState({
+      responseMessage: successMessage,
+    });
+  }
+
+  @Action(InstitutionStateError) ifStateError(
+    ctx: StateContext<InstitutionStateModel>,
+    { errorMessage }: InstitutionStateError
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage.message,
+      errorMessage.httpStatusCode
+    )
+
+    if (this.institutionTableService.gridApi.getRenderedNodes().length == 0) {
+      this.institutionTableService.showNoRowData();
+    }  else {
+      this.institutionTableService.hideTableLoading();
+    }
+
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
+  }
 }
