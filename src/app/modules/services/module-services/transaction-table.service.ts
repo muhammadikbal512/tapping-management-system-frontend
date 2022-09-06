@@ -8,6 +8,8 @@ import {
 } from 'ag-grid-community';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
+import * as moment from 'moment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -160,6 +162,7 @@ export class TransactionTableService {
     },
     {
       field: 'transactionDate',
+      valueFormatter : this.dateFormatter,
       sort: 'desc',
       minWidth: 200,
       maxWidth: 300,
@@ -167,6 +170,7 @@ export class TransactionTableService {
     },
     {
       field: 'networkDate',
+      valueFormatter: this.dateFormatter,
       minWidth: 200,
       maxWidth: 300,
       headerClass: 'transaction-header-color',
@@ -242,6 +246,10 @@ export class TransactionTableService {
       destAccount: '192.168.42.3:6767',
     },
   ];
+
+  dateFormatter(params: any) {
+    return moment(params.value).format('DD/MM/YY HH')
+  }
 
   onFilter(searchInputClass: string) {
     this.gridApi.setQuickFilter((document.getElementById(searchInputClass) as HTMLInputElement)?.value)

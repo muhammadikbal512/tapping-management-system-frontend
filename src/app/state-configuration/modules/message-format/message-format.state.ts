@@ -63,8 +63,8 @@ export class MessageFormatState {
           messageFormats: response,
         });
       }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new MessageFormatErrorState(response.error));
+      catchError((response) => {
+        return ctx.dispatch(new MessageFormatErrorState(response));
       })
     );
   }
@@ -161,15 +161,15 @@ export class MessageFormatState {
     ctx: StateContext<MessageFormatStateModel>,
     { errorMessage }: MessageFormatErrorState
   ) {
-    this.notifierService.errorNotification(
-      errorMessage?.message,
-      errorMessage?.httpStatusCode
-    );
     if (this.iso8583FormatTableService.gridApi.getRenderedNodes().length == 0) {
       this.iso8583FormatTableService.showNoRowData();
     } else {
       this.iso8583FormatTableService.hideTableLoading();
     }
+    this.notifierService.errorNotification(
+      errorMessage?.message,
+      errorMessage?.httpStatusCode
+    );
     ctx.patchState({
       responseMessage: errorMessage,
     });

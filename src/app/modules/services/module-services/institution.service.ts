@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class InstitutionService {
   apiUrl: string = environment.core236;
   existingData: InstitutionModel = new InstitutionModel();
+  buttonStatus: string = '';
   constructor(
     private http: HttpClient,
     private institutionTableService: InstitutionTableService,
@@ -21,25 +22,27 @@ export class InstitutionService {
   ) {}
 
   getAllInstitution() {
-    return this.http.get<InstitutionModel>(`${this.apiUrl}/institution/list`);
+    return this.http.get<InstitutionModel[]>(
+      `${this.apiUrl}/institutions/list`
+    );
   }
 
   deleteInstitution(id: number) {
     return this.http.delete<CustomHttpResponseModel>(
-      `${this.apiUrl}/institution/delete/` + id
+      `${this.apiUrl}/institutions/delete/` + id
     );
   }
 
   addInstitution(data: InstitutionModel) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/institution/create`,
+      `${this.apiUrl}/institutions/add`,
       data
     );
   }
 
   updateInstitution(data: FormData) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/institution/update`,
+      `${this.apiUrl}/institutions/update`,
       data
     );
   }
@@ -48,6 +51,13 @@ export class InstitutionService {
     setTimeout(() => {
       this.onGetAllInstitution();
     }, 500);
+  }
+
+  createInstitutionFormData(newData: InstitutionModel): FormData {
+    const formData = new FormData();
+    formData.append('institutionName', newData.institutionName);
+    formData.append('description', newData.description);
+    return formData;
   }
 
   onGetAllInstitution() {
@@ -63,11 +73,11 @@ export class InstitutionService {
     this.institutionDispatch._InstitutionDeleteDispatch(this.existingData.id);
   }
 
-  onUpdateInstitution(data: FormData, dataState: InstitutionModel) {
+  onUpdateInstitution(data: FormData) {
     this.institutionDispatch._InstitutionUpdateDispatch(
       this.existingData.id,
       data,
-      dataState
+      this.existingData
     );
   }
 

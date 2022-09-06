@@ -83,29 +83,6 @@ export class ChannelState {
     );
   }
 
-  // @Action(ChannelGetChannelType, { cancelUncompleted: true })
-  // getAdditionalDataFromStates(ctx: StateContext<ChannelStateModel>) {
-  //   return this.channelTypeService.getAllChannelType().pipe(
-  //     tap((response) => {
-  //       let channelTypeParseList: ChannelTypeGroupInterface[] = [];
-  //       response.forEach((x) => {
-  //         channelTypeParseList.push({
-  //           name: x.channelType,
-  //           code: String(x.channelTypeId),
-  //         });
-  //       });
-
-  //       ctx.setState({
-  //         ...ctx.getState(),
-  //         channelTypes: channelTypeParseList,
-  //       });
-  //     }),
-  //     catchError((response: HttpErrorResponse) => {
-  //       return ctx.dispatch(new ChannelErrorState(response.error));
-  //     })
-  //   );
-  // }
-
   @Action(ChannelGetChannelType, { cancelUncompleted: true })
   getAdditionalDataFromState(ctx: StateContext<ChannelStateModel>) {
     return this.channelTypeService.getAllChannelType().pipe(
@@ -189,8 +166,8 @@ export class ChannelState {
           responseMessage: response,
         });
       }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new ChannelErrorState(response.error));
+      catchError((response) => {
+        return ctx.dispatch(new ChannelErrorState(response));
       })
     );
   }

@@ -18,14 +18,14 @@ export class NotificationService {
         severity: type,
         summary: this.upperCaseFirstLetter(type),
         detail: message,
-        life: 5000,
+        life: 2000,
       });
     } else {
       this.messageService.add({
         severity: type,
         summary: this.upperCaseFirstLetter(type) + ' ' + statusCode,
         detail: message,
-        life: 5000,
+        life: 2000,
       });
     }
   }

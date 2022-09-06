@@ -4,9 +4,10 @@ import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/ove
 import { UserTagLockComponent } from '../../global-widget/user-tag-lock/user-tag-lock.component';
 import { UserTagComponent } from '../../global-widget/user-tag/user-tag.component';
 import { UserActionButtonComponent } from '../../module/user-management/user/widgets/user-action-button/user-action-button.component';
+import * as moment from 'moment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserTableService {
   gridApi!: GridApi;
@@ -19,30 +20,39 @@ export class UserTableService {
     actionButtonGroup: UserActionButtonComponent,
     overlayLoading: OverlayLoadingComponent,
     tag: UserTagComponent,
-    lockTag: UserTagLockComponent
+    lockTag: UserTagLockComponent,
   };
   defaultColDef: ColDef = {
     flex: 1,
     editable: false,
     sortable: true,
-    lockPosition: true
+    lockPosition: true,
   };
 
   columnDef: ColDef[] = [
-    {field: 'id', hide: true},
-    {field: 'username'},
-    {field: 'role'},
-    {field: 'email'},
-    {field: 'active', headerName: 'Status', cellRenderer: 'tag'},
-    {field: 'lastLoginDate', headerName: 'Last Login',},
-    {field: 'action', cellRenderer: 'actionButtonGroup', sortable: false}
-  ]
+    { field: 'id', hide: true },
+    { field: 'username' },
+    { field: 'role' },
+    { field: 'email' },
+    { field: 'active', headerName: 'Status', cellRenderer: 'tag' },
+    {
+      field: 'lastLoginDate',
+      headerName: 'Last Login',
+      valueFormatter: this.dateFormatter,
+    },
+    { field: 'action', cellRenderer: 'actionButtonGroup', sortable: false },
+  ];
 
+  dateFormatter(params: any) {
+    return moment(params.value).format('DD/MM/YYYY HH');
+  }
 
-  constructor() { }
+  constructor() {}
 
   onFilter(searchInputClass: string) {
-    this.gridApi.setQuickFilter((document.getElementById(searchInputClass) as HTMLInputElement)?.value)
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement)?.value
+    );
   }
 
   showTableLoading() {
@@ -70,7 +80,7 @@ export class UserTableService {
   }
 
   set GridApi(params: GridReadyEvent) {
-    this.gridApi = params.api
+    this.gridApi = params.api;
   }
 
   set GridcolumnApi(params: GridReadyEvent) {

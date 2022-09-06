@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
 import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction-parameters-table.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { ColumnListTransactionInterface } from 'src/app/interface/modules/column-list-transaction';
-import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 
 @Component({
   selector: 'app-transaction-param-table',
@@ -29,7 +19,11 @@ export class TransactionParamTableComponent implements OnInit {
     
   }
 
-  
+  public rowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0;
+    }
+  }
 
   onGridReady(params: GridReadyEvent) {
     this.transactionParametersTableService.GridApi = params;

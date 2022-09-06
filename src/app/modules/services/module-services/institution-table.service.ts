@@ -30,16 +30,7 @@ export class InstitutionTableService {
     { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
 
-  rowData = [
-    {
-      InstitutionName: 'Divisi A',
-      description: 'Divisi 1',
-    },
-    {
-      InstitutionName: 'Divisi B',
-      description: 'Divisi 2',
-    },
-  ];
+  
   constructor() {}
 
   onFilter(searchInputClass: string) {

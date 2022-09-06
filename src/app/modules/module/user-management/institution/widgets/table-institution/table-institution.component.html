@@ -3,4 +3,4 @@
   [rowClassRules]="rowClassRules"
   [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight"
   [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents" [pagination]="true"
-  [rowData]="rowData" (gridReady)="onGridReady($event)" (rowClicked)="onCellClicked($event)"></ag-grid-angular>
+  (gridReady)="onGridReady($event)" (rowClicked)="onCellClicked($event)"></ag-grid-angular>

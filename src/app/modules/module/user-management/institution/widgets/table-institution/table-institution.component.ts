@@ -64,7 +64,4 @@ export class TableInstitutionComponent implements OnInit {
   get frameworkComponents() {
     return this.instutitionTableService.frameworkComponents;
   }
-  get rowData() {
-    return this.instutitionTableService.rowData;
-  }
 }

@@ -9,6 +9,22 @@
     flex;
 }
 
+.box-forms-container img {
+  @apply
+  w-56
+  mt-5
+}
+
+.box-input {
+  @apply
+  relative
+}
+
+.box-input-icon {
+  @apply
+  h-5 w-5 absolute mt-4 ml-2
+}
+
 /* .uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
     stroke: white;
 } */
@@ -25,11 +41,16 @@
     py-2;
 }
 
-.box-forms {
+.box-forms-container {
   @apply bg-white 
     rounded-lg 
     overflow-hidden 
     shadow-2xl;
+}
+
+.box-forms {
+  @apply
+  p-8
 }
 
 .forms-input div {
