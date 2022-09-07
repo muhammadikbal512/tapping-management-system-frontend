@@ -193,6 +193,9 @@ export class ISO8583FieldState {
       errorMessage?.message,
       errorMessage?.httpStatusCode
     );
+    if (this.iso8583FieldService.getCurrentStatusDialog().length != 0) {
+      this.iso8583FieldService.closeDialog();
+    }
     if (this.iso8583FieldTableService.gridApi.getRenderedNodes().length == 0) {
       this.iso8583FieldTableService.showNoRowData();
     } else {

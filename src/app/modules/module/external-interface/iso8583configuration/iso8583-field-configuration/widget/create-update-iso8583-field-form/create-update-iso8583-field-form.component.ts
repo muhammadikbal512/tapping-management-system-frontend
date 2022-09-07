@@ -25,7 +25,7 @@ export class CreateUpdateIso8583FieldFormComponent
   >;
 
   form!: FormGroup;
-  disableButton: boolean = false;
+  disableStatus: boolean = false;
   showClearButton: boolean = false;
   DialectMsgTemplateOptionList: DialectMsgTemplateGroup[] = [];
   IsoFieldConfigurationModel: IsoFieldConfigurationModel =
@@ -49,7 +49,7 @@ export class CreateUpdateIso8583FieldFormComponent
   ngAfterViewInit(): void {
     if (this.isoFieldConfigurationService.buttonStatus == 'edit') {
       this.setExistingDataToDialog();
-      this.disableButton = !this.form.dirty;
+      this.disableStatus = !this.form.dirty;
       this.onCheckingFormHasChange();
       this.changeDetectorRef.detectChanges();
     }
@@ -85,25 +85,31 @@ export class CreateUpdateIso8583FieldFormComponent
         this.existingDialectId != value.dialectId ||
         this.existingIsTagNumber != value.isTagNumber ||
         this.existingIsoFieldId != value.isoFieldId ||
-        this.existingTagNumber != value.tagNumber
+        this.existingTagNumber != value.tagNumber || 
+        this.existingDialectMsgTemplate != value.messageTemplate.name
       ) {
-        this.disableButton = false;
+        this.disableStatus = false;
       }
       if (
         this.existingAttributeId == value.attributeId &&
         this.existingDialectId == value.dialectId &&
         this.existingIsTagNumber == value.isTagNumber &&
         this.existingIsoFieldId == value.isoFieldId &&
-        this.existingTagNumber == value.tagNumb
+        this.existingTagNumber == value.tagNumb &&
+        this.existingDialectMsgTemplate == value.messageTemplate.name
       ) {
-        this.disableButton = true;
+        this.disableStatus = true;
       }
     });
   }
 
   setExistingDataToDialog() {
     this.attributeId.setValue(this.existingAttributeId);
-    this.dialectId.setValue(this.existingDialectId);
+    this.dialectId.setValue({
+      name: this.existingDialectMsgTemplate.nameType,
+      code: String(this.existingDialectMsgTemplate.templateId)
+    }
+    );
     this.isTagNumber.setValue(this.existingIsTagNumber);
     this.isoFieldId.setValue(this.existingIsoFieldId);
     this.tagNumber.setValue(this.existingTagNumber);
@@ -133,7 +139,7 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   get tagNumber() {
-    return this.form.controls['isTagNumber'];
+    return this.form.controls['tagNumber'];
   }
 
   get dialectId() {
@@ -145,7 +151,7 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   get isTagNumber() {
-    return this.form.controls['tagNumber'];
+    return this.form.controls['isTagNumber'];
   }
 
   get existingIsoFieldId() {
@@ -166,5 +172,9 @@ export class CreateUpdateIso8583FieldFormComponent
 
   get existingIsTagNumber() {
     return this.isoFieldConfigurationService.existingData.isTagNumber;
+  }
+
+  get existingDialectMsgTemplate() {
+    return this.isoFieldConfigurationService.existingData.dialectMessageTemplate;
   }
 }

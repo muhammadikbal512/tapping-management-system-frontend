@@ -33,7 +33,7 @@ export class IsoFieldConfigurationTableService {
     {field: 'dialectId'},
     {field: 'attributeId'},
     {field: 'isTagNumber', cellRenderer: 'tag'},
-    {field: 'actions', cellRenderer:'actionButtonGroup'}
+    {field: 'actions', maxWidth: 100, cellRenderer:'actionButtonGroup'}
   ]
   constructor() { }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/iso-field-configuration-table.service';
 
 
@@ -16,6 +16,12 @@ export class Iso8583FieldTableComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {}
+
+  public rowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0;
+    }
+  }
 
   ngOnDestroy(): void {
     this.isoFieldConfigurationTableService.gridApi.destroy();

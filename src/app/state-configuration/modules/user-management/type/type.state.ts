@@ -14,6 +14,7 @@ import { TypeService } from 'src/app/modules/services/module-services/type.servi
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TypeTableService } from 'src/app/modules/services/module-services/type-table.service';
 
 export class TypeStateModel {
   Type: TypeModel[] = [];
@@ -31,7 +32,8 @@ export class TypeStateModel {
 export class TypeState {
   constructor(
     private typeService: TypeService,
-    private notifierService: NotificationService
+    private notifierService: NotificationService,
+    private typeTableService: TypeTableService
   ) {}
 
   @Selector()
@@ -50,8 +52,17 @@ export class TypeState {
     return this.typeService.getAllType().pipe(
       tap((response) => {
         if (response.length != 0) {
+          this.typeTableService.showTableLoading();
+          this.typeTableService.setRowData(response);
         } else {
+          this.typeTableService.setRowData(response);
+          this.typeTableService.showNoRowData();
         }
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Type: response,
+        });
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new TypeErrorState(response.error));
@@ -77,5 +88,80 @@ export class TypeState {
         return ctx.dispatch(new TypeErrorState(response.error));
       })
     );
+  }
+
+  @Action(TypeDelete, { cancelUncompleted: true }) deleteFromState(
+    ctx: StateContext<TypeStateModel>,
+    { id }: TypeDelete
+  ) {
+    return this.typeService.deleteType(id).pipe(
+      tap((response) => {
+        ctx.dispatch(new TypeSuccessState(response));
+        const filteredData = ctx
+          .getState()
+          .Type.filter((data) => data.id !== id);
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Type: filteredData,
+          responseMessage: response,
+        });
+      }),
+      catchError((response) => {
+        return ctx.dispatch(new TypeErrorState(response));
+      })
+    );
+  }
+
+  @Action(TypeUpdate, { cancelUncompleted: true }) updateDataFromState(
+    ctx: StateContext<TypeStateModel>,
+    { id, payload, stateData }: TypeUpdate
+  ) {
+    return this.typeService.updateType(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new TypeSuccessState(response));
+        const dataList = [...ctx.getState().Type];
+        const updatedDataIndex = dataList.findIndex((data) => data.id === id);
+        dataList[updatedDataIndex];
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Type: dataList,
+          responseMessage: response,
+        });
+      }),
+      catchError((response) => {
+        return ctx.dispatch(new TypeErrorState(response));
+      })
+    );
+  }
+
+  @Action(TypeSuccessState) ifStateSuccess(
+    ctx: StateContext<TypeStateModel>,
+    { successMessage }: TypeSuccessState
+  ) {
+    this.notifierService.successNotification(
+      successMessage.message,
+      successMessage.httpStatusCode
+    );
+
+    this.typeService.onGetAllType();
+    ctx.patchState({
+      responseMessage: successMessage
+    })
+  }
+
+  @Action(TypeErrorState) ifStateError(
+    ctx: StateContext<TypeStateModel>,
+    { errorMessage }: TypeErrorState
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage.message,
+      errorMessage.httpStatusCode
+    )
+
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
   }
 }

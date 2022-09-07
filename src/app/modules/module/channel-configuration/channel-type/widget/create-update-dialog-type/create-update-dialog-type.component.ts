@@ -38,15 +38,17 @@ export class CreateUpdateDialogTypeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.createForm();
     this.channelTypeService.onGetAllDialectMsgTemplate();
-    this.dialects$.subscribe(data => {
-      this.DialectMsgTemplateOptionList = data.sort((a, b) => a.name.localeCompare(b.name));
+    this.dialects$.subscribe((data) => {
+      this.DialectMsgTemplateOptionList = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
   }
 
   ngAfterViewInit(): void {
     if (this.channelTypeService.buttonStatus == 'edit') {
       this.setExistingDataToDialog();
-      this.onCheckingFormHasChange()
+      this.onCheckingFormHasChange();
       this.changeDetectorRef.detectChanges();
     }
   }

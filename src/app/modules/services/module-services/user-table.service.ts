@@ -40,7 +40,7 @@ export class UserTableService {
       headerName: 'Last Login',
       valueFormatter: this.dateFormatter,
     },
-    { field: 'action', cellRenderer: 'actionButtonGroup', sortable: false },
+    { field: 'action', cellRenderer: 'actionButtonGroup', sortable: false, maxWidth: 100 },
   ];
 
   dateFormatter(params: any) {

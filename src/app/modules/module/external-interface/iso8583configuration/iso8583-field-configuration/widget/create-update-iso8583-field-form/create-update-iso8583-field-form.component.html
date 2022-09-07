@@ -1,83 +1,59 @@
-<div class="container">
-    <form [formGroup]="form">
-        <div class="field">
-            <label class="required-icon">Dialect</label>
-            <div style="width: 100%">
-                <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
-                filterBy="name" placeholder="Select Message Template"
-                optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
-                formControlName="dialectId"></p-dropdown>
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="isoFieldId" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Iso Field ID</label>
+            <p-message *ngIf="isoFieldId.touched && !isoFieldId.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="isoFieldId.touched && isoFieldId.hasError('required')" severity="error"></p-message>
+            <small *ngIf="isoFieldId.touched && isoFieldId.hasError('required')" class="p-error">Iso Field ID should be fill.</small>
+        </div>
+
+        <div class="input-container">
+            <input formControlName="attributeId" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Attribute ID</label>
+            <p-message *ngIf="attributeId.touched && !attributeId.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="attributeId.touched && attributeId.hasError('required')" severity="error"></p-message>
+            <small *ngIf="attributeId.touched && attributeId.hasError('required')" class="p-error">Attribute ID should be fill.</small>
+        </div>
+        
+
+        
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="tagNumber" type="number" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Tag Number</label>
+            <p-message *ngIf="tagNumber.touched && !tagNumber.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="tagNumber.touched && tagNumber.hasError('required')" severity="error"></p-message>
+            <small *ngIf="tagNumber.touched && tagNumber.hasError('required')" class="p-error">Tag Number should be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
+            filterBy="name" placeholder="Select Message Template"
+            optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
+            formControlName="dialectId"></p-dropdown>
+        </div>
+
+        <div class="input-container">
+            <div class="m-auto space-x-2">
+                <section>
+                    <p-checkbox [binary]="true" formControlName="isTagNumber"></p-checkbox>
+                    <label class="ml-2">is Tag Number</label>
+                </section>
             </div>
         </div>
-        <div class="field-iso mt-4 mb-4">
-            <label class="required-icon" for="">ISO8583 Field Configuration</label>
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Field Data
-                        </mat-panel-title>
-                        <!-- <mat-panel-description>
-                            This is a summary of the content
-                        </mat-panel-description> -->
-                    </mat-expansion-panel-header>
-                    <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Attribute</mat-label>
-                        <input formControlName="attributeId" name="fieldId" matInput>
-                        <mat-error>Attribute should be fill</mat-error>
-                    </mat-form-field>
+    </div>
 
-                    <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Is Tag Number</mat-label>
-                        <input matInput name="fieldFormat" formControlName="isTagNumber">
-                        <mat-error>Is Tag Number should be fill</mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline" style="margin-right: 20px;">
-                        <mat-label>Iso Field</mat-label>
-                        <input name="description" matInput autocomplete="off" formControlName="isoFieldId">
-                        <mat-error>Iso Field Number should be fill</mat-error>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Tag Number</mat-label>
-                        <input name="fieldLength" matInput autocomplete="off" maxlength="5" formControlName="tagNumber">
-                        <mat-error>Tag Number should be fill</mat-error>
-                    </mat-form-field>
-
-                    <!-- <div class="has-child-container">
-                        <label for="" class="has-child-label">Add Child Field: </label>
-                        <div class="option-group">
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="subField"></mat-radio-button>
-                                <mat-radio-button value="taggedField"></mat-radio-button>
-                                <mat-radio-button value="none"></mat-radio-button>
-                            </mat-radio-group>
-
-
-                        </div>
-                    </div> -->
-
-                </mat-expansion-panel>
-
-            </mat-accordion>
-
-        </div>
-        <div class="text-center">
-            <mat-dialog-actions align="end">
-                <p-button class="cancel-button"
-                label="Cancel"
-                mat-dialog-close="true"
-                styleClass="p-button-sm"></p-button>
-      <p-button (onClick)="onCreateIsoField()" [loading]="showLoading" *ngIf="isoFieldConfigurationService.buttonStatus == 'create'"
-                [disabled]="form.invalid"
-                class="create-button" label="Create"
-                styleClass="p-button-sm"></p-button>
-      <p-button (onClick)="onUpdateIsoField()" [loading]="showLoading" *ngIf="isoFieldConfigurationService.buttonStatus == 'edit'"
-                [disabled]="disableButton" class="create-button"
-                label="Save"
-                styleClass="p-button-sm"></p-button>
-            </mat-dialog-actions>
-        </div>
-    </form>
-</div>
+    <mat-dialog-actions align="end">
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onCreateIsoField()" *ngIf="isoFieldConfigurationService.buttonStatus== 'create'"
+            [disabled]="form.invalid" [loading]="showLoading" class="create-button ml-3" label="Create"
+            styleClass="p-button-sm">
+        </p-button>
+        <p-button (onClick)="onUpdateIsoField()" *ngIf="isoFieldConfigurationService.buttonStatus == 'edit'"
+            [disabled]="disableStatus" [loading]="showLoading" class="create-button ml-3" label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
+</form>

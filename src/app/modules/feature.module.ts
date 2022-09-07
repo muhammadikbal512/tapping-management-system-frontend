@@ -4,17 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../modules/material/material.module';
+import { PrimengModule } from './primeng/primeng.module';
 import 'flowbite';
-
-import { BadgeModule } from 'primeng/badge';
-import { DropdownModule } from 'primeng/dropdown';
-import { MessageModule } from 'primeng/message';
-import { MessagesModule } from 'primeng/messages';
-import { CheckboxModule } from 'primeng/checkbox';
-
-import { PasswordModule } from 'primeng/password';
-import { TagModule } from 'primeng/tag';
-import { CalendarModule } from 'primeng/calendar';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -56,7 +47,6 @@ import { ChannelTypeTableComponent } from '../modules/module/channel-configurati
 import { ActionButtonGroupChannelTypeComponent } from '../modules/module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
 import { Iso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component';
 import { Iso8583FieldConfigurationComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component';
-
 import { Iso8583DialectTableComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/iso8583-dialect-table/iso8583-dialect-table.component';
 import { CreateUpdateIso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
 import { ActionButtonGroupIso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
@@ -68,8 +58,6 @@ import { UserTableComponent } from '../modules/module/user-management/user/widge
 import { InterfaceListComponent } from '../modules/module/dashboard/interface-list/interface-list.component';
 import { CreateUpdateDialogChannelComponent } from '../modules/module/channel-configuration/channel/widget/create-update-dialog/create-update-dialog.component';
 import { OverlayLoadingComponent } from '../modules/global-widget/overlay-loading/overlay-loading.component';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
 import { TagComponent } from '../modules/global-widget/tag/tag.component';
 import { AuthInterceptor } from '../interceptor/auth.interceptor';
 import { HpanDialogComponent } from '../modules/module/transaction/widget-transaction/hpan-dialog/hpan-dialog.component';
@@ -92,7 +80,6 @@ import { CreateDialogAcquirerComponent } from '../modules/module/acquirer/alert/
 import { ActionButtonAcquirerAlertComponent } from '../modules/module/acquirer/alert/widget/action-button-acquirer-alert/action-button-acquirer-alert.component';
 import { TerminalListAcquirerTableComponent } from '../modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-table/terminal-list-acquirer-table.component';
 import { TerminalListAcquirerActionButtonComponent } from '../modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-action-button/terminal-list-acquirer-action-button.component';
-
 import { UserCreateDialogComponent } from '../modules/module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
 import { EventCollectorComponent } from '../modules/module/event-collector/event-collector.component';
 import { EventCollectorTableComponent } from '../modules/module/event-collector/widget/event-collector-table/event-collector-table.component';
@@ -139,7 +126,6 @@ import { Iso8583ResponseMappingActionButtonComponent } from '../modules/module/e
 import { Iso8583ResponseMappingTableComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
 import { ActionButtonInterfaceComponent } from '../modules/module/dashboard/interface-list-card/action-button-interface/action-button-interface.component';
 import { TransactionVirtualComponent } from '../modules/module/transaction/transaction-virtual/transaction-virtual.component';
-import { ButtonModule } from 'primeng/button';
 import { WebsocketService } from './services/websocket-service/websocket-service.service';
 import { TransactionRateChartService } from './services/chart-services/transaction-rate-chart.service';
 import { TransactionService } from './services/module-services/transaction.service';
@@ -291,21 +277,12 @@ import { ActionButtonInstitutionComponent } from './module/user-management/insti
     HttpClientModule,
     RouterModule,
     MaterialModule,
+    PrimengModule,
     AgGridModule.withComponents([]),
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    DropdownModule,
     FormsModule,
-    MessageModule,
-    ButtonModule,
-    ProgressSpinnerModule,
-    BadgeModule,
-    MessagesModule,
-    PasswordModule,
-    TagModule,
     MatTableExporterModule,
-    CalendarModule,
-    CheckboxModule
   ],
   providers: [
     WebsocketService,

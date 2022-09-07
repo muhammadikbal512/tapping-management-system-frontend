@@ -24,7 +24,7 @@ export class TransactionTableService {
   headerHeight: number = 40;
   rowHeight: number = 40;
   paginationSize = 5;
-  overlayLoadingTemplate = 'Loading...';
+  overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     overlayLoading: OverlayLoadingComponent,
   };

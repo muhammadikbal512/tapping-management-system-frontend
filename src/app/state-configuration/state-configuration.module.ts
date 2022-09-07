@@ -27,6 +27,7 @@ import { EventCollectorState } from './modules/event-collector/event-collector.s
 import { SchemeState } from './modules/user-management/scheme/scheme.state';
 import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
 import { InstitutionState } from './modules/user-management/institution/institution.state';
+import { TypeState } from './modules/user-management/type/type.state';
 
 @NgModule({
   declarations: [],
@@ -58,7 +59,8 @@ import { InstitutionState } from './modules/user-management/institution/institut
       ResponseMappingState,
       SchemeState,
       XmlConfigState,
-      InstitutionState
+      InstitutionState,
+      TypeState
     ]),
   ],
 })
