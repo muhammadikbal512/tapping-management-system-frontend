@@ -10,6 +10,7 @@ import {GridReadyEvent, RowClassRules, RowClickedEvent} from "ag-grid-community"
   styleUrls: ['./iso8583-format-table.component.css'],
 })
 export class Iso8583FormatTableComponent implements OnInit {
+  paginationSize: number = 5;
   constructor(
     private iso8583FormatService: MessageFormatService,
     private iso8583FormatTableService: MessageFormatTableService

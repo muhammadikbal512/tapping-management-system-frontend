@@ -10,6 +10,7 @@ import {Store} from "@ngxs/store";
   styleUrls: ['./channel-table.component.css'],
 })
 export class ChannelTableComponent implements OnInit, OnDestroy {
+  paginationSize: number = 5; 
   constructor(
     private store: Store,
     private channelTableService: ChannelTableService,

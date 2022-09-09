@@ -38,8 +38,8 @@ export class HeaderComponent implements OnInit {
     const UserDataFromLocalStorage = this.headerService.loadDataUserFromLocalStorage() || '';
     this.dataUser = JSON.parse(UserDataFromLocalStorage);
     this.dataUser.profileImageUrl = this.dataUser.profileImageUrl.replace('localhost', '192.168.1.236');
-    if (this.dataUser.roles == "ROLE_USER") {
-      this.dataUser.roles = RoleUser.ROLE_USER;
+    if (this.dataUser.role == "ROLE_USER") {
+      this.dataUser.role = RoleUser.ROLE_USER;
     }
   }
 

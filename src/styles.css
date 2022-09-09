@@ -61,13 +61,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .action-button {
-  font-size:20px; 
+  @apply
+  text-[20px];
   zoom: 125%;
 }
 
 .action-button .mat-icon {
-  font-size: 20px;
-  margin-bottom: 10px;
+  @apply
+  text-[20px]
+  ml-[10px];
 }
 
 .grid-header-right {

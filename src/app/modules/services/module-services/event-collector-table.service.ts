@@ -29,7 +29,7 @@ export class EventCollectorTableService {
     { field: 'dstPort' },
     { field: 'flag' },
     { field: 'messageHexa' },
-    { field: ' networkId' },
+    { field: 'networkId' },
     { field: 'protocol' },
     { field: 'sequenceNumber' },
     { field: 'srcAddress' },

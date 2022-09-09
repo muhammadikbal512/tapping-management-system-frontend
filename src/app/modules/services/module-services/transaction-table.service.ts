@@ -248,7 +248,7 @@ export class TransactionTableService {
   ];
 
   dateFormatter(params: any) {
-    return moment(params.value).format('DD/MM/YY HH')
+    return moment(params.value).format('DD/MM/YY HH:mm')
   }
 
   onFilter(searchInputClass: string) {

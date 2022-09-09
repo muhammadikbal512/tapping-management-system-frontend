@@ -44,7 +44,7 @@ export class UserTableService {
   ];
 
   dateFormatter(params: any) {
-    return moment(params.value).format('DD/MM/YYYY HH');
+    return moment(params.value).format('DD/MM/YYYY HH:mm');
   }
 
   constructor() {}

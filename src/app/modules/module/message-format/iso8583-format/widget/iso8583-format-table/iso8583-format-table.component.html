@@ -2,6 +2,7 @@
   enableCellTextSelection suppressDragLeaveHidesColumns [animateRows]="animateRow" [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight"
   [autoGroupColumnDef]="autoGroupColumnDef" [groupDefaultExpanded]="groupDefaultExpanded"
+  [paginationPageSize]="paginationSize"
   [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
   (gridReady)="onGridReady($event)" [rowClassRules]="rowClassRules" [pagination]="true"
   (rowClicked)="onCellClicked($event)"></ag-grid-angular>

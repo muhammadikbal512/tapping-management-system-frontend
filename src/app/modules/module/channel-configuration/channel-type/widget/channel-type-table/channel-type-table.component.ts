@@ -9,6 +9,7 @@ import { ChannelTypeService } from 'src/app/modules/services/module-services/cha
   styleUrls: ['./channel-type-table.component.css'],
 })
 export class ChannelTypeTableComponent implements OnInit, OnDestroy {
+  paginationSize: number = 5;
   constructor(
     private channelTypeService: ChannelTypeService,
     private channelTypeTableService: ChannelTypeTableService

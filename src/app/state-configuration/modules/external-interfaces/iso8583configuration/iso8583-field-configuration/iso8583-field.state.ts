@@ -140,7 +140,7 @@ export class ISO8583FieldState {
           });
         });
 
-        ctx.setState({
+        ctx.patchState({
           ...ctx.getState(),
           dialects: dialectParseList,
         });

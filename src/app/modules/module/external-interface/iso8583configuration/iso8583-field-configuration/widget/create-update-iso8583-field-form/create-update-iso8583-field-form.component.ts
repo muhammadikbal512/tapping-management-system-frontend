@@ -11,6 +11,8 @@ import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-t
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { ISO8583FieldState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.state';
+import { Iso8583DialectMsgTemplate } from 'src/app/model/modules-model/iso8583-dialect-msg-template.model';
+
 
 @Component({
   selector: 'app-create-update-iso8583-field-form',
@@ -66,10 +68,11 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   setNewDataToModel(): IsoFieldConfigurationModel {
-    this.IsoFieldConfigurationModel.attributeId = this.attributeId.value;
-    this.IsoFieldConfigurationModel.dialectId = this.dialectId.value;
-    this.IsoFieldConfigurationModel.isTagNumber = this.isTagNumber.value;
     this.IsoFieldConfigurationModel.isoFieldId = this.isoFieldId.value;
+    this.IsoFieldConfigurationModel.dialectMessageTemplate =
+      new Iso8583DialectMsgTemplate(Number(this.dialectId.value.code));
+    this.IsoFieldConfigurationModel.attributeId = this.attributeId.value;
+    this.IsoFieldConfigurationModel.isTagNumber = this.isTagNumber.value;
     this.IsoFieldConfigurationModel.tagNumber = this.tagNumber.value;
     return this.IsoFieldConfigurationModel;
   }

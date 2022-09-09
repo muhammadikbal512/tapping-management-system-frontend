@@ -3,14 +3,16 @@ header {
 }
 
 .search-container {
-  width: 300px;
-  display: flex;
-  align-items: center;
+  @apply
+  flex
+  w-80
+  items-center;
 }
 
 .search-icon {
-  position: absolute;
-  margin-left: 10px;
+  @apply
+  absolute
+  ml-[10px];
 }
 
 .search-input {

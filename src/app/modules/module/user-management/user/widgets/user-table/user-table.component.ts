@@ -9,6 +9,7 @@ import { GridReadyEvent, RowClickedEvent, RowClassRules } from 'ag-grid-communit
   styleUrls: ['./user-table.component.css'],
 })
 export class UserTableComponent implements OnInit {
+  paginationSize: number = 5;
   constructor(
     private userService: UserService,
     private userTableService: UserTableService
