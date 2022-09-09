@@ -160,6 +160,9 @@ import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-
 import { InstitutionComponent } from './module/user-management/institution/institution.component';
 import { TableInstitutionComponent } from './module/user-management/institution/widgets/table-institution/table-institution.component';
 import { InstitutionCreateDialogComponent } from './module/user-management/institution/widgets/institution-create-dialog/institution-create-dialog.component';
+import { InstitutionActionButtonComponent } from './module/user-management/institution/widgets/institution-action-button/institution-action-button.component';
+import { InstitutionEditDialogComponent } from './module/user-management/institution/widgets/institution-edit-dialog/institution-edit-dialog.component';
+import { TypeComponent } from './module/user-management/type/type.component';
 
 
 
@@ -283,6 +286,9 @@ import { InstitutionCreateDialogComponent } from './module/user-management/insti
     InstitutionComponent,
     TableInstitutionComponent,
     InstitutionCreateDialogComponent,
+    InstitutionActionButtonComponent,
+    InstitutionEditDialogComponent,
+    TypeComponent,
   ],
   imports: [
     CommonModule,

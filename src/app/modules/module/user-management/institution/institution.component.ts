@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
 
 @Component({
   selector: 'app-institution',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstitutionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private institutionService: InstitutionService) { }
 
   ngOnInit(): void {
   }
-  
+
+  openDialog() {
+    this.institutionService.openDialog()
+  }
+
 }
