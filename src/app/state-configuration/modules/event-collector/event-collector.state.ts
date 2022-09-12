@@ -86,7 +86,7 @@ export class EventCollectorState {
   ) {
     this.notifierService.errorNotification(
       errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage.status
     );
 
     ctx.patchState({

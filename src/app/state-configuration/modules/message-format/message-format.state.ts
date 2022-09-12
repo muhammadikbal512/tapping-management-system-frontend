@@ -63,8 +63,8 @@ export class MessageFormatState {
           messageFormats: response,
         });
       }),
-      catchError((response) => {
-        return ctx.dispatch(new MessageFormatErrorState(response));
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new MessageFormatErrorState(response.error));
       })
     );
   }
@@ -168,7 +168,7 @@ export class MessageFormatState {
     }
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.httpStatusCode
+      errorMessage?.status
     );
     ctx.patchState({
       responseMessage: errorMessage,

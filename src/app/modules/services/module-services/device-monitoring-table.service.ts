@@ -77,7 +77,7 @@ export class DeviceMonitoringTableService {
     this.gridApi.setDomLayout('autoHeight');
   }
 
-  setRowData(data: []) {
+  setRowData(data: any[]) {
     this.gridApi.setRowData(data);
   }
 

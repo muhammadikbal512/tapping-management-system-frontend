@@ -76,9 +76,8 @@ export class ChannelState {
           channels: response,
         });
       }),
-      catchError((response) => {
-        console.log(response)
-        return ctx.dispatch(new ChannelErrorState(response));
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new ChannelErrorState(response.error));
       })
     );
   }
@@ -197,7 +196,7 @@ export class ChannelState {
   ) {
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.statusText
+      errorMessage?.status
     );
     if (this.channelTableService.gridApi.getRenderedNodes().length == 0) {
       this.channelTableService.showNoRowData();

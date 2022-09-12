@@ -7,6 +7,11 @@ import {
 } from './device-monitoring.action';
 import { Injectable } from '@angular/core';
 import { Action, StateContext, Selector, State } from '@ngxs/store';
+import { DeviceMonitoringService } from 'src/app/modules/services/module-services/device-monitoring.service';
+import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring-table.service';
+import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { catchError, tap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class DeviceMonitoringStateModel {
   DeviceMonitorings: DeviceMonitoringModel[] = [];
@@ -22,13 +27,17 @@ export class DeviceMonitoringStateModel {
 })
 @Injectable()
 export class DeviceMonitoringState {
-  constructor() {}
+  constructor(
+    private deviceService: DeviceMonitoringService,
+    private deviceTableService: DeviceMonitoringTableService,
+    private notifierService: NotificationService
+  ) {}
 
   @Selector()
   static DeviceMonitorings(state: DeviceMonitoringStateModel) {
     return state.DeviceMonitorings;
   }
- 
+
   @Selector()
   static responseMessage(state: DeviceMonitoringStateModel) {
     return state.responseMessage;
@@ -36,15 +45,60 @@ export class DeviceMonitoringState {
 
   @Action(DeviceMonitoringGet, { cancelUncompleted: true }) getDataFromState(
     ctx: StateContext<DeviceMonitoringStateModel>
-  ) {}
+  ) {
+    return this.deviceService.getAllDeviceMonitoring().pipe(
+      tap((response) => {
+        if (response.length != 0) {
+          this.deviceTableService.hideTableLoading();
+          this.deviceTableService.setRowData(response);
+        } else {
+          this.deviceTableService.setRowData(response);
+          this.deviceTableService.showNoRowData();
+        }
+
+        ctx.patchState({
+          ...ctx.getState(),
+          DeviceMonitorings: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new DeviceMonitoringErrorState(response.error));
+      })
+    );
+  }
 
   @Action(DeviceMonitoringSuccessState) ifStateSuccess(
-    ctx: StateContext<DeviceMonitoringSuccessState>,
+    ctx: StateContext<DeviceMonitoringStateModel>,
     { successMessage }: DeviceMonitoringSuccessState
-  ) {}
+  ) {
+    this.notifierService.successNotification(
+      successMessage.message,
+      successMessage.status
+    )
+
+    this.deviceService.onGetDeviceMonitoring();
+    ctx.patchState({
+      responseMessage: successMessage
+    })
+  }
 
   @Action(DeviceMonitoringErrorState) ifErrorState(
-    ctx: StateContext<DeviceMonitoringErrorState>,
+    ctx: StateContext<DeviceMonitoringStateModel>,
     { errorMessage }: DeviceMonitoringErrorState
-  ) {}
+  ) {
+    this.notifierService.errorNotification(
+      errorMessage.message,
+      errorMessage.status
+    );
+
+    if(this.deviceTableService.gridApi.getRenderedNodes().length == 0) {
+      this.deviceTableService.showNoRowData();
+    } else {
+      this.deviceTableService.hideTableLoading();
+    }
+
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
+  }
 }

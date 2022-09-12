@@ -173,7 +173,7 @@ export class UserState {
   ) {
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.httpStatusCode
+      errorMessage?.status
     );
     if (this.userTableService.gridApi.getRenderedNodes().length == 0) {
       this.userTableService.showNoRowData();

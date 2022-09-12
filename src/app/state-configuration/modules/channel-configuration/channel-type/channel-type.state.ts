@@ -100,9 +100,9 @@ export class ChannelTypeState {
           channelTypes: response,
         });
       }),
-      catchError((response) => {
+      catchError((response: HttpErrorResponse) => {
         console.log(response)
-        return ctx.dispatch(new ChannelTypeErrorState(response));
+        return ctx.dispatch(new ChannelTypeErrorState(response.error));
       })
     );
   }
@@ -220,7 +220,7 @@ export class ChannelTypeState {
   ) {
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.statusText
+      errorMessage?.status
     );
     if (this.channelTypeTableService.gridApi.getRenderedNodes().length == 0) {
       this.channelTypeTableService.showNoRowData();

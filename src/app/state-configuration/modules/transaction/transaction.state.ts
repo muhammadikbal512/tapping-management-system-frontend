@@ -86,7 +86,7 @@ export class TransactionState {
   ) {
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.httpStatusCode
+      errorMessage?.status
     );
     if (this.transactionTableService.gridApi.getRenderedNodes().length == 0) {
       this.transactionTableService.showNoRowData();

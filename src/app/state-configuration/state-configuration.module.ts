@@ -28,6 +28,7 @@ import { SchemeState } from './modules/user-management/scheme/scheme.state';
 import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
 import { InstitutionState } from './modules/user-management/institution/institution.state';
 import { TypeState } from './modules/user-management/type/type.state';
+import { UserGroupState } from './modules/user-management/user-group/user-group.state';
 
 @NgModule({
   declarations: [],
@@ -60,7 +61,8 @@ import { TypeState } from './modules/user-management/type/type.state';
       SchemeState,
       XmlConfigState,
       InstitutionState,
-      TypeState
+      TypeState,
+      UserGroupState
     ]),
   ],
 })
