@@ -24,6 +24,6 @@ export class InstitutionComponent implements OnInit {
   }
 
   openDialog() {
-   
+   this.institutionService.openDialog();
   }
 }

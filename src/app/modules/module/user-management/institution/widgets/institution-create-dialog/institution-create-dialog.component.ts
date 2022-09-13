@@ -85,7 +85,7 @@ export class InstitutionCreateDialogComponent implements OnInit, AfterViewInit {
     const newData = this.institutionService.createInstitutionFormData(
       this.NewDataToModel()
     );
-    this.institutionService.onUpdateInstitution(newData);
+    this.institutionService.onUpdateInstitution(newData)
   }
 
   get institutionName() {

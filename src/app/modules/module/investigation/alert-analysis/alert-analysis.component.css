@@ -32,13 +32,13 @@
 }
 
 .input-container {
-  @apply relative 
+  @apply 
   z-0 
   mb-6;
 }
 
 .input-container input {
-  @apply w-28;
+  @apply w-full;
 }
 
 :host ::ng-deep .p-button {

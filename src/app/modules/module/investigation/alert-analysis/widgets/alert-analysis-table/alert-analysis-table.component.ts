@@ -8,7 +8,7 @@ import { AlertInvestigationTableService } from 'src/app/modules/services/module-
   styleUrls: ['./alert-analysis-table.component.css']
 })
 export class AlertAnalysisTableComponent implements OnInit {
-
+  paginationSize: number = 5;
   constructor(private alertTable: AlertInvestigationTableService) {
    }
 

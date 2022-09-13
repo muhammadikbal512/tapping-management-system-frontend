@@ -31,7 +31,8 @@
 }
 
 .grid-content {
-    margin-left: 1rem;
+    @apply ml-4
+    mt-[10px];
 }
 
 .grid-content p {

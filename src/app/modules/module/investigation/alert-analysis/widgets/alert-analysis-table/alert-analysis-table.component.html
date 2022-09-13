@@ -1,7 +1,7 @@
 <div class="table-container">
     <ag-grid-angular style="width: 100%; height: 300px" class="ag-theme-alpine" rowSelection="single"
         enableCellTextSelection suppressDragLeaveHidesColumns [animateRows]="animateRow" [columnDefs]="columnDefs"
-        [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight"
+        [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight" [paginationPageSize]="paginationSize"
         [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
         [rowData]="rowData" [rowClassRules]="rowClassRules" [pagination]="true" (rowClicked)="onCellClicked($event)"></ag-grid-angular>
 </div>

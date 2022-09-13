@@ -13,15 +13,12 @@
     <div class="text-center">
         <mat-dialog-actions align="end">
             <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
-<<<<<<< HEAD
             <p-button (onClick)="onCreateInstitution()" *ngIf="institutionService.buttonStatus == 'create'"
                 [disabled]="form.invalid" [loading]="showLoading" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
-            <p-button *ngIf="institutionService.buttonStatus == 'edit'"
+            <p-button (onClick)="onUpdateInstitution()" *ngIf="institutionService.buttonStatus == 'edit'"
                 [disabled]="disableButton" [loading]="showLoading" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
-=======
             <p-button 
                  class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
->>>>>>> TMS-FE_Alfat
         </mat-dialog-actions>
     </div>
 </form>

@@ -76,7 +76,6 @@ export class InstitutionState {
     return this.institutionService.addInstitution(payload).pipe(
       tap((response) => {
         ctx.dispatch(new InstitutionStateSuccess(response));
-
         ctx.patchState({
           ...ctx.getState(),
           institutions: [...ctx.getState().institutions],

@@ -144,7 +144,8 @@ import { TableDeviceMonitoringComponent } from './module/device-monitoring/widge
 import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-tag/device-monitoring-tag.component';
 import { TableInstitutionComponent } from './module/user-management/institution/widgets/table-institution/table-institution.component';
 import { InstitutionCreateDialogComponent } from './module/user-management/institution/widgets/institution-create-dialog/institution-create-dialog.component';
-
+import { InstitutionActionButtonComponent } from './module/user-management/institution/widgets/institution-action-button/institution-action-button.component';
+import { InstitutionComponent } from './module/user-management/institution/institution.component';
 
 
 @NgModule({
@@ -267,10 +268,10 @@ import { InstitutionCreateDialogComponent } from './module/user-management/insti
     InstitutionComponent,
     TableInstitutionComponent,
     InstitutionCreateDialogComponent,
-    ActionButtonInstitutionComponent,
+    ActionButtonJsonComponent,
     InstitutionActionButtonComponent,
-    InstitutionEditDialogComponent,
-    TypeComponent,
+    InstitutionCreateDialogComponent,
+    ArpComponent,
   ],
   imports: [
     CommonModule,

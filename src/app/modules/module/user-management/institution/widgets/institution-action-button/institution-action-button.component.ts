@@ -29,7 +29,7 @@ export class InstitutionActionButtonComponent implements AgRendererComponent {
   }
 
   deleteButton(event: Event) {
-    
+    this.confirmationService.institutionConfirm(event, this.institutionService)
   }
 
   editButton() {
