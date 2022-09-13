@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ws: 'http://192.168.3.50:8080/ws',
+  ws: 'http://192.168.55.22:8080/ws',
   core236: 'http://192.168.55.14:8080',
 };
 

@@ -34,6 +34,7 @@ import { InterfaceListComponent } from './modules/module/dashboard/interface-lis
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
 import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
 import { InstitutionComponent } from './modules/module/user-management/institution/institution.component';
+import { TypeComponent } from './modules/module/user-management/type/type.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -216,6 +217,16 @@ const routes: Routes = [
             path: 'institution',
             data: { title: 'Institution' },
             component: InstitutionComponent,
+          },
+          {
+            path: 'type',
+            data: { title: 'type' },
+            component: TypeComponent,
+          },
+          {
+            path: 'user-group',
+            data: { title: 'user-group' },
+            component: TypeComponent,
           },
         ],
       },

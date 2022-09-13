@@ -163,6 +163,14 @@ import { InstitutionCreateDialogComponent } from './module/user-management/insti
 import { InstitutionActionButtonComponent } from './module/user-management/institution/widgets/institution-action-button/institution-action-button.component';
 import { InstitutionEditDialogComponent } from './module/user-management/institution/widgets/institution-edit-dialog/institution-edit-dialog.component';
 import { TypeComponent } from './module/user-management/type/type.component';
+import { TypeActionButtonComponent } from './module/user-management/type/widgets/type-action-button/type-action-button.component';
+import { TypeCreateDialogComponent } from './module/user-management/type/widgets/type-create-dialog/type-create-dialog.component';
+import { TableTypeComponent } from './module/user-management/type/widgets/table-type/table-type.component';
+import { UserGroupComponent } from './module/user-management/user-group/user-group.component';
+import { UserGroupActionButtonComponent } from './module/user-management/user-group/widgets/user-group-action-button/user-group-action-button.component';
+import { UserGroupCreateDialogComponent } from './module/user-management/user-group/widgets/user-group-create-dialog/user-group-create-dialog.component';
+import { UserGroupEditDialogComponent } from './module/user-management/user-group/widgets/user-group-edit-dialog/user-group-edit-dialog.component';
+import { TableUserGroupComponent } from './module/user-management/user-group/widgets/table-user-group/table-user-group.component';
 
 
 
@@ -289,6 +297,14 @@ import { TypeComponent } from './module/user-management/type/type.component';
     InstitutionActionButtonComponent,
     InstitutionEditDialogComponent,
     TypeComponent,
+    TypeActionButtonComponent,
+    TypeCreateDialogComponent,
+    TableTypeComponent,
+    UserGroupComponent,
+    UserGroupActionButtonComponent,
+    UserGroupCreateDialogComponent,
+    UserGroupEditDialogComponent,
+    TableUserGroupComponent,
   ],
   imports: [
     CommonModule,
