@@ -17,4 +17,4 @@ import { FeatureModule } from 'src/app/modules/feature.module';
     FeatureModule,
   ]
 })
-export class DefaultModule { }
+export class DefaultModule {}

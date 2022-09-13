@@ -12,8 +12,8 @@ export class InstitutionComponent implements OnInit {
     private institutionTableService: InstitutionTableService,
     private institutionService: InstitutionService
   ) {}
-
   ngOnInit(): void {}
+
 
   searchTextFilter() {
     this.institutionTableService.onFilter('search-filter');
@@ -21,5 +21,9 @@ export class InstitutionComponent implements OnInit {
 
   refreshTable() {
     this.institutionService.getAllInstitutionWithDelay();
+  }
+
+  openDialog() {
+   
   }
 }
