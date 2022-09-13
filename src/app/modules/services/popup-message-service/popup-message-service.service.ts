@@ -10,6 +10,7 @@ import { MessageFormatService } from '../module-services/message-format.service'
 import { ResponseMappingService } from '../module-services/response-mapping.service';
 import { RolesService } from '../module-services/roles.service';
 import { TransactionParametersService } from '../module-services/transaction-parameters.service';
+import { TypeService } from '../module-services/type.service';
 import { UserService } from '../module-services/user.service';
 
 @Injectable({
@@ -143,7 +144,21 @@ export class PopupMessageService {
     this.confirmationService.confirm({
       target: event.target || undefined,
       message: 'Do you want to delete this institution ?',
-      icon: 'pi pi-exclamation-triangle'
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteInstitution();
+      }
+    })
+  }
+
+  typeConfirm(event: Event, onDelete: TypeService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this Type ?',
+      icon:'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteType();
+      }
     })
   }
 }
