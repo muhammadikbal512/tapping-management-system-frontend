@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TypeService } from 'src/app/modules/services/module-services/type.service';
 
 @Component({
   selector: 'app-type',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private typeService: TypeService) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog() {
+    this.typeService.openDialog()
   }
 
 }

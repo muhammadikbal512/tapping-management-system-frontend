@@ -1,22 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { TypeService } from 'src/app/modules/services/module-services/type.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
-
 @Component({
-  selector: 'app-user-action-button',
-  templateUrl: './institution-action-button.component.html',
-  styleUrls: ['./institution-action-button.component.css']
+  selector: 'app-type-action-button',
+  templateUrl: './type-action-button.component.html',
+  styleUrls: ['./type-action-button.component.css']
 })
-export class InstitutionActionButtonComponent implements AgRendererComponent {
+export class TypeActionButtonComponent implements AgRendererComponent {
   cellValue: string = '';
   constructor(
-    private institutionService: InstitutionService,
+    private typeService: TypeService,
     private confirmationService: PopupMessageService
   ) {}
-
-
 
   agInit(params: ICellRendererParams): void {
     this.cellValue = this.getValueToDisplay(params);
@@ -31,12 +28,11 @@ export class InstitutionActionButtonComponent implements AgRendererComponent {
   }
 
   deleteButton(event: Event) {
-    this.confirmationService.institutionConfirm(event, this.institutionService)
+    
   }
 
   editButton() {
-    this.institutionService.openDialog();
-    this.institutionService.buttonStatus = 'edit';
+    this.typeService.openDialog();
+    this.typeService.buttonStatus = 'edit';
   }
-
 }

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../modules/material/material.module';
-import { PrimengModule } from './primeng/primeng.module';
 import 'flowbite';
 
 import { AgGridModule } from 'ag-grid-angular';
@@ -145,7 +144,19 @@ import { DeviceMonitoringTagComponent } from './global-widget/device-monitoring-
 import { TableInstitutionComponent } from './module/user-management/institution/widgets/table-institution/table-institution.component';
 import { InstitutionCreateDialogComponent } from './module/user-management/institution/widgets/institution-create-dialog/institution-create-dialog.component';
 import { InstitutionActionButtonComponent } from './module/user-management/institution/widgets/institution-action-button/institution-action-button.component';
+import { TypeComponent } from './module/user-management/type/type.component';
+import { TypeActionButtonComponent } from './module/user-management/type/widgets/type-action-button/type-action-button.component';
+import { TypeCreateDialogComponent } from './module/user-management/type/widgets/type-create-dialog/type-create-dialog.component';
+import { TableTypeComponent } from './module/user-management/type/widgets/table-type/table-type.component';
+import { UserGroupComponent } from './module/user-management/user-group/user-group.component';
+import { UserGroupActionButtonComponent } from './module/user-management/user-group/widgets/user-group-action-button/user-group-action-button.component';
+import { UserGroupCreateDialogComponent } from './module/user-management/user-group/widgets/user-group-create-dialog/user-group-create-dialog.component';
+import { UserGroupEditDialogComponent } from './module/user-management/user-group/widgets/user-group-edit-dialog/user-group-edit-dialog.component';
+import { TableUserGroupComponent } from './module/user-management/user-group/widgets/table-user-group/table-user-group.component';
 import { InstitutionComponent } from './module/user-management/institution/institution.component';
+import { PrimengModule } from './primeng/primeng.module';
+
+
 
 
 @NgModule({
@@ -270,8 +281,6 @@ import { InstitutionComponent } from './module/user-management/institution/insti
     InstitutionCreateDialogComponent,
     ActionButtonJsonComponent,
     InstitutionActionButtonComponent,
-    InstitutionCreateDialogComponent,
-    ArpComponent,
   ],
   imports: [
     CommonModule,
