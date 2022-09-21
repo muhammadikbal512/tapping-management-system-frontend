@@ -1,24 +1,11 @@
-<div class="grid grid-cols-1 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-3">
-     <!-- Bar chart card -->
-     <div class="col-span-3 container-rate">
-          <!-- Card header -->
+<div class="transaction-rate-container">
+     <div class="transaction-rate-content-container">
           <div class="flex items-center justify-between p-4 border-b dark:border-primary">
                <h4 class="text-lg font-semibold text-gray-500 dark:text-light">Transaction Rate</h4>
           </div>
-          <!-- Chart -->
-          <div class="relative p-4 h-72">
-               <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                         <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                         <div class=""></div>
-                    </div>
-               </div>
-               <div style="height: 250px;" echarts [options]="this.transactionRateService._option"
+          <div class="transaction-rate-content">
+               <div echarts [options]="this.transactionRateService._option"
                     [merge]="this.transactionRateService._updateOptions"></div>
           </div>
      </div>
-
-     
 </div>

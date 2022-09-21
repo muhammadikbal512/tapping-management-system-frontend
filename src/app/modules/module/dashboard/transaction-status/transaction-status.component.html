@@ -1,84 +1,46 @@
-<div>
-  <div class="grid grid-cols-3 gap-4">
-    <div class="grid-container-dashboard">
-      <div class="grid-header-dashboard flex">
-        <div class="mt-4 ml-2">
-          <p>Transaction</p>
-          <span>Success</span>
-        </div>
-        <svg class="" width="87" height="76" viewBox="0 0 87 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M39.4956 28.6301C12.796 20.589 -0.357368 9.64938 0.00738125 1.60823V0H1.10164H73.4987C80.5019 0 87 11.4521 87 21.3425V69.958C86.5623 75.1043 80.9816 76.1229 78.246 75.9888H50.3427C58.2213 72.7724 61.2852 62.855 61.8323 58.2983C62.7077 43.181 49.7086 29.8363 39.4956 28.6301Z" fill="url(#paint0_linear_28_4)"/>
-          <defs>
-          <linearGradient id="paint0_linear_28_4" x1="50.4966" y1="3.94938e-07" x2="89.4034" y2="74.749" gradientUnits="userSpaceOnUse">
-          <stop offset="0.165823" stop-color="#3F6B6E"/>
-          <stop offset="0.989574" stop-color="#11969F"/>
-          </linearGradient>
-          </defs>
-          </svg>
+<div class="grid-dashboard">
+  <div class="grid-container-dashboard">
+    <div class="grid-header-dashboard">
+      <div>
+        <p>Transaction</p>
+        <span>Success</span>
       </div>
-
-      <div class="grid-content">
-        <p>Total Transaction</p>
-        <h2>200</h2>
-        <span>Updated: 08/06/2022 14:09</span>
-      </div>
-      <!-- <div class="p-4">
-        <div style="height: 300px;" echarts [options]="this.transactionStatusChart._successFailed"
-          [merge]="this.transactionStatusChart._updateOptions"></div>
-
-      </div>
-    </div>
-    <div class="grid-container-dashboard">
-      <div class="p-4">
-        <div style="height: 300px;" echarts [options]="this.transactionStatusChart._pendingTimeout"
-        [merge]="this.transactionStatusChart._pendingOptions"></div>
-      </div>
-    </div> -->
-    </div>
-    <div class="grid-container-dashboard">
-      <div class="grid-header-dashboard flex">
-        <div class="mt-4 ml-2">
-          <p>Transaction</p>
-          <span>Success</span>
-        </div>
-        <svg class="" width="87" height="76" viewBox="0 0 87 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M39.4956 28.6301C12.796 20.589 -0.357368 9.64938 0.00738125 1.60823V0H1.10164H73.4987C80.5019 0 87 11.4521 87 21.3425V69.958C86.5623 75.1043 80.9816 76.1229 78.246 75.9888H50.3427C58.2213 72.7724 61.2852 62.855 61.8323 58.2983C62.7077 43.181 49.7086 29.8363 39.4956 28.6301Z" fill="url(#paint0_linear_28_4)"/>
-          <defs>
-          <linearGradient id="paint0_linear_28_4" x1="50.4966" y1="3.94938e-07" x2="89.4034" y2="74.749" gradientUnits="userSpaceOnUse">
-          <stop offset="0.165823" stop-color="#3F6B6E"/>
-          <stop offset="0.989574" stop-color="#11969F"/>
-          </linearGradient>
-          </defs>
-          </svg>
-      </div>
-
-      <div class="grid-content">
-        <p>Total Transaction</p>
-        <h2>200</h2>
-        <span>Updated: 08/06/2022 14:09</span>
-      </div>
+      <app-transaction-status-svg></app-transaction-status-svg>
     </div>
 
-    <div class="grid-container-dashboard">
-      <div class="grid-header-dashboard flex">
-        <div class="mt-4 ml-2">
-          <p>Transaction</p>
-          <span>Success</span>
-        </div>
-        <svg class="" width="87" height="76" viewBox="0 0 87 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M39.4956 28.6301C12.796 20.589 -0.357368 9.64938 0.00738125 1.60823V0H1.10164H73.4987C80.5019 0 87 11.4521 87 21.3425V69.958C86.5623 75.1043 80.9816 76.1229 78.246 75.9888H50.3427C58.2213 72.7724 61.2852 62.855 61.8323 58.2983C62.7077 43.181 49.7086 29.8363 39.4956 28.6301Z" fill="url(#paint0_linear_28_4)"/>
-          <defs>
-          <linearGradient id="paint0_linear_28_4" x1="50.4966" y1="3.94938e-07" x2="89.4034" y2="74.749" gradientUnits="userSpaceOnUse">
-          <stop offset="0.165823" stop-color="#3F6B6E"/>
-          <stop offset="0.989574" stop-color="#11969F"/>
-          </linearGradient>
-          </defs>
-          </svg>
-      </div>
-      <div class="grid-content">
-        <p>Total Transaction</p>
-        <h2>200</h2>
-        <span>Updated: 08/06/2022 14:09</span>
-      </div>
+    <div class="grid-content">
+      <p>Total Transaction</p>
+      <h2>200</h2>
+      <span>Updated: 08/06/2022 14:09</span>
     </div>
   </div>
+  <div class="grid-container-dashboard">
+    <div class="grid-header-dashboard">
+      <div>
+        <p>Transaction</p>
+        <span>Pending</span>
+      </div>
+      <app-transaction-status-svg></app-transaction-status-svg>
+    </div>
+    <div class="grid-content">
+      <p>Total Transaction</p>
+      <h2>88</h2>
+      <span>Updated: 08/06/2022 14:09</span>
+    </div>
+  </div>
+
+  <div class="grid-container-dashboard">
+    <div class="grid-header-dashboard">
+      <div>
+        <p>Transaction</p>
+        <span>Failed</span>
+      </div>
+      <app-transaction-status-svg></app-transaction-status-svg>
+    </div>
+    <div class="grid-content">
+      <p>Total Transaction</p>
+      <h2>31</h2>
+      <span>Updated: 08/06/2022 14:09</span>
+    </div>
+  </div>
+</div>

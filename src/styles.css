@@ -17,8 +17,12 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: var(--full-screen-height);
+    min-height: var(--full-screen-width);
+    display: flex;
+    flex-direction: column;
     min-width: var(--full-screen-width);
+    /* zoom: 0.8; */
+   
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

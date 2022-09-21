@@ -1,34 +1,55 @@
 <div class="dashboard-content">
-  <div class="col-span-9">
+  <div class="transaction-container">
     <app-transaction-status></app-transaction-status>
-    <div class="mt-5">
+    <div class="transaction-rate">
       <app-transaction-rate></app-transaction-rate>
     </div>
   </div>
-  <div class="col-start-10 col-end-13 ml-10" style="margin-top:100px;">
-    <!-- Doughnut chart card -->
+  <div class="chart-container">
     <div class="container-device">
-      <!-- Card header -->
       <div class="device-content">
         <h4>Device Connected</h4>
-        <div class="flex items-center">
-        </div>
       </div>
-      <!-- Chart -->
-      <div class="relative p-4 h-72">
-        <div class="chartjs-size-monitor">
-          <div class="chartjs-size-monitor-expand">
-            <div class=""></div>
-          </div>
-          <div class="chartjs-size-monitor-shrink">
-            <div class=""></div>
-          </div>
-        </div>
-        <div style="height: 250px;" echarts [options]="this.deviceChart._option"></div>
+      <div class="chart-doughnut-container">
+        <div class="chart-doughnut" echarts [options]="this.deviceChart._option"></div>
       </div>
     </div>
   </div>
-  <div class="col-span-12">
-    <app-interface-list-card></app-interface-list-card>
+  <div class="interface-container">
+    <app-interface-list-card>
+      <span class="device mt-4">Macbook Pro</span>
+      <span class="ip-address">IP : 192.168.1.42</span>
+      <span class="port">Port : 88</span>
+      <span class="status">Status: <p-tag severity="success" value="Active"></p-tag></span>
+      <span class="last-update text-gray-500/40">Last Update: 16/06/2022</span>
+    </app-interface-list-card>
+
+    <app-interface-list-card>
+      <span class="device mt-4">Asus</span>
+      <span class="ip-address">IP : 192.168.1.42</span>
+      <span class="port">Port : 88</span>
+      <span class="status">Status: <p-tag severity="success" value="Active"></p-tag></span>
+      <span class="last-update text-gray-500/40">Last Update: 16/06/2022</span>
+    </app-interface-list-card>
+
+    <app-interface-list-card>
+      <span class="device mt-4">Acer</span>
+      <span class="ip-address">IP : 192.168.1.42</span>
+      <span class="port">Port : 88</span>
+      <span class="status">Status: <p-tag severity="success" value="Active"></p-tag></span>
+      <span class="last-update text-gray-500/40">Last Update: 16/06/2022</span>
+    </app-interface-list-card>
+
+    <app-interface-list-card>
+      <span class="device mt-4">Thinkbook</span>
+      <span class="ip-address">IP : 192.168.1.42</span>
+      <span class="port">Port : 88</span>
+      <span class="status">Status: <p-tag severity="success" value="Active"></p-tag></span>
+      <span class="last-update text-gray-500/40">Last Update: 16/06/2022</span>
+    </app-interface-list-card>
+
+  </div>
+  <div class=" col-span-12 mx-auto mt-5 text-center text-blue-700">
+    <a routerLink="interface-list">View Details</a>
   </div>
 </div>

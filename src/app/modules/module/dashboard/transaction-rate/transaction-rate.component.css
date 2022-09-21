@@ -1,7 +1,24 @@
-.container-rate {
-  background-color: white;
-  box-shadow: 0px 16px 24px 4px rgba(90, 82, 128, 0.12);
-  border-radius: 26px;
+.transaction-rate-container { 
+  @apply
+  grid grid-cols-1 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-3
+}
+
+.transaction-rate-content-container {
+  @apply
+  col-span-3
+  bg-white
+  rounded-[26px]
+  shadow-lg
+}
+
+.transaction-rate-content {
+  @apply
+  relative p-4 h-72
+}
+
+.transaction-rate-content div {
+  @apply
+  h-[250px]
 }
 
 .container-device {

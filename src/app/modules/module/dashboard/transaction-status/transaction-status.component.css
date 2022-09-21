@@ -1,71 +1,52 @@
+.grid-dashboard {
+  @apply grid grid-cols-3 gap-4
+}
+
 .grid-container-dashboard {
-  height: 191px;
-  background: #ffffff;
-  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 26px;
+  @apply h-[191px] bg-white rounded-[26px] shadow-lg
 }
 
 
 .grid-header-dashboard p {
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 30px;
-  color: #222222;
+  @apply text-black leading-[30px] text-xl font-semibold not-italic
 }
 
 .grid-header-dashboard span {
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
-  color: #858585;
+  @apply not-italic font-normal leading-[22px] text-base text-gray-400
 }
 
 .grid-header-dashboard {
-  @apply p-2 
-    border-b
-    justify-between;
+  @apply p-2 border-b justify-between flex;
+}
+
+.grid-header-dashboard div {
+  @apply mt-4 ml-2
 }
 
 .grid-content {
-    @apply ml-4
-    mt-[10px];
+  @apply ml-4 mt-[10px];
 }
 
 .grid-content p {
-  width: 104px;
-  height: 18px;
   font-family: "Manrope";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #222222;
+  @apply w-[104px] h-[18px] not-italic font-normal text-xs leading-[18px] text-black
 }
 
 .grid-content h2 {
-  width: 50px;
-  height: 40px;
   font-family: "Manrope";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 33px;
-
-  color: #222222;
+  @apply w-[50px] h-10 not-italic font-bold text-2xl leading-8 text-black
 }
 
 .grid-content span {
-    width: 155px;
-    height: 17px;
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 16px;
-
-  color: #7d7373;
+  @apply
+  w-[155px]
+  h-[17px]
+  not-italic
+  font-normal
+  text-xs
+  leading-4
+  text-gray-400
 }

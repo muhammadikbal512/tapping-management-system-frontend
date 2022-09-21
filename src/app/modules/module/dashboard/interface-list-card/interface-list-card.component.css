@@ -1,12 +1,22 @@
-.card-container {
-  width: 271px;
-  height: 214px;
-  left: 568px;
-  top: 0px;
-
-  background: #ffffff;
-  box-shadow: 3px 3px 4px #939393;
-  border-radius: 26px;
+.transaction-list-container {
+  @apply grid grid-cols-3 mt-10 space-x-4
 }
 
+.card-container {
+  box-shadow: 3px 3px 4px #939393;
+  @apply
+  col-span-3
+  w-[271px]
+  h-[214px]
+  bg-white
+  rounded-[26px]
+}
+
+.card-header {
+  @apply flex space-x-2 w-full justify-between;
+}
+
+.card-header img {
+  @apply w-16 shadow rounded-full max-w-full h-auto align-middle border-none
+}
 
