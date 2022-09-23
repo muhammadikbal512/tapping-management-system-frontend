@@ -4,17 +4,14 @@ import { TypeService } from 'src/app/modules/services/module-services/type.servi
 @Component({
   selector: 'app-type',
   templateUrl: './type.component.html',
-  styleUrls: ['./type.component.css']
+  styleUrls: ['./type.component.css'],
 })
 export class TypeComponent implements OnInit {
+  constructor(private typeService: TypeService) {}
 
-  constructor(private typeService: TypeService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openDialog() {
-    this.typeService.openDialog()
+    this.typeService.openDialog();
   }
-
 }

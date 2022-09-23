@@ -1,32 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { RowClassRules, RowClickedEvent } from 'ag-grid-community';
+import {
+  GridReadyEvent,
+  RowClassRules,
+  RowClickedEvent,
+} from 'ag-grid-community';
 import { TypeTableService } from 'src/app/modules/services/module-services/type-table.service';
+import { TypeService } from 'src/app/modules/services/module-services/type.service';
 
 @Component({
   selector: 'app-table-type',
   templateUrl: './table-type.component.html',
-  styleUrls: ['./table-type.component.css']
+  styleUrls: ['./table-type.component.css'],
 })
 export class TableTypeComponent implements OnInit {
-
   constructor(
+    private typeService: TypeService,
     private typeTableService: TypeTableService
   ) {}
 
   public rowClassRules: RowClassRules = {
     'ag-bg-rowIndex': (params) => {
       return params.rowIndex % 2 == 0;
-    }
-  }
+    },
+  };
 
   ngOnInit(): void {}
 
-  // onGridReady(params: GridReadyEvent) {
-  //   this.instutitionTableService.gridApi = params.api;
-  //   this.instutitionTableService.gridColumnApi = params.columnApi;
-  // }
+  onGridReady(params: GridReadyEvent) {
+    this.typeTableService.gridApi = params.api;
+    this.typeTableService.gridColumnApi = params.columnApi;
+  }
 
   onCellClicked(data: RowClickedEvent) {
+    this.typeService.ExistingData = data.data;
   }
 
   get animateRow() {
@@ -38,7 +44,7 @@ export class TableTypeComponent implements OnInit {
   }
 
   get defaultColDef() {
-    return this.typeTableService.defaultColDef
+    return this.typeTableService.defaultColDef;
   }
 
   get rowHeight() {
@@ -59,6 +65,4 @@ export class TableTypeComponent implements OnInit {
   get rowData() {
     return this.typeTableService.rowData;
   }
-
 }
-

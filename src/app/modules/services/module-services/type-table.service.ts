@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { GridApi, ColumnApi, ColDef } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
-import { UserTagLockComponent } from '../../global-widget/user-tag-lock/user-tag-lock.component';
-import { UserTagComponent } from '../../global-widget/user-tag/user-tag.component';
 import { TypeActionButtonComponent } from '../../module/user-management/type/widgets/type-action-button/type-action-button.component';
-import { UserActionButtonComponent } from '../../module/user-management/user/widgets/user-action-button/user-action-button.component';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TypeTableService {
   gridApi!: GridApi;
@@ -18,30 +16,47 @@ export class TypeTableService {
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     overlayLoading: OverlayLoadingComponent,
-    actionButtonGroup: TypeActionButtonComponent
+    actionButtonGroup: TypeActionButtonComponent,
   };
+  constructor() {}
+
   defaultColDef: ColDef = {
     flex: 1,
     editable: false,
     sortable: true,
-    lockPosition: true
+    lockPosition: true,
   };
 
   columnDef: ColDef[] = [
-    {field: 'Institutionname'},
-    {field: 'description'},
-    {field: 'actions', cellRenderer: 'actionButtonGroup'}
-  ]
+    { field: 'typeName' },
+    { field: 'description' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100 },
+  ];
 
   rowData = [
     {
-      Institutionname:"Koi",
-      description:"Pusat Penjualan Ikan Terpercaya"
+      typeName: 'Administrator',
+      description: 'This is Administrator',
     },
     {
-      Institutionname:"ABasdh",
-      description:"asdjbakdj"
-    }
-  ]
-  constructor() { }
+      typeName: 'User',
+      description: 'This is User',
+    },
+  ];
+
+  showTableLoading() {
+    this.gridApi.showLoadingOverlay();
+  }
+
+  hideTableLoading() {
+    this.gridApi.hideOverlay();
+  }
+
+  showNoRowData() {
+    this.gridApi.showNoRowsOverlay();
+  }
+
+  setRowData(data: any[]) {
+    this.gridApi.setRowData(data);
+  }
 }

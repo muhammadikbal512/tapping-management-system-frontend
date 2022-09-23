@@ -122,7 +122,7 @@ export class TypeState {
         ctx.dispatch(new TypeSuccessState(response));
         const dataList = [...ctx.getState().Type];
         const updatedDataIndex = dataList.findIndex((data) => data.id === id);
-        dataList[updatedDataIndex];
+        dataList[updatedDataIndex] = stateData;
 
         ctx.patchState({
           ...ctx.getState(),
