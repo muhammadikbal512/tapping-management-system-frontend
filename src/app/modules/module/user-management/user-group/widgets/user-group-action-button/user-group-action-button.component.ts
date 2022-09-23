@@ -1,15 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { AgRendererComponent } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
   selector: 'app-user-group-action-button',
   templateUrl: './user-group-action-button.component.html',
   styleUrls: ['./user-group-action-button.component.css']
 })
-export class UserGroupActionButtonComponent implements OnInit {
+export class UserGroupActionButtonComponent {
+  cellValue: string = '';
+  constructor(
+    private UserGroupService: UserGroupService,
+    private confirmationService: PopupMessageService
+  ) {}
 
-  constructor() { }
 
-  ngOnInit(): void {
+
+  agInit(params: ICellRendererParams): void {
+    this.cellValue = this.getValueToDisplay(params);
+  }
+
+  refresh(params: ICellRendererParams): boolean {
+    return false;
+  }
+
+  getValueToDisplay(params: ICellRendererParams) {
+    return params.valueFormatted ? params.valueFormatted : params.value
+  }
+
+  deleteButton(event: Event) {
+    
+  }
+
+  editButton() {
+    this.UserGroupService.openDialog();
+    this.UserGroupService.buttonStatus = 'edit';
   }
 
 }
+
+

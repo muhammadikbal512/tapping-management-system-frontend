@@ -1,1 +1,20 @@
-<p>user-group-create-dialog works!</p>
+<form class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="name" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">InstitutionName</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Description</label>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <mat-dialog-actions align="end">
+            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+            <p-button 
+                 class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
+    </div>
+</form>
