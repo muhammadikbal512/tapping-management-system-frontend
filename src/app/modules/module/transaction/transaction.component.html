@@ -7,10 +7,11 @@
         </p-button>
       </div>
       <div class="date flex flex-col">
-        <p-calendar dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
+        <p-calendar #dateTransaction dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
           inputId="range" [showIcon]="true"></p-calendar>
+          <!-- <input type="date" #dateTransaction id=""> -->
         <div class="button mt-3 space-x-3 mx-auto">
-          <p-button class="p-button-sm" label="Search"></p-button>
+          <p-button class="p-button-sm" (onClick)="getDateTransaction()" label="Search"></p-button>
           <p-button class="p-button-sm" label="Clear"></p-button>
         </div>
       </div>

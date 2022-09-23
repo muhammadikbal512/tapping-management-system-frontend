@@ -49,37 +49,37 @@ export class TransactionRateChartService {
   public _option: echarts.EChartsOption = {
     grid: {
       top: 70,
-      bottom: 30,
+      bottom: 30
     },
     title: {
       text: 'Transaction Rate',
-      show: false,
+      show: false
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
         label: {
-          backgroundColor: '#283b56',
-        },
-      },
+          backgroundColor: '#283b56'
+        }
+      }
     },
     legend: {},
     toolbox: {
       show: true,
       feature: {
-        dataView: { readOnly: false },
+        dataView: {readOnly: false},
         magicType: {
-          type: ['line', 'bar'],
+          type: ['line', 'bar']
         },
         restore: {},
-        saveAsImage: {},
-      },
+        saveAsImage: {}
+      }
     },
     dataZoom: {
       id: 'dataZoomX',
       type: 'inside',
-      filterMode: 'filter',
+      filterMode: 'filter'
     },
     xAxis: [
       {
@@ -90,15 +90,15 @@ export class TransactionRateChartService {
     yAxis: [
       {
         type: 'value',
-        name: 'Value',
-        boundaryGap: [0, 0],
+        name: 'Price',
+        boundaryGap: [0, 0]
       },
     ],
     series: [
       {
         name: 'SYN',
         type: 'bar',
-        data: this.data
+        data: this.data,
         // showSymbol: false,
       },
       {
@@ -106,7 +106,7 @@ export class TransactionRateChartService {
         type: 'bar',
         data: this.data2,
         // showSymbol: false,
-      },
+      }
     ],
   };
 

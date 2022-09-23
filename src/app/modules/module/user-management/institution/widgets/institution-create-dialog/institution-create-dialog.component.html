@@ -2,7 +2,7 @@
     <div class="form-filled-container">
         <div class="input-container">
             <input formControlName="institutionName" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">InstitutionName</label>
+            <label class="input-label">Institution Name</label>
         </div>
         <div class="input-container">
             <input formControlName="description" type="text" class="peer" placeholder=" " required="">
@@ -12,13 +12,18 @@
 
     <div class="text-center">
         <mat-dialog-actions align="end">
-            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
-            <p-button (onClick)="onCreateInstitution()" *ngIf="institutionService.buttonStatus == 'create'"
-                [disabled]="form.invalid" [loading]="showLoading" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
-            <p-button (onClick)="onUpdateInstitution()" *ngIf="institutionService.buttonStatus == 'edit'"
-                [disabled]="disableButton" [loading]="showLoading" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
-            <p-button 
-                 class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
+            <p-button class="cancel-button"
+                label="Cancel"
+                mat-dialog-close="true"
+                styleClass="p-button-sm"></p-button>
+      <p-button (onClick)="onCreateInstitution()" *ngIf="institutionService.buttonStatus == 'create'"
+                [disabled]="form.invalid" [loading]="showLoading"
+                class="create-button" label="Create"
+                styleClass="p-button-sm"></p-button>
+      <p-button (onClick)="onUpdateInstitution()" *ngIf="institutionService.buttonStatus == 'edit'"
+                [disabled]="disableButton" class="create-button"
+                label="Save"
+                styleClass="p-button-sm"></p-button>
         </mat-dialog-actions>
     </div>
 </form>

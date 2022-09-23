@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from 'src/app/modules/services/module-services/roles.service';
 import { RolesTableService } from 'src/app/modules/services/module-services/roles-table.service';
-import { RowClickedEvent, GridReadyEvent } from 'ag-grid-community';
+import { RowClickedEvent, GridReadyEvent, RowClassRules } from 'ag-grid-community';
 
 @Component({
   selector: 'app-table-roles',
@@ -15,6 +15,12 @@ export class TableRolesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  rowClassRules: RowClassRules = {
+    'ag-bg-rowIndex': (params) => {
+      return params.rowIndex % 2 == 0;
+    }
+  }
 
   onGridReady(params: GridReadyEvent) {
     this.rolesTableService.GridApi = params;

@@ -30,26 +30,25 @@ export class RolesService {
   ) {}
 
   getAllRoles() {
-    return this.http.get<RolesModel[]>(`${this.apiUrl}/roles/list`);
+    return this.http.get<RolesModel[]>(`${this.apiUrl}/role/list`);
   }
 
   addRoles(data: RolesModel) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/roles/add`,
+      `${this.apiUrl}/role/add`,
       data
     );
   }
 
   deleteRole(id: number) {
-    return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/roles/delete`,
-      id
+    return this.http.delete<CustomHttpResponseModel>(
+      `${this.apiUrl}/role/delete/` + id
     );
   }
 
   updateRole(data: FormData) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/roles/update`,
+      `${this.apiUrl}/role/update`,
       data
     );
   }
@@ -58,6 +57,13 @@ export class RolesService {
     setTimeout(() => {
       this.onGetAllRoles();
     }, 500);
+  }
+
+  createRoleFormData(currentRoleName: string, newData: RolesModel) {
+    const formData = new FormData();
+    formData.append('currentRoleName', currentRoleName);
+    formData.append('roleName', newData.roleName);
+    return formData;
   }
 
   onGetAllRoles() {

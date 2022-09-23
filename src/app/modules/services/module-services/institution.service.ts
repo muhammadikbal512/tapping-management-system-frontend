@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { RowClickedEvent } from 'ag-grid-community';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
 import { InstitutionDispatch } from 'src/app/state-configuration/modules/user-management/institution/institution.dispatch';
@@ -40,7 +41,7 @@ export class InstitutionService {
 
   deleteInstitution(id: number) {
     return this.http.delete<CustomHttpResponseModel>(
-      `${this.apiURL}/delete` + id
+      `${this.apiURL}/institution/delete/` + id
     );
   }
 
@@ -57,8 +58,12 @@ export class InstitutionService {
     }, 500);
   }
 
-  createInstitutionFormData(newData: InstitutionModel): FormData {
+  createInstitutionFormData(
+    currentInstitutionName: string,
+    newData: InstitutionModel
+  ): FormData {
     const formData = new FormData();
+    formData.append('currentInstitutionName', currentInstitutionName);
     formData.append('institutionName', newData.institutionName);
     formData.append('description', newData.description);
     return formData;
@@ -95,5 +100,9 @@ export class InstitutionService {
 
   closeDialog() {
     return this.dialog.closeAll();
+  }
+
+  set ExistingData(data: RowClickedEvent) {
+    this.existingData = data.data;
   }
 }

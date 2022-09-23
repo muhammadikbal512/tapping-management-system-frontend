@@ -33,7 +33,7 @@ export class AlertInvestigationTableService {
     { field: 'classificationType' },
     { field: 'classificationStatus' },
     { field: 'privateScheme' },
-    { field: 'actions' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup' },
   ];
 
   rowData = [

@@ -11,8 +11,8 @@
             <input (input)="searchTextFilter()" id="search-filter" class="search-input" type="text" placeholder="Search">
         </div>
         <div class="grid-header-right">
+            <p-button (onClick)="refreshTable()" icon="pi pi-refresh" class="mr-3" ></p-button>
             <p-button (onClick)="openDialog()" label="Create" icon="pi pi-plus" ></p-button>
-            <p-button (onClick)="refreshTable()" icon="pi pi-refresh" class="ml-3" ></p-button>
         </div>
     </div>
     <div class="p-4">

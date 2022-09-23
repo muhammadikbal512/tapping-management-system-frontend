@@ -34,6 +34,7 @@ export class TableInstitutionComponent implements OnInit {
   }
 
   onCellClicked(data: RowClickedEvent) {
+    this.institutionService.ExistingData = data
   }
 
 

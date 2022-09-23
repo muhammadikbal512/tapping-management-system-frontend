@@ -27,16 +27,19 @@ export class InstitutionActionButtonComponent implements AgRendererComponent {
   }
 
   getValueToDisplay(params: ICellRendererParams) {
-    return params.valueFormatted ? params.valueFormatted : params.value
-  }
-
-  deleteButton(event: Event) {
-    this.confirmationService.institutionConfirm(event, this.institutionService)
+    return params.valueFormatted ? params.valueFormatted : params.value;
   }
 
   editButton() {
     this.institutionService.openDialog();
     this.institutionService.buttonStatus = 'edit';
+  }
+
+  deleteButton(event: Event) {
+    this.confirmationService.institutionConfirm(
+      event,
+      this.institutionService
+    );
   }
 
 }

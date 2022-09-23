@@ -10,16 +10,18 @@ import { PopupMessageService } from 'src/app/modules/services/popup-message-serv
   styleUrls: ['./action-button-roles.component.css'],
 })
 export class ActionButtonRolesComponent implements AgRendererComponent {
+  cellValue = '';
   constructor(
     private rolesService: RolesService,
     private confirmationService: PopupMessageService
   ) {}
 
-  refresh(params: ICellRendererParams): boolean {
-    throw new Error('Method not implemented.');
-  }
   agInit(params: ICellRendererParams): void {
-    throw new Error('Method not implemented.');
+    this.cellValue = this.getValueToDisplay(params);
+  }
+
+  refresh(params: ICellRendererParams): boolean {
+    return false;
   }
 
   getValueToDisplay(params: ICellRendererParams) {
@@ -27,10 +29,14 @@ export class ActionButtonRolesComponent implements AgRendererComponent {
   }
 
   editButton() {
-    this.rolesService.editDialog();
+    this.rolesService.openDialog();
+    this.rolesService.buttonStatus = 'edit';
   }
 
   deleteButton(event: Event) {
-    this.confirmationService.roleConfirm(event, this.rolesService);
+    this.confirmationService.roleConfirm(
+      event,
+      this.rolesService
+    );
   }
 }

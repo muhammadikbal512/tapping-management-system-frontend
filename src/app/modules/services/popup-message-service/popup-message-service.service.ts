@@ -9,8 +9,10 @@ import { Iso8583DialectService } from '../module-services/iso8583-dialect.servic
 import { MessageFormatService } from '../module-services/message-format.service';
 import { ResponseMappingService } from '../module-services/response-mapping.service';
 import { RolesService } from '../module-services/roles.service';
+import { SchemeServiceService } from '../module-services/scheme-service.service';
 import { TransactionParametersService } from '../module-services/transaction-parameters.service';
 import { TypeService } from '../module-services/type.service';
+import { UserGroupService } from '../module-services/user-group.service';
 import { UserService } from '../module-services/user.service';
 
 @Injectable({
@@ -161,4 +163,17 @@ export class PopupMessageService {
       }
     })
   }
+
+  userGroupConfirm(event: Event, onDelete: UserGroupService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this User Group ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteUserGroup();
+      }
+    })
+  }
+
+ 
 }

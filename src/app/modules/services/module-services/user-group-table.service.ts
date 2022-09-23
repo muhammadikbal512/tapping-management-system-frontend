@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GridApi, ColumnApi, ColDef } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
-import { UserTagLockComponent } from '../../global-widget/user-tag-lock/user-tag-lock.component';
-import { UserTagComponent } from '../../global-widget/user-tag/user-tag.component';
 import { UserGroupActionButtonComponent } from '../../module/user-management/user-group/widgets/user-group-action-button/user-group-action-button.component';
-import { UserActionButtonComponent } from '../../module/user-management/user/widgets/user-action-button/user-action-button.component';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,19 +25,16 @@ export class UserGroupTableService {
   };
 
   columnDef: ColDef[] = [
-    {field: 'Institutionname'},
-    {field: 'description'},
-    {field: 'actions', cellRenderer: 'actionButtonGroup'}
+    {field: 'groupName'},
+    {field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100}
   ]
 
   rowData = [
     {
-      Institutionname:"Koi",
-      description:"Pusat Penjualan Ikan Terpercaya"
+      groupName:"Group A",
     },
     {
-      Institutionname:"ABasdh",
-      description:"asdjbakdj"
+      groupName: "Group B"
     }
   ]
 

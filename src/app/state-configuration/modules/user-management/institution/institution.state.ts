@@ -118,7 +118,6 @@ export class InstitutionState {
     return this.institutionService.updateInstitution(payload).pipe(
       tap((response) => {
         ctx.dispatch(new InstitutionStateSuccess(response));
-
         const dataList = [...ctx.getState().institutions];
         const filteredData = dataList.findIndex((x) => x.id === id);
         dataList[filteredData] = stateData;
@@ -146,6 +145,7 @@ export class InstitutionState {
       successMessage.httpStatusCode
     );
 
+    this.institutionService.onGetAllInstitution();
     ctx.patchState({
       responseMessage: successMessage,
     });

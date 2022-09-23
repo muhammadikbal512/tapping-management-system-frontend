@@ -1,4 +1,6 @@
 .footer {
+    position: relative;
+    bottom: 0;
     @apply
     px-4 
     py-6

@@ -63,7 +63,7 @@ export class CreateUpdateIso8583FieldFormComponent
       tagNumber: ['', Validators.required],
       dialectId: ['', Validators.required],
       attributeId: ['', Validators.required],
-      isTagNumber: ['', Validators.required],
+      isTagNumber: ['',],
     });
   }
 
@@ -138,7 +138,7 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   get isoFieldId() {
-    return this.form.controls['attributeId'];
+    return this.form.controls['isoFieldId'];
   }
 
   get tagNumber() {
@@ -150,7 +150,7 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   get attributeId() {
-    return this.form.controls['isoFieldId'];
+    return this.form.controls['attributeId'];
   }
 
   get isTagNumber() {

@@ -1,6 +1,6 @@
 .default-container {
   /* zoom: 0.8; */
-
+  min-height: 100vh;
   @apply flex 
     flex-row 
     bg-gray-100 

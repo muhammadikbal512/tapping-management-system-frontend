@@ -5,17 +5,26 @@ import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
 import { environment } from 'src/environments/environment';
 import { UserGroupDispatch } from 'src/app/state-configuration/modules/user-management/user-group/user-group.dispatch';
 import { UserGroupTableService } from './user-group-table.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UserGroupCreateDialogComponent } from '../../module/user-management/user-group/widgets/user-group-create-dialog/user-group-create-dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserGroupService {
   existingData: UserGroupModel = new UserGroupModel();
+  buttonStatus: string = '';
+  matDialogConfig: MatDialogConfig = {
+    width: '55%',
+    autoFocus: true,
+    disableClose: true,
+  };
   private apiUrl: string = environment.core236;
   constructor(
     private http: HttpClient,
     private userGroupTableService: UserGroupTableService,
-    private userGroupDispatch: UserGroupDispatch
+    private userGroupDispatch: UserGroupDispatch,
+    private dialog: MatDialog
   ) {}
 
   getAllUserGroup() {
@@ -42,7 +51,17 @@ export class UserGroupService {
     );
   }
 
-  getAllUserGroupWithDelay() {}
+  getAllUserGroupWithDelay() {
+    setTimeout(() => {
+      this.onGetAllUserGroup();
+    }, 500);
+  }
+
+  createUserGroupFormData(newData: UserGroupModel): FormData {
+    const formData = new FormData();
+    formData.append('name', newData.userGroupName);
+    return formData;
+  }
 
   onGetAllUserGroup() {
     this.userGroupTableService.showTableLoading();
@@ -65,5 +84,7 @@ export class UserGroupService {
     );
   }
 
-
+  openDialog() {
+    this.dialog.open(UserGroupCreateDialogComponent, this.matDialogConfig);
+  }
 }

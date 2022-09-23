@@ -30,9 +30,9 @@ export class InstitutionTableService {
 
   columnDef: ColDef[] = [
 
-    { field: 'InstitutionName' },
+    { field: 'institutionName' },
     { field: 'description' },
-    { field: 'actions', cellRenderer: 'actionButtonGroup' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100 },
   ];
 
   
@@ -60,16 +60,5 @@ export class InstitutionTableService {
     this.gridApi.showNoRowsOverlay();
   }
 
-
-  rowData = [
-    {
-      Institutionname:"Koi",
-      description:"Pusat Penjualan Ikan Terpercaya"
-    },
-    {
-      Institutionname:"ABasdh",
-      description:"asdjbakdj"
-    }
-  ]
 
 }

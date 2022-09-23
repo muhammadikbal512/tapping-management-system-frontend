@@ -24,6 +24,7 @@ export class InstitutionComponent implements OnInit {
   }
 
   openDialog() {
+    this.institutionService.buttonStatus = 'create'
    this.institutionService.openDialog();
   }
 }

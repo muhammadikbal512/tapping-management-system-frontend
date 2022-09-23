@@ -6,7 +6,6 @@
   @apply h-[191px] bg-white rounded-[26px] shadow-lg
 }
 
-
 .grid-header-dashboard p {
   font-family: "Poppins";
   @apply text-black leading-[30px] text-xl font-semibold not-italic
@@ -18,7 +17,7 @@
 }
 
 .grid-header-dashboard {
-  @apply p-2 border-b justify-between flex;
+  @apply p-2 border-b justify-between flex; 
 }
 
 .grid-header-dashboard div {

@@ -59,6 +59,11 @@ export class RolesState {
           this.rolesTableService.setRowData(response);
           this.rolesTableService.showNoRowData();
         }
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Roles: response,
+        });
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new RolesErrorState(response.error));

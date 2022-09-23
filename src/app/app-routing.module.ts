@@ -35,6 +35,7 @@ import { DeviceMonitoringComponent } from './modules/module/device-monitoring/de
 import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
 import { InstitutionComponent } from './modules/module/user-management/institution/institution.component';
 import { TypeComponent } from './modules/module/user-management/type/type.component';
+import { UserGroupComponent } from './modules/module/user-management/user-group/user-group.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -220,13 +221,13 @@ const routes: Routes = [
           },
           {
             path: 'type',
-            data: { title: 'type' },
+            data: { title: 'Type' },
             component: TypeComponent,
           },
           {
             path: 'user-group',
-            data: { title: 'user-group' },
-            component: TypeComponent,
+            data: { title: 'User Group' },
+            component: UserGroupComponent,
           },
         ],
       },

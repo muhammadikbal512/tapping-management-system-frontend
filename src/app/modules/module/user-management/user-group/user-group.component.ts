@@ -13,6 +13,7 @@ export class UserGroupComponent implements OnInit {
   }
 
   openDialog() {
+    this.UserGroupService.buttonStatus = 'create'
     this.UserGroupService.openDialog()
   }
 

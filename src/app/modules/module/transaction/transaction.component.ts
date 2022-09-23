@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Papa } from 'ngx-papaparse';
@@ -17,6 +17,7 @@ import { EventCollectorTableService } from '../../services/module-services/event
   styleUrls: ['./transaction.component.css'],
 })
 export class TransactionComponent implements OnInit {
+  @ViewChild('dateTransaction') dateOfTransaction!: ElementRef
   additionalData: TransactionMessageInterface = additionalData;
   rangeDates!: Date[];
   constructor(
@@ -30,6 +31,11 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventCollectorService.getEventCollectorWithDelay();
+  }
+
+  getDateTransaction() {
+    // let dateTransaction = new Date(this.dateOfTransaction.nativeElement.value);
+    console.log(this.dateOfTransaction);
   }
 
   ngAfterViewInit(): void {
