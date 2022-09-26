@@ -6,6 +6,10 @@ export class UserGet {
     static readonly type = '[User] Get';
 }
 
+export class UserGetRoles {
+    static readonly type = '[User] Get Roles';
+}
+
 export class UserAdd {
     static readonly type = '[User] Add';
     constructor(public payload: UserModel) {}

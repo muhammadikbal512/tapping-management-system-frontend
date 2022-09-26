@@ -6,6 +6,7 @@ import {
   UserErrorState,
   UserSuccessState,
   UserResetPassword,
+  UserGetRoles,
 } from './user.action';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { UserModel } from 'src/app/model/user-model/user.model';
@@ -19,6 +20,11 @@ export class UserDispatch {
     @Dispatch()
     public _UserGetDispatch() {
         return new UserGet;
+    }
+
+    @Dispatch()
+    public _UserGetRolesDispatch() {
+        return new UserGetRoles;
     }
 
     @Dispatch()

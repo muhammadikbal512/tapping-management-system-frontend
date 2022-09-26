@@ -65,6 +65,7 @@ export class UserService {
     formData.append('username', newData.username);
     formData.append('email', newData.email);
     formData.append('role', this.existingData.role);
+    // formData.append('role', String(newData.role.id));
     formData.append('isActive', String(this.existingData.active));
     formData.append('isNonLocked', String(this.existingData.notLocked));
     return formData;
@@ -79,6 +80,10 @@ export class UserService {
   onGetAllUser() {
     this.userTableService.showTableLoading();
     this.userDispatch._UserGetDispatch();
+  }
+
+  OnGetAllRoles() {
+    this.userDispatch._UserGetRolesDispatch();
   }
 
   onCreateUser(data: UserModel) {

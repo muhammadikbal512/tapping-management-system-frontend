@@ -7,6 +7,10 @@ import {
 import { UserService } from 'src/app/modules/services/module-services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/model/user-model/user.model';
+import { Select } from '@ngxs/store';
+import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
+import { Observable } from 'rxjs';
+import { RoleInterface } from 'src/app/interface/modules/role-interface';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -14,8 +18,12 @@ import { UserModel } from 'src/app/model/user-model/user.model';
   styleUrls: ['./user-create-dialog.component.css'],
 })
 export class UserCreateDialogComponent implements OnInit, AfterViewInit {
+  @Select(UserState.Roles)
+  Roles$!: Observable<RoleInterface[]>;
+
   form!: FormGroup;
   userModel: UserModel = new UserModel();
+  roleInterface: RoleInterface[] = [];
   showClearButton: boolean = false;
   disableButton: boolean = false;
   showLoading: boolean = false;
@@ -27,6 +35,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.createFormat();
+    this.userService.OnGetAllRoles();
+    this.Roles$.subscribe((data) => {
+      this.roleInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
   }
 
   ngAfterViewInit(): void {

@@ -6,6 +6,7 @@ import {
   UserAdd,
   UserUpdate,
   UserResetPassword,
+  UserGetRoles,
 } from './user.action';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
@@ -17,9 +18,14 @@ import { tap } from 'rxjs';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { RolesService } from 'src/app/modules/services/module-services/roles.service';
+
+import { RolesModel } from 'src/app/model/modules-model/roles.model';
+import { RoleInterface } from 'src/app/interface/modules/role-interface';
 
 export class UserStateModel {
   User: UserModel[] = [];
+  Roles: RolesModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -27,6 +33,7 @@ export class UserStateModel {
   name: 'User',
   defaults: {
     User: [],
+    Roles: [],
     responseMessage: undefined,
   },
 })
@@ -35,12 +42,18 @@ export class UserState {
   constructor(
     private notifierService: NotificationService,
     private userService: UserService,
-    private userTableService: UserTableService
+    private userTableService: UserTableService,
+    private roleService: RolesService
   ) {}
 
   @Selector()
   static User(state: UserStateModel) {
     return state.User;
+  }
+
+  @Selector()
+  static Roles(state: UserStateModel) {
+    return state.Roles;
   }
 
   @Selector()
@@ -67,6 +80,30 @@ export class UserState {
       }),
       catchError((response: HttpErrorResponse) => {
         console.log(response);
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserGetRoles, { cancelUncompleted: true }) getRolesFromState(
+    ctx: StateContext<UserGetRoles>
+  ) {
+    return this.roleService.getAllRoles().pipe(
+      tap((response) => {
+        let roleParseList: RoleInterface[] = [];
+        response.forEach((x) => {
+          roleParseList.push({
+            name: x.roleName,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Roles: roleParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new UserErrorState(response.error));
       })
     );
@@ -110,7 +147,10 @@ export class UserState {
   }
 
   @Action(UserResetPassword, { cancelUncompleted: true })
-  resetPasswordFromState(ctx: StateContext<UserStateModel>, { email }: UserResetPassword) {
+  resetPasswordFromState(
+    ctx: StateContext<UserStateModel>,
+    { email }: UserResetPassword
+  ) {
     return this.userService.resetPasswordUser(email).pipe(
       tap((response) => {
         ctx.dispatch(new UserSuccessState(response));
