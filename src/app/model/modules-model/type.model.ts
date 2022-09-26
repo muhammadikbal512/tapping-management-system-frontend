@@ -1,4 +1,4 @@
 export class TypeModel {
-    id: number = 0;
+    id!: number;
     typeName: string = '';
 }

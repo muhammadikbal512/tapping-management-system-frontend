@@ -138,6 +138,10 @@ export class UserGroupState {
       successMessage.status
     );
 
+    if(this.userGroupService.getCurrentStatusDialog().length != 0) {
+      this.userGroupService.closeDialog();
+    }
+
     this.userGroupService.onGetAllUserGroup();
     ctx.patchState({
       responseMessage: successMessage,

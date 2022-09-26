@@ -145,6 +145,10 @@ export class TypeState {
       successMessage.httpStatusCode
     );
 
+    if(this.typeService.getCurrentStatusDialog().length !=0) {
+      this.typeService.closeDialog();
+    }
+
     this.typeService.onGetAllType();
     ctx.patchState({
       responseMessage: successMessage
@@ -157,7 +161,7 @@ export class TypeState {
   ) {
     this.notifierService.errorNotification(
       errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage.status
     )
 
     ctx.patchState({

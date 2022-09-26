@@ -69,6 +69,7 @@ export class TypeCreateDialogComponent implements OnInit, AfterViewInit {
   }
 
   onUpdateType() {
+    this.showLoading = true;
     const newData = this.typeService.createTypeFormData(
       this.existingtypeName,
       this.setNewDataToModel()

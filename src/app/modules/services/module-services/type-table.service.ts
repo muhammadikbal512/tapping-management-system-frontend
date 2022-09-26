@@ -3,7 +3,6 @@ import { GridApi, ColumnApi, ColDef } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 import { TypeActionButtonComponent } from '../../module/user-management/type/widgets/type-action-button/type-action-button.component';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -29,20 +28,14 @@ export class TypeTableService {
 
   columnDef: ColDef[] = [
     { field: 'typeName' },
-    { field: 'description' },
     { field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100 },
   ];
 
-  rowData = [
-    {
-      typeName: 'Administrator',
-      description: 'This is Administrator',
-    },
-    {
-      typeName: 'User',
-      description: 'This is User',
-    },
-  ];
+  onFilter(searchInput: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInput) as HTMLInputElement).value
+    );
+  }
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();

@@ -7,6 +7,7 @@ import { UserGroupDispatch } from 'src/app/state-configuration/modules/user-mana
 import { UserGroupTableService } from './user-group-table.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserGroupCreateDialogComponent } from '../../module/user-management/user-group/widgets/user-group-create-dialog/user-group-create-dialog.component';
+import { RowClickedEvent } from 'ag-grid-community/dist/lib/events';
 
 @Injectable({
   providedIn: 'root',
@@ -28,25 +29,25 @@ export class UserGroupService {
   ) {}
 
   getAllUserGroup() {
-    return this.http.get<UserGroupModel[]>(`${this.apiUrl}/usergroup/list`);
+    return this.http.get<UserGroupModel[]>(`${this.apiUrl}/user/group/list`);
   }
 
   addUserGroup(data: UserGroupModel) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/usergroup/add`,
+      `${this.apiUrl}/user/group/add`,
       data
     );
   }
 
   deleteUserGroup(id: number) {
     return this.http.delete<CustomHttpResponseModel>(
-      `${this.apiUrl}/usergroup/delete` + id
+      `${this.apiUrl}/user/group/delete/` + id
     );
   }
 
   updateUserGroup(data: FormData) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/usergroup/update`,
+      `${this.apiUrl}/user/group/update`,
       data
     );
   }
@@ -57,9 +58,10 @@ export class UserGroupService {
     }, 500);
   }
 
-  createUserGroupFormData(newData: UserGroupModel): FormData {
+  createUserGroupFormData(currentGroupName: string, newData: UserGroupModel): FormData {
     const formData = new FormData();
-    formData.append('name', newData.userGroupName);
+    formData.append('currentGroupName', currentGroupName);
+    formData.append('groupName', newData.groupName);
     return formData;
   }
 
@@ -86,5 +88,17 @@ export class UserGroupService {
 
   openDialog() {
     this.dialog.open(UserGroupCreateDialogComponent, this.matDialogConfig);
+  }
+
+  getCurrentStatusDialog() {
+    return this.dialog.openDialogs
+  }
+
+  closeDialog() {
+    return this.dialog.closeAll()
+  }
+
+  set ExistingData(data: RowClickedEvent) {
+    this.existingData = data.data
   }
 }

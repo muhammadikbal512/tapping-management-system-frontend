@@ -29,10 +29,16 @@ export class TableTypeComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {
     this.typeTableService.gridApi = params.api;
     this.typeTableService.gridColumnApi = params.columnApi;
+    this.runService();
+  }
+
+  runService() {
+    this.typeTableService.showTableLoading();
+    this.typeService.getAllTypeWithDelay();
   }
 
   onCellClicked(data: RowClickedEvent) {
-    this.typeService.ExistingData = data.data;
+    this.typeService.ExistingData = data;
   }
 
   get animateRow() {
@@ -61,8 +67,5 @@ export class TableTypeComponent implements OnInit {
 
   get frameworkComponents() {
     return this.typeTableService.frameworkComponents;
-  }
-  get rowData() {
-    return this.typeTableService.rowData;
   }
 }

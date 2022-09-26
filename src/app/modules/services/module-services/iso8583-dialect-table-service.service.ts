@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 import { ActionButtonGroupIso8583DialectComponent } from '../../module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
-import { ActionButtonGroupIso8583FormatComponent } from '../../module/message-format/iso8583-format/widget/action-button-group-iso8583-format/action-button-group-iso8583-format.component';
 
 @Injectable({
   providedIn: 'root',

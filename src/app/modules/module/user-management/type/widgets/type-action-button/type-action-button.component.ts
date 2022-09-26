@@ -28,7 +28,7 @@ export class TypeActionButtonComponent implements AgRendererComponent {
   }
 
   deleteButton(event: Event) {
-    
+    this.confirmationService.typeConfirm(event, this.typeService)
   }
 
   editButton() {

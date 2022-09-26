@@ -33,14 +33,14 @@ export class TypeService {
 
   addType(data: TypeModel) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/list/add`,
+      `${this.apiUrl}/type/add`,
       data
     );
   }
 
   deleteType(id: number) {
     return this.http.delete<CustomHttpResponseModel>(
-      `${this.apiUrl}/list/delete` + id
+      `${this.apiUrl}/type/delete/` + id
     );
   }
 
@@ -83,6 +83,14 @@ export class TypeService {
       data,
       this.existingData
     );
+  }
+
+  getCurrentStatusDialog() {
+    return this.dialog.openDialogs;
+  }
+
+  closeDialog() {
+    return this.dialog.closeAll();
   }
 
   openDialog() {
