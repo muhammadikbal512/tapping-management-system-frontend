@@ -1,52 +1,35 @@
 .transaction-summary-container {
-    @apply p-12
-    flex
-    flex-row;
-  }
-  
-  .summary-left {
-    width: 50%;
-    @apply flex
-    flex-col;
-  }
-  
-  .summary-item {
-    justify-content: space-between;
-    @apply flex
-    flex-row
-    items-center
-    mb-2;
-  }
-  
-  .summary-item span {
-    white-space: nowrap;
-    width: 190px;
-    font-size: 14px;
-  }
-  
-  .summary-item input {
-    @apply bg-gray-200 
-    appearance-none 
-    border-2 
-    border-gray-200 
-    rounded 
-    py-[5px] 
-    px-4 
-    w-full 
-    text-gray-700 
-    leading-[0] 
-    text-[14px] 
-    mr-[25px] 
-    focus:outline-none;
-  }
-  
-  .summary-right {
-    width: 50%;
-    @apply flex flex-col
-    ml-5;
-  }
+  @apply p-12 flex flex-row;
+}
+
+.detail-container {
+  @apply p-4 ml-4 text-white rounded-xl w-[250px];
+  background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
+}
+
+.summary-left {
+  @apply flex w-[50%] flex-col;
+}
+
+.summary-item {
+  @apply flex flex-row items-center mb-2 justify-between;
+}
+
+.summary-item span {
+  @apply w-[190px] whitespace-nowrap text-sm
+}
+
+.summary-item input {
+  @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded py-[5px] px-4 w-full text-gray-700 
+  leading-[0] 
+  text-[14px] mr-[25px];
+}
+
+.summary-right {
+  @apply flex flex-col w-[50%] ml-5;
+}
 
 .summary-item span {
   background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
-              border-radius: 5px; padding:10px; margin-right: 10px; width: 50%; color: white;
+  @apply text-white w-[50%] mr-1 p-1 rounded-md
 }

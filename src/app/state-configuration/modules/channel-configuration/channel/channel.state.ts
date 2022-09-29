@@ -203,6 +203,10 @@ export class ChannelState {
     } else {
       this.channelTableService.hideTableLoading();
     }
+
+    if (this.channelService.getCurrentStatusDialog().length != 0) {
+      this.channelService.closeDialog();
+    }
     ctx.patchState({
       responseMessage: errorMessage
     });

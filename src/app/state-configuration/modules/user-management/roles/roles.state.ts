@@ -165,6 +165,10 @@ export class RolesState {
       this.rolesTableService.hideTableLoading();
     }
 
+    if (this.rolesService.getCurrentStatusDialog().length != 0) {
+      this.rolesService.closeDialog();
+    }
+
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.httpStatusCode

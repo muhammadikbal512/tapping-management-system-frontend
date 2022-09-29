@@ -164,6 +164,16 @@ export class TypeState {
       errorMessage.status
     )
 
+    if (this.typeTableService.gridApi.getRenderedNodes().length == 0) {
+      this.typeTableService.showNoRowData();
+    } else {
+      this.typeTableService.showTableLoading();
+    }
+
+    if(this.typeService.getCurrentStatusDialog().length == 0) {
+      this.typeService.closeDialog();
+    }
+
     ctx.patchState({
       responseMessage: errorMessage
     })

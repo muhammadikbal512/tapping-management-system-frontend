@@ -166,6 +166,9 @@ export class MessageFormatState {
     } else {
       this.iso8583FormatTableService.hideTableLoading();
     }
+    if (this.iso8583FormatService.getCurrentStatusDialog().length != 0) {
+      this.iso8583FormatService.closeDialog();
+    }
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.status

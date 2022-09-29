@@ -161,5 +161,13 @@ export class UserGroupState {
     } else {
       this.userGroupTableService.hideTableLoading();
     }
+
+    if (this.userGroupService.getCurrentStatusDialog().length != 0) {
+      this.userGroupService.closeDialog();
+    }
+
+    ctx.patchState({
+      responseMessage: errorMessage
+    })
   }
 }

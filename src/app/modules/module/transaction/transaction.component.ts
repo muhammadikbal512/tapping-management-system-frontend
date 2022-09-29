@@ -17,7 +17,7 @@ import { EventCollectorTableService } from '../../services/module-services/event
   styleUrls: ['./transaction.component.css'],
 })
 export class TransactionComponent implements OnInit {
-  @ViewChild('dateTransaction') dateOfTransaction!: ElementRef
+  @ViewChild('dateTransaction') dateOfTransaction!: any;
   additionalData: TransactionMessageInterface = additionalData;
   rangeDates!: Date[];
   constructor(
@@ -35,7 +35,8 @@ export class TransactionComponent implements OnInit {
 
   getDateTransaction() {
     // let dateTransaction = new Date(this.dateOfTransaction.nativeElement.value);
-    console.log(this.dateOfTransaction);
+    let dateTransaction = this.dateOfTransaction.inputFieldValue;
+    console.log(dateTransaction);
   }
 
   ngAfterViewInit(): void {
@@ -70,7 +71,7 @@ export class TransactionComponent implements OnInit {
     this.papa.parse(stringCSV, {
       header: true,
       complete: (results) => {
-        this.exportJsonAsExcelFile(results.data, 'transactionTableExport');
+        this.exportJsonAsExcelFile(results.data, 'Transaction Table');
       },
     });
   }

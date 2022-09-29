@@ -6,11 +6,11 @@
         <p-button (click)="refreshTable()" class="ml-3" icon="pi pi-refresh">
         </p-button>
       </div>
-      <div class="date flex flex-col">
+      <div class="date">
         <p-calendar #dateTransaction dateFormat="dd.mm.yy" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
           inputId="range" [showIcon]="true"></p-calendar>
           <!-- <input type="date" #dateTransaction id=""> -->
-        <div class="button mt-3 space-x-3 mx-auto">
+        <div class="date-buttons">
           <p-button class="p-button-sm" (onClick)="getDateTransaction()" label="Search"></p-button>
           <p-button class="p-button-sm" label="Clear"></p-button>
         </div>

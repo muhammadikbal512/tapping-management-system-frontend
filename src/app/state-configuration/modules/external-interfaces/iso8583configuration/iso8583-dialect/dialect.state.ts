@@ -198,6 +198,10 @@ export class DialectState {
     } else {
       this.iso8583DialectTableService.hideTableLoading();
     }
+
+    if (this.iso8583DialectService.getCurrentStatusDialog().length != 0) {
+      this.iso8583DialectService.closeDialog();
+    }
     ctx.patchState({
       responseMessage: errorMessage,
     });

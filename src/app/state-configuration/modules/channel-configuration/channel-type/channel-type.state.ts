@@ -58,30 +58,6 @@ export class ChannelTypeState {
     return state.responseMessage;
   }
 
-  // @Action(ChannelTypesGet, { cancelUncompleted: true }) getDataFromState(
-  //   ctx: StateContext<ChannelTypeStateModel>
-  // ) {
-  //   return this.channelTypeService.getAllChannelType().pipe(
-  //     tap((response) => {
-  //       if (response.length != 0) {
-  //         this.channelTypeTableService.hideTableLoading();
-  //         this.channelTypeTableService.gridApi.setRowData(response);
-  //       } else {
-  //         this.channelTypeTableService.setRowData(response);
-  //         this.channelTypeTableService.showNoRowData();
-  //       }
-
-  //       ctx.setState({
-  //         ...ctx.getState(),
-  //         channelTypes: response,
-  //       });
-  //     }),
-  //     catchError((response: HttpErrorResponse) => {
-  //       return ctx.dispatch(new ChannelTypeErrorState(response.error));
-  //     })
-  //   );
-  // }
-
   @Action(ChannelTypesGet, { cancelUncompleted: true }) getDataFromStates(
     ctx: StateContext<ChannelTypeStateModel>
   ) {
@@ -226,6 +202,9 @@ export class ChannelTypeState {
       this.channelTypeTableService.showNoRowData();
     } else {
       this.channelTypeTableService.hideTableLoading();
+    }
+    if (this.channelTypeService.getCurrentStatusDialog().length != 0) {
+      this.channelTypeService.closeDialog();
     }
     ctx.patchState({
       responseMessage: errorMessage,

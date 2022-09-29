@@ -220,6 +220,9 @@ export class UserState {
     } else {
       this.userTableService.hideTableLoading();
     }
+    if (this.userService.getCurrentStatusDialog().length != 0) {
+      this.userService.closeDialog();
+    }
     ctx.patchState({
       responseMessage: errorMessage,
     });

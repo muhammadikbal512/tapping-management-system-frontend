@@ -109,6 +109,7 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.role = this.role.value;
     this.userModel.active = this.isActive.value;
     this.userModel.notLocked = this.isNonLocked.value;
+    this.userModel.profileImageUrl = '';
     return this.userModel;
   }
 

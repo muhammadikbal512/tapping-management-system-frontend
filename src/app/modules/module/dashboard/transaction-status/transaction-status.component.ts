@@ -7,13 +7,25 @@ import { TransactionStatusChartService } from 'src/app/modules/services/chart-se
   styleUrls: ['./transaction-status.component.css'],
 })
 export class TransactionStatusComponent implements OnInit, OnDestroy {
+  success:any;
+  pending: any;
+  failed: any;
   constructor(public transactionStatusChart: TransactionStatusChartService) {}
 
   ngOnInit(): void {
     this.transactionStatusChart.chartRateTimer();
+    this.randomNumber();
   }
 
   ngOnDestroy(): void {
     clearInterval(this.transactionStatusChart.interval);
+  }
+
+  randomNumber() {
+     setInterval(() => {
+      this.success = Math.round(Math.random() * 100);
+      this.pending = Math.round(Math.random() * 100);
+      this.failed = Math.round(Math.random() * 100);
+    }, 1000);
   }
 }

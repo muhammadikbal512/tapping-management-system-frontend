@@ -21,6 +21,14 @@
   h-[250px]
 }
 
+.transaction-rate-header {
+  @apply flex items-center justify-between p-4 border-b 
+}
+
+.transaction-rate-header h4 {
+  @apply text-lg font-semibold text-gray-500
+}
+
 .container-device {
   background: linear-gradient(180deg, #3a7b80 0%, #22b1ba 100%);
   border-radius: 26px;
