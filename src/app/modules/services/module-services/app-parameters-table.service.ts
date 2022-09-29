@@ -4,7 +4,7 @@ import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/ove
 import { ActionButtonArpComponent } from '../../module/system/application-parameters/arp/widgets/action-button-arp/action-button-arp.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppParametersTableService {
   gridApi!: GridApi;
@@ -16,19 +16,19 @@ export class AppParametersTableService {
     flex: 1,
     sortable: true,
     lockPosition: true,
-  }
+  };
   columnDefs: ColDef[] = [
-    {field: 'id', hide: true},
-    {field: 'nameSettings'},
-    {field: 'value'},
-    {field: 'actions'}
-  ]
+    { field: 'id', hide: true },
+    { field: 'nameSettings' },
+    { field: 'value' },
+    { field: 'actions' },
+  ];
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     actionButtonGroup: ActionButtonArpComponent,
-    overlayLoading: OverlayLoadingComponent
-  }
-  constructor() { }
+    overlayLoading: OverlayLoadingComponent,
+  };
+  constructor() {}
 
   showTableLoading() {
     this.gridApi.showLoadingOverlay();
@@ -50,6 +50,12 @@ export class AppParametersTableService {
     this.gridApi.showNoRowsOverlay();
   }
 
+  onFilter(searchInputClass: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement).value
+    );
+  }
+
   destroyGrid() {
     this.gridApi.destroy();
   }
@@ -58,7 +64,7 @@ export class AppParametersTableService {
     this.gridApi = params.api;
   }
 
-  set GridColumnApi (params: GridReadyEvent) {
-    this.gridColumnApi = params.columnApi
+  set GridColumnApi(params: GridReadyEvent) {
+    this.gridColumnApi = params.columnApi;
   }
 }
