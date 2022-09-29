@@ -5,6 +5,7 @@ import {
   InstitutionStateError,
   InstitutionStateSuccess,
   InstitutionUpdate,
+  InstitutionUser,
 } from './institution.action';
 import { Injectable } from '@angular/core';
 import { State, StateContext, Action, Selector } from '@ngxs/store';
@@ -18,6 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class InstitutionStateModel {
   institutions: InstitutionModel[] = [];
+  institutionUsers: InstitutionModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -25,6 +27,7 @@ export class InstitutionStateModel {
   name: 'Institutions',
   defaults: {
     institutions: [],
+    institutionUsers: [],
     responseMessage: undefined,
   },
 })
@@ -39,6 +42,11 @@ export class InstitutionState {
   @Selector()
   static institutions(state: InstitutionStateModel) {
     return state.institutions;
+  }
+
+  @Selector()
+  static institutionUsers(state: InstitutionStateModel) {
+    return state.institutionUsers;
   }
 
   @Selector()
@@ -65,6 +73,21 @@ export class InstitutionState {
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new InstitutionStateError(response.error));
+      })
+    );
+  }
+
+  @Action(InstitutionUser, { cancelUncompleted: true })
+  addInstitutionUserFromState(
+    ctx: StateContext<InstitutionStateModel>,
+    { name }: InstitutionUser
+  ) {
+    return this.institutionService.getInstitutionWithUser(name).pipe(
+      tap((response) => {
+        ctx.patchState({
+          ...ctx.getState(),
+          institutionUsers: response,
+        });
       })
     );
   }
@@ -127,7 +150,8 @@ export class InstitutionState {
           institutions: dataList,
           responseMessage: response,
         });
-      }), catchError((response: HttpErrorResponse) => {
+      }),
+      catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new InstitutionStateError(response.error));
       })
     );
@@ -164,6 +188,10 @@ export class InstitutionState {
       this.institutionTableService.showNoRowData();
     } else {
       this.institutionTableService.hideTableLoading();
+    }
+
+    if (this.institutionService.getCurrentStatusDialog().length != 0) {
+      this.institutionService.closeDialog();
     }
 
     ctx.patchState({

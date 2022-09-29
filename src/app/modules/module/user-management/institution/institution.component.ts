@@ -14,7 +14,6 @@ export class InstitutionComponent implements OnInit {
   ) {}
   ngOnInit(): void {}
 
-
   searchTextFilter() {
     this.institutionTableService.onFilter('search-filter');
   }
@@ -24,7 +23,7 @@ export class InstitutionComponent implements OnInit {
   }
 
   openDialog() {
-    this.institutionService.buttonStatus = 'create'
-   this.institutionService.openDialog();
+    this.institutionService.buttonStatus = 'create';
+    this.institutionService.openDialog();
   }
 }

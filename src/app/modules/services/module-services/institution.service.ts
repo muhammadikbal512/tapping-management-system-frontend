@@ -32,6 +32,12 @@ export class InstitutionService {
     return this.http.get<InstitutionModel[]>(`${this.apiURL}/institution/list`);
   }
 
+  getInstitutionWithUser(name: string) {
+    return this.http.get<InstitutionModel[]>(
+      `${this.apiURL}/institution/find/` + name
+    );
+  }
+
   addInstitution(data: InstitutionModel) {
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiURL}/institution/add`,
@@ -72,6 +78,12 @@ export class InstitutionService {
   onGetAllInstitution() {
     this.institutionTableService.showTableLoading();
     this.institutionDispatch._InstitutionGetDispatch();
+  }
+
+  onGetAllInstitutionUser() {
+    this.institutionDispatch._InstitutionUser(
+      this.existingData.institutionName
+    );
   }
 
   onAddInstitution(data: InstitutionModel) {

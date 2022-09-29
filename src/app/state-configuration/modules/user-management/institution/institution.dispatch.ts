@@ -5,6 +5,7 @@ import {
   InstitutionStateError,
   InstitutionStateSuccess,
   InstitutionUpdate,
+  InstitutionUser,
 } from './institution.action';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -18,6 +19,11 @@ export class InstitutionDispatch {
   @Dispatch()
   public _InstitutionGetDispatch() {
     return new InstitutionGet();
+  }
+
+  @Dispatch()
+  public _InstitutionUser(name: string) {
+    return new InstitutionUser(name);
   }
 
   @Dispatch()

@@ -5,6 +5,11 @@ export class InstitutionGet {
   static readonly type = '[Institution] Get';
 }
 
+export class InstitutionUser {
+  static readonly type = '[Institution] Get Instituion User';
+  constructor(public name: string) {}
+}
+
 export class InstitutionAdd {
   static readonly type = '[Institution] Add';
   constructor(public payload: InstitutionModel) {}
