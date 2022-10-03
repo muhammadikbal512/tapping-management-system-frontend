@@ -5,6 +5,7 @@ import {
   TypeErrorState,
   TypeSuccessState,
   TypeUpdate,
+  TypeWithUsersGet,
 } from './type.action';
 import { State, StateContext, Selector, Action } from '@ngxs/store';
 import { TypeModel } from 'src/app/model/modules-model/type.model';
@@ -18,6 +19,7 @@ import { TypeTableService } from 'src/app/modules/services/module-services/type-
 
 export class TypeStateModel {
   Type: TypeModel[] = [];
+  TypeWithUsers: TypeModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -25,6 +27,7 @@ export class TypeStateModel {
   name: 'Type',
   defaults: {
     Type: [],
+    TypeWithUsers: [],
     responseMessage: undefined,
   },
 })
@@ -68,6 +71,21 @@ export class TypeState {
         return ctx.dispatch(new TypeErrorState(response.error));
       })
     );
+  }
+
+  @Action(TypeWithUsersGet, { cancelUncompleted: true })
+  getTypeWithUsersFromState(
+    ctx: StateContext<TypeStateModel>,
+    { name }: TypeWithUsersGet
+  ) {
+    return this.typeService.getTypeWithUsers(name).pipe(tap((response) => {
+
+
+      ctx.patchState({
+        ...ctx.getState(),
+        TypeWithUsers: response
+      })
+    }));
   }
 
   @Action(TypeAdd, { cancelUncompleted: true }) addDataFromState(
@@ -145,14 +163,14 @@ export class TypeState {
       successMessage.httpStatusCode
     );
 
-    if(this.typeService.getCurrentStatusDialog().length !=0) {
+    if (this.typeService.getCurrentStatusDialog().length != 0) {
       this.typeService.closeDialog();
     }
 
     this.typeService.onGetAllType();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(TypeErrorState) ifStateError(
@@ -162,7 +180,7 @@ export class TypeState {
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.status
-    )
+    );
 
     if (this.typeTableService.gridApi.getRenderedNodes().length == 0) {
       this.typeTableService.showNoRowData();
@@ -170,12 +188,12 @@ export class TypeState {
       this.typeTableService.showTableLoading();
     }
 
-    if(this.typeService.getCurrentStatusDialog().length == 0) {
+    if (this.typeService.getCurrentStatusDialog().length == 0) {
       this.typeService.closeDialog();
     }
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

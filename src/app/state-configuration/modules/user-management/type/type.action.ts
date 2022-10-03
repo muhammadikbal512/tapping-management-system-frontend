@@ -5,6 +5,11 @@ export class TypeGet {
   static readonly type = '[Type] Get';
 }
 
+export class TypeWithUsersGet {
+  static readonly type = '[Type] Get Type With Users';
+  constructor(public name: string) {}
+}
+
 export class TypeAdd {
   static readonly type = '[Type] Add';
   constructor(public payload: TypeModel) {}

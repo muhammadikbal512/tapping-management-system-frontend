@@ -5,6 +5,7 @@ import {
   TypeErrorState,
   TypeSuccessState,
   TypeUpdate,
+  TypeWithUsersGet,
 } from './type.action';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Injectable } from '@angular/core';
@@ -18,6 +19,11 @@ export class TypeDispatch {
     @Dispatch()
     public _TypeGetDispatch() {
         return new TypeGet();
+    }
+
+    @Dispatch()
+    public _TypeWithUsersGetDispatch(name: string) {
+        return new TypeWithUsersGet(name);
     }
 
     @Dispatch()
@@ -42,6 +48,6 @@ export class TypeDispatch {
 
     @Dispatch()
     public _TypeErrorDispatch(message: CustomHttpResponseModel) {
-        return new TypeSuccessState(message);
+        return new TypeErrorState(message);
     }
 }

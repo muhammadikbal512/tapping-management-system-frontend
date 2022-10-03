@@ -31,6 +31,10 @@ export class TypeService {
     return this.http.get<TypeModel[]>(`${this.apiUrl}/type/list`);
   }
 
+  getTypeWithUsers(name: string) {
+    return this.http.get<TypeModel[]>(`${this.apiUrl}/type/find/` + name)
+  }
+
   addType(data: TypeModel) {
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/type/add`,
@@ -67,6 +71,10 @@ export class TypeService {
   onGetAllType() {
     this.typeTableService.showTableLoading();
     this.typeDispatch._TypeGetDispatch();
+  }
+
+  onGetTypeWithUser() {
+    this.typeDispatch._TypeWithUsersGetDispatch(this.existingData.typeName);
   }
 
   onAddType(data: TypeModel) {
