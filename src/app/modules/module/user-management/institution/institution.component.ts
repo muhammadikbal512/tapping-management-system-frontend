@@ -8,6 +8,7 @@ import { InstitutionService } from 'src/app/modules/services/module-services/ins
   styleUrls: ['./institution.component.css'],
 })
 export class InstitutionComponent implements OnInit {
+  institutionUser: boolean = false;
   constructor(
     private institutionTableService: InstitutionTableService,
     private institutionService: InstitutionService

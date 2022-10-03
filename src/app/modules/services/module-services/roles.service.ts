@@ -33,6 +33,10 @@ export class RolesService {
     return this.http.get<RolesModel[]>(`${this.apiUrl}/role/list`);
   }
 
+  getRolesWithUser(name: string) {
+    return this.http.get<RolesModel[]>(`${this.apiUrl}/role/find` + name)
+  }
+
   addRoles(data: RolesModel) {
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/role/add`,

@@ -5,6 +5,7 @@ import {
   RolesErrorState,
   RolesSuccessState,
   RolesUpdate,
+  RolesWithUserGet,
 } from './roles.action';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
 import { RolesService } from 'src/app/modules/services/module-services/roles.service';
@@ -69,6 +70,13 @@ export class RolesState {
         return ctx.dispatch(new RolesErrorState(response.error));
       })
     );
+  }
+
+  @Action(RolesWithUserGet, { cancelUncompleted: true }) getUserWithRoles(
+    ctx: StateContext<RolesStateModel>,
+    { name }: RolesWithUserGet
+  ) {
+    
   }
 
   @Action(RolesAdd, { cancelUncompleted: true }) addDataFromState(
