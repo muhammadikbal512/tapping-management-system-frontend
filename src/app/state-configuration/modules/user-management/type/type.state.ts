@@ -78,14 +78,16 @@ export class TypeState {
     ctx: StateContext<TypeStateModel>,
     { name }: TypeWithUsersGet
   ) {
-    return this.typeService.getTypeWithUsers(name).pipe(tap((response) => {
-
-
-      ctx.patchState({
-        ...ctx.getState(),
-        TypeWithUsers: response
+    return this.typeService.getTypeWithUsers(name).pipe(
+      tap((response) => {
+        ctx.patchState({
+          ...ctx.getState(),
+          TypeWithUsers: response,
+        });
+      }), catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TypeErrorState(response.error))
       })
-    }));
+    );
   }
 
   @Action(TypeAdd, { cancelUncompleted: true }) addDataFromState(

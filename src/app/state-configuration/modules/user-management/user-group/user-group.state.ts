@@ -5,6 +5,7 @@ import {
   UserGroupError,
   UserGroupSuccess,
   UserGroupUpdate,
+  UserGroupWithUsersGet,
 } from './user-group.action';
 import { Action, StateContext, State, Selector } from '@ngxs/store';
 import { UserGroupTableService } from 'src/app/modules/services/module-services/user-group-table.service';
@@ -18,6 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class UserGroupStateModel {
   UserGroups: UserGroupModel[] = [];
+  UserGroupsWithUsers: UserGroupModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -25,6 +27,7 @@ export class UserGroupStateModel {
   name: 'UserGroup',
   defaults: {
     UserGroups: [],
+    UserGroupsWithUsers: [],
     responseMessage: undefined,
   },
 })
@@ -39,6 +42,11 @@ export class UserGroupState {
   @Selector()
   static UserGroups(state: UserGroupStateModel) {
     return state.UserGroups;
+  }
+
+  @Selector()
+  static UserGroupsWithUsers(state: UserGroupStateModel) {
+    return state.UserGroupsWithUsers;
   }
 
   @Selector()
@@ -61,6 +69,23 @@ export class UserGroupState {
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new UserGroupError(response.error));
+      })
+    );
+  }
+
+  @Action(UserGroupWithUsersGet, { cancelUncompleted: true })
+  getUserGroupWithUser(
+    ctx: StateContext<UserGroupStateModel>,
+    { name }: UserGroupWithUsersGet
+  ) {
+    return this.userGroupService.getUserGroupWithUsers(name).pipe(
+      tap((response) => {
+        ctx.patchState({
+          ...ctx.getState(),
+          UserGroupsWithUsers: response,
+        });
+      }), catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserGroupError(response.error))
       })
     );
   }
@@ -138,7 +163,7 @@ export class UserGroupState {
       successMessage.status
     );
 
-    if(this.userGroupService.getCurrentStatusDialog().length != 0) {
+    if (this.userGroupService.getCurrentStatusDialog().length != 0) {
       this.userGroupService.closeDialog();
     }
 
@@ -167,7 +192,7 @@ export class UserGroupState {
     }
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

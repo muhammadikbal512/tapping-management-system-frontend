@@ -20,14 +20,36 @@
         </div>
     </div>
     <div>
-        <div class="input-container">
-            <!-- <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
-            [options]="roleInterface" [showClear]="showClearButton" appendTo="body"
-            filterBy="name" formControlName="role" optionLabel="name" placeholder="Select Roles"
-            scrollHeight="150px" styleClass="msgTemplate"></p-dropdown> -->
+        <div class="form-filled-container">
+            <div class="input-container">
+                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                    [options]="roleInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
+                    formControlName="role" optionLabel="name" placeholder="Select Roles" scrollHeight="150px"
+                    styleClass="msgTemplate"></p-dropdown>
 
-            <input type="email" class="peer" formControlName="role" placeholder=" " required="">
-            <label class="input-label">Role</label>
+                <!-- <input type="email" class="peer" formControlName="role" placeholder=" " required="">
+                <label class="input-label">Role</label> -->
+            </div>
+            <div class="input-container">
+                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                    [options]="institutionInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
+                    formControlName="role" optionLabel="name" placeholder="Select Institutions" scrollHeight="150px"
+                    styleClass="msgTemplate"></p-dropdown>
+            </div>
+        </div>
+        <div class="form-filled-container">
+            <div class="input-container">
+                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                [options]="typeInterface" [showClear]="showClearButton" appendTo="body"
+                filterBy="name" formControlName="role" optionLabel="name" placeholder="Select Types"
+                scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
+            </div>
+            <div class="input-container">
+                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                [options]="userGroupInterface" [showClear]="showClearButton" appendTo="body"
+                filterBy="name" formControlName="role" optionLabel="name" placeholder="Select UserGroups"
+                scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
+            </div>
         </div>
     </div>
     <div class="form-filled-container">
@@ -49,10 +71,10 @@
     <div class="text-center">
         <mat-dialog-actions align="end">
             <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
-            <p-button (onClick)="onCreateUser()" *ngIf="userService.buttonStatus == 'create'"
-                [disabled]="form.invalid" [loading]="showLoading" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
-            <p-button (onClick)="onUpdateUser()" *ngIf="userService.buttonStatus == 'edit'"
-                [disabled]="disableButton" [loading]="showLoading" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onCreateUser()" *ngIf="userService.buttonStatus == 'create'" [disabled]="form.invalid"
+                [loading]="showLoading" class="create-button ml-3" label="Create" styleClass="p-button-sm"></p-button>
+            <p-button (onClick)="onUpdateUser()" *ngIf="userService.buttonStatus == 'edit'" [disabled]="disableButton"
+                [loading]="showLoading" class="create-button ml-3" label="Save" styleClass="p-button-sm"></p-button>
         </mat-dialog-actions>
     </div>
 </form>

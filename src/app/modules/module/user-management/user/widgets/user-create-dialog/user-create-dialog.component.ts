@@ -11,6 +11,9 @@ import { Select } from '@ngxs/store';
 import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
 import { Observable } from 'rxjs';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
+import { TypeInterface } from 'src/app/interface/modules/type';
+import { InstitutionInterface } from 'src/app/interface/modules/institution';
+import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -20,10 +23,19 @@ import { RoleInterface } from 'src/app/interface/modules/role-interface';
 export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   @Select(UserState.Roles)
   Roles$!: Observable<RoleInterface[]>;
+  @Select(UserState.Types)
+  Types$!: Observable<TypeInterface[]>;
+  @Select(UserState.Institutions)
+  Institutions$!: Observable<InstitutionInterface[]>;
+  @Select(UserState.UserGroups)
+  UserGroups$!: Observable<UsergroupInterface[]>;
 
   form!: FormGroup;
   userModel: UserModel = new UserModel();
   roleInterface: RoleInterface[] = [];
+  institutionInterface: InstitutionInterface[] = [];
+  typeInterface: TypeInterface[] = [];
+  userGroupInterface: UsergroupInterface[] = [];
   showClearButton: boolean = false;
   disableButton: boolean = false;
   showLoading: boolean = false;
@@ -36,8 +48,20 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.createFormat();
     this.userService.OnGetAllRoles();
+    this.userService.OnGetAllInstitutions();
+    this.userService.OnGetAllTypes();
+    this.userService.OnGetAllUserGroups();
     this.Roles$.subscribe((data) => {
       this.roleInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
+    this.Types$.subscribe((data) => {
+      this.typeInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
+    this.Institutions$.subscribe((data) => {
+      this.institutionInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+    });
+    this.UserGroups$.subscribe((data) => {
+      this.userGroupInterface = data.sort((a, b) => a.name.localeCompare(b.name));
     });
   }
 

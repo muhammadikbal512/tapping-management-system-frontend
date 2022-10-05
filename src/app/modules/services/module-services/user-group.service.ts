@@ -32,6 +32,10 @@ export class UserGroupService {
     return this.http.get<UserGroupModel[]>(`${this.apiUrl}/user/group/list`);
   }
 
+  getUserGroupWithUsers(name: string) {
+    return this.http.get<UserGroupModel[]>(`${this.apiUrl}/usergroup/user/` + name)
+  }
+
   addUserGroup(data: UserGroupModel) {
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/user/group/add`,

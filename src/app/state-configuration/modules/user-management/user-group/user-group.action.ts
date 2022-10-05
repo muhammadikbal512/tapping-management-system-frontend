@@ -5,6 +5,11 @@ export class UserGroupGet {
     static readonly type = '[UserGroup] Get';
 }
 
+export class UserGroupWithUsersGet {
+    static readonly type = '[UserGroup] UserGroup with User Get';
+    constructor(public name: string) {}
+}
+
 export class UserGroupAdd {
     static readonly type = '[UserGroup] Add';
     constructor(public payload: UserGroupModel) {}

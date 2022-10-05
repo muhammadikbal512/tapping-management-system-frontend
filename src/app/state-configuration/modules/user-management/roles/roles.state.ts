@@ -20,6 +20,7 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
 
 export class RolesStateModel {
   Roles: RolesModel[] = [];
+  RolesWithUsers: RolesModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -27,6 +28,7 @@ export class RolesStateModel {
   name: 'roles',
   defaults: {
     Roles: [],
+    RolesWithUsers: [],
     responseMessage: undefined,
   },
 })
@@ -76,7 +78,17 @@ export class RolesState {
     ctx: StateContext<RolesStateModel>,
     { name }: RolesWithUserGet
   ) {
-    
+    return this.rolesService.getRolesWithUser(name).pipe(
+      tap((response) => {
+        ctx.patchState({
+          ...ctx.getState(),
+          RolesWithUsers: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new RolesErrorState(response.error));
+      })
+    );
   }
 
   @Action(RolesAdd, { cancelUncompleted: true }) addDataFromState(

@@ -32,15 +32,23 @@ export class UserTableService {
   columnDef: ColDef[] = [
     { field: 'id', hide: true },
     { field: 'username' },
-    { field: 'role'},
+    { field: 'role' },
     { field: 'email' },
+    { field: 'typeName' },
+    { field: 'institutionName' },
+    { field: 'userGroupName' },
     { field: 'active', headerName: 'Status', cellRenderer: 'tag' },
     {
       field: 'lastLoginDate',
       headerName: 'Last Login',
       valueFormatter: this.dateFormatter,
     },
-    { field: 'action', cellRenderer: 'actionButtonGroup', sortable: false, maxWidth: 100 },
+    {
+      field: 'action',
+      cellRenderer: 'actionButtonGroup',
+      sortable: false,
+      maxWidth: 100,
+    },
   ];
 
   dateFormatter(params: any) {

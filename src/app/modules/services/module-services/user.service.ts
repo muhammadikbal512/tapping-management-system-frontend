@@ -18,7 +18,7 @@ export class UserService {
   dialogConfig: MatDialogConfig = {
     autoFocus: false,
     disableClose: true,
-    width: '55%',
+    width: '70%',
   };
   existingData: UserModel = new UserModel();
 
@@ -41,7 +41,7 @@ export class UserService {
 
   addUser(data: UserModel) {
     return this.http.post<CustomHttpResponseModel>(
-      `${this.apiUrl}/user/register`,
+      `${this.apiUrl}/user/add`,
       data
     );
   }
@@ -54,7 +54,9 @@ export class UserService {
   }
 
   resetPasswordUser(email: string) {
-    return this.http.get<CustomHttpResponseModel>(`${this.apiUrl}/user/resetpassword/` + email)
+    return this.http.get<CustomHttpResponseModel>(
+      `${this.apiUrl}/user/resetpassword/` + email
+    );
   }
 
   createUserFormData(currentUsername: string, newData: UserModel): FormData {
@@ -84,6 +86,18 @@ export class UserService {
 
   OnGetAllRoles() {
     this.userDispatch._UserGetRolesDispatch();
+  }
+
+  OnGetAllInstitutions() {
+    this.userDispatch._UserGetInstitutionDispatch();
+  }
+
+  OnGetAllTypes() {
+    this.userDispatch._UserGetTypeDispatch();
+  }
+
+  OnGetAllUserGroups() {
+    this.userDispatch._UserGetUserGroup();
   }
 
   onCreateUser(data: UserModel) {

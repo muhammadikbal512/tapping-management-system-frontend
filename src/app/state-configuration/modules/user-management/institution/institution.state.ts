@@ -19,7 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class InstitutionStateModel {
   institutions: InstitutionModel[] = [];
-  institutionUsers: InstitutionModel[] = [];
+  institutionWithUsers: InstitutionModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -27,7 +27,7 @@ export class InstitutionStateModel {
   name: 'Institutions',
   defaults: {
     institutions: [],
-    institutionUsers: [],
+    institutionWithUsers: [],
     responseMessage: undefined,
   },
 })
@@ -46,7 +46,7 @@ export class InstitutionState {
 
   @Selector()
   static institutionUsers(state: InstitutionStateModel) {
-    return state.institutionUsers;
+    return state.institutionWithUsers;
   }
 
   @Selector()
@@ -86,8 +86,11 @@ export class InstitutionState {
       tap((response) => {
         ctx.patchState({
           ...ctx.getState(),
-          institutionUsers: response,
+          institutionWithUsers: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new InstitutionStateError(response.error));
       })
     );
   }
