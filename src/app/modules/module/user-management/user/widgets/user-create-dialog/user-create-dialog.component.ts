@@ -14,6 +14,10 @@ import { RoleInterface } from 'src/app/interface/modules/role-interface';
 import { TypeInterface } from 'src/app/interface/modules/type';
 import { InstitutionInterface } from 'src/app/interface/modules/institution';
 import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
+import { RolesModel } from 'src/app/model/modules-model/roles.model';
+import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
+import { TypeModel } from 'src/app/model/modules-model/type.model';
+import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -58,10 +62,14 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
       this.typeInterface = data.sort((a, b) => a.name.localeCompare(b.name));
     });
     this.Institutions$.subscribe((data) => {
-      this.institutionInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.institutionInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
     this.UserGroups$.subscribe((data) => {
-      this.userGroupInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.userGroupInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
   }
 
@@ -86,7 +94,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
         this.existingFirstName != value.firstName ||
         this.existingLastName != value.lastName ||
         this.existingEmail != value.email ||
-        this.existingRole != value.role
+        this.existingRole != value.role ||
+        this.existingInstitution != value.institution ||
+        this.existingType != value.type ||
+        this.existingUserGroup != value.userGroup
       ) {
         this.disableButton = false;
       }
@@ -96,7 +107,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
         this.existingFirstName == value.firstName &&
         this.existingLastName == value.lastName &&
         this.existingEmail == value.email &&
-        this.existingRole == value.role
+        this.existingRole == value.role &&
+        this.existingInstitution == value.institution &&
+        this.existingType == value.type &&
+        this.existingUserGroup == value.userGroup
       ) {
         this.disableButton = true;
       }
@@ -109,6 +123,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.firstName.setValue(this.existingFirstName);
     this.email.setValue(this.existingEmail);
     this.role.setValue(this.existingRole);
+    this.institution.setValue(this.existingInstitution);
+    this.type.setValue(this.existingType);
+    this.userGroup.setValue(this.existingUserGroup);
     this.isActive.setValue(this.existingIsActive);
     this.isNonLocked.setValue(this.existingIsNonLocked);
   }
@@ -120,6 +137,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
       username: ['', Validators.required],
       email: ['', Validators.required],
       role: ['', Validators.required],
+      institution: ['', Validators.required],
+      type: ['', Validators.required],
+      userGroup: ['', Validators.required],
       isActive: ['', Validators.required],
       isNonLocked: ['', Validators.required],
     });
@@ -130,7 +150,14 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.lastName = this.lastName.value;
     this.userModel.username = this.username.value;
     this.userModel.email = this.email.value;
-    this.userModel.role = this.role.value;
+    this.userModel.role = new RolesModel(Number(this.role.value.code));
+    this.userModel.institution = new InstitutionModel(
+      Number(this.institution.value.code)
+    );
+    this.userModel.type = new TypeModel(Number(this.type.value.code));
+    this.userModel.userGroup = new UserGroupModel(
+      Number(this.userGroup.value.code)
+    );
     this.userModel.active = this.isActive.value;
     this.userModel.notLocked = this.isNonLocked.value;
     this.userModel.profileImageUrl = '';
@@ -171,6 +198,18 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     return this.form.controls['role'];
   }
 
+  get type() {
+    return this.form.controls['type'];
+  }
+
+  get institution() {
+    return this.form.controls['institution'];
+  }
+
+  get userGroup() {
+    return this.form.controls['userGroup'];
+  }
+
   get isActive() {
     return this.form.controls['isActive'];
   }
@@ -197,6 +236,18 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
 
   get existingRole() {
     return this.userService.existingData.role;
+  }
+
+  get existingInstitution() {
+    return this.userService.existingData.institution;
+  }
+
+  get existingType() {
+    return this.userService.existingData.type;
+  }
+
+  get existingUserGroup() {
+    return this.userService.existingData.userGroup;
   }
 
   get existingIsActive() {

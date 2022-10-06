@@ -33,7 +33,7 @@
             <div class="input-container">
                 <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                     [options]="institutionInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
-                    formControlName="role" optionLabel="name" placeholder="Select Institutions" scrollHeight="150px"
+                    formControlName="institution" optionLabel="name" placeholder="Select Institutions" scrollHeight="150px"
                     styleClass="msgTemplate"></p-dropdown>
             </div>
         </div>
@@ -41,13 +41,13 @@
             <div class="input-container">
                 <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                 [options]="typeInterface" [showClear]="showClearButton" appendTo="body"
-                filterBy="name" formControlName="role" optionLabel="name" placeholder="Select Types"
+                filterBy="name" formControlName="type" optionLabel="name" placeholder="Select Types"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
             </div>
             <div class="input-container">
                 <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                 [options]="userGroupInterface" [showClear]="showClearButton" appendTo="body"
-                filterBy="name" formControlName="role" optionLabel="name" placeholder="Select UserGroups"
+                filterBy="name" formControlName="userGroup" optionLabel="name" placeholder="Select UserGroups"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
             </div>
         </div>

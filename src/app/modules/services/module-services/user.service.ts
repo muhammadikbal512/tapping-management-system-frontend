@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserModel } from '../../../model/user-model/user.model';
 import { environment } from 'src/environments/environment';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
@@ -40,9 +40,20 @@ export class UserService {
   }
 
   addUser(data: UserModel) {
+    const params = new HttpParams()
+    .set('firstName', data.firstName)
+    .set('lastName', data.lastName)
+    .set('username', data.username)
+    .set('email', data.email)
+    .set('role', 'ROLE_USER')
+    .set('isActive', data.active)
+    .set('isNonLocked', data.notLocked)
+    .set('institution', data.institution.id)
+    .set('type', data.type.id)
+    .set('userGroup', data.userGroup.id)
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/user/add`,
-      data
+      data, {params}
     );
   }
 
@@ -66,8 +77,11 @@ export class UserService {
     formData.append('lastName', newData.lastName);
     formData.append('username', newData.username);
     formData.append('email', newData.email);
-    formData.append('role', this.existingData.role);
-    // formData.append('role', String(newData.role.id));
+    // formData.append('role', this.existingData.role);
+    formData.append('role', String(newData.role.id));
+    formData.append('type', String(newData.type.id));
+    formData.append('institution', String(newData.institution.id));
+    formData.append('userGroup', String(newData.userGroup.id));
     formData.append('isActive', String(this.existingData.active));
     formData.append('isNonLocked', String(this.existingData.notLocked));
     return formData;

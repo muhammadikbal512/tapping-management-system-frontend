@@ -1,4 +1,7 @@
+import { InstitutionModel } from '../modules-model/institution.model';
 import { RolesModel } from '../modules-model/roles.model';
+import { TypeModel } from '../modules-model/type.model';
+import { UserGroupModel } from '../modules-model/user-group.model';
 
 export class UserModel {
   id: number = 0;
@@ -12,7 +15,10 @@ export class UserModel {
   profileImageUrl?: string = '';
   active: boolean = false;
   notLocked: boolean = false;
-  role: string = '';
-  // role!: RolesModel;
+  // role: string = '';
+  institution!: InstitutionModel;
+  userGroup!: UserGroupModel;
+  type!: TypeModel;
+  role!: RolesModel;
   authorities!: string[];
 }

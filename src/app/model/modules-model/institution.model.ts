@@ -5,4 +5,8 @@ export class InstitutionModel {
     institutionName: string = '';
     description: string = '';
     user!: UserModel
+
+    constructor(id?: number) {
+        if (id !== undefined) this.id = id;
+      }
 }
