@@ -9,6 +9,11 @@
     flex;
 }
 
+.login-button {
+  @apply
+  text-center
+}
+
 .box-forms-container img {
   @apply
   w-56

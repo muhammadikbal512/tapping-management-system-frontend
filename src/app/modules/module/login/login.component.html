@@ -27,8 +27,10 @@
               <p style="color: red;" *ngIf="form.controls['username'].invalid && form.controls['username'].touched">
                 Password Required!</p>
             </div>
-              <p-button class="ml-36" [loading]="showLoading" label="Login" (click)="login(form.value)"
+            <div class="login-button">
+              <p-button [loading]="showLoading" label="Login" (click)="login(form.value)"
                 [disabled]="form.invalid"></p-button>
+            </div>
           </form>
         </div>
         <div class="forms-footer">
