@@ -122,10 +122,22 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.lastName.setValue(this.existingFirstName);
     this.firstName.setValue(this.existingFirstName);
     this.email.setValue(this.existingEmail);
-    this.role.setValue(this.existingRole);
-    this.institution.setValue(this.existingInstitution);
-    this.type.setValue(this.existingType);
-    this.userGroup.setValue(this.existingUserGroup);
+    this.role.setValue({
+      name: this.existingRole.roleName,
+      code: String(this.existingRole.id),
+    });
+    this.institution.setValue({
+      name: this.existingInstitution.institutionName,
+      code: String(this.existingInstitution.id),
+    });
+    this.type.setValue({
+      name: this.existingType.typeName,
+      code: String(this.existingType.id),
+    });
+    this.userGroup.setValue({
+      name: this.existingUserGroup.groupName,
+      code: String(this.existingUserGroup.id),
+    });
     this.isActive.setValue(this.existingIsActive);
     this.isNonLocked.setValue(this.existingIsNonLocked);
   }

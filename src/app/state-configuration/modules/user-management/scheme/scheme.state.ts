@@ -87,7 +87,7 @@ export class SchemeState {
   ) {
     this.notifierService.errorNotification(
       errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage.status
     )
 
     if(this.schemeTableService.gridApi.getRenderedNodes().length == 0 ) {

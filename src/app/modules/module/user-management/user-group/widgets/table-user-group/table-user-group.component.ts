@@ -8,6 +8,7 @@ import { UserGroupService } from 'src/app/modules/services/module-services/user-
   styleUrls: ['./table-user-group.component.css']
 })
 export class TableUserGroupComponent implements OnInit {
+  pageSize: number = 5;
   constructor(
     private UserGroupTableService: UserGroupTableService,
     private userGroupService: UserGroupService

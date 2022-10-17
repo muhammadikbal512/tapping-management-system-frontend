@@ -88,7 +88,7 @@ export class ArpState {
   ) {
     this.notifierService.errorNotification(
       errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage.status
     )
 
     if (this.arpTableService.gridApi.getRenderedNodes().length == 0) {

@@ -45,7 +45,7 @@ export class UserService {
     .set('lastName', data.lastName)
     .set('username', data.username)
     .set('email', data.email)
-    .set('role', 'ROLE_USER')
+    .set('role', 'ROLE_ADMIN')
     .set('isActive', data.active)
     .set('isNonLocked', data.notLocked)
     .set('institution', data.institution.id)

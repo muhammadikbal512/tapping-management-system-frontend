@@ -1,5 +1,5 @@
-<ag-grid-angular style="width: 100%; height: 500px" class="ag-theme-alpine" rowSelection="single"
-  enableCellTextSelection suppressDragLeaveHidesColumns [rowClassRules]="rowClassRules" [animateRows]="animateRow"
+<ag-grid-angular style="width: 100%; height: 400px" class="ag-theme-alpine" rowSelection="single"
+  enableCellTextSelection suppressDragLeaveHidesColumns [rowClassRules]="rowClassRules" [paginationPageSize]="pageSize" [animateRows]="animateRow"
   [rowClassRules]="rowClassRules" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [rowHeight]="rowHeight"
   [headerHeight]="headerHeight" [loadingOverlayComponent]="overlayLoadingTemplate"
   [frameworkComponents]="frameworkComponents" [pagination]="true" (rowClicked)="onCellClicked($event)"

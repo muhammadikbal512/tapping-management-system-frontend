@@ -4,7 +4,7 @@ import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/ove
 import { UserGroupActionButtonComponent } from '../../module/user-management/user-group/widgets/user-group-action-button/user-group-action-button.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserGroupTableService {
   gridApi!: GridApi;
@@ -15,30 +15,37 @@ export class UserGroupTableService {
   overlayLoadingTemplate: string = 'overlayLoading';
   frameworkComponents = {
     overlayLoading: OverlayLoadingComponent,
-    actionButtonGroup: UserGroupActionButtonComponent
+    actionButtonGroup: UserGroupActionButtonComponent,
   };
   defaultColDef: ColDef = {
     flex: 1,
     editable: false,
     sortable: true,
-    lockPosition: true
+    lockPosition: true,
   };
 
   columnDef: ColDef[] = [
-    {field: 'groupName'},
-    {field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100}
-  ]
+    { field: 'groupName' },
+    { field: 'actions', cellRenderer: 'actionButtonGroup', maxWidth: 100 },
+  ];
 
   rowData = [
     {
-      groupName:"Group A",
+      groupName: 'Group A',
     },
     {
-      groupName: "Group B"
-    }
-  ]
+      groupName: 'Group B',
+    },
+  ];
 
-  constructor() { }
+  constructor() {}
+
+  onFilter(searchInput: string) {
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInput) as HTMLInputElement).value
+    );
+  }
+
   showTableLoading() {
     this.gridApi.showLoadingOverlay();
   }

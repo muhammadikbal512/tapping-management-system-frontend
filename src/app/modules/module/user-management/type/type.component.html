@@ -17,5 +17,18 @@
     </div>
     <div class="p-4">
         <app-table-type></app-table-type>
+        <div class="page-size-container">
+            Page Size:
+            <select (change)="onPageSizeChanged()" name="" id="page-size">
+                <option value="5" selected>5</option>
+                <option value="10" selected>10</option>
+                <option value="15" selected>15</option>
+                <option value="20" selected>20</option>
+                <option value="25" selected>25</option>
+                <option value="50" selected>50</option>
+                <option value="100" selected>100</option>
+                <option value="500" selected>500</option>
+            </select>
+        </div>
     </div>
 </div>

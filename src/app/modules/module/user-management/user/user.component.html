@@ -8,11 +8,12 @@
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
             </span>
-            <input (input)="onFilterTextBoxChange()" id="search-filter" class="search-input" type="text" placeholder="Search">
+            <input (input)="onFilterTextBoxChange()" id="search-filter" class="search-input" type="text"
+                placeholder="Search">
         </div>
         <div class="grid-header-right">
             <p-button (click)="refreshTable()" icon="pi pi-refresh"></p-button>
-            <p-button icon="pi pi-plus" (click)="showDialog()" class="ml-3" label="Add User"></p-button>
+            <p-button (click)="showDialog()" icon="pi pi-plus" class="ml-3" label="Add User"></p-button>
         </div>
     </div>
     <div class="p-4">
@@ -20,15 +21,15 @@
         <div class="page-size-container">
             Page Size:
             <select (change)="onPageSizeChanged()" id="page-size">
-              <option value="5" selected="">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="500">500</option>
+                <option value="5" selected="">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
             </select>
-          </div>
+        </div>
     </div>
 </div>
