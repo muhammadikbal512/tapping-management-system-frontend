@@ -1,12 +1,17 @@
 import { CustomHttpResponseModel } from "src/app/model/customHttpResponse-Model/custom-http-response.model";
+import { AlertInvestigationModel } from "src/app/model/modules-model/alert-investigation.model";
 
 export class AlertInvestigationGet {
     static readonly type = '[AlertInvestigation] Get';
 }
 
-export class AlertInvestigationDelete {
-    static readonly type = '[AlertInvestigation] Delete';
-    constructor(public id: number) {}
+export class AlertInvestigationGetRoles {
+    static readonly type = '[AlertInvestigation] Get Roles';
+  }
+
+export class AlertInvestigationRejected {
+    static readonly type = '[AlertInvestigation] Rejected';
+    constructor(public payload: AlertInvestigationModel) {}
 }
 
 export class AlertInvestigationSuccessState {

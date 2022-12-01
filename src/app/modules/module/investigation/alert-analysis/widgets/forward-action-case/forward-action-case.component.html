@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="caseId" readonly type="text" class="peer" placeholder=" ">
+            <label class="input-label" for="">Case Id</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="privateScheme" readonly type="text" class="peer" placeholder=" ">
+            <label class="input-label" for="">Private Scheme</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="caseCreationDate" readonly type="text" class="peer" placeholder=" ">
+            <label class="input-label" for="">Case Creation Date</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="classificationType" readonly type="text" class="peer" placeholder=" ">
+            <label class="input-label" for="">Classification Type</label>
+        </div>
+    </div>
+    
+        <div class="input-container">
+            <label for="" style="display:block">Role</label>
+            <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+            [options]="roleInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
+            formControlName="role" optionLabel="name" placeholder="Select Roles" scrollHeight="150px"
+            styleClass="msgTemplate"></p-dropdown>
+        </div>
+        <div class="input-container">
+            <div class="textcontent">
+                <div class="input-container pr-4">
+                    <label for="" style="display: block;">Comment</label>
+                    <textarea formControlName="comment" name="" id="" cols="10" rows="2" style="background: rgba(8, 117, 146, 0.12);
+                    border-radius: 15px; display: block; width: 100%;"></textarea>
+                </div>
+            </div>
+        </div>
+    <div class="text-center">
+        <mat-dialog-actions align="end">
+            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+            <p-button class="create-button ml-3" label="Forward" styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
+    </div>
+</form>

@@ -4,108 +4,18 @@
             <input type="checkbox">
             <label class="ml-3">Update every 60 seconds</label>
         </div>
-        <div class="grid-header-alert">
-            <div class="search">
-                <p-button icon="pi pi-search-plus" class="mr-3"></p-button>
-            </div>
-            <div class="form-filled-container">
-                <div class="input-container">
-                    <label for="" style="display: block;">Locked by User</label>
-                    <input type="text" name="" id="" placeholder="All" style="display: block;">
-                </div>
-                <div class="form-filled-container">
-                    <div class="input-container">
-                        <label for="" style="display: block;">Case ID</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Case</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Creation Date</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Class Type</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Entity Value</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Forwarder</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                    <div class="input-container">
-                        <label for="" style="display: block;">Postpone</label>
-                        <input type="text" name="" id="" style="display: block;">
-                    </div>
-                </div>
-                
-            </div>
-            <!-- <div class="grid-header-right">
-                <p-button (onClick)="showDialog()" label="Create"></p-button>
-            </div> -->
-        </div>
         <div class="p-4">
             <app-alert-analysis-table></app-alert-analysis-table>
         </div>
-        <div class="page-size-container">
-            Page Size:
-            <select (change)="onPageSizeChanged()" id="page-size">
-              <option value="5" selected="">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="500">500</option>
-            </select>
-          </div>
     </div>
     <div class="grid-container shadow-md col-span-6">
-        <div class="grid-header">
-            <h4>Total Case</h4>
-        </div>
         <div class="p-4">
-            <ag-grid-angular style="width: 100%; height: 500px" class="ag-theme-alpine" [columnDefs]="totalCase"
-                [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
-                (gridReady)="onGridReady($event)"></ag-grid-angular>
+         <app-alert-queue-table></app-alert-queue-table>
         </div>
     </div>
     <div class="grid-container shadow-md col-span-6">
-        <div class="grid-header">
-            <h4>Take Action</h4>
-        </div>
-        <div class="grid-content ml-4 my-14">
-            <div class="input-container pr-4">
-                <label for="" style="display:block">Take Action</label>
-                <p-dropdown appendTo="body" autoWidth="false" [style]="{'width':'100%'}" placeholder="Add Case Comment">
-                </p-dropdown>
-            </div>
-            <div class="content my-30">
-                <div class="textcontent">
-                    <div class="input-container pr-4">
-                        <label for="" style="display: block;">Comment</label>
-                        <textarea name="" id="" cols="30" rows="10" style="background: rgba(8, 117, 146, 0.12);
-                        border-radius: 15px; display: block; width: 100%;"></textarea>
-                    </div>
-                </div>
-                <div class="buttoncontent space-x-4">
-                    <p-button label="Take Action"></p-button>
-                    <p-button label="Reset Action Type"></p-button>
-                </div>
-            </div>
+        <div class="p-4">
+         <app-alert-rejected-table></app-alert-rejected-table>
         </div>
     </div>
 </div>
-<!-- <div class="grid-container shadow-md">
-        <div class="p-4">
-            <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-alpine" [columnDefs]="alertTable"
-                [rowSelection]="rowSelection" [defaultColDef]="defaultColDef" [animateRows]="true" [rowData]="rowData"
-                (gridReady)="onGridReady($event)"></ag-grid-angular>
-        </div>
-    </div> -->

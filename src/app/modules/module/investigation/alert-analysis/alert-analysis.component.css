@@ -2,6 +2,13 @@
   
 }
 
+.grid-header {
+  @apply
+  flex
+  flex-row
+  justify-between
+}
+
 .search {
   width: 70px;
   display: flex;
@@ -39,12 +46,4 @@
 
 .input-container input {
   @apply w-full;
-}
-
-:host ::ng-deep .p-button {
-  background-color:#087592;
-}
-
-:host ::ng-deep .p-button:hover{
-  background-color: #087576;
 }

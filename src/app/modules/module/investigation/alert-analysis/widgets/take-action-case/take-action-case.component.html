@@ -1,0 +1,25 @@
+<form class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <label for="" style="display:block">Take Action</label>
+            <p-dropdown appendTo="body" autoWidth="false" [style]="{'width':'100%'}" placeholder="Add Case Comment">
+            </p-dropdown>
+        </div>
+
+    </div>
+    <div class="form-filled-container">
+        <div class="textcontent">
+            <div class="input-container pr-4">
+                <label for="" style="display: block;">Comment</label>
+                <textarea name="" id="" cols="30" rows="10" style="background: rgba(8, 117, 146, 0.12);
+                border-radius: 15px; display: block; width: 100%;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <mat-dialog-actions align="end">
+            <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+            <p-button class="create-button" label="Save" styleClass="p-button-sm"></p-button>
+        </mat-dialog-actions>
+    </div>
+</form>

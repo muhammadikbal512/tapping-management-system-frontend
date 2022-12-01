@@ -1,7 +1,83 @@
 <div class="table-container">
-    <ag-grid-angular style="width: 100%; height: 300px" class="ag-theme-alpine" rowSelection="single"
-        enableCellTextSelection suppressDragLeaveHidesColumns [animateRows]="animateRow" [columnDefs]="columnDefs"
-        [defaultColDef]="defaultColDef" [rowHeight]="rowHeight" [headerHeight]="headerHeight" [paginationPageSize]="paginationSize"
-        [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
-        [rowData]="rowData" [rowClassRules]="rowClassRules" [pagination]="true" (rowClicked)="onCellClicked($event)"></ag-grid-angular>
+    <p-table #dt1 [value]="alerts" [loading]="loading" dataKey="id" [globalFilterFields]="['caseId']"
+        [columns]="cols" [paginator]="true" [rows]="20" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]" scrollHeight="400px" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-between">
+                <div class="export-buttons">
+                    <button type="button" pButton pRipple icon="pi pi-file" (click)="dt1.exportCSV()" pTooltip="CSV"
+                        tooltipPosition="bottom"></button>
+                    <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+                        class="p-button-success" pTooltip="XLS" tooltipPosition="bottom"></button>
+                    <button icon="pi pi-refresh" type="button" pButton pRipple></button>
+                </div>
+                <div class="search-buttons">
+                    <span class="p-input-icon-left ml-auto">
+                        <span class="search-icon-transaction bx bx-search">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </span>
+                        <input #textInput (input)="dt1.filterGlobal(textInput.value, 'contains')" id="search-filter"
+                            class="search-input" type="text" placeholder="Search">
+                    </span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem"></th>
+                <th *ngFor="let col of cols" [pSortableColumn]="col.field">{{col.header}} <p-sortIcon></p-sortIcon>
+                </th>
+                <th style="width: 3rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+            <tr>
+                <td>
+                    <button type="button" pButton pRipple [pRowToggler]="rowData"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td *ngFor="let col of cols">
+                    {{rowData[col.field]}}
+                </td>
+                <td [pSelectableRow]="rowData">
+                    <app-action-button-alert-analysis></app-action-button-alert-analysis>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex" let-rowData.viewDetails="false">
+            <tr>
+                <td colspan="7">
+                    <div class="p-3">
+                        <p-table [value]="rowData.payload" dataKey="id">
+                            <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col1 of cols1">
+                    {{col1.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td *ngFor="let col1 of cols1">
+                    {{rowData[col1.field]}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no data yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</td>
+</tr>
+</ng-template>
+</p-table>
 </div>

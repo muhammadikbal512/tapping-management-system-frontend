@@ -1,67 +1,98 @@
 import { Component, OnInit } from '@angular/core';
-import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import * as FileSaver from 'file-saver';
+import { AlertInvestigationModel } from 'src/app/model/modules-model/alert-investigation.model';
+import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AlertInvestigationState } from 'src/app/state-configuration/modules/investigation/alert-investigation/alert-investigation.state';
 
 @Component({
   selector: 'app-alert-analysis-table',
   templateUrl: './alert-analysis-table.component.html',
-  styleUrls: ['./alert-analysis-table.component.css']
+  styleUrls: ['./alert-analysis-table.component.css'],
 })
 export class AlertAnalysisTableComponent implements OnInit {
+  @Select(AlertInvestigationState.alertInvestigation)
+  alertInvestigation$!: Observable<AlertInvestigationModel[]>;
   paginationSize: number = 5;
-  constructor(private alertTable: AlertInvestigationTableService) {
-   }
-
+  alerts!: AlertInvestigationModel[];
+  alert!: AlertInvestigationModel;
+  loading!: boolean;
+  cols!: any[];
+  cols1!: any[];
+  networks!: any[];
+  constructor(
+    private alertService: AlertInvestigationService,
+    private notifierService: NotificationService
+  ) {}
   ngOnInit(): void {
-    
+    this.getAlertTable();
+    this.cols = [
+      { field: 'lockedByUser', header: 'Locked By User' },
+      { field: 'caseId', header: 'Case ID' },
+      { field: 'caseCreationDate', header: 'Case Creation Date' },
+      { field: 'classificationType', header: 'Classification Type' },
+      { field: 'classificationStatus', header: 'Classification Status' },
+      { field: 'privateScheme', header: 'Private Scheme' },
+    ];
+    this.cols1 = [
+      { field: 'networkId', header: 'Network ID' },
+      { field: 'srcAddress', header: 'Src Address' },
+      { field: 'dstAddress', header: 'Dst Address' },
+      { field: 'flag', header: 'Flag' },
+      { field: 'responseCode', header: 'Response Code' },
+      { field: 'sequenceNumber', header: 'Sequence Number' },
+    ];
   }
 
-  public rowClassRules: RowClassRules = {
-    // row style function
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0
-    },
-    // row style expression
-  };
-
-  onGridReady(params: GridReadyEvent) {
-
+  getAlertTable() {
+    this.alertService.onGetAllAlertInvestigation();
+    this.alertInvestigation$.subscribe(
+      (response) => {
+        this.alerts = response;
+        this.loading = false;
+      },
+      (err) => {
+        this.notifierService.errorNotification(err!.message, err!.status);
+        this.loading = false;
+      }
+    );
   }
 
-  onCellClicked(params: RowClickedEvent) {
-    
+  refreshTable() {
+    this.loading = true;
+    this.getAlertTable();
   }
 
-  get animateRow() {
-    return this.alertTable.animateRow;
+  onRowSelect(event: any) {
+    this.alertService.ExistingData = event.data
+    console.log(event.data);
   }
 
-  get headerHeight() {
-    return this.alertTable.headerHeight;
+  exportExcel() {
+    import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.alerts);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, {
+        bookType: 'xlsx',
+        type: 'array',
+      });
+      this.saveAsExcelFile(excelBuffer, 'alert');
+    });
   }
 
-  get rowHeight() {
-    return this.alertTable.rowHeight;
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE =
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+      data,
+      fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
   }
-
-  get defaultColDef() {
-    return this.alertTable.defaultColDef;
-  }
-
-  get columnDefs() {
-    return this.alertTable.columnDefs;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.alertTable.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.alertTable.frameworkComponents;
-  }
-
-  get rowData() {
-    return this.alertTable.rowData;
-  }
-
 }
