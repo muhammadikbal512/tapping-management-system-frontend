@@ -29,7 +29,14 @@ export class ActionButtonAlertAnalysisComponent implements AgRendererComponent {
     return params.valueFormatted ? params.valueFormatted : params.value;
   }
 
-  editButton() {}
+  takeActionButton() {
+    this.alertService.openTakeActionDialog();
+  }
+
+  forwardActionButton() {
+    this.alertService.forwardActionDialog();
+    this.alertService.buttonStatus = 'forward';
+  }
 
   deleteButton(event: Event) {
     this.confirmationService.alertConfirm(event, this.alertService);

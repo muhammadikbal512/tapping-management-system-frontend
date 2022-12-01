@@ -46,24 +46,24 @@ export class AlertInvestigationTableService {
       classificationStatus: 'Classified',
       privateScheme: '',
     },
-    {
-      alertId: 2,
-      lockedByUser: 'Admin',
-      caseID: 8004,
-      caseCreationDate: '2022.07.26 13.00.22',
-      classificationType: 'Negative',
-      classificationStatus: 'Classified',
-      privateScheme: '',
-    },
-    {
-      alertId: 2,
-      lockedByUser: 'Admin',
-      caseID: 8005,
-      caseCreationDate: '2022.07.26 19.24.03',
-      classificationType: 'Negative Field',
-      classificationStatus: 'Classified',
-      privateScheme: '',
-    },
+    // {
+    //   alertId: 2,
+    //   lockedByUser: 'Admin',
+    //   caseID: 8004,
+    //   caseCreationDate: '2022.07.26 13.00.22',
+    //   classificationType: 'Negative',
+    //   classificationStatus: 'Classified',
+    //   privateScheme: '',
+    // },
+    // {
+    //   alertId: 2,
+    //   lockedByUser: 'Admin',
+    //   caseID: 8005,
+    //   caseCreationDate: '2022.07.26 19.24.03',
+    //   classificationType: 'Negative Field',
+    //   classificationStatus: 'Classified',
+    //   privateScheme: '',
+    // },
   ];
 
   constructor() {}

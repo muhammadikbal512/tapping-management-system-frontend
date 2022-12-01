@@ -4,33 +4,62 @@ import { AlertInvestigationModel } from 'src/app/model/modules-model/alert-inves
 import { HttpClient } from '@angular/common/http';
 import { AlertInvestigationTableService } from './alert-investigation-table.service';
 import { environment } from 'src/environments/environment';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { TakeActionCaseComponent } from '../../module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
+import { ForwardActionCaseComponent } from '../../module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertInvestigationService {
   existingData: AlertInvestigationModel = new AlertInvestigationModel();
-  apiUrl: string = environment.core236
+  alerts!: AlertInvestigationModel[];
+  buttonStatus: string = '';
+  apiUrl: string = environment.core236;
+  dialogConfig: MatDialogConfig = {
+    width: '55%',
+  };
   constructor(
     private alertDispatch: AlertInvestigationDispatch,
     private http: HttpClient,
-    private alertTableService: AlertInvestigationTableService
+    private alertTableService: AlertInvestigationTableService,
+    private dialog: MatDialog
   ) {}
 
   getAllAlertInvestigation() {
+    // return this.http.get<AlertInvestigationModel[]>(
+    //   `${this.apiUrl}/alertInvestigation`
+    // );
     return this.http.get<AlertInvestigationModel[]>(
-      `${this.apiUrl}/alertInvestigation`
-    );
-  }
-
-  onDeleteAlert() {
-    this.alertDispatch._AlertInvestigationDeleteDispatch(
-      this.existingData.alertId
+      `assets/data/dummy/investigation/investigation.json`
     );
   }
 
   onGetAllAlertInvestigation() {
-   this.alertTableService.showTableLoading();
-   this.alertDispatch._AlertInvestigationGetDispatch();
+    this.alertDispatch._AlertInvestigationGetDispatch();
+  }
+
+  OnGetAllRoles() {
+    this.alertDispatch._AlertInvestigationGetRolesDispatch();
+  }
+
+  openTakeActionDialog() {
+    this.dialog.open(TakeActionCaseComponent, this.dialogConfig);
+  }
+
+  forwardActionDialog() {
+    this.dialog.open(ForwardActionCaseComponent, this.dialogConfig);
+  }
+
+  getCurrentDialog() {
+    this.dialog.openDialogs;
+  }
+
+  closeDialog() {
+    this.dialog.closeAll();
+  }
+
+  set ExistingData(data: AlertInvestigationModel) {
+    this.existingData = data;
   }
 }

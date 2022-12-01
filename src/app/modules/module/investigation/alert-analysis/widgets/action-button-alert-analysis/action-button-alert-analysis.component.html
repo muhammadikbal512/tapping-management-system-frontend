@@ -3,13 +3,17 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu" class="button-group">
-      <button class="edit-button" (click)="editButton()">
+      <button class="edit-button" (click)="takeActionButton()">
           <i class="edit-icon pi pi-check"></i>
-        <span>Edit</span>
+        <span>Accept</span>
+      </button>
+      <button class="edit-button" (click)="forwardActionButton()">
+        <i class="edit-icon pi pi-forward"></i>
+        <span class="edit-text">Forward</span>
       </button>
       <button class="delete-button" (click)="deleteButton($event)">
-        <i class="delete-icon pi pi-trash"></i>
-        <span class="delete-text">Delete</span>
+        <i class="delete-icon pi pi-times"></i>
+        <span class="delete-text">Reject</span>
       </button>
     </mat-menu>
 </div>
