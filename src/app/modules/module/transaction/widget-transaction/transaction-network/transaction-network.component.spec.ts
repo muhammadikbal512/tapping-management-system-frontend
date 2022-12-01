@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventCollectorComponent } from './event-collector.component';
+import { TransactionNetworkComponent } from './transaction-network.component';
 
-describe('EventCollectorComponent', () => {
-  let component: EventCollectorComponent;
-  let fixture: ComponentFixture<EventCollectorComponent>;
+describe('TransactionNetworkComponent', () => {
+  let component: TransactionNetworkComponent;
+  let fixture: ComponentFixture<TransactionNetworkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventCollectorComponent ]
+      declarations: [ TransactionNetworkComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventCollectorComponent);
+    fixture = TestBed.createComponent(TransactionNetworkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

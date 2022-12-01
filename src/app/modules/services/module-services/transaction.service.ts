@@ -5,12 +5,16 @@ import { TransactionMessageModel } from 'src/app/model/modules-model/transaction
 import { map } from 'rxjs';
 import { TransactionDispatch } from 'src/app/state-configuration/modules/transaction/transaction.dispatch';
 import { TransactionTableService } from './transaction-table.service';
+import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
+import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
   apiUrl = environment.core236;
+  additionalData: EventCollectorInterface | undefined;
+  eventCollectorDispatch: any;
 
   constructor(
     private http: HttpClient,
@@ -24,6 +28,16 @@ export class TransactionService {
     );
   }
 
+  getAllEventCollector() {
+    return this.http.get<EventCollectorModel[]>(
+      `${this.apiUrl}/apps/listEventCollectors`
+    );
+  }
+
+  onGetAllEventCollector() {
+    this.transactionDispatch._EventCollectorsGetDispatch();
+  }
+
   onGetAllTransactionList() {
     this.transactionTableService.showTableLoading();
     this.transactionDispatch._TransactionGetDispatch();
@@ -32,6 +46,12 @@ export class TransactionService {
   getAllTransactionListWithDelay() {
     setTimeout(() => {
       this.onGetAllTransactionList();
+    }, 500);
+  }
+
+  getEventCollectorWithDelay() {
+    setTimeout(() => {
+      this.onGetAllEventCollector();
     }, 500);
   }
 }

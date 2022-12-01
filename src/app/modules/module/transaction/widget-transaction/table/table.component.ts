@@ -1,96 +1,99 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  Input,
-  OnDestroy,
-} from '@angular/core';
-import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
-import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
+import { Component, OnInit } from '@angular/core';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
-import {
-  GridReadyEvent,
-  RowClassRules,
-  RowClickedEvent,
-} from 'ag-grid-community';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
+import * as FileSaver from 'file-saver';
+import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
+import { Select } from '@ngxs/store';
+import { TransactionState } from 'src/app/state-configuration/modules/transaction/transaction.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements OnInit {
+  @Select(TransactionState.EventCollectors)
+  eventCollectors$!: Observable<EventCollectorModel[]>;
   constructor(
-    private transactionTableService: TransactionTableService,
     private transactionApiService: TransactionService,
     private notifierService: NotificationService
   ) {}
 
-  ngOnInit(): void {}
+  eventCollectors!: EventCollectorModel[];
+  selectedEventCollector!: EventCollectorModel;
+  cols!: any[];
+  loading!: boolean;
+  exportColumns!: any[];
 
-  onCellClicked(data: RowClickedEvent) {
-    this.transactionTableService.additionalData = data.data;
+  ngOnInit(): void {
+    this.getEventCollector();
+    this.cols = [
+      { field: 'timestamp', header: 'Time Stamp' },
+      { field: 'srcAddress', header: 'Src Address' },
+      { field: 'dstAddress', header: 'Dst Address' },
+      { field: 'flag', header: 'Flag' },
+      { field: 'typeMessage', header: 'Type Message' },
+      { field: 'status', header: 'Status' },
+      { field: 'incidentDetails', header: 'Incident Details' },
+    ];
+    this.exportColumns = this.cols.map((col) => ({
+      title: col.header,
+      dataKey: col.field,
+    }));
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.transactionTableService.GridApi = params;
-    this.transactionTableService.GridColumnApi = params;
-    this.runService();
+  getEventCollector() {
+    this.transactionApiService.getEventCollectorWithDelay();
+    this.eventCollectors$.subscribe(
+      {
+        next: (response) => {
+          this.eventCollectors = response;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.notifierService.errorNotification(err?.message, err?.status);
+          this.loading = false;
+        },
+        complete: () => this.loading = false
+      }
+    );
   }
 
-  runService() {
-    this.transactionTableService.showTableLoading();
-    this.transactionApiService.getAllTransactionListWithDelay();
+  refreshTable() {
+    this.getEventCollector();
+    this.loading = true;
   }
 
-  ngAfterViewInit(): void {}
-
-  public rowClassRules: RowClassRules = {
-    // row style function
-    'ag-bg-red': (params) => {
-      return params.data.responseCode === '06';
-    },
-    // row style expression
-
-    'ag-bg-yellow': 'data.responseCode === "09"',
-  };
-
-  get animateRow() {
-    return this.transactionTableService.animateRow;
+  onRowSelect(event: any) {
+    this.transactionApiService.additionalData = event.data;
   }
 
-  get headerHeight() {
-    return this.transactionTableService.headerHeight;
+  exportExcel() {
+    import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.eventCollectors);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, {
+        bookType: 'xlsx',
+        type: 'array',
+      });
+      this.saveAsExcelFile(excelBuffer, 'transaction');
+    });
   }
 
-  get rowHeight() {
-    return this.transactionTableService.rowHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.transactionTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.transactionTableService.frameworkComponents;
-  }
-
-  get defaultColDef() {
-    return this.transactionTableService.defaultColDef;
-  }
-
-  get columnDefs() {
-    return this.transactionTableService.columnDefs;
-  }
-
-  get paginationSize() {
-    return this.transactionTableService.paginationSize;
-  }
-
-  get rowData() {
-    return this.transactionTableService.rowData;
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE =
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+      data,
+      fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
   }
 }
 
-export let additionalData: TransactionMessageInterface;
+export let additionalData: EventCollectorInterface;

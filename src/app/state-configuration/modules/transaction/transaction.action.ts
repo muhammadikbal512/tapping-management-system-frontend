@@ -4,6 +4,10 @@ export class TransactionGet {
     static readonly type = '[Transaction] Get';
 }
 
+export class EventCollectorsGet {
+    static readonly type = '[EventCollectors] Get';
+}
+
 export class TransactionSuccessState {
     static readonly type = '[Transaction] Success';
     constructor(public successMessage: CustomHttpResponseModel) {}

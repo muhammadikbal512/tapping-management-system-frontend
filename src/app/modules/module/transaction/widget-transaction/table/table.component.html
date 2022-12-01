@@ -1,7 +1,63 @@
-<ag-grid-angular style="width: 100%; height: 400px;" class="ag-theme-alpine transaction-ag-table" [pagination]="true"
-  [animateRows]="true" rowSelection="single" enableCellTextSelection [rowHeight]="rowHeight"
-  [paginationPageSize]="paginationSize" [defaultColDef]="defaultColDef"
-  [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
-  [columnDefs]="columnDefs" (rowClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
-  [rowClassRules]="rowClassRules">
-</ag-grid-angular>
+<p-table #dt1 [value]="eventCollectors" [loading]="loading" sortField="networkId" sortMode="single" dataKey="networkId"
+  rowGroupMode="subheader" groupRowsBy="networkId" responsiveLayout="scroll" [paginator]="true" [rows]="20"
+  [showCurrentPageReport]="true" responsiveLayout="scroll"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+  [globalFilterFields]="['networkId']" [columns]="cols" [scrollable]="true" scrollHeight="400px" stateStorage="session"
+  stateKey="statedemo-session" selectionMode="single" [(selection)]="selectedEventCollector" (onRowSelect)="onRowSelect($event)">
+  <ng-template pTemplate="caption">
+    <div class="flex justify-between">
+      <div class="export-buttons">
+        <button type="button" pButton pRipple icon="pi pi-file" (click)="dt1.exportCSV()" pTooltip="CSV"
+          tooltipPosition="bottom"></button>
+        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success"
+          pTooltip="XLS" tooltipPosition="bottom"></button>
+        <p-button (click)="refreshTable()" icon="pi pi-refresh"></p-button>
+      </div>
+      <div class="search-buttons">
+        <span class="p-input-icon-left ml-auto">
+          <span class="search-icon-transaction bx bx-search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </span>
+          <input #textInput (input)="dt1.filterGlobal(textInput.value, 'contains')" id="search-filter"
+            class="search-input" type="text" placeholder="Search">
+        </span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of cols">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="groupheader" let-eventCollectors let-rowIndex="rowIndex" let-expanded="expanded">
+    <tr [pSelectableRow]="eventCollectors">
+      <td colspan="5">
+        <button type="button" pButton pRipple [pRowToggler]="eventCollectors"
+          class="p-button-text p-button-rounded p-button-plain mr-2"
+          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+        <span class="font-bold ml-2">{{eventCollectors.networkId}}</span>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-eventCollectors>
+    <tr>
+      <td>{{eventCollectors.timestamp}}</td>
+      <td>{{eventCollectors.dstAddress}} : {{eventCollectors.dstPort}}</td>
+      <td>{{eventCollectors.srcAddress}} : {{eventCollectors.srcPort}}</td>
+      <td>{{eventCollectors.flag}}</td>
+      <td>{{eventCollectors.typeMessage}}</td>
+      <td>{{eventCollectors.status}}</td>
+      <td>{{eventCollectors.incidentDetails}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6">There are no data.</td>
+    </tr>
+  </ng-template>
+</p-table>

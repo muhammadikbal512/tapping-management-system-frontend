@@ -1,0 +1,72 @@
+<div class="transaction-summary-container">
+    <div class="summary-left">
+        <div class="summary-item">
+            <span>Ack Number</span>
+            <input [value]="this.transactionNetwork.additionalEventCollector?.ackNumber" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Flag</span>
+            <input [value]="this.transactionNetwork.additionalEventCollector?.flag" readonly disabled>
+        </div>
+    </div>
+    <div class="summary-right">
+        <div class="summary-item">
+            <span>Protocol</span>
+            <input [value]="this.transactionNetwork.additionalEventCollector?.protocol" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Sequence Number</span>
+            <input [value]="this.transactionNetwork.additionalEventCollector?.sequenceNumber" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Message Hexa</span>
+            <input [value]="this.transactionNetwork.additionalEventCollector?.messageHexa" readonly disabled>
+        </div>
+    </div>
+</div>
+
+<!-- <table class="table-auto" id="customers">
+    <thead>
+        <tr>
+            <td>Ack Number</td>
+            <td>Flag</td>
+            <td>Protocol</td>
+            <td>Sequence Number</td>
+            <td>Message Hexa</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{this.transactionTableService.additionalEventCollector?.ackNumber}}</td>
+            <td>{{this.transactionTableService.additionalEventCollector?.flag}}</td>
+            <td>{{this.transactionTableService.additionalEventCollector?.protocol}}</td>
+            <td>{{this.transactionTableService.additionalEventCollector?.sequenceNumber}}</td>
+            <td>{{this.transactionTableService.additionalEventCollector?.messageHexa}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+
+<!-- <p-table [value]="this.transactionNetwork.additionalEventCollector">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Vin</th>
+            <th>Year</th>
+            <th>Brand</th>
+            <th>Color</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-additionalEventCollector>
+        <tr>
+            <td>{{additionalEventCollector.protocol}}</td>
+            <td>{{additionalEventCollector.dstAddress}}</td>
+            <td>{{additionalEventCollector.brand}}</td>
+            <td>{{additionalEventCollector.color}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
+<!-- <ag-grid-angular style="width: 100%; height: 350px;" class="ag-theme-alpine transaction-ag-table" [animateRows]="true"
+    rowSelection="single" enableCellTextSelection [rowHeight]="rowHeight" [defaultColDef]="defaultColDef"
+    [loadingOverlayComponent]="overlayLoadingTemplate" [frameworkComponents]="frameworkComponents"
+    [columnDefs]="columnDefs" (gridReady)="onGridReady($event)" [rowClassRules]="rowClassRules">
+</ag-grid-angular> -->

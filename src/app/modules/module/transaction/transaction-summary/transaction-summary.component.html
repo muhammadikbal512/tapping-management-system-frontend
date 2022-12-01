@@ -2,7 +2,7 @@
     <div class="summary-left">
         <div class="summary-item">
             <span>Transaction Date</span>
-            <input>
+            <input [value]="this.transactionApiService.additionalData?.srcAddress" readonly disabled>
         </div>
         <div class="summary-item">
             <span>Network Date</span>

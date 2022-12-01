@@ -9,7 +9,7 @@ import {
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
 import * as moment from 'moment';
-
+import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,7 @@ export class TransactionTableService {
   constructor() {}
 
   additionalData: TransactionMessageInterface | undefined;
+  additionalEventCollector: any;
   gridApi!: GridApi;
   gridColumnApi!: ColumnApi;
   animateRow: boolean = true;
@@ -33,226 +34,146 @@ export class TransactionTableService {
     sortable: true,
     resizable: true,
     filter: true,
+    flex: 1,
   };
   columnDefs: ColDef[] = [
     {
-      field: 'destAccount',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
+      field: 'timestamp',
     },
     {
-      field: 'sourceAccount',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      headerName: 'srcAccount',
+      field: 'dstAddress',
+      valueGetter: this.destAddress,
     },
     {
-      field: 'mti',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      headerName: 'MTI',
+      field: 'srcAddress',
+      valueGetter: this.sourceAddress,
+    },
+    { field: 'networkId', cellRenderer: 'agGroupCellRenderer', enableRowGroup: true },
+    {
+      field: 'typeMessage',
     },
     {
-      field: 'hpan',
-      minWidth: 180,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      cellRenderer: 'medalCellRenderer',
-      headerName: 'HPAN',
+      field: 'status',
     },
     {
-      field: 'terminalId',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'merchantId',
-      cellRenderer: 'agGroupCellRenderer',
-      minWidth: 200,
-      maxWidth: 230,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'merchantType',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'countryCode',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'amount',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'responseCode',
-      minWidth: 150,
-      maxWidth: 200,
-      valueParser: numberParser,
-      headerClass: 'transaction-header-color',
-      cellClassRules: {
-        'rag-red': 'x != 00',
-      },
-      filter: true,
-    },
-    {
-      field: 'transactionId',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'networkId',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      filter: true,
-    },
-    {
-      field: 'rrn',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-      headerName: 'RRN',
-    },
-    {
-      field: 'location',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'messageAscii',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'messageHexa',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'posDataCode',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'sequenceNumber',
-      minWidth: 150,
-      maxWidth: 200,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'transactionDate',
-      valueFormatter : this.dateFormatter,
-      sort: 'desc',
-      minWidth: 200,
-      maxWidth: 300,
-      headerClass: 'transaction-header-color',
-    },
-    {
-      field: 'networkDate',
-      valueFormatter: this.dateFormatter,
-      minWidth: 200,
-      maxWidth: 300,
-      headerClass: 'transaction-header-color',
+      field: 'incidentdetails',
+      headerName: 'Incident Details',
     },
   ];
 
   rowData = [
     {
-      transactionDate: '',
-      networkDate: '',
-      mti: '112',
-      hpan: '221',
-      terminalId: 1,
-      merchantId: 1,
-      merchantType: 'BCA',
-      countryCode: 1,
-      amount: '100.000',
-      responseCode: '06',
-      transactionId: 1,
-      networkId: 1,
-      rrn: 1234,
-      location: 'indonesia',
-      messageAscii: 'aaasdd',
-      messageHexa: 'aasddq',
-      posDataCode: 123,
-      sequenceNumber: 443,
-      sourceAccount: '192.168.1.7:8809',
-      destAccount: '192.168.42.3:6767',
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '1134',
+      typeMessage: '',
+      flag: 'SYN',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
+    },
+    {
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '1134',
+      typeMessage: '',
+      flag: 'ACK',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
+    },
+    {
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '1134',
+      typeMessage: '',
+      flag: 'SYN ACK',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
+    },
+    {
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '1134',
+      typeMessage: '',
+      flag: 'ACK',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
     },
 
+
     {
-      transactionDate: '',
-      networkDate: '',
-      mti: '113',
-      hpan: '224',
-      terminalId: 2,
-      merchantId: 2,
-      merchantType: 'BTN',
-      countryCode: 1,
-      amount: '300.000',
-      responseCode: '00',
-      transactionId: 1,
-      networkId: 1,
-      rrn: 1234,
-      location: 'indonesia',
-      messageAscii: 'aaa112sdd',
-      messageHexa: '3321aa',
-      posDataCode: 112,
-      sequenceNumber: 223,
-      sourceAccount: '192.168.4.48:8809',
-      destAccount: '192.168.42.3:6767',
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '2004',
+      typeMessage: '',
+      flag: 'SYN',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
     },
     {
-      transactionDate: '',
-      networkDate: '',
-      mti: '113',
-      hpan: '224',
-      terminalId: 3,
-      merchantId: 3,
-      merchantType: 'Mandiri',
-      countryCode: 1,
-      amount: '500.000',
-      responseCode: '09',
-      transactionId: 3,
-      networkId: 3,
-      rrn: 4332,
-      location: 'indonesia',
-      messageAscii: 'aaa112sdd',
-      messageHexa: '3321aa',
-      posDataCode: 115,
-      sequenceNumber: 443,
-      sourceAccount: '192.168.6.18:8809',
-      destAccount: '192.168.42.3:6767',
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '2004',
+      typeMessage: '',
+      flag: 'SYN',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
+    },
+    {
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '2004',
+      typeMessage: '',
+      flag: 'SYN',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
+    },
+    {
+      timestamp: '2022/01/11',
+      dstAddress: '192.168.1.10:66048',
+      srcAddress: '192.168.1.13:8834',
+      networkId: '2004',
+      typeMessage: '',
+      flag: 'SYN',
+      status: '',
+      protocol: 'test',
+      sequenceNumber: 'test',
+      incidentdetails: '',
     },
   ];
 
-  dateFormatter(params: any) {
-    return moment(params.value).format('DD/MM/YY HH:mm')
+  destAddress(params: any) {
+    return params.data.dstAddress + ':' + params.data.dstPort;
+  }
+
+  sourceAddress(params: any) {
+    return params.data.srcAddress + ':' + params.data.srcPort;
   }
 
   onFilter(searchInputClass: string) {
-    this.gridApi.setQuickFilter((document.getElementById(searchInputClass) as HTMLInputElement)?.value)
+    this.gridApi.setQuickFilter(
+      (document.getElementById(searchInputClass) as HTMLInputElement)?.value
+    );
   }
 
   showTableLoading() {

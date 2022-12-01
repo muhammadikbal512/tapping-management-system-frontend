@@ -22,7 +22,7 @@
             *ngIf="transactionParametersService.buttonStatus == 'create'" [disabled]="form.invalid"
             class="create-button" [loading]="showLoading" label="Create" styleClass="p-button-sm"></p-button>
         <p-button (onClick)="onUpdateTransactionParameters()"
-            *ngIf="transactionParametersService.buttonStatus == 'edit'" [disabled]="disableButton" class="create-button"
+            *ngIf="transactionParametersService.buttonStatus == 'edit'" class="create-button"
             label="Save" [loading]="showLoading" styleClass="p-button-sm"></p-button>
     </mat-dialog-actions>
 </form>

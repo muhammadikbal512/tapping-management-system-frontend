@@ -9,19 +9,23 @@ import {
   TransactionGet,
   TransactionSuccessState,
   TransactionErrorState,
+  EventCollectorsGet,
 } from './transaction.action';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
 
 export class TransactionStateModel {
   Transactions: TransactionMessageModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
+  EventCollectors: EventCollectorModel[] = [];
 }
 
 @State<TransactionStateModel>({
   name: 'Transaction',
   defaults: {
     Transactions: [],
+    EventCollectors: [],
     responseMessage: undefined,
   },
 })
@@ -43,10 +47,15 @@ export class TransactionState {
     return state.responseMessage;
   }
 
+  @Selector()
+  static EventCollectors(state: TransactionStateModel) {
+    return state.EventCollectors;
+  }
+
   @Action(TransactionGet, { cancelUncompleted: true }) getDataFromState(
     ctx: StateContext<TransactionStateModel>
   ) {
-    return this.transactionService.getAllTransactionList().pipe(
+    return this.transactionService.getAllEventCollector().pipe(
       tap((response) => {
         if (response?.length != 0) {
           this.transactionTableService.hideTableLoading();
@@ -57,11 +66,26 @@ export class TransactionState {
         }
         ctx.setState({
           ...ctx.getState(),
-          Transactions: response,
+          EventCollectors: response,
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TransactionErrorState(response.error))
+        return ctx.dispatch(new TransactionErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(EventCollectorsGet, { cancelUncompleted: true })
+  getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
+    return this.transactionService.getAllEventCollector().pipe(
+      tap((response) => {
+        ctx.setState({
+          ...ctx.getState(),
+          EventCollectors: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TransactionErrorState(response.error));
       })
     );
   }
@@ -88,13 +112,8 @@ export class TransactionState {
       errorMessage?.message,
       errorMessage?.status
     );
-    if (this.transactionTableService.gridApi.getRenderedNodes().length == 0) {
-      this.transactionTableService.showNoRowData();
-    } else {
-      this.transactionTableService.hideTableLoading();
-    }
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

@@ -51,15 +51,7 @@ export class TransactionParametersState {
   getDataFromState(ctx: StateContext<TransactionParametersStateModel>) {
     return this.transactionService.getAllParametersList().pipe(
       tap((response) => {
-        if (response?.length != 0) {
-          this.transactionTableService.hideTableLoading();
-          this.transactionTableService.setRowData(response);
-        } else {
-          this.transactionTableService.setRowData(response);
-          this.transactionTableService.showNoRowData();
-        }
-
-        ctx.setState({
+        ctx.patchState({
           ...ctx.getState(),
           transactionParameters: response,
         });
@@ -85,8 +77,11 @@ export class TransactionParametersState {
           transactionParameters: [...ctx.getState().transactionParameters],
           responseMessage: response,
         });
-      }), catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TransactionParametersErrorState(response.error))
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(
+          new TransactionParametersErrorState(response.error)
+        );
       })
     );
   }
@@ -122,9 +117,7 @@ export class TransactionParametersState {
         ctx.dispatch(new TransactionParametersSuccessState(response));
 
         const dataList = [...ctx.getState().transactionParameters];
-        const updatedDataIndex = dataList.findIndex(
-          (x) => x.id === id
-        );
+        const updatedDataIndex = dataList.findIndex((x) => x.id === id);
         dataList[updatedDataIndex] = stateData;
         ctx.setState({
           ...ctx.getState(),
@@ -133,7 +126,9 @@ export class TransactionParametersState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TransactionParametersErrorState(response.error));
+        return ctx.dispatch(
+          new TransactionParametersErrorState(response.error)
+        );
       })
     );
   }
@@ -165,11 +160,7 @@ export class TransactionParametersState {
       errorMessage?.message,
       errorMessage?.status
     );
-    if (this.transactionTableService.gridApi.getRenderedNodes().length == 0) {
-      this.transactionTableService.showNoRowData();
-    } else {
-      this.transactionTableService.hideTableLoading();
-    }
+    this.transactionService.closeDialog();
     ctx.patchState({
       responseMessage: errorMessage,
     });

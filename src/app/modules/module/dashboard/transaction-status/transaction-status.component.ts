@@ -8,8 +8,8 @@ import { TransactionStatusChartService } from 'src/app/modules/services/chart-se
 })
 export class TransactionStatusComponent implements OnInit, OnDestroy {
   success:any;
-  pending: any;
-  failed: any;
+  declined: any;
+  abnormal: any;
   constructor(public transactionStatusChart: TransactionStatusChartService) {}
 
   ngOnInit(): void {
@@ -24,8 +24,8 @@ export class TransactionStatusComponent implements OnInit, OnDestroy {
   randomNumber() {
      setInterval(() => {
       this.success = Math.round(Math.random() * 100);
-      this.pending = Math.round(Math.random() * 100);
-      this.failed = Math.round(Math.random() * 100);
+      this.declined = Math.round(Math.random() * 100);
+      this.abnormal = Math.round(Math.random() * 100);
     }, 1000);
   }
 }

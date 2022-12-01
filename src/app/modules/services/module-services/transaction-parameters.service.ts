@@ -62,7 +62,6 @@ export class TransactionParametersService {
   }
 
   onGetAllTransactionParameters() {
-    this.transactionParametersTableService.showTableLoading();
     this.transactionParametersDispatch._TransactionParametersGetDispatch();
   }
 
@@ -105,7 +104,7 @@ export class TransactionParametersService {
     return this.dialog.openDialogs;
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: TransactionParametersModel) {
+    this.existingData = data;
   }
 }
