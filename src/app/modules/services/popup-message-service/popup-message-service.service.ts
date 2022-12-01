@@ -134,10 +134,10 @@ export class PopupMessageService {
   alertConfirm(event: Event, onDelete: AlertInvestigationService) {
     this.confirmationService.confirm({
       target: event.target || undefined,
-      message: 'Do you want to delete this record ?',
+      message: 'Do you want to reject this case ?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        onDelete.onDeleteAlert();
+        
       }
     })
   }

@@ -32,7 +32,7 @@ export class UserTableService {
   columnDef: ColDef[] = [
     { field: 'id', hide: true },
     { field: 'username' },
-    { field: 'role' },
+    { field: 'roleName', headerName: 'Role' },
     { field: 'email' },
     { field: 'typeName' },
     { field: 'institutionName' },

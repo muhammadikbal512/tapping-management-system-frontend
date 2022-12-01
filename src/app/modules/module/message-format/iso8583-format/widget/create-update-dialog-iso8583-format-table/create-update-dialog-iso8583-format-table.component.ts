@@ -29,6 +29,7 @@ export class CreateUpdateDialogIso8583FormatTableComponent
 
   ngOnInit(): void {
     this.createFormat();
+    
   }
 
   ngAfterViewInit(): void {

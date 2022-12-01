@@ -76,7 +76,6 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.userService.buttonStatus == 'edit') {
       this.setExistingDataToModel();
-      this.disableButton = !this.form.dirty;
       this.onCheckingFormHasChange();
       this.changeDetectorRef.detectChanges();
     }
@@ -107,10 +106,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
         this.existingFirstName == value.firstName &&
         this.existingLastName == value.lastName &&
         this.existingEmail == value.email &&
-        this.existingRole == value.role &&
-        this.existingInstitution == value.institution &&
-        this.existingType == value.type &&
-        this.existingUserGroup == value.userGroup
+        this.existingRole == value.role.name &&
+        this.existingInstitution == value.institution.name &&
+        this.existingType == value.type.name &&
+        this.existingUserGroup == value.userGroup.name
       ) {
         this.disableButton = true;
       }
@@ -124,7 +123,7 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.email.setValue(this.existingEmail);
     this.role.setValue({
       name: this.existingRole.roleName,
-      code: String(this.existingRole.id),
+      code: String(this.existingRole.id)
     });
     this.institution.setValue({
       name: this.existingInstitution.institutionName,
@@ -188,6 +187,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
       this.NewDataToModel()
     );
     this.userService.onUpdateUser(newData);
+  }
+
+  set InstitutionGroupInterfaces(optionList: InstitutionInterface[]) {
+    this.institutionInterface = optionList;
   }
 
   get firstName() {

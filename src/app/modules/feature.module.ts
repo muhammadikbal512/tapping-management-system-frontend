@@ -81,16 +81,11 @@ import { ActionButtonAcquirerAlertComponent } from '../modules/module/acquirer/a
 import { TerminalListAcquirerTableComponent } from '../modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-table/terminal-list-acquirer-table.component';
 import { TerminalListAcquirerActionButtonComponent } from '../modules/module/acquirer/terminal-list/widget/terminal-list-acquirer-action-button/terminal-list-acquirer-action-button.component';
 import { UserCreateDialogComponent } from '../modules/module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
-import { EventCollectorComponent } from '../modules/module/event-collector/event-collector.component';
-import { EventCollectorTableComponent } from '../modules/module/event-collector/widget/event-collector-table/event-collector-table.component';
-import { CreateDialogEventCollectorComponent } from '../modules/module/event-collector/widget/create-dialog-event-collector/create-dialog-event-collector.component';
-import { ActionButtonEventCollectorComponent } from '../modules/module/event-collector/widget/action-button-event-collector/action-button-event-collector.component';
 import { TableRolesComponent } from '../modules/module/user-management/roles/widgets/table-roles/table-roles.component';
 import { ActionButtonRolesComponent } from '../modules/module/user-management/roles/widgets/action-button-roles/action-button-roles.component';
 import { CreateDialogRolesComponent } from '../modules/module/user-management/roles/widgets/create-dialog-roles/create-dialog-roles.component';
 import { EditDialogRolesComponent } from '../modules/module/user-management/roles/widgets/edit-dialog-roles/edit-dialog-roles.component';
 import { AlertAnalysisTableComponent } from '../modules/module/investigation/alert-analysis/widgets/alert-analysis-table/alert-analysis-table.component';
-import { CreateDialogAlertAnalysisComponent } from '../modules/module/investigation/alert-analysis/widgets/create-dialog-alert-analysis/create-dialog-alert-analysis.component';
 import { ActionButtonAlertAnalysisComponent } from '../modules/module/investigation/alert-analysis/widgets/action-button-alert-analysis/action-button-alert-analysis.component';
 import { SchemeTableComponent } from '../modules/module/user-management/private-scheme/widgets/scheme-table/scheme-table.component';
 import { CreateDialogSchemeComponent } from '../modules/module/user-management/private-scheme/widgets/create-dialog-scheme/create-dialog-scheme.component';
@@ -119,7 +114,6 @@ import { TableInterfaceComponent } from '../modules/module/dashboard/interface-l
 import { InterfaceListCardComponent } from '../modules/module/dashboard/interface-list-card/interface-list-card.component';
 import { DeviceMonitoringComponent } from '../modules/module/device-monitoring/device-monitoring.component';
 import { TransactionFlowComponent } from '../modules/global-widget/transaction-flow/transaction-flow.component';
-import { TransactionFlowTableComponent } from '../modules/module/transaction/widget-transaction/transaction-flow-table/transaction-flow-table.component';
 import { Iso8583ResponseMappingComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
 import { Iso8583ResponseMappingCreateDialogComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
 import { Iso8583ResponseMappingActionButtonComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
@@ -155,6 +149,12 @@ import { UserGroupCreateDialogComponent } from './module/user-management/user-gr
 import { TableUserGroupComponent } from './module/user-management/user-group/widgets/table-user-group/table-user-group.component';
 import { InstitutionComponent } from './module/user-management/institution/institution.component';
 import { TransactionStatusSvgComponent } from './module/dashboard/transaction-status/widgets/transaction-status-svg/transaction-status-svg.component';
+import { TransactionNetworkComponent } from './module/transaction/widget-transaction/transaction-network/transaction-network.component';
+import { TakeActionCaseComponent } from './module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
+import { ForwardActionCaseComponent } from './module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
+import { AlertInvestigationService } from './services/module-services/alert-investigation.service';
+import { AlertRejectedTableComponent } from './module/investigation/alert-analysis/widgets/alert-rejected-table/alert-rejected-table.component';
+import { AlertQueueTableComponent } from './module/investigation/alert-analysis/widgets/alert-queue-table/alert-queue-table.component';
 
 
 
@@ -230,16 +230,11 @@ import { TransactionStatusSvgComponent } from './module/dashboard/transaction-st
     TerminalListAcquirerTableComponent,
     TerminalListAcquirerActionButtonComponent,
     UserCreateDialogComponent,
-    EventCollectorComponent,
-    EventCollectorTableComponent,
-    CreateDialogEventCollectorComponent,
-    ActionButtonEventCollectorComponent,
     TableRolesComponent,
     ActionButtonRolesComponent,
     CreateDialogRolesComponent,
     EditDialogRolesComponent,
     AlertAnalysisTableComponent,
-    CreateDialogAlertAnalysisComponent,
     ActionButtonAlertAnalysisComponent,
     SchemeTableComponent,
     CreateDialogSchemeComponent,
@@ -268,7 +263,6 @@ import { TransactionStatusSvgComponent } from './module/dashboard/transaction-st
     InterfaceListCardComponent,
     DeviceMonitoringComponent,
     TransactionFlowComponent,
-    TransactionFlowTableComponent,
     Iso8583ResponseMappingComponent,
     Iso8583ResponseMappingCreateDialogComponent,
     Iso8583ResponseMappingActionButtonComponent,
@@ -290,7 +284,12 @@ import { TransactionStatusSvgComponent } from './module/dashboard/transaction-st
     UserGroupActionButtonComponent,
     UserGroupCreateDialogComponent,
     TableUserGroupComponent,
-    TransactionStatusSvgComponent
+    TransactionStatusSvgComponent,
+    TransactionNetworkComponent,
+    TakeActionCaseComponent,
+    ForwardActionCaseComponent,
+    AlertRejectedTableComponent,
+    AlertQueueTableComponent
 
   ],
   imports: [
@@ -321,6 +320,7 @@ import { TransactionStatusSvgComponent } from './module/dashboard/transaction-st
     ChannelTypeTableService,
     AuthenticationService,
     UserService,
+    AlertInvestigationService,
     AuthenticationGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

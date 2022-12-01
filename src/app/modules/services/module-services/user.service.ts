@@ -14,14 +14,13 @@ import { UserCreateDialogComponent } from '../../module/user-management/user/wid
 })
 export class UserService {
   apiUrl = environment.core236;
+  existingData: UserModel = new UserModel();
   buttonStatus: string = '';
   dialogConfig: MatDialogConfig = {
     autoFocus: false,
     disableClose: true,
     width: '70%',
   };
-  existingData: UserModel = new UserModel();
-
   constructor(
     private http: HttpClient,
     private userTableService: UserTableService,
@@ -45,7 +44,7 @@ export class UserService {
     .set('lastName', data.lastName)
     .set('username', data.username)
     .set('email', data.email)
-    .set('role', 'ROLE_ADMIN')
+    .set('role', data.role.id)
     .set('isActive', data.active)
     .set('isNonLocked', data.notLocked)
     .set('institution', data.institution.id)
@@ -146,7 +145,7 @@ export class UserService {
     return this.dialog.openDialogs;
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: UserModel) {
+    this.existingData = data;
   }
 }

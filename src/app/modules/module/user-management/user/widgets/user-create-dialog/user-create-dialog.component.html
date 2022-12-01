@@ -22,7 +22,7 @@
     <div>
         <div class="form-filled-container">
             <div class="input-container">
-                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                     [options]="roleInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
                     formControlName="role" optionLabel="name" placeholder="Select Roles" scrollHeight="150px"
                     styleClass="msgTemplate"></p-dropdown>
@@ -31,7 +31,7 @@
                 <label class="input-label">Role</label> -->
             </div>
             <div class="input-container">
-                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                     [options]="institutionInterface" [showClear]="showClearButton" appendTo="body" filterBy="name"
                     formControlName="institution" optionLabel="name" placeholder="Select Institutions" scrollHeight="150px"
                     styleClass="msgTemplate"></p-dropdown>
@@ -39,13 +39,13 @@
         </div>
         <div class="form-filled-container">
             <div class="input-container">
-                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                 [options]="typeInterface" [showClear]="showClearButton" appendTo="body"
                 filterBy="name" formControlName="type" optionLabel="name" placeholder="Select Types"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
             </div>
             <div class="input-container">
-                <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+                <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                 [options]="userGroupInterface" [showClear]="showClearButton" appendTo="body"
                 filterBy="name" formControlName="userGroup" optionLabel="name" placeholder="Select UserGroups"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>

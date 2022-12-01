@@ -29,7 +29,6 @@ import { Iso8583ResponseMappingComponent } from './modules/module/external-inter
 import { TransactionParametersComponent } from './modules/module/transaction/transaction-parameters/transaction-parameters.component';
 import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-list/terminal-list.component';
 import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
-import { EventCollectorComponent } from './modules/module/event-collector/event-collector.component';
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
 import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
@@ -240,10 +239,6 @@ const routes: Routes = [
             component: ArpComponent,
           },
         ],
-      },
-      {
-        path: 'event-collector',
-        component: EventCollectorComponent,
       },
       {
         path: 'device-monitoring',

@@ -74,7 +74,7 @@ export class AuthenticationService {
           this.logout();
           this.router.navigate(['/login']);
           window.location.reload();
-          // this.notificationService.errorNotification('Your session time was expired, Please try to login again.', 0);
+          this.notificationService.errorNotification('Your session time was expired, Please try to login again.', 0);
         } else {
           this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
           status = true;

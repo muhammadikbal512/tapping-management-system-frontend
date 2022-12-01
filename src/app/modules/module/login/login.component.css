@@ -1,6 +1,7 @@
+
 .login-container {
   @apply font-sans 
-    text-gray-700;
+    text-gray-700
 }
 
 .container-box {

@@ -23,7 +23,6 @@ import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.s
 import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
 import { ArpState } from './modules/system/arp/arp.state';
 import { AppParameterState } from './modules/application-parameters/app-parameters.state';
-import { EventCollectorState } from './modules/event-collector/event-collector.state';
 import { SchemeState } from './modules/user-management/scheme/scheme.state';
 import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
 import { InstitutionState } from './modules/user-management/institution/institution.state';
@@ -56,7 +55,6 @@ import { UserGroupState } from './modules/user-management/user-group/user-group.
       NdcState,
       ArpState,
       AppParameterState,
-      EventCollectorState,
       ResponseMappingState,
       SchemeState,
       XmlConfigState,

@@ -24,6 +24,7 @@
 }
 
 .main-content {
+  zoom: 0.8;
   @apply p-2;
 }
 

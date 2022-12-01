@@ -30,7 +30,7 @@ export class UserTableComponent implements OnInit {
   }
 
   onCellClicked(data: RowClickedEvent) {
-    this.userService.ExistingData = data
+    this.userService.ExistingData = data.data;
   }
 
   runService() {
