@@ -11,13 +11,30 @@ import {GridReadyEvent, RowClassRules, RowClickedEvent} from "ag-grid-community"
 })
 export class Iso8583FormatTableComponent implements OnInit {
   paginationSize: number = 5;
+  cols!: any[];
+  loading: boolean =true;
   constructor(
     private iso8583FormatService: MessageFormatService,
     private iso8583FormatTableService: MessageFormatTableService
   ) {}
 
   ngOnInit(): void {
-    
+    this.cols = [
+      { field: 'massageFormat', header: 'Massage Format' },
+      { field: 'description', header: 'Description' },
+
+    ];
+  }
+
+
+  showDialog() {
+    this.iso8583FormatService.openDialog();
+    this.iso8583FormatService.buttonStatus = 'create';
+  }
+  
+  onRowSelect(event: any) {
+    this.iso8583FormatService.ExistingData = event.data
+    console.log(event.data);
   }
 
   public rowClassRules: RowClassRules = {

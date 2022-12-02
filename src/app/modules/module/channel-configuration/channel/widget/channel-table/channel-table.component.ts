@@ -11,13 +11,35 @@ import {Store} from "@ngxs/store";
 })
 export class ChannelTableComponent implements OnInit, OnDestroy {
   paginationSize: number = 5; 
+  cols!: any[];
   constructor(
     private store: Store,
     private channelTableService: ChannelTableService,
     private channelService: ChannelService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cols = [
+      { field: 'channeld', header: 'Channel Id' },
+      { field: 'channeType', header: 'Channel Type' },
+      { field: 'ipAdsress', header: 'IP Address' },
+      { field: 'port', header: 'Port' },
+      { field: 'channeStatus', header: 'Channel Status' },
+      { field: 'isOnPremise', header: 'Is On Preise' },
+    ]
+  }
+
+
+
+  showDialog() {
+    this.channelService.openDialog();
+    this.channelService.buttonStatus = 'create';
+  }
+
+  onRowSelect(event: any) {
+    this.channelService.ExistingData = event.data
+    console.log(event.data)
+  }
 
   public RowClassRules: RowClassRules = {
     'ag-bg-rowIndex': (params) => {

@@ -1,34 +1,5 @@
 <div class="grid-container">
-    <div class="grid-header">
-        <div class="search-container">
-            <span class="search-icon bx bx-search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </span>
-            <input (input)="onFilterTextBoxChanged()" id="search-filter" class="search-input" type="text" placeholder="Search">
-        </div>
-        <div class="grid-header-right">
-            <p-button (onClick)="refreshTable()" icon="pi pi-refresh"></p-button>
-            <p-button class="ml-3" (onClick)="openDialog()" icon="pi pi-plus" label="Create"></p-button>
-        </div>
-    </div>
     <div class="p-4">
         <app-channel-type-table></app-channel-type-table>
-        <div class="page-size-container">
-            Page Size:
-            <select (change)="onPageSizeChanged()" id="page-size">
-              <option value="5" selected="">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="500">500</option>
-            </select>
-          </div>
     </div>
 </div>

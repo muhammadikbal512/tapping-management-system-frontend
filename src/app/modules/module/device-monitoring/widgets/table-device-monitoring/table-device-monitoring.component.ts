@@ -13,12 +13,36 @@ import { DeviceMonitoringService } from 'src/app/modules/services/module-service
   styleUrls: ['./table-device-monitoring.component.css'],
 })
 export class TableDeviceMonitoringComponent implements OnInit {
+  cols!: any[];
   constructor(
     private deviceMonitoringTableService: DeviceMonitoringTableService,
     private deviceMonitoringService: DeviceMonitoringService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cols = [
+      { field: 'deviceId', header: 'Device Id' },
+      { field: 'deviceType', header: 'Device Type' },
+      { field: 'status', header: 'Status' },
+      { field: 'deviceId', header: 'Device Id' },
+      { field: 'lastUpdate', header: 'last Update' },
+    ]
+  }
+
+
+
+
+
+
+  showDialog() {
+    this.deviceMonitoringService.openDialog();
+    this.deviceMonitoringService.buttonStatus = 'create';
+  }
+
+  onRowSelect(event: any) {
+    this.deviceMonitoringService.ExistingData = event.data
+    console.log(event.data)
+  }
 
   onGridReady(params: GridReadyEvent) {
     this.deviceMonitoringTableService.gridApi = params.api;
