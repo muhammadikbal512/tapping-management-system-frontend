@@ -6,7 +6,7 @@
 
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="transactionParams" [paginator]="true"
   [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="20" scrollHeight="500px" [autoLayout]="true" [resizableColumns]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="20" scrollHeight="400px"
   responsiveLayout="scroll"  (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
@@ -30,7 +30,7 @@
     </div>
   </ng-template>
   <ng-template pTemplate="header">
-    <tr>
+    <tr style="text-align:center">
       <th *ngFor="let col of cols">
         {{col.header}}
       </th>

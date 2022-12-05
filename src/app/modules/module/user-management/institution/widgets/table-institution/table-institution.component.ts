@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { RowClassRules, GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
+import { Select } from '@ngxs/store';
+import { Observable, tap } from 'rxjs';
+import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
 import { InstitutionTableService } from 'src/app/modules/services/module-services/institution-table.service';
 import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { InstitutionState } from 'src/app/state-configuration/modules/user-management/institution/institution.state';
 
 @Component({
   selector: 'app-table-institution',
   templateUrl: './table-institution.component.html',
-  styleUrls: ['./table-institution.component.css']
+  styleUrls: ['./table-institution.component.css'],
 })
 export class TableInstitutionComponent implements OnInit {
   constructor(
@@ -14,55 +17,36 @@ export class TableInstitutionComponent implements OnInit {
     private institutionService: InstitutionService
   ) {}
 
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    }
+  ngOnInit(): void {
+    this.getAllInstitution();
   }
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.instutitionTableService.gridApi = params.api;
-    this.instutitionTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  getAllInstitution() {
+    this.institutionService.onGetAllInstitution();
   }
 
-  runService() {
-    this.instutitionTableService.showTableLoading();
-    this.institutionService.getAllInstitutionWithDelay();
+  onRowSelect(data: any) {
+    this.institutionService.existingData = data.data;
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.institutionService.ExistingData = data
+  refreshTable() {
+    this.getAllInstitution();
   }
 
-
-  get animateRow() {
-    return this.instutitionTableService.animateRow;
+  showDialog() {
+    this.institutionService.buttonStatus = 'create';
+    this.institutionService.openDialog();
   }
 
-  get columnDefs() {
-    return this.instutitionTableService.columnDef;
+  get cols() {
+    return this.instutitionTableService.cols;
   }
 
-  get defaultColDef() {
-    return this.instutitionTableService.defaultColDef
+  get loading() {
+    return this.instutitionTableService.loading;
   }
 
-  get rowHeight() {
-    return this.instutitionTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.instutitionTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.instutitionTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.instutitionTableService.frameworkComponents;
+  get institutions() {
+    return this.instutitionTableService.institutions;
   }
 }

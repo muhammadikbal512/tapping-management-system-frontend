@@ -34,34 +34,5 @@ export class TransactionComponent implements OnInit {
   }
 
   //Export excel button
-  onExport() {
-    const stringCSV = this.transactionTableService.gridApi.getDataAsCsv()!;
-    this.papa.parse(stringCSV, {
-      header: true,
-      complete: (results) => {
-        this.exportJsonAsExcelFile(results.data, 'Transaction Table');
-      },
-    });
-  }
-
-  exportJsonAsExcelFile(json: any[], excelFileName: string) {
-    const workSheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    const workBook: XLSX.WorkBook = {
-      Sheets: { data: workSheet },
-      SheetNames: ['data'],
-    };
-    const excelBuffer = XLSX.write(workBook, {
-      bookType: 'xlsx',
-      type: 'array',
-    });
-    this.saveAsExcelFile(excelBuffer, excelFileName);
-  }
-
-  saveAsExcelFile(excelBuffer: any, excelFileName: string) {
-    const data: Blob = new Blob([excelBuffer], { type: '.xlsx' });
-    FileSaver.saveAs(
-      data,
-      excelFileName + ' - ' + new Date().toLocaleString() + '.xlsx'
-    );
-  }
+  
 }

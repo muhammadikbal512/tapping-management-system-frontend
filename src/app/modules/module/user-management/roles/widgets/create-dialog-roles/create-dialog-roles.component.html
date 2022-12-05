@@ -22,7 +22,7 @@
                 class="create-button" label="Create"
                 styleClass="p-button-sm"></p-button>
       <p-button (onClick)="onUpdateRole()" *ngIf="roleService.buttonStatus == 'edit'"
-                [disabled]="disableButton" [loading]="showLoading" class="create-button"
+                [loading]="showLoading" class="create-button"
                 label="Save"
                 styleClass="p-button-sm"></p-button>
         </mat-dialog-actions>

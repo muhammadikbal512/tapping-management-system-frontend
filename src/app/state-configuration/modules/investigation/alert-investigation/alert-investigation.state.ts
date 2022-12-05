@@ -59,6 +59,13 @@ export class AlertInvestigationState {
   getDataFromState(ctx: StateContext<AlertInvestigationStateModel>) {
     return this.alertService.getAllAlertInvestigation().pipe(
       tap((response) => {
+        if (response?.length != 0) {
+          this.alertTableService.loading = false;
+          this.alertTableService.setRowData(response);
+        } else {
+          this.alertTableService.setRowData(response);
+          this.alertTableService.loading = false;
+        }
         ctx.patchState({
           ...ctx.getState(),
           alertInvestigation: response,
@@ -91,9 +98,7 @@ export class AlertInvestigationState {
   sendCaseRejected(
     ctx: StateContext<AlertInvestigationStateModel>,
     { payload }: AlertInvestigationRejected
-  ) {
-    
-  }
+  ) {}
 
   @Action(AlertInvestigationSuccessState) ifSuccessState(
     ctx: StateContext<AlertInvestigationStateModel>,
@@ -117,11 +122,6 @@ export class AlertInvestigationState {
       errorMessage?.message,
       errorMessage?.httpStatusCode
     );
-    if (this.alertTableService.gridApi.getRenderedNodes().length == 0) {
-      this.alertTableService.showNoRowdata();
-    } else {
-      this.alertTableService.hideTableLoading();
-    }
     ctx.patchState({
       responseMessage: errorMessage,
     });

@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GridReadyEvent,
-  RowClassRules,
-  RowClickedEvent,
-} from 'ag-grid-community';
 import { TypeTableService } from 'src/app/modules/services/module-services/type-table.service';
 import { TypeService } from 'src/app/modules/services/module-services/type.service';
 
@@ -18,54 +13,36 @@ export class TableTypeComponent implements OnInit {
     private typeTableService: TypeTableService
   ) {}
 
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    },
-  };
-
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.typeTableService.gridApi = params.api;
-    this.typeTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllTypes();
   }
 
-  runService() {
-    this.typeTableService.showTableLoading();
-    this.typeService.getAllTypeWithDelay();
+  getAllTypes() {
+    this.typeService.onGetAllType();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.typeService.ExistingData = data;
+  onRowSelect(data: any) {
+    this.typeService.existingData = data.data
   }
 
-  get animateRow() {
-    return this.typeTableService.animateRow;
+  refreshTable() {
+    this.getAllTypes();
   }
 
-  get columnDefs() {
-    return this.typeTableService.columnDef;
+  showDialog() {
+    this.typeService.buttonStatus = 'create';
+    this.typeService.openDialog();
   }
 
-  get defaultColDef() {
-    return this.typeTableService.defaultColDef;
+  get cols() {
+    return this.typeTableService.cols;
   }
 
-  get rowHeight() {
-    return this.typeTableService.rowHeight;
+  get loading() {
+    return this.typeTableService.loading;
   }
 
-  get headerHeight() {
-    return this.typeTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.typeTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.typeTableService.frameworkComponents;
+  get types() {
+    return this.typeTableService.types;
   }
 }

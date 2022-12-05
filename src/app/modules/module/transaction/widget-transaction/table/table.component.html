@@ -3,7 +3,7 @@
   [showCurrentPageReport]="true" responsiveLayout="scroll"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
   [globalFilterFields]="['networkId']" [columns]="cols" [scrollable]="true" scrollHeight="400px" stateStorage="session"
-  stateKey="statedemo-session" selectionMode="single" [(selection)]="selectedEventCollector" (onRowSelect)="onRowSelect($event)">
+  stateKey="statedemo-session" selectionMode="single" (onRowSelect)="onRowSelect($event)">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="export-buttons">

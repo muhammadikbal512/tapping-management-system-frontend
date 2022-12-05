@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from 'src/app/modules/services/module-services/roles.service';
 import { RolesTableService } from 'src/app/modules/services/module-services/roles-table.service';
-import { RowClickedEvent, GridReadyEvent, RowClassRules } from 'ag-grid-community';
+import {
+  RowClickedEvent,
+  GridReadyEvent,
+  RowClassRules,
+} from 'ag-grid-community';
+import { Select } from '@ngxs/store';
+import { RolesState } from 'src/app/state-configuration/modules/user-management/roles/roles.state';
+import { RolesModel } from 'src/app/model/modules-model/roles.model';
+import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-table-roles',
@@ -14,56 +23,36 @@ export class TableRolesComponent implements OnInit {
     private rolesTableService: RolesTableService
   ) {}
 
-  ngOnInit(): void {}
-
-  rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    }
+  ngOnInit(): void {
+    this.getAllRoles();
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.rolesTableService.GridApi = params;
-    this.rolesTableService.GridColumnApi = params;
-    this.runService();
+  getAllRoles() {
+    this.rolesService.onGetAllRoles();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.rolesService.ExistingData = data;
+  refreshTable() {
+    this.getAllRoles();
   }
 
-  runService() {
-    this.rolesTableService.showTableLoading();
-    this.rolesService.getAllRolesWithDelay();
+  onRowSelect(data: any) {
+    console.log((this.rolesService.ExistingData = data.data));
   }
 
-  get animateRow() {
-    return this.rolesTableService.animateRow
+  showDialog() {
+    this.rolesService.buttonStatus = 'create';
+    this.rolesService.openDialog();
   }
 
-  get headerHeight() {
-    return this.rolesTableService.headerHeight
+  get cols() {
+    return this.rolesTableService.cols;
   }
 
-  get columnDef() {
-    return this.rolesTableService.columnDef
+  get loading() {
+    return this.rolesTableService.loading;
   }
 
-  get rowHeight() {
-    return this.rolesTableService.rowHeight
+  get roles() {
+    return this.rolesTableService.roles;
   }
-
-  get defaultColDef() {
-    return this.rolesTableService.defaultColDef
-  }
-
-  get overlayLoadingTemplate() {
-    return this.rolesTableService.overlayLoadingTemplate
-  }
-
-  get frameworkComponents() {
-    return this.rolesTableService.frameworkComponents
-  }
-
-
 }

@@ -52,33 +52,19 @@ export class TransactionState {
     return state.EventCollectors;
   }
 
-  @Action(TransactionGet, { cancelUncompleted: true }) getDataFromState(
-    ctx: StateContext<TransactionStateModel>
-  ) {
-    return this.transactionService.getAllEventCollector().pipe(
-      tap((response) => {
-        if (response?.length != 0) {
-          this.transactionTableService.hideTableLoading();
-          this.transactionTableService.setRowData(response);
-        } else {
-          this.transactionTableService.setRowData(response);
-          this.transactionTableService.showNoRowData();
-        }
-        ctx.setState({
-          ...ctx.getState(),
-          EventCollectors: response,
-        });
-      }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TransactionErrorState(response.error));
-      })
-    );
-  }
+ 
 
   @Action(EventCollectorsGet, { cancelUncompleted: true })
   getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
     return this.transactionService.getAllEventCollector().pipe(
       tap((response) => {
+        if (response?.length != 0) {
+          this.transactionTableService.loading = false;
+          this.transactionTableService.eventCollectors = response;
+        } else {
+          this.transactionTableService.loading = false;
+          this.transactionTableService.eventCollectors = response;
+        }
         ctx.setState({
           ...ctx.getState(),
           EventCollectors: response,

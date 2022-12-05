@@ -8,7 +8,6 @@ import { UserService } from 'src/app/modules/services/module-services/user.servi
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { Select } from '@ngxs/store';
-import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
 import { Observable } from 'rxjs';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
 import { TypeInterface } from 'src/app/interface/modules/type';
@@ -18,6 +17,14 @@ import { RolesModel } from 'src/app/model/modules-model/roles.model';
 import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
 import { TypeModel } from 'src/app/model/modules-model/type.model';
 import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
+import { RolesState } from 'src/app/state-configuration/modules/user-management/roles/roles.state';
+import { TypeState } from 'src/app/state-configuration/modules/user-management/type/type.state';
+import { InstitutionState } from 'src/app/state-configuration/modules/user-management/institution/institution.state';
+import { UserGroupState } from 'src/app/state-configuration/modules/user-management/user-group/user-group.state';
+import { RolesService } from 'src/app/modules/services/module-services/roles.service';
+import { TypeService } from 'src/app/modules/services/module-services/type.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -25,13 +32,13 @@ import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
   styleUrls: ['./user-create-dialog.component.css'],
 })
 export class UserCreateDialogComponent implements OnInit, AfterViewInit {
-  @Select(UserState.Roles)
+  @Select(RolesState.Roles)
   Roles$!: Observable<RoleInterface[]>;
-  @Select(UserState.Types)
+  @Select(TypeState.Type)
   Types$!: Observable<TypeInterface[]>;
-  @Select(UserState.Institutions)
+  @Select(InstitutionState.institutions)
   Institutions$!: Observable<InstitutionInterface[]>;
-  @Select(UserState.UserGroups)
+  @Select(UserGroupState.UserGroups)
   UserGroups$!: Observable<UsergroupInterface[]>;
 
   form!: FormGroup;
@@ -45,31 +52,31 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   showLoading: boolean = false;
   constructor(
     public userService: UserService,
+    private roleService: RolesService,
+    private typeService: TypeService,
+    private institutionService: InstitutionService,
+    private usersGroup: UserGroupService,
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.createFormat();
-    this.userService.OnGetAllRoles();
-    this.userService.OnGetAllInstitutions();
-    this.userService.OnGetAllTypes();
-    this.userService.OnGetAllUserGroups();
+    this.roleService.onGetAllRoles();
+    this.typeService.onGetAllType();
+    this.usersGroup.onGetAllUserGroup();
+    this.institutionService.onGetAllInstitution();
     this.Roles$.subscribe((data) => {
-      this.roleInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.roleInterface = data
     });
     this.Types$.subscribe((data) => {
-      this.typeInterface = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.typeInterface = data;
     });
     this.Institutions$.subscribe((data) => {
-      this.institutionInterface = data.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
+      this.institutionInterface = data;
     });
     this.UserGroups$.subscribe((data) => {
-      this.userGroupInterface = data.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
+      this.userGroupInterface = data;
     });
   }
 
@@ -123,7 +130,7 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.email.setValue(this.existingEmail);
     this.role.setValue({
       name: this.existingRole.roleName,
-      code: String(this.existingRole.id)
+      code: String(this.existingRole.id),
     });
     this.institution.setValue({
       name: this.existingInstitution.institutionName,
@@ -161,14 +168,10 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.lastName = this.lastName.value;
     this.userModel.username = this.username.value;
     this.userModel.email = this.email.value;
-    this.userModel.role = new RolesModel(Number(this.role.value.code));
-    this.userModel.institution = new InstitutionModel(
-      Number(this.institution.value.code)
-    );
-    this.userModel.type = new TypeModel(Number(this.type.value.code));
-    this.userModel.userGroup = new UserGroupModel(
-      Number(this.userGroup.value.code)
-    );
+    this.userModel.role = this.role.value
+    this.userModel.institution = this.institution.value
+    this.userModel.type = this.type.value
+    this.userModel.userGroup = this.userGroup.value;
     this.userModel.active = this.isActive.value;
     this.userModel.notLocked = this.isNonLocked.value;
     this.userModel.profileImageUrl = '';
@@ -191,6 +194,18 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
 
   set InstitutionGroupInterfaces(optionList: InstitutionInterface[]) {
     this.institutionInterface = optionList;
+  }
+
+  set RolesGroupInterfaces(optionList: RoleInterface[]) {
+    this.roleInterface = optionList;
+  }
+
+  set TypesGroupInterfaces(optionList: TypeInterface[]) {
+    this.typeInterface = optionList;
+  }
+
+  set UserGroupInterfaces(optionList: UsergroupInterface[]) {
+    this.userGroupInterface = optionList;
   }
 
   get firstName() {

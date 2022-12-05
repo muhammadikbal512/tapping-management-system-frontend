@@ -71,7 +71,6 @@ export class RolesService {
   }
 
   onGetAllRoles() {
-    this.rolesTableService.showTableLoading();
     this.rolesDispatch._RolesGetDispatch();
   }
 
@@ -107,7 +106,7 @@ export class RolesService {
     this.dialog.closeAll();
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: RolesModel) {
+    this.existingData = data;
   }
 }

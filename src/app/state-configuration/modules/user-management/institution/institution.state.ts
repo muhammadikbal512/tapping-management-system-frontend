@@ -59,12 +59,12 @@ export class InstitutionState {
   ) {
     return this.institutionService.getAllInstitution().pipe(
       tap((response) => {
-        if (response.length != 0) {
-          this.institutionTableService.showTableLoading();
+        if (response?.length != 0) {
+          this.institutionTableService.loading = false;
           this.institutionTableService.setRowData(response);
         } else {
+          this.institutionTableService.loading = false;
           this.institutionTableService.setRowData(response);
-          this.institutionTableService.showNoRowData();
         }
         ctx.patchState({
           ...ctx.getState(),
@@ -183,15 +183,9 @@ export class InstitutionState {
     { errorMessage }: InstitutionStateError
   ) {
     this.notifierService.errorNotification(
-      errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage?.message,
+      errorMessage?.httpStatusCode
     );
-
-    if (this.institutionTableService.gridApi.getRenderedNodes().length == 0) {
-      this.institutionTableService.showNoRowData();
-    } else {
-      this.institutionTableService.hideTableLoading();
-    }
 
     if (this.institutionService.getCurrentStatusDialog().length != 0) {
       this.institutionService.closeDialog();

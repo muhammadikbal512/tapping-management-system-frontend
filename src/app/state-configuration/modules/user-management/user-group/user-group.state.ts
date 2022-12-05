@@ -59,13 +59,17 @@ export class UserGroupState {
   ) {
     return this.userGroupService.getAllUserGroup().pipe(
       tap((response) => {
-        if (response.length != 0) {
-          this.userGroupTableService.hideTableLoading();
+        if (response?.length != 0) {
+          this.userGroupTableService.loading = false;
           this.userGroupTableService.setRowData(response);
         } else {
+          this.userGroupTableService.loading = false;
           this.userGroupTableService.setRowData(response);
-          this.userGroupTableService.showNoRowData();
         }
+        ctx.patchState({
+          ...ctx.getState(),
+          UserGroups: response,
+        });
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new UserGroupError(response.error));
@@ -84,8 +88,9 @@ export class UserGroupState {
           ...ctx.getState(),
           UserGroupsWithUsers: response,
         });
-      }), catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new UserGroupError(response.error))
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserGroupError(response.error));
       })
     );
   }
@@ -181,11 +186,6 @@ export class UserGroupState {
       errorMessage.message,
       errorMessage.status
     );
-    if (this.userGroupTableService.gridApi.getRenderedNodes().length == 0) {
-      this.userGroupTableService.showNoRowData();
-    } else {
-      this.userGroupTableService.hideTableLoading();
-    }
 
     if (this.userGroupService.getCurrentStatusDialog().length != 0) {
       this.userGroupService.closeDialog();

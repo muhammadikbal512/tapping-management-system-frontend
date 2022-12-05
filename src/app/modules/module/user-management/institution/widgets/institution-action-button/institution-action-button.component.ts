@@ -5,7 +5,7 @@ import { InstitutionService } from 'src/app/modules/services/module-services/ins
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
-  selector: 'app-user-action-button',
+  selector: 'app-institution-action-button',
   templateUrl: './institution-action-button.component.html',
   styleUrls: ['./institution-action-button.component.css']
 })

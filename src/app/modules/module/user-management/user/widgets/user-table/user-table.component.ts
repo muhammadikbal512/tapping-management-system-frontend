@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
-import { GridReadyEvent, RowClickedEvent, RowClassRules } from 'ag-grid-community';
+import { UserModel } from 'src/app/model/user-model/user.model';
+import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { Select } from '@ngxs/store';
+import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-table',
@@ -9,60 +13,39 @@ import { GridReadyEvent, RowClickedEvent, RowClassRules } from 'ag-grid-communit
   styleUrls: ['./user-table.component.css'],
 })
 export class UserTableComponent implements OnInit {
-  paginationSize: number = 5;
   constructor(
     private userService: UserService,
-    private userTableService: UserTableService
+    private userTableService: UserTableService,
+    private notifierService: NotificationService
   ) {}
 
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    }
+  ngOnInit(): void {
+    this.getAllUsers();
   }
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.userTableService.GridApi = params;
-    this.userTableService.GridcolumnApi = params;
-    this.runService()
+  getAllUsers() {
+    this.userService.onGetAllUser();
   }
 
-  onCellClicked(data: RowClickedEvent) {
+  onRowSelect(data: any) {
+    console.log(data);
     this.userService.ExistingData = data.data;
   }
 
-  runService() {
-    this.userTableService.showTableLoading();
-    this.userService.getAllUserWithDelay();
+  showDialog() {
+    this.userService.buttonStatus = 'create';
+    this.userService.openDialog();
   }
 
-  get animateRow() {
-    return this.userTableService.animateRow;
+  get cols() {
+    return this.userTableService.cols;
   }
 
-  get columnDefs() {
-    return this.userTableService.columnDef;
+  get loading() {
+    return this.userTableService.loading;
   }
 
-  get defaultColDef() {
-    return this.userTableService.defaultColDef
-  }
-
-  get rowHeight() {
-    return this.userTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.userTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.userTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.userTableService.frameworkComponents;
+  get users() {
+    return this.userTableService.users;
   }
 }

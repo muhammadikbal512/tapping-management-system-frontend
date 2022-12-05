@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { TransactionParametersModel } from 'src/app/model/modules-model/transaction-parameters';
 import { environment } from 'src/environments/environment';
@@ -36,9 +36,12 @@ export class TransactionParametersService {
   }
 
   addTransanctionParameter(data: TransactionParametersModel) {
+    const params = new HttpParams()
+    .set('attributeName', data.attributeName)
+    .set('description', data.description)
     return this.http.post<CustomHttpResponseModel>(
       `${this.apiUrl}/TransactionParameters/add`,
-      data
+      data, {params}
     );
   }
 

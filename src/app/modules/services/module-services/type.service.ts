@@ -69,7 +69,6 @@ export class TypeService {
   }
 
   onGetAllType() {
-    this.typeTableService.showTableLoading();
     this.typeDispatch._TypeGetDispatch();
   }
 
@@ -106,7 +105,7 @@ export class TypeService {
     this.buttonStatus = 'create'
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: TypeModel) {
+    this.existingData = data;
   }
 }

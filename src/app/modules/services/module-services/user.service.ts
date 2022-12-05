@@ -3,8 +3,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserModel } from '../../../model/user-model/user.model';
 import { environment } from 'src/environments/environment';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { RowClickedEvent } from 'ag-grid-community';
-import { UserTableService } from './user-table.service';
 import { UserDispatch } from 'src/app/state-configuration/modules/user-management/user/user.dispatch';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserCreateDialogComponent } from '../../module/user-management/user/widgets/user-create-dialog/user-create-dialog.component';
@@ -23,7 +21,6 @@ export class UserService {
   };
   constructor(
     private http: HttpClient,
-    private userTableService: UserTableService,
     private userDispatch: UserDispatch,
     private dialog: MatDialog
   ) {}
@@ -93,24 +90,7 @@ export class UserService {
   }
 
   onGetAllUser() {
-    this.userTableService.showTableLoading();
     this.userDispatch._UserGetDispatch();
-  }
-
-  OnGetAllRoles() {
-    this.userDispatch._UserGetRolesDispatch();
-  }
-
-  OnGetAllInstitutions() {
-    this.userDispatch._UserGetInstitutionDispatch();
-  }
-
-  OnGetAllTypes() {
-    this.userDispatch._UserGetTypeDispatch();
-  }
-
-  OnGetAllUserGroups() {
-    this.userDispatch._UserGetUserGroup();
   }
 
   onCreateUser(data: UserModel) {

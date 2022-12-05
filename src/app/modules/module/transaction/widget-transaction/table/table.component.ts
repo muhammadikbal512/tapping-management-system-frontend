@@ -7,6 +7,7 @@ import { EventCollectorModel } from 'src/app/model/modules-model/event-collector
 import { Select } from '@ngxs/store';
 import { TransactionState } from 'src/app/state-configuration/modules/transaction/transaction.state';
 import { Observable } from 'rxjs';
+import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
 
 @Component({
   selector: 'app-table',
@@ -18,52 +19,21 @@ export class TableComponent implements OnInit {
   eventCollectors$!: Observable<EventCollectorModel[]>;
   constructor(
     private transactionApiService: TransactionService,
-    private notifierService: NotificationService
+    private transactionTableService: TransactionTableService,
   ) {}
-
-  eventCollectors!: EventCollectorModel[];
-  selectedEventCollector!: EventCollectorModel;
-  cols!: any[];
-  loading!: boolean;
-  exportColumns!: any[];
 
   ngOnInit(): void {
     this.getEventCollector();
-    this.cols = [
-      { field: 'timestamp', header: 'Time Stamp' },
-      { field: 'srcAddress', header: 'Src Address' },
-      { field: 'dstAddress', header: 'Dst Address' },
-      { field: 'flag', header: 'Flag' },
-      { field: 'typeMessage', header: 'Type Message' },
-      { field: 'status', header: 'Status' },
-      { field: 'incidentDetails', header: 'Incident Details' },
-    ];
-    this.exportColumns = this.cols.map((col) => ({
-      title: col.header,
-      dataKey: col.field,
-    }));
+    
+    
   }
 
   getEventCollector() {
-    this.transactionApiService.getEventCollectorWithDelay();
-    this.eventCollectors$.subscribe(
-      {
-        next: (response) => {
-          this.eventCollectors = response;
-          this.loading = false;
-        },
-        error: (err) => {
-          this.notifierService.errorNotification(err?.message, err?.status);
-          this.loading = false;
-        },
-        complete: () => this.loading = false
-      }
-    );
+    this.transactionApiService.onGetAllEventCollector();
   }
 
   refreshTable() {
     this.getEventCollector();
-    this.loading = true;
   }
 
   onRowSelect(event: any) {
@@ -93,6 +63,18 @@ export class TableComponent implements OnInit {
       data,
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
+  }
+
+  get eventCollectors() {
+    return this.transactionTableService.eventCollectors;
+  }
+  
+  get loading() {
+    return this.transactionTableService.loading
+  }
+
+  get cols() {
+    return this.transactionTableService.cols;
   }
 }
 

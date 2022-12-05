@@ -54,14 +54,13 @@ export class TypeState {
   ) {
     return this.typeService.getAllType().pipe(
       tap((response) => {
-        if (response.length != 0) {
-          this.typeTableService.showTableLoading();
+        if (response?.length != 0) {
+          this.typeTableService.loading = false;
           this.typeTableService.setRowData(response);
         } else {
+          this.typeTableService.loading = false;
           this.typeTableService.setRowData(response);
-          this.typeTableService.showNoRowData();
         }
-
         ctx.patchState({
           ...ctx.getState(),
           Type: response,
@@ -84,8 +83,9 @@ export class TypeState {
           ...ctx.getState(),
           TypeWithUsers: response,
         });
-      }), catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TypeErrorState(response.error))
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TypeErrorState(response.error));
       })
     );
   }
@@ -161,8 +161,8 @@ export class TypeState {
     { successMessage }: TypeSuccessState
   ) {
     this.notifierService.successNotification(
-      successMessage.message,
-      successMessage.httpStatusCode
+      successMessage?.message,
+      successMessage?.httpStatusCode
     );
 
     if (this.typeService.getCurrentStatusDialog().length != 0) {
@@ -180,15 +180,9 @@ export class TypeState {
     { errorMessage }: TypeErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage.message,
-      errorMessage.status
+      errorMessage?.message,
+      errorMessage?.status
     );
-
-    if (this.typeTableService.gridApi.getRenderedNodes().length == 0) {
-      this.typeTableService.showNoRowData();
-    } else {
-      this.typeTableService.showTableLoading();
-    }
 
     if (this.typeService.getCurrentStatusDialog().length == 0) {
       this.typeService.closeDialog();

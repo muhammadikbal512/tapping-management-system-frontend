@@ -70,7 +70,6 @@ export class UserGroupService {
   }
 
   onGetAllUserGroup() {
-    this.userGroupTableService.showTableLoading();
     this.userGroupDispatch._UserGroupGetDispatch();
   }
 
@@ -102,7 +101,7 @@ export class UserGroupService {
     return this.dialog.closeAll()
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data
+  set ExistingData(data: UserGroupModel) {
+    this.existingData = data
   }
 }

@@ -55,14 +55,13 @@ export class RolesState {
   ) {
     return this.rolesService.getAllRoles().pipe(
       tap((response) => {
-        if (response.length != 0) {
-          this.rolesTableService.hideTableLoading();
+        if (response?.length != 0) {
+          this.rolesTableService.loading = false;
           this.rolesTableService.setRowData(response);
         } else {
+          this.rolesTableService.loading = false;
           this.rolesTableService.setRowData(response);
-          this.rolesTableService.showNoRowData();
         }
-
         ctx.patchState({
           ...ctx.getState(),
           Roles: response,
@@ -179,12 +178,6 @@ export class RolesState {
     ctx: StateContext<RolesStateModel>,
     { errorMessage }: RolesErrorState
   ) {
-    if (this.rolesTableService.gridApi.getRenderedNodes().length == 0) {
-      this.rolesTableService.showNoRowData();
-    } else {
-      this.rolesTableService.hideTableLoading();
-    }
-
     if (this.rolesService.getCurrentStatusDialog().length != 0) {
       this.rolesService.closeDialog();
     }

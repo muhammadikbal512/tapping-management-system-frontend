@@ -14,55 +14,19 @@ import { AlertInvestigationState } from 'src/app/state-configuration/modules/inv
   styleUrls: ['./alert-analysis-table.component.css'],
 })
 export class AlertAnalysisTableComponent implements OnInit {
-  @Select(AlertInvestigationState.alertInvestigation)
-  alertInvestigation$!: Observable<AlertInvestigationModel[]>;
-  paginationSize: number = 5;
-  alerts!: AlertInvestigationModel[];
-  alert!: AlertInvestigationModel;
-  loading!: boolean;
-  cols!: any[];
-  cols1!: any[];
-  networks!: any[];
   constructor(
     private alertService: AlertInvestigationService,
-    private notifierService: NotificationService
+    private alertTableService: AlertInvestigationTableService
   ) {}
   ngOnInit(): void {
     this.getAlertTable();
-    this.cols = [
-      { field: 'lockedByUser', header: 'Locked By User' },
-      { field: 'caseId', header: 'Case ID' },
-      { field: 'caseCreationDate', header: 'Case Creation Date' },
-      { field: 'classificationType', header: 'Classification Type' },
-      { field: 'classificationStatus', header: 'Classification Status' },
-      { field: 'privateScheme', header: 'Private Scheme' },
-    ];
-    this.cols1 = [
-      { field: 'networkId', header: 'Network ID' },
-      { field: 'srcAddress', header: 'Src Address' },
-      { field: 'dstAddress', header: 'Dst Address' },
-      { field: 'flag', header: 'Flag' },
-      { field: 'responseCode', header: 'Response Code' },
-      { field: 'sequenceNumber', header: 'Sequence Number' },
-    ];
   }
 
   getAlertTable() {
     this.alertService.onGetAllAlertInvestigation();
-    this.alertInvestigation$.subscribe(
-      (response) => {
-        this.alerts = response;
-        this.loading = false;
-      },
-      (err) => {
-        this.notifierService.errorNotification(err!.message, err!.status);
-        this.loading = false;
-      }
-    );
   }
 
   refreshTable() {
-    this.loading = true;
     this.getAlertTable();
   }
 
@@ -94,5 +58,21 @@ export class AlertAnalysisTableComponent implements OnInit {
       data,
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
+  }
+
+  get cols() {
+    return this.alertTableService.cols;
+  }
+
+  get cols1() {
+    return this.alertTableService.cols1;
+  }
+
+  get alerts() {
+    return this.alertTableService.alerts;
+  }
+
+  get loading() {
+    return this.alertTableService.loading;
   }
 }

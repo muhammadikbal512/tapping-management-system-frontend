@@ -76,7 +76,6 @@ export class InstitutionService {
   }
 
   onGetAllInstitution() {
-    this.institutionTableService.showTableLoading();
     this.institutionDispatch._InstitutionGetDispatch();
   }
 

@@ -16,7 +16,7 @@ export class TransactionParamTableComponent implements OnInit {
   transactionParams$!: Observable<TransactionParametersModel[]>;
   cols!: any[];
   transactionParams!: TransactionParametersModel[];
-  loading: boolean = true;
+  loading!: boolean;
   constructor(
     private transactionParametersService: TransactionParametersService,
     private notifierService: NotificationService
@@ -28,18 +28,21 @@ export class TransactionParamTableComponent implements OnInit {
       { field: 'attributeName', header: 'Attribute Name' },
       { field: 'description', header: 'Description' },
     ];
+    this.loading = true;
   }
-  
+
   getTransactionParam() {
     this.transactionParametersService.onGetAllTransactionParameters();
     this.transactionParams$.subscribe(
-      (response) => {
-        this.transactionParams = response;
-        this.loading = false;
-      },
-      (err) => {
-        this.notifierService.errorNotification(err?.message, err?.status);
-        this.loading = false;
+      {
+        next: (response) => {
+          this.transactionParams = response;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.notifierService.errorNotification(err?.message, err?.status);
+          this.loading = false;
+        },
       }
     );
   }
@@ -50,7 +53,7 @@ export class TransactionParamTableComponent implements OnInit {
   }
 
   onRowSelect(event: any) {
-    this.transactionParametersService.ExistingData = event.data
-    console.log(event.data)
+    this.transactionParametersService.ExistingData = event.data;
+    console.log(event.data);
   }
 }

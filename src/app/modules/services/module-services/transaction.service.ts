@@ -39,7 +39,6 @@ export class TransactionService {
   }
 
   onGetAllTransactionList() {
-    this.transactionTableService.showTableLoading();
     this.transactionDispatch._TransactionGetDispatch();
   }
 

@@ -5,7 +5,7 @@ import { UserService } from 'src/app/modules/services/module-services/user.servi
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
-  selector: 'app-user-action-button',
+  selector: 'app-users-action-button',
   templateUrl: './user-action-button.component.html',
   styleUrls: ['./user-action-button.component.css']
 })
