@@ -57,9 +57,11 @@ export class RolesState {
       tap((response) => {
         if (response?.length != 0) {
           this.rolesTableService.loading = false;
+
           this.rolesTableService.setRowData(response);
         } else {
           this.rolesTableService.loading = false;
+
           this.rolesTableService.setRowData(response);
         }
         ctx.patchState({
@@ -178,6 +180,7 @@ export class RolesState {
     ctx: StateContext<RolesStateModel>,
     { errorMessage }: RolesErrorState
   ) {
+    this.rolesTableService.loading = false;
     if (this.rolesService.getCurrentStatusDialog().length != 0) {
       this.rolesService.closeDialog();
     }

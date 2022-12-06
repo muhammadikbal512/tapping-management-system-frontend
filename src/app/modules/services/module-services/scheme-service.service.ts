@@ -45,7 +45,6 @@ export class SchemeServiceService {
 
   onGetAllScheme() {
     this.schemeDispatch._SchemeGetDispatch();
-    this.schemeTableService.showTableLoading();
   }
 
   openDialog() {
@@ -58,5 +57,9 @@ export class SchemeServiceService {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  set ExistingData(data: SchemeModel) {
+    this.existingData = data
   }
 }

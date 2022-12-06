@@ -37,6 +37,7 @@ export class ChannelTypeTableComponent implements OnInit, OnDestroy {
   }
 
   onCellClicked(data: RowClickedEvent) {
+    console.log(data)
     this.channelTypeService.ExistingData = data.data;
   }
 

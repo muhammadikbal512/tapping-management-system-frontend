@@ -61,9 +61,11 @@ export class UserGroupState {
       tap((response) => {
         if (response?.length != 0) {
           this.userGroupTableService.loading = false;
+
           this.userGroupTableService.setRowData(response);
         } else {
           this.userGroupTableService.loading = false;
+
           this.userGroupTableService.setRowData(response);
         }
         ctx.patchState({
@@ -182,6 +184,7 @@ export class UserGroupState {
     ctx: StateContext<UserGroupStateModel>,
     { errorMessage }: UserGroupError
   ) {
+    this.userGroupTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.status

@@ -51,6 +51,15 @@ export class TransactionParametersState {
   getDataFromState(ctx: StateContext<TransactionParametersStateModel>) {
     return this.transactionService.getAllParametersList().pipe(
       tap((response) => {
+        if (response?.length != 0) {
+          this.transactionTableService.loading = false;
+
+          this.transactionTableService.setRowData(response);
+        } else {
+          this.transactionTableService.loading = false;
+
+          this.transactionTableService.setRowData(response);
+        }
         ctx.patchState({
           ...ctx.getState(),
           transactionParameters: response,
@@ -156,6 +165,7 @@ export class TransactionParametersState {
     ctx: StateContext<TransactionParametersStateModel>,
     { errorMessage }: TransactionParametersErrorState
   ) {
+    this.transactionTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.status

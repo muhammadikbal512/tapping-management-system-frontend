@@ -14,46 +14,39 @@ export class SchemeTableComponent implements OnInit {
     private schemeService: SchemeServiceService
   ) {}
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.schemeTable.gridApi = params.api;
-    this.schemeTable.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllPrivateScheme();
   }
 
-  runService() {
-    this.schemeTable.showTableLoading();
-    this.schemeService.getAllSchemeWithDelay();
+  getAllPrivateScheme() {
+    this.schemeService.onGetAllScheme();
   }
 
-  onCellClicked(data: RowClickedEvent) {}
-
-  get animateRow() {
-    return this.schemeTable.animateRow;
+  showDialog() {
+    this.schemeService.openDialog();
+    this.schemeService.buttonStatus = 'create';
   }
 
-  get headerHeight() {
-    return this.schemeTable.headerHeight;
+  onRowSelect(data: any) {
+    this.schemeService.existingData = data.data
   }
 
-  get rowHeight() {
-    return this.schemeTable.rowHeight;
+  refreshTable() {
+    this.schemeTable.loading = true;
+    this.schemeService.onGetAllScheme();
   }
 
-  get defaultColDef() {
-    return this.schemeTable.defaultColDef;
+  get privateSchemes() {
+    return this.schemeTable.privateSchemes;
   }
 
-  get columnDefs() {
-    return this.schemeTable.columnDefs;
+  get cols() {
+    return this.schemeTable.cols;
   }
 
-  get overlayLoadingTemplate() {
-    return this.schemeTable.overlayLoadingTemplate;
+  get loading() {
+    return this.schemeTable.loading;
   }
 
-  get frameworkComponents() {
-    return this.schemeTable.frameworkComponents;
-  }
+
 }

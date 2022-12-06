@@ -42,11 +42,11 @@ export class TableInstitutionComponent implements OnInit {
     return this.instutitionTableService.cols;
   }
 
-  get loading() {
-    return this.instutitionTableService.loading;
-  }
-
   get institutions() {
     return this.instutitionTableService.institutions;
+  }
+
+  get loading() {
+    return this.instutitionTableService.loading;
   }
 }

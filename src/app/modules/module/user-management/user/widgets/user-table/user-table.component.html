@@ -28,13 +28,35 @@
       <th style="min-width:100px;" *ngFor="let col of cols">
         {{col.header}}
       </th>
+      <th>
+        Status
+      </th>
+      <th>Role</th>
+      <th>Institution</th>
+      <th>Type</th>
+      <th>UserGroup</th>
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
       <td style="min-width:100px;" *ngFor="let col of cols">
         {{rowData[col.field]}}
+      </td>
+      <td>
+        <span [ngClass]="{'notActive': rowData.active == true, 'active': rowData.active == false}"></span>
+      </td>
+      <td>
+        {{rowData.role.roleName}}
+      </td>
+      <td>
+        {{rowData.type.typeName}}
+      </td>
+      <td>
+        {{rowData.institution.institutionName}}
+      </td>
+      <td>
+        {{rowData.userGroup.groupName}}
       </td>
       <td style="min-width:100px;" [pSelectableRow]="rowData">
         <app-users-action-button></app-users-action-button>

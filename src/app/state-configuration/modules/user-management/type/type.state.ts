@@ -56,9 +56,11 @@ export class TypeState {
       tap((response) => {
         if (response?.length != 0) {
           this.typeTableService.loading = false;
+
           this.typeTableService.setRowData(response);
         } else {
           this.typeTableService.loading = false;
+
           this.typeTableService.setRowData(response);
         }
         ctx.patchState({
@@ -179,6 +181,7 @@ export class TypeState {
     ctx: StateContext<TypeStateModel>,
     { errorMessage }: TypeErrorState
   ) {
+    this.typeTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.status

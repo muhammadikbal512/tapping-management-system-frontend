@@ -48,11 +48,13 @@ export class SchemeState {
     return this.schemeService.getAllScheme().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.schemeTableService.hideTableLoading();
+          this.schemeTableService.loading = false;
+
           this.schemeTableService.setRowData(response);
         } else {
+          this.schemeTableService.loading = false;
+
           this.schemeTableService.setRowData(response);
-          this.schemeTableService.showNoRowData();
         }
 
         ctx.patchState({
@@ -73,31 +75,26 @@ export class SchemeState {
     this.notifierService.successNotification(
       successMessage.message,
       successMessage.httpStatusCode
-    )
+    );
 
     this.schemeService.onGetAllScheme();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(SchemeErrorState) ifStateError(
     ctx: StateContext<SchemeStateModel>,
     { errorMessage }: SchemeErrorState
   ) {
+    this.schemeTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.status
-    )
-
-    if(this.schemeTableService.gridApi.getRenderedNodes().length == 0 ) {
-      this.schemeTableService.showNoRowData();
-    } else {
-      this.schemeTableService.hideTableLoading();
-    }
+    );
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

@@ -54,10 +54,12 @@ export class UserState {
     return this.userService.getAllUsers().pipe(
       tap((response) => {
         if (response?.length != 0) {
-          this.userTableService.loading = false;
+    this.userTableService.loading = false;
+
           this.userTableService.setRowData(response);
         } else {
-          this.userTableService.loading = false;
+    this.userTableService.loading = false;
+
           this.userTableService.setRowData(response);
         }
         ctx.setState({
@@ -174,6 +176,7 @@ export class UserState {
     ctx: StateContext<UserStateModel>,
     { errorMessage }: UserErrorState
   ) {
+    this.userTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.status

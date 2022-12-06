@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
-import { TransactionParametersModel } from 'src/app/model/modules-model/transaction-parameters';
-import { Select } from '@ngxs/store';
-import { TransactionParametersState } from 'src/app/state-configuration/modules/transaction-parameters/transaction-parameters.state';
-import { Observable } from 'rxjs';
-import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction-parameters-table.service';
 
 @Component({
   selector: 'app-transaction-param-table',
@@ -12,39 +8,17 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
   styleUrls: ['./transaction-param-table.component.css'],
 })
 export class TransactionParamTableComponent implements OnInit {
-  @Select(TransactionParametersState.transactionParameters)
-  transactionParams$!: Observable<TransactionParametersModel[]>;
-  cols!: any[];
-  transactionParams!: TransactionParametersModel[];
-  loading!: boolean;
   constructor(
     private transactionParametersService: TransactionParametersService,
-    private notifierService: NotificationService
+    private transactionParamsTable: TransactionParametersTableService
   ) {}
 
   ngOnInit(): void {
     this.getTransactionParam();
-    this.cols = [
-      { field: 'attributeName', header: 'Attribute Name' },
-      { field: 'description', header: 'Description' },
-    ];
-    this.loading = true;
   }
 
   getTransactionParam() {
     this.transactionParametersService.onGetAllTransactionParameters();
-    this.transactionParams$.subscribe(
-      {
-        next: (response) => {
-          this.transactionParams = response;
-          this.loading = false;
-        },
-        error: (err) => {
-          this.notifierService.errorNotification(err?.message, err?.status);
-          this.loading = false;
-        },
-      }
-    );
   }
 
   showDialog() {
@@ -54,6 +28,17 @@ export class TransactionParamTableComponent implements OnInit {
 
   onRowSelect(event: any) {
     this.transactionParametersService.ExistingData = event.data;
-    console.log(event.data);
+  }
+
+  get cols() {
+    return this.transactionParamsTable.cols;
+  }
+
+  get loading() {
+    return this.transactionParamsTable.loading;
+  }
+
+  get transactionParams() {
+    return this.transactionParamsTable.transactionParams;
   }
 }

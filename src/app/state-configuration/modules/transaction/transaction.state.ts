@@ -52,18 +52,18 @@ export class TransactionState {
     return state.EventCollectors;
   }
 
- 
-
   @Action(EventCollectorsGet, { cancelUncompleted: true })
   getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
     return this.transactionService.getAllEventCollector().pipe(
       tap((response) => {
         if (response?.length != 0) {
           this.transactionTableService.loading = false;
-          this.transactionTableService.eventCollectors = response;
+
+          this.transactionTableService.setRowData(response);
         } else {
           this.transactionTableService.loading = false;
-          this.transactionTableService.eventCollectors = response;
+
+          this.transactionTableService.setRowData(response);
         }
         ctx.setState({
           ...ctx.getState(),
@@ -94,6 +94,7 @@ export class TransactionState {
     ctx: StateContext<TransactionStateModel>,
     { errorMessage }: TransactionErrorState
   ) {
+    this.transactionTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.status

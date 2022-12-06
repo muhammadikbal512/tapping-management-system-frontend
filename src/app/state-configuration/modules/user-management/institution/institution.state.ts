@@ -33,6 +33,7 @@ export class InstitutionStateModel {
 })
 @Injectable()
 export class InstitutionState {
+  loading: boolean = true;
   constructor(
     private institutionService: InstitutionService,
     private institutionTableService: InstitutionTableService,
@@ -60,10 +61,10 @@ export class InstitutionState {
     return this.institutionService.getAllInstitution().pipe(
       tap((response) => {
         if (response?.length != 0) {
-          this.institutionTableService.loading = false;
+              this.institutionTableService.loading = false;
           this.institutionTableService.setRowData(response);
         } else {
-          this.institutionTableService.loading = false;
+              this.institutionTableService.loading = false;
           this.institutionTableService.setRowData(response);
         }
         ctx.patchState({
@@ -182,6 +183,7 @@ export class InstitutionState {
     ctx: StateContext<InstitutionStateModel>,
     { errorMessage }: InstitutionStateError
   ) {
+    this.institutionTableService.loading = false;
     this.notifierService.errorNotification(
       errorMessage?.message,
       errorMessage?.httpStatusCode
