@@ -10,14 +10,34 @@ import { ChannelTypeService } from 'src/app/modules/services/module-services/cha
 })
 export class ChannelTypeTableComponent implements OnInit, OnDestroy {
   paginationSize: number = 5;
+  loading: boolean = true;
+  cols!: any[];
   constructor(
     private channelTypeService: ChannelTypeService,
     private channelTypeTableService: ChannelTypeTableService
   ) {}
 
   ngOnInit(): void {
-    
+    this.cols =[
+      { field: 'chaneltype', header: 'Chanel Type' },
+      { field: 'massagetamplate', header: 'Masagae Tamplate' },
+      { field: 'description', header: 'Description' },
+
+    ]
   }
+
+
+  showDialog() {
+    this.channelTypeService.openDialog();
+    this.channelTypeService.buttonStatus = 'create';
+  }
+
+
+  onRowSelect(event: any) {
+    this.channelTypeService.ExistingData = event.data
+    console.log(event.data)
+  }
+
 
   public RowClassRules: RowClassRules = {
     'ag-bg-rowIndex': (params) => {

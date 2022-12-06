@@ -9,13 +9,29 @@ import { AppParametersService } from 'src/app/modules/services/module-services/a
   styleUrls: ['./table-arp.component.css'],
 })
 export class TableArpComponent implements OnInit {
+  cols!: any[];
   constructor(
     private appTableService: AppParametersTableService,
     private appService: AppParametersService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cols =[
+      { field: 'nameSeting', header: 'Name Seting' },
+      { field: 'value', header: 'Value' },
+    ]
+  }
 
+
+  showDialog() {
+    this.appService.openDialog();
+    this.appService.buttonStatus = 'create';
+  }
+
+  onRowSelect(event: any) {
+    this.appService.existingData = event.data
+    console.log(event.data)
+  }
   onGridReady(params: GridReadyEvent) {
     this.appTableService.gridApi = params.api;
     this.appTableService.gridColumnApi = params.columnApi;

@@ -10,6 +10,10 @@ import { DeviceMonitoringTableService } from './device-monitoring-table.service'
   providedIn: 'root',
 })
 export class DeviceMonitoringService {
+  buttonStatus: string | undefined;
+  openDialog() {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl: string = environment.core236;
   existingData: DeviceMonitoringModel = new DeviceMonitoringModel();
 

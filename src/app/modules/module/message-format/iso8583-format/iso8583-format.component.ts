@@ -10,6 +10,7 @@ import { MessageFormatService } from 'src/app/modules/services/module-services/m
   styleUrls: ['./iso8583-format.component.css'],
 })
 export class Iso8583FormatComponent implements OnInit, AfterViewInit {
+
   constructor(
     public dialog: MatDialog,
     private store: Store,
@@ -20,7 +21,7 @@ export class Iso8583FormatComponent implements OnInit, AfterViewInit {
     this.stylingAgFooter();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onPageSizeChanged() {
     const value = (<HTMLInputElement>document.getElementById('page-size'))
