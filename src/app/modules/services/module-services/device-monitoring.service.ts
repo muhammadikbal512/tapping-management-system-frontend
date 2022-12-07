@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RowClickedEvent } from 'ag-grid-community';
+import { DeviceMonitoringInterface } from 'src/app/interface/modules/device-monitoring';
 import { DeviceMonitoringModel } from 'src/app/model/modules-model/device-monitoring.model';
 import { DeviceMonitoringDispatch } from 'src/app/state-configuration/modules/device-monitoring/device-monitoring.dispatch';
 import { environment } from 'src/environments/environment';
@@ -15,7 +16,7 @@ export class DeviceMonitoringService {
     throw new Error('Method not implemented.');
   }
   private apiUrl: string = environment.core236;
-  existingData: DeviceMonitoringModel = new DeviceMonitoringModel();
+  existingData!: DeviceMonitoringInterface[]
 
   constructor(
     private http: HttpClient,
@@ -34,12 +35,11 @@ export class DeviceMonitoringService {
   }
 
   onGetDeviceMonitoring() {
-    this.deviceTableService.showTableLoading();
     this.deviceDispatch._DeviceMonitoringGetDispatch();
   }
 
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: DeviceMonitoringInterface[]) {
+    this.existingData = data;
   }
 }

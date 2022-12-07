@@ -5,7 +5,7 @@ export interface DeviceMonitoringInterface {
     lastUpdate: string;
     city: string;
     activationDate: string;
-    remoteAddress: number;
+    remoteAddress: string;
     port: number;
     model: string;
 }

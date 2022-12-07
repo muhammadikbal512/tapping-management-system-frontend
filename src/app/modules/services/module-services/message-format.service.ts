@@ -62,7 +62,6 @@ export class MessageFormatService {
   }
 
   onGetAllIso8583Format() {
-    this.iso8583FormatTableService.showTableLoading();
     this.messageFormatDispatch._MessageFormatGetDispatch();
   }
 
@@ -108,7 +107,7 @@ export class MessageFormatService {
     return this.dialog.openDialogs;
   }
 
-  set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data;
+  set ExistingData(data: Iso8583FormatModel) {
+    this.existingData = data;
   }
 }

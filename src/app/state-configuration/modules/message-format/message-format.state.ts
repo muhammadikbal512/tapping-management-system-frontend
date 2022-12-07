@@ -52,11 +52,11 @@ export class MessageFormatState {
     return this.iso8583FormatService.getAllIso8583Format().pipe(
       tap((response) => {
         if (response?.length != 0) {
-          this.iso8583FormatTableService.hideTableLoading();
+          this.iso8583FormatTableService.loading = false;
           this.iso8583FormatTableService.setRowData(response);
         } else {
           this.iso8583FormatTableService.setRowData(response);
-          this.iso8583FormatTableService.showNoRowData();
+          this.iso8583FormatTableService.loading = false;
         }
         ctx.setState({
           ...ctx.getState(),
@@ -161,11 +161,7 @@ export class MessageFormatState {
     ctx: StateContext<MessageFormatStateModel>,
     { errorMessage }: MessageFormatErrorState
   ) {
-    if (this.iso8583FormatTableService.gridApi.getRenderedNodes().length == 0) {
-      this.iso8583FormatTableService.showNoRowData();
-    } else {
-      this.iso8583FormatTableService.hideTableLoading();
-    }
+    this.iso8583FormatTableService.loading = false;
     if (this.iso8583FormatService.getCurrentStatusDialog().length != 0) {
       this.iso8583FormatService.closeDialog();
     }

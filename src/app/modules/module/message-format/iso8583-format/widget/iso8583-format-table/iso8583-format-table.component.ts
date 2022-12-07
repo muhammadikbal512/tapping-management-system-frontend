@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
 import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format-table.service';
-import {GridReadyEvent, RowClassRules, RowClickedEvent} from "ag-grid-community";
-
+import {
+  GridReadyEvent,
+  RowClassRules,
+  RowClickedEvent,
+} from 'ag-grid-community';
 
 @Component({
   selector: 'app-iso8583-format-table',
@@ -10,90 +13,43 @@ import {GridReadyEvent, RowClassRules, RowClickedEvent} from "ag-grid-community"
   styleUrls: ['./iso8583-format-table.component.css'],
 })
 export class Iso8583FormatTableComponent implements OnInit {
-  paginationSize: number = 5;
-  cols!: any[];
-  loading: boolean =true;
   constructor(
     private iso8583FormatService: MessageFormatService,
     private iso8583FormatTableService: MessageFormatTableService
   ) {}
 
   ngOnInit(): void {
-    this.cols = [
-      { field: 'massageFormat', header: 'Massage Format' },
-      { field: 'description', header: 'Description' },
-
-    ];
+    this.getAllMessageFormats();
   }
 
+  getAllMessageFormats() {
+    this.iso8583FormatService.onGetAllIso8583Format();
+  }
+
+  refreshTable() {
+    this.getAllMessageFormats();
+    this.iso8583FormatTableService.loading = true;
+  }
 
   showDialog() {
     this.iso8583FormatService.openDialog();
     this.iso8583FormatService.buttonStatus = 'create';
   }
-  
+
   onRowSelect(event: any) {
-    this.iso8583FormatService.ExistingData = event.data
+    this.iso8583FormatService.ExistingData = event.data;
     console.log(event.data);
   }
 
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex' : (params) => {
-      return params.rowIndex % 2 == 0;
-    }
+  get messageFormats() {
+    return this.iso8583FormatTableService.messageFormats;
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.iso8583FormatTableService.GridApi = params;
-    this.iso8583FormatTableService.GridColumnApi = params;
-    this.runService();
+  get cols() {
+    return this.iso8583FormatTableService.cols;
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.iso8583FormatService.ExistingData = data;
+  get loading() {
+    return this.iso8583FormatTableService.loading;
   }
-
-  private runService() {
-    this.iso8583FormatTableService.showTableLoading();
-    this.iso8583FormatService.getAllIso8583FormatWithDelay();
-  }
-
-
-  get animateRow() {
-    return this.iso8583FormatTableService.animateRow;
-  }
-
-  get columnDefs() {
-    return this.iso8583FormatTableService.columnDefs;
-  }
-
-  get defaultColDef() {
-    return this.iso8583FormatTableService.defaultColDef;
-  }
-
-  get rowHeight() {
-    return this.iso8583FormatTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.iso8583FormatTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.iso8583FormatTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.iso8583FormatTableService.frameworkComponents;
-  }
-
-  get autoGroupColumnDef() {
-    return this.iso8583FormatTableService.autoGroupColumnDef;
-  }
-
-  get groupDefaultExpanded() {
-    return this.iso8583FormatTableService.groupDefaultExpanded;
-  }
-
-  
 }

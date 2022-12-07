@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  GridReadyEvent,
-  RowClassRules,
-  RowClickedEvent,
-} from 'ag-grid-community';
+import { DeviceMonitoringInterface } from 'src/app/interface/modules/device-monitoring';
 import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring-table.service';
-import { DeviceMonitoringService } from 'src/app/modules/services/module-services/device-monitoring.service';
 
 @Component({
   selector: 'app-table-device-monitoring',
@@ -13,81 +8,52 @@ import { DeviceMonitoringService } from 'src/app/modules/services/module-service
   styleUrls: ['./table-device-monitoring.component.css'],
 })
 export class TableDeviceMonitoringComponent implements OnInit {
-  cols!: any[];
+  deviceMonitorings!: DeviceMonitoringInterface[];
   constructor(
     private deviceMonitoringTableService: DeviceMonitoringTableService,
-    private deviceMonitoringService: DeviceMonitoringService
   ) {}
 
   ngOnInit(): void {
-    this.cols = [
-      { field: 'deviceId', header: 'Device Id' },
-      { field: 'deviceType', header: 'Device Type' },
-      { field: 'status', header: 'Status' },
-      { field: 'deviceId', header: 'Device Id' },
-      { field: 'lastUpdate', header: 'last Update' },
-    ]
-  }
-
-
-
-
-
-
-  showDialog() {
-    this.deviceMonitoringService.openDialog();
-    this.deviceMonitoringService.buttonStatus = 'create';
+    this.deviceMonitorings = [
+      {
+        deviceId: 1,
+        deviceType: 'JKT - 04',
+        status: 'true',
+        lastUpdate: '10/06/2022, 00:18',
+        city: 'Jakarta',
+        activationDate: '09/06/2022, 10:22',
+        remoteAddress: '192.168.2.34',
+        port: 8884,
+        model: 'Switch'
+      },
+      {
+        deviceId: 2,
+        deviceType: 'BGR - 04',
+        status: 'false',
+        lastUpdate: '20/06/2022, 00:18',
+        city: 'Bogor',
+        activationDate: '08/06/2022, 10:22',
+        remoteAddress: '192.168.2.12',
+        port: 8884,
+        model: 'PC'
+      },
+    ];
+    this.deviceMonitoringTableService.loading = false;
   }
 
   onRowSelect(event: any) {
-    this.deviceMonitoringService.ExistingData = event.data
+    this.deviceMonitoringTableService.additionalData = event.data
     console.log(event.data)
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.deviceMonitoringTableService.gridApi = params.api;
-    this.deviceMonitoringTableService.gridColumnApi = params.columnApi;
+ 
+
+  get cols() {
+    return this.deviceMonitoringTableService.cols;
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.deviceMonitoringTableService.additionalData = data.data;
+  get loading() {
+    return this.deviceMonitoringTableService.loading;
   }
-
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    },
-  };
-
-  get defaultColDef() {
-    return this.deviceMonitoringTableService.defaultColDef;
-  }
-
-  get animateRows() {
-    return this.deviceMonitoringTableService.animateRow;
-  }
-
-  get columnDefs() {
-    return this.deviceMonitoringTableService.columnDefs;
-  }
-
-  get rowData() {
-    return this.deviceMonitoringTableService.rowData;
-  }
-
-  get rowHeight() {
-    return this.deviceMonitoringTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.deviceMonitoringTableService.headerHeight;
-  }
-
-  get frameworkComponents() {
-    return this.deviceMonitoringTableService.frameworkComponents;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.deviceMonitoringTableService.overlayLoadingTemplate;
-  }
+  
 }
