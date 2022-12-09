@@ -50,7 +50,6 @@ export class Iso8583DialectService {
   }
 
   onGetAllIso8583Dialect() {
-    this.iso8583DialectTableService.showTableLoading();
     this.dialectDispatch._DialectGetDispatch();
   }
 

@@ -8,22 +8,7 @@ import { AppParametersService } from 'src/app/modules/services/module-services/a
   styleUrls: ['./arp.component.css'],
 })
 export class ArpComponent implements OnInit {
-  constructor(
-    private appService: AppParametersService,
-    private appTableService: AppParametersTableService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  showDialog() {
-    this.appService.openDialog();
-  }
-
-  refreshTable() {
-    this.appService.getArpAllWithDelay();
-  }
-
-  onFilter() {
-    this.appTableService.onFilter('search-filter')
-  }
 }

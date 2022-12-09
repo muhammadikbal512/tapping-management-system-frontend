@@ -65,11 +65,11 @@ export class ISO8583FieldState {
       tap((response) => {
         console.log(response);
         if (response?.length != 0) {
-          this.iso8583FieldTableService.hideTableLoading();
+          this.iso8583FieldTableService.loading = false;
           this.iso8583FieldTableService.setRowData(response);
         } else {
           this.iso8583FieldTableService.setRowData(response);
-          this.iso8583FieldTableService.showNoRowData();
+          this.iso8583FieldTableService.loading = false;
         }
         ctx.setState({
           ...ctx.getState(),
@@ -196,11 +196,7 @@ export class ISO8583FieldState {
     if (this.iso8583FieldService.getCurrentStatusDialog().length != 0) {
       this.iso8583FieldService.closeDialog();
     }
-    if (this.iso8583FieldTableService.gridApi.getRenderedNodes().length == 0) {
-      this.iso8583FieldTableService.showNoRowData();
-    } else {
-      this.iso8583FieldTableService.hideTableLoading();
-    }
+    this.iso8583FieldTableService.loading = false;
     ctx.patchState({
       responseMessage: errorMessage,
     });

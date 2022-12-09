@@ -27,6 +27,11 @@ export class UserTableComponent implements OnInit {
     this.userService.onGetAllUser();
   }
 
+  refreshTable() {
+    this.userTableService.loading = true;
+    this.getAllUsers();
+  }
+
   onRowSelect(data: any) {
     console.log(data);
     this.userService.ExistingData = data.data;

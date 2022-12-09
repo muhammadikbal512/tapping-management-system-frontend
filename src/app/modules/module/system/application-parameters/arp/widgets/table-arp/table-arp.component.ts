@@ -9,17 +9,21 @@ import { AppParametersService } from 'src/app/modules/services/module-services/a
   styleUrls: ['./table-arp.component.css'],
 })
 export class TableArpComponent implements OnInit {
-  cols!: any[];
   constructor(
     private appTableService: AppParametersTableService,
     private appService: AppParametersService
   ) {}
 
   ngOnInit(): void {
-    this.cols =[
-      { field: 'nameSeting', header: 'Name Seting' },
-      { field: 'value', header: 'Value' },
-    ]
+    this.getAllArps();
+  }
+
+  getAllArps() {
+    this.appService.onGetArpAll();
+  }
+
+  refreshTable() {
+
   }
 
 
@@ -30,46 +34,16 @@ export class TableArpComponent implements OnInit {
 
   onRowSelect(event: any) {
     this.appService.existingData = event.data
-    console.log(event.data)
   }
-  onGridReady(params: GridReadyEvent) {
-    this.appTableService.gridApi = params.api;
-    this.appTableService.gridColumnApi = params.columnApi;
-    this.runeService();
+  get cols() {
+    return this.appTableService.cols;
   }
 
-  runeService() {
-    this.appTableService.showTableLoading();
-    this.appService.getArpAllWithDelay();
+  get loading() {
+    return this.appTableService.loading;
   }
 
-  onCellClicked(data: RowClickedEvent) {}
-
-  get animateRow() {
-    return this.appTableService.animateRow;
-  }
-
-  get headerHeight() {
-    return this.appTableService.headerHeight;
-  }
-
-  get rowHeight() {
-    return this.appTableService.rowHeight;
-  }
-
-  get defaultColDef() {
-    return this.appTableService.defaultColDef;
-  }
-
-  get columnDefs() {
-    return this.appTableService.columnDefs;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.appTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.appTableService.frameworkComponents;
+  get Arps() {
+    return this.appTableService.Arps;
   }
 }

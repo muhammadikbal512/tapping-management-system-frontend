@@ -61,7 +61,6 @@ export class IsoFieldConfigurationService {
   }
 
   onGetAllIsoFieldConfiguration() {
-    this.isoFieldConfigurationTableService.showTableLoading();
     this.isoFieldDispatch._Iso8583FieldGetDispatch();
   }
 

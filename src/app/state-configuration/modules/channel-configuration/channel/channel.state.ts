@@ -64,11 +64,11 @@ export class ChannelState {
     return this.channelService.getAllChannel().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.channelTableService.hideTableLoading();
+          this.channelTableService.loading = false;
           this.channelTableService.setRowData(response);
         } else {
           this.channelTableService.setRowData(response);
-          this.channelTableService.showNoRowData();
+          this.channelTableService.loading = false;
         }
 
         ctx.setState({
@@ -198,17 +198,13 @@ export class ChannelState {
       errorMessage?.message,
       errorMessage?.status
     );
-    if (this.channelTableService.gridApi.getRenderedNodes().length == 0) {
-      this.channelTableService.showNoRowData();
-    } else {
-      this.channelTableService.hideTableLoading();
-    }
+    this.channelTableService.loading = false;
 
     if (this.channelService.getCurrentStatusDialog().length != 0) {
       this.channelService.closeDialog();
     }
     ctx.patchState({
-      responseMessage: errorMessage
+      responseMessage: errorMessage,
     });
   }
 }

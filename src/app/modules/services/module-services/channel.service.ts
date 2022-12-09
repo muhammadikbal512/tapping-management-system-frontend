@@ -69,7 +69,6 @@ export class ChannelService {
   }
 
   onGetAllChannel() {
-    this.channelTableService.showTableLoading();
     this.channelDispatch._ChannelGetDispatch();
   }
 

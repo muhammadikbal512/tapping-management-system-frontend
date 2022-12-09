@@ -64,11 +64,11 @@ export class DialectState {
     return this.iso8583DialectService.getAllIso8583Dialect().pipe(
       tap((response) => {
         if (response?.length != 0) {
-          this.iso8583DialectTableService.hideTableLoading();
+          this.iso8583DialectTableService.loading = false;
           this.iso8583DialectTableService.setRowData(response);
         } else {
           this.iso8583DialectTableService.setRowData(response);
-          this.iso8583DialectTableService.showNoRowData();
+          this.iso8583DialectTableService.loading = false;
         }
         ctx.setState({
           ...ctx.getState(),
@@ -104,18 +104,24 @@ export class DialectState {
     );
   }
 
-  @Action(DialectAdd, {cancelUncompleted: true})
-  addDataFromState(ctx: StateContext<DialectStateModel>, { payload }: DialectAdd) {
-    return this.iso8583DialectService.addIso8583Dialect(payload).pipe(tap(response => {
-      ctx.dispatch(new DialectSuccessState(response))
-      ctx.patchState({
-        ...ctx.getState(),
-        dialects: [...ctx.getState().dialects],
-        responseMessage: response
+  @Action(DialectAdd, { cancelUncompleted: true })
+  addDataFromState(
+    ctx: StateContext<DialectStateModel>,
+    { payload }: DialectAdd
+  ) {
+    return this.iso8583DialectService.addIso8583Dialect(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new DialectSuccessState(response));
+        ctx.patchState({
+          ...ctx.getState(),
+          dialects: [...ctx.getState().dialects],
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new DialectErrorState(response.error));
       })
-    }), catchError((response: HttpErrorResponse) => {
-      return ctx.dispatch(new DialectErrorState(response.error));
-    }))
+    );
   }
 
   @Action(DialectUpdate, { cancelUncompleted: true })
@@ -147,7 +153,7 @@ export class DialectState {
     { id }: DialectDelete
   ) {
     return this.iso8583DialectService.deleteIso8583Dialect(id).pipe(
-      tap(response => {
+      tap((response) => {
         ctx.dispatch(new DialectSuccessState(response));
         const filteredData = ctx
           .getState()
@@ -191,13 +197,7 @@ export class DialectState {
       errorMessage?.message,
       errorMessage?.httpStatusCode
     );
-    if (
-      this.iso8583DialectTableService.gridApi.getRenderedNodes().length == 0
-    ) {
-      this.iso8583DialectTableService.showNoRowData();
-    } else {
-      this.iso8583DialectTableService.hideTableLoading();
-    }
+    this.iso8583DialectTableService.loading = false;
 
     if (this.iso8583DialectService.getCurrentStatusDialog().length != 0) {
       this.iso8583DialectService.closeDialog();

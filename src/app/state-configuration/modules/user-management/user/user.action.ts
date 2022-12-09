@@ -5,6 +5,22 @@ export class UserGet {
   static readonly type = '[User] Get';
 }
 
+export class UserGetRole {
+  static readonly type = '[User] Get Role';
+}
+
+export class UserGetType {
+  static readonly type = '[User] Get Type';
+}
+
+export class UserGetInstitution {
+  static readonly type = '[User] Get Institution';
+}
+
+export class UserGetUserGroup {
+  static readonly type = '[User] Get UserGroup';
+}
+
 export class UserAdd {
   static readonly type = '[User] Add';
   constructor(public payload: UserModel) {}

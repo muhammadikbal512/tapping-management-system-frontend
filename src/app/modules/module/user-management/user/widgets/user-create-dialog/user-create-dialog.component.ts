@@ -13,18 +13,7 @@ import { RoleInterface } from 'src/app/interface/modules/role-interface';
 import { TypeInterface } from 'src/app/interface/modules/type';
 import { InstitutionInterface } from 'src/app/interface/modules/institution';
 import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
-import { RolesModel } from 'src/app/model/modules-model/roles.model';
-import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
-import { TypeModel } from 'src/app/model/modules-model/type.model';
-import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
-import { RolesState } from 'src/app/state-configuration/modules/user-management/roles/roles.state';
-import { TypeState } from 'src/app/state-configuration/modules/user-management/type/type.state';
-import { InstitutionState } from 'src/app/state-configuration/modules/user-management/institution/institution.state';
-import { UserGroupState } from 'src/app/state-configuration/modules/user-management/user-group/user-group.state';
-import { RolesService } from 'src/app/modules/services/module-services/roles.service';
-import { TypeService } from 'src/app/modules/services/module-services/type.service';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
-import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -32,13 +21,13 @@ import { UserGroupService } from 'src/app/modules/services/module-services/user-
   styleUrls: ['./user-create-dialog.component.css'],
 })
 export class UserCreateDialogComponent implements OnInit, AfterViewInit {
-  @Select(RolesState.Roles)
+  @Select(UserState.Role)
   Roles$!: Observable<RoleInterface[]>;
-  @Select(TypeState.Type)
+  @Select(UserState.Type)
   Types$!: Observable<TypeInterface[]>;
-  @Select(InstitutionState.institutions)
+  @Select(UserState.Institution)
   Institutions$!: Observable<InstitutionInterface[]>;
-  @Select(UserGroupState.UserGroups)
+  @Select(UserState.UserGroup)
   UserGroups$!: Observable<UsergroupInterface[]>;
 
   form!: FormGroup;
@@ -52,31 +41,31 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
   showLoading: boolean = false;
   constructor(
     public userService: UserService,
-    private roleService: RolesService,
-    private typeService: TypeService,
-    private institutionService: InstitutionService,
-    private usersGroup: UserGroupService,
     private fb: FormBuilder,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.createFormat();
-    this.roleService.onGetAllRoles();
-    this.typeService.onGetAllType();
-    this.usersGroup.onGetAllUserGroup();
-    this.institutionService.onGetAllInstitution();
+    this.userService.onGetAllRole();
+    this.userService.onGetAllType();
+    this.userService.onGetAllInstitution();
+    this.userService.onGetAllUserGroup();
     this.Roles$.subscribe((data) => {
-      this.roleInterface = data
+      this.roleInterface = data.sort((a, b) => a.name.localeCompare(b.name));
     });
     this.Types$.subscribe((data) => {
-      this.typeInterface = data;
+      this.typeInterface = data.sort((a, b) => a.name.localeCompare(b.name));
     });
     this.Institutions$.subscribe((data) => {
-      this.institutionInterface = data;
+      this.institutionInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
     this.UserGroups$.subscribe((data) => {
-      this.userGroupInterface = data;
+      this.userGroupInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
   }
 
@@ -168,9 +157,9 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.lastName = this.lastName.value;
     this.userModel.username = this.username.value;
     this.userModel.email = this.email.value;
-    this.userModel.role = this.role.value
-    this.userModel.institution = this.institution.value
-    this.userModel.type = this.type.value
+    this.userModel.role = this.role.value;
+    this.userModel.institution = this.institution.value;
+    this.userModel.type = this.type.value;
     this.userModel.userGroup = this.userGroup.value;
     this.userModel.active = this.isActive.value;
     this.userModel.notLocked = this.isNonLocked.value;

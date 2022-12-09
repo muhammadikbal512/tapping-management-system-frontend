@@ -5,7 +5,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppsParametersModel } from 'src/app/model/modules-model/apps-parameters.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { CreateUpdateArpComponent } from '../../module/system/application-parameters/arp/widgets/create-update-arp/create-update-arp.component';
-import { ArpModel } from 'src/app/model/modules-model/arp.model';
 import { ArpDispatch } from 'src/app/state-configuration/modules/system/arp/arp.dispatch';
 import { AppParametersTableService } from './app-parameters-table.service';
 
@@ -13,7 +12,7 @@ import { AppParametersTableService } from './app-parameters-table.service';
   providedIn: 'root',
 })
 export class AppParametersService {
-  existingData: ArpModel = new ArpModel();
+  existingData: AppsParametersModel = new AppsParametersModel();
   buttonStatus: string = '';
   private apiUrl = environment.core236;
   dialogConfig: MatDialogConfig = {
@@ -27,7 +26,7 @@ export class AppParametersService {
   ) {}
 
   getArpAll() {
-    return this.http.get<ArpModel[]>(`${this.apiUrl}/ARP/list`);
+    return this.http.get<AppsParametersModel[]>(`${this.apiUrl}/ARP/list`);
   }
 
   addArp(data: AppsParametersModel) {
@@ -48,7 +47,6 @@ export class AppParametersService {
   }
 
   onGetArpAll() {
-    this.arpTableService.showTableLoading();
     this.arpDispatch._ArpGetDispatch();
   }
 

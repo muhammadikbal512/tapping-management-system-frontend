@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-type-table.service';
-import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
 
 @Component({
@@ -8,28 +7,30 @@ import { ChannelTypeService } from 'src/app/modules/services/module-services/cha
   templateUrl: './channel-type-table.component.html',
   styleUrls: ['./channel-type-table.component.css'],
 })
-export class ChannelTypeTableComponent implements OnInit, OnDestroy {
-  paginationSize: number = 5;
-  loading: boolean = true;
-  cols!: any[];
+export class ChannelTypeTableComponent implements OnInit {
+
   constructor(
     private channelTypeService: ChannelTypeService,
     private channelTypeTableService: ChannelTypeTableService
   ) {}
 
   ngOnInit(): void {
-    this.cols =[
-      { field: 'chaneltype', header: 'Chanel Type' },
-      { field: 'massagetamplate', header: 'Masagae Tamplate' },
-      { field: 'description', header: 'Description' },
+    this.getAllChannelTypes();
+  }
 
-    ]
+  getAllChannelTypes() {
+    this.channelTypeService.onGetAllChannelType();
   }
 
 
   showDialog() {
     this.channelTypeService.openDialog();
     this.channelTypeService.buttonStatus = 'create';
+  }
+
+  refreshTable() {
+    this.channelTypeTableService.loading = true;
+    this.channelTypeService.getAllChannelType();
   }
 
 
@@ -39,59 +40,16 @@ export class ChannelTypeTableComponent implements OnInit, OnDestroy {
   }
 
 
-  public RowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0
-    }
+  get cols() {
+    return this.channelTypeTableService.cols;
   }
 
-  ngOnDestroy(): void {
-    this.channelTypeTableService.destroyGrid();
-    this.channelTypeService.dialectMsgTemplateList.length = 0;
+  get loading() {
+    return this.channelTypeTableService.loading;
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.channelTypeTableService.gridApi = params.api;
-    this.channelTypeTableService.gridColumnApi = params.columnApi;
-    this.runService();
-  }
-
-  onCellClicked(data: RowClickedEvent) {
-    console.log(data)
-    this.channelTypeService.ExistingData = data.data;
-  }
-
-  runService() {
-    this.channelTypeTableService.showTableLoading();
-    this.channelTypeService.getAllChannelTypeWithDelay();
-  }
-
-  get animateRow() {
-    return this.channelTypeTableService.animateRow;
-  }
-
-  get columnDefs() {
-    return this.channelTypeTableService.columnDefs;
-  }
-
-  get defaultColDef() {
-    return this.channelTypeTableService.defaultColDef;
-  }
-
-  get rowHeight() {
-    return this.channelTypeTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.channelTypeTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.channelTypeTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.channelTypeTableService.frameworkComponents;
+  get channelTypes() {
+    return this.channelTypeTableService.channelTypes;
   }
 
   

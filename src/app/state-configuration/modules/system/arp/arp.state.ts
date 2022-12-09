@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { catchError, tap } from 'rxjs';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { ArpModel } from 'src/app/model/modules-model/arp.model';
+import { AppsParametersModel } from 'src/app/model/modules-model/apps-parameters.model';
 import { AppParametersTableService } from 'src/app/modules/services/module-services/app-parameters-table.service';
 import { AppParametersService } from 'src/app/modules/services/module-services/app-parameters.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
@@ -15,7 +15,7 @@ import {
 } from './arp.action';
 
 export class ArpStateModel {
-  Arps: ArpModel[] = [];
+  Arps: AppsParametersModel[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -50,11 +50,11 @@ export class ArpState {
     return this.arpService.getArpAll().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.arpTableService.showTableLoading();
-          this.arpTableService.SetRowData(response);
+          this.arpTableService.loading = false;
+          this.arpTableService.setRowData(response);
         } else {
-          this.arpTableService.ShowNoRowData();
-          this.arpTableService.SetRowData(response);
+          this.arpTableService.loading = false;
+          this.arpTableService.setRowData(response);
         }
 
         ctx.patchState({
@@ -78,8 +78,8 @@ export class ArpState {
     );
 
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(ArpErrorState) ifStateError(
@@ -89,16 +89,12 @@ export class ArpState {
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.status
-    )
+    );
 
-    if (this.arpTableService.gridApi.getRenderedNodes().length == 0) {
-      this.arpTableService.ShowNoRowData();
-    } else {
-      this.arpTableService.showTableLoading();
-    }
+    this.arpTableService.loading = false;
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

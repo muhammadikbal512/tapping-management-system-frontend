@@ -64,11 +64,11 @@ export class ChannelTypeState {
     return this.channelTypeService.getAllChannelType().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.channelTypeTableService.hideTableLoading();
+          this.channelTypeTableService.loading = false;
           this.channelTypeTableService.setRowData(response);
         } else {
           this.channelTypeTableService.setRowData(response);
-          this.channelTypeTableService.showNoRowData();
+          this.channelTypeTableService.loading = false;
         }
 
         ctx.patchState({
@@ -77,7 +77,7 @@ export class ChannelTypeState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        console.log(response)
+        console.log(response);
         return ctx.dispatch(new ChannelTypeErrorState(response.error));
       })
     );
@@ -134,7 +134,9 @@ export class ChannelTypeState {
       tap((response) => {
         ctx.dispatch(new ChannelTypeSuccessState(response));
         const dataList = [...ctx.getState().channelTypes];
-        const updatedDataIndex = dataList.findIndex((x) => x.channelTypeId === id);
+        const updatedDataIndex = dataList.findIndex(
+          (x) => x.channelTypeId === id
+        );
         dataList[updatedDataIndex] = stateData;
         ctx.setState({
           ...ctx.getState(),
@@ -198,11 +200,7 @@ export class ChannelTypeState {
       errorMessage?.message,
       errorMessage?.status
     );
-    if (this.channelTypeTableService.gridApi.getRenderedNodes().length == 0) {
-      this.channelTypeTableService.showNoRowData();
-    } else {
-      this.channelTypeTableService.hideTableLoading();
-    }
+    this.channelTypeTableService.loading = false;
     if (this.channelTypeService.getCurrentStatusDialog().length != 0) {
       this.channelTypeService.closeDialog();
     }

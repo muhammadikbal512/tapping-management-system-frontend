@@ -93,6 +93,22 @@ export class UserService {
     this.userDispatch._UserGetDispatch();
   }
 
+  onGetAllRole() {
+    this.userDispatch._UserGetRoleDispatch();
+  }
+
+  onGetAllType() {
+    this.userDispatch._UserGetTypeDispatch();
+  }
+
+  onGetAllInstitution() {
+    this.userDispatch._UserGetInstitutionDispatch();
+  }
+
+  onGetAllUserGroup() {
+    this.userDispatch._UserGetUserGroupDispatch();
+  }
+
   onCreateUser(data: UserModel) {
     this.userDispatch._UserAddDispatch(data);
   }

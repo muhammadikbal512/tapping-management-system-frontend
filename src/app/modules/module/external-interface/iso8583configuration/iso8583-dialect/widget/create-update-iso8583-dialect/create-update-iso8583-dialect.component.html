@@ -10,13 +10,13 @@
         </div>
         <div class="m-auto space-x-2 text-center pb-5">
             <p>Message Format</p>
-            <p-dropdown [filter]="true" [options]="msgFormatOptionList" appendTo="body" filterBy="name"
-                placeholder="Select Message Format" optionLabel="name" [showClear]="showClearButton"
-                styleClass="msgFormat" (onChange)="onChange($event)" formControlName="msgFormatId"></p-dropdown>
+            <p-dropdown autoWidth="false" lazy="true" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+            [options]="msgFormatOptionList" [showClear]="showClearButton" appendTo="body"
+            filterBy="name" formControlName="msgFormatId" optionLabel="name" placeholder="Select Message Format"
+            scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
             <p-message *ngIf="msgFormatId.touched && !msgFormatId.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="msgFormatId.touched && msgFormatId.hasError('required')" severity="error"></p-message>
-            <small *ngIf="msgFormatId.touched && msgFormatId.hasError('required')" class="p-error">Name Type should be
-                fill.</small>
+            <small *ngIf="msgFormatId.touched && msgFormatId.hasError('required')" class="p-error">Please choose Message Format.</small>
         </div>
     </div>
     <div class="input-container">

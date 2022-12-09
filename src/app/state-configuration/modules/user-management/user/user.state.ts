@@ -6,6 +6,10 @@ import {
   UserAdd,
   UserUpdate,
   UserResetPassword,
+  UserGetRole,
+  UserGetType,
+  UserGetInstitution,
+  UserGetUserGroup,
 } from './user.action';
 import { UserService } from 'src/app/modules/services/module-services/user.service';
 import { UserModel } from 'src/app/model/user-model/user.model';
@@ -17,9 +21,21 @@ import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
+import { RoleInterface } from 'src/app/interface/modules/role-interface';
+import { TypeInterface } from 'src/app/interface/modules/type';
+import { InstitutionInterface } from 'src/app/interface/modules/institution';
+import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
+import { RolesService } from 'src/app/modules/services/module-services/roles.service';
+import { TypeService } from 'src/app/modules/services/module-services/type.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
 
 export class UserStateModel {
   User: UserModel[] = [];
+  Role: RoleInterface[] = [];
+  Type: TypeInterface[] = [];
+  Institution: InstitutionInterface[] = [];
+  UserGroup: UsergroupInterface[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -27,6 +43,10 @@ export class UserStateModel {
   name: 'User',
   defaults: {
     User: [],
+    Role: [],
+    Type: [],
+    Institution: [],
+    UserGroup: [],
     responseMessage: undefined,
   },
 })
@@ -35,12 +55,36 @@ export class UserState {
   constructor(
     private notifierService: NotificationService,
     private userService: UserService,
-    private userTableService: UserTableService
+    private userTableService: UserTableService,
+    private roleService: RolesService,
+    private typeService: TypeService,
+    private institutionService: InstitutionService,
+    private userGroupService: UserGroupService
   ) {}
 
   @Selector()
   static User(state: UserStateModel) {
     return state.User;
+  }
+
+  @Selector()
+  static Role(state: UserStateModel) {
+    return state.Role;
+  }
+
+  @Selector()
+  static Type(state: UserStateModel) {
+    return state.Type;
+  }
+
+  @Selector()
+  static Institution(state: UserStateModel) {
+    return state.Institution;
+  }
+
+  @Selector()
+  static UserGroup(state: UserStateModel) {
+    return state.UserGroup;
   }
 
   @Selector()
@@ -54,11 +98,11 @@ export class UserState {
     return this.userService.getAllUsers().pipe(
       tap((response) => {
         if (response?.length != 0) {
-    this.userTableService.loading = false;
+          this.userTableService.loading = false;
 
           this.userTableService.setRowData(response);
         } else {
-    this.userTableService.loading = false;
+          this.userTableService.loading = false;
 
           this.userTableService.setRowData(response);
         }
@@ -69,6 +113,101 @@ export class UserState {
       }),
       catchError((response: HttpErrorResponse) => {
         console.log(response);
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserGetRole, { cancelUncompleted: true }) getRoleFromUser(
+    ctx: StateContext<UserStateModel>
+  ) {
+    return this.roleService.getAllRoles().pipe(
+      tap((response) => {
+        let roleParseList: RoleInterface[] = [];
+        response.forEach((x) => {
+          roleParseList.push({
+            name: x.roleName,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Role: roleParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserGetType, { cancelUncompleted: true }) getTypeFromUser(
+    ctx: StateContext<UserStateModel>
+  ) {
+    return this.typeService.getAllType().pipe(
+      tap((response) => {
+        let typeParseList: TypeInterface[] = [];
+        response.forEach((x) => {
+          typeParseList.push({
+            name: x.typeName,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Type: typeParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserGetInstitution, { cancelUncompleted: true })
+  getInstitutionFromUser(ctx: StateContext<UserStateModel>) {
+    return this.institutionService.getAllInstitution().pipe(
+      tap((response) => {
+        let institutionParseList: InstitutionInterface[] = [];
+        response.forEach((x) => {
+          institutionParseList.push({
+            name: x.institutionName,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Institution: institutionParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new UserErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(UserGetUserGroup, { cancelUncompleted: true }) getUserGroupFromUser(
+    ctx: StateContext<UserStateModel>
+  ) {
+    return this.userGroupService.getAllUserGroup().pipe(
+      tap((response) => {
+        let userGroupParseList: UsergroupInterface[] = [];
+        response.forEach((x) => {
+          userGroupParseList.push({
+            name: x.groupName,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          UserGroup: userGroupParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new UserErrorState(response.error));
       })
     );

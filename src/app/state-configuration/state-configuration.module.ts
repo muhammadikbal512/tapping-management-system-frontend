@@ -15,14 +15,12 @@ import { UserState } from './modules/user-management/user/user.state';
 import { RolesState } from './modules/user-management/roles/roles.state';
 import { ResponseMappingState } from './modules/external-interfaces/iso8583configuration/iso8583-response-mapping/response-mapping.state';
 import { AcquirerAlertState } from './modules/acquirer/alert/acquirer-alert.state';
-import { AcquirerTerminalState } from './modules/acquirer/terminal/acquirer-terminal.state';
 import { AlertInvestigationState } from './modules/investigation/alert-investigation/alert-investigation.state';
 import { TransactionState } from './modules/transaction/transaction.state';
 import { JsonConfigurationState } from './modules/external-interfaces/json-configuration/json-configuration.state';
 import { Iso20022State } from './modules/external-interfaces/iso20022/iso20022.state';
 import { NdcState } from './modules/external-interfaces/ndc/ndc.state';
 import { ArpState } from './modules/system/arp/arp.state';
-import { AppParameterState } from './modules/application-parameters/app-parameters.state';
 import { SchemeState } from './modules/user-management/scheme/scheme.state';
 import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-config.state';
 import { InstitutionState } from './modules/user-management/institution/institution.state';
@@ -54,7 +52,6 @@ import { UserGroupState } from './modules/user-management/user-group/user-group.
       JsonConfigurationState,
       NdcState,
       ArpState,
-      AppParameterState,
       ResponseMappingState,
       SchemeState,
       XmlConfigState,

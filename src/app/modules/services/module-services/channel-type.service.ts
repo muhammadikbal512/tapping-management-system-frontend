@@ -55,7 +55,6 @@ export class ChannelTypeService {
   }
 
   onGetAllChannelType() {
-    this.channelTypeTableService.showTableLoading();
     this.channelTypeDispatch._ChannelTypeGetDispatch();
   }
 

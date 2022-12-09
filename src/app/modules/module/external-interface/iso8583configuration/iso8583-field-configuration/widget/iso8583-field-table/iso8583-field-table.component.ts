@@ -1,72 +1,49 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
-import { GridReadyEvent, RowClassRules, RowClickedEvent } from 'ag-grid-community';
 import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/iso-field-configuration-table.service';
-
 
 @Component({
   selector: 'app-iso8583-field-table',
   templateUrl: './iso8583-field-table.component.html',
   styleUrls: ['./iso8583-field-table.component.css'],
 })
-export class Iso8583FieldTableComponent implements OnInit, OnDestroy {
+export class Iso8583FieldTableComponent implements OnInit {
   constructor(
     private isoFieldConfigurationService: IsoFieldConfigurationService,
     private isoFieldConfigurationTableService: IsoFieldConfigurationTableService
   ) {}
 
-  ngOnInit(): void {}
-
-  public rowClassRules: RowClassRules = {
-    'ag-bg-rowIndex': (params) => {
-      return params.rowIndex % 2 == 0;
-    }
+  ngOnInit(): void {
+    this.getAllIsoConfigs();
   }
 
-  ngOnDestroy(): void {
-    this.isoFieldConfigurationTableService.gridApi.destroy();
+  getAllIsoConfigs() {
+    this.isoFieldConfigurationService.onGetAllIsoFieldConfiguration();
   }
 
-  onGridReady(params: GridReadyEvent) {
-    this.isoFieldConfigurationTableService.gridApi = params.api;
-    this.isoFieldConfigurationTableService.gridColumnApi = params.columnApi
-    this.runService();
+  refreshTable() {
+    this.isoFieldConfigurationTableService.loading = true;
+    this.getAllIsoConfigs();
   }
 
-  onCellClicked(data: RowClickedEvent) {
-    this.isoFieldConfigurationService.ExistingData = data.data
+  onRowSelect(data: any) {
+    this.isoFieldConfigurationService.ExistingData = data.data;
   }
 
-  runService() {
-    this.isoFieldConfigurationTableService.showTableLoading();
-    this.isoFieldConfigurationService.getAllIsoFieldConfigurationWithDelay();
+  showDialog() {
+    this.isoFieldConfigurationService.buttonStatus = 'create';
+    this.isoFieldConfigurationService.openDialog();
   }
 
-  get animateRow() {
-    return this.isoFieldConfigurationTableService.animateRow;
+  get cols() {
+    return this.isoFieldConfigurationTableService.cols;
   }
 
-  get columnDefs() {
-    return this.isoFieldConfigurationTableService.columnDefs;
+  get loading() {
+    return this.isoFieldConfigurationTableService.loading;
   }
 
-  get defaultColDef() {
-    return this.isoFieldConfigurationTableService.defaultColDef;
-  }
-
-  get rowHeight() {
-    return this.isoFieldConfigurationTableService.rowHeight;
-  }
-
-  get headerHeight() {
-    return this.isoFieldConfigurationTableService.headerHeight;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.isoFieldConfigurationTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.isoFieldConfigurationTableService.frameworkComponents;
+  get fieldConfigs() {
+    return this.isoFieldConfigurationTableService.isoConfigs;
   }
 }
