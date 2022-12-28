@@ -1,1 +1,53 @@
-<p>iso8583-response-mapping-create-dialog works!</p>
+<form [formGroup]="formGroup" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="transactionType" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Transaction Type</label>
+            <p-message *ngIf="transactionType.touched && !transactionType.hasError('required')" severity="success">
+            </p-message>
+            <p-message *ngIf="transactionType.touched && transactionType.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="transactionType.touched && transactionType.hasError('required')" class="p-error">Transaction
+                Type should
+                be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Description</label>
+            <p-message *ngIf="description.touched && !description.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
+            <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should
+                be
+                fill.</small>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <p>Config ID</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="configIds"
+                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="configId" optionLabel="name"
+                placeholder="Select Config ID" scrollHeight="150px"></p-dropdown>
+            <div class="message">
+                <p-message *ngIf="configId.touched && !configId.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="configId.touched && configId.hasError('required')" severity="error">
+                </p-message>
+                <small *ngIf="configId.touched && configId.hasError('required')" class="p-error">Config ID
+                    should be
+                    fill.</small>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onCreateResponseCodeMapping()" *ngIf="responseService.buttonStatus== 'create'"
+            [disabled]="formGroup.invalid" [loading]="showLoading" class="create-button ml-3" label="Create"
+            styleClass="p-button-sm">
+        </p-button>
+        <p-button (onClick)="onUpdateResponseCodeMapping()" *ngIf="responseService.buttonStatus == 'edit'"
+            [disabled]="disableStatus" [loading]="showLoading" class="create-button ml-3" label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
+</form>

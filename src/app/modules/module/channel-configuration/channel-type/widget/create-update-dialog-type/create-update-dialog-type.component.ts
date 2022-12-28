@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChannelTypeModel } from 'src/app/model/modules-model/channel-type.model';
-import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
+import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-configuration/channel-type.service';
 import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-template-group';
 import { Iso8583DialectMsgTemplate } from 'src/app/model/modules-model/iso8583-dialect-msg-template.model';
 import { Select } from '@ngxs/store';

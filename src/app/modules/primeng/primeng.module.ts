@@ -12,7 +12,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { TreeTableModule } from 'primeng/treetable';
-import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
+import { MultiSelectModule } from 'primeng/multiselect';
 const PrimeNGComponents = [
   DropdownModule,
   MessageModule,
@@ -27,7 +28,8 @@ const PrimeNGComponents = [
   TableModule,
   TooltipModule,
   TreeTableModule,
-  DialogModule
+  DialogModule,
+  MultiSelectModule
 ];
 
 @NgModule({

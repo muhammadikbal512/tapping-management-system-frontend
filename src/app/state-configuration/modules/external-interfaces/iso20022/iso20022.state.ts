@@ -52,11 +52,11 @@ export class Iso20022State {
     return this.iso20022Service.getAllIso20022().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.iso20022TableService.hideTableLoading();
+          this.iso20022TableService.loading = false;
           this.iso20022TableService.setRowData(response);
         } else {
           this.iso20022TableService.setRowData(response);
-          this.iso20022TableService.showNoRowData;
+          this.iso20022TableService.loading = false;
         }
 
         ctx.patchState({
@@ -137,18 +137,18 @@ export class Iso20022State {
     ctx: StateContext<Iso20022StateModel>,
     { successMessage }: Iso20022SuccessState
   ) {
-    if(this.iso20022Service.getCurrentStatusDialog().length != 0) {
+    if (this.iso20022Service.getCurrentStatusDialog().length != 0) {
       this.iso20022Service.closeDialog();
     }
 
     this.notifierService.successNotification(
       successMessage.message,
       successMessage.httpStatusCode
-    )
+    );
     this.iso20022Service.onGetAllIso20022();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(Iso20022ErrorState) ifStateError(
@@ -159,14 +159,10 @@ export class Iso20022State {
       errorMessage.message,
       errorMessage.httpStatusCode
     );
-    if (this.iso20022TableService.gridApi.getRenderedNodes().length == 0) {
-      this.iso20022TableService.showNoRowData();
-    } else {
-      this.iso20022TableService.hideTableLoading();
-    }
+    this.iso20022TableService.loading = false;
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

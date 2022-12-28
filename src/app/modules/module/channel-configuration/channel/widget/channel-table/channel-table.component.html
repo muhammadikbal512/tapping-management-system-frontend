@@ -43,7 +43,7 @@
       </td>
       <td>{{rowData.channelType.channelType}}</td>
       <td>
-        <span [ngClass]="{'notActive': rowData.isOnPremise == true, 'active': rowData.isOnPremise == false}"></span>
+        <span [ngClass]="{'active': rowData.isOnPremise == true, 'notActive': rowData.isOnPremise == false}"></span>
       </td>
       <td>
         <span [ngClass]="{'notActive': rowData.channelStatus == 0, 'active': rowData.channelStatus == 1}"></span>

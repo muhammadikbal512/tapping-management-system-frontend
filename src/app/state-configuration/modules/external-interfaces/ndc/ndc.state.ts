@@ -50,10 +50,10 @@ export class NdcState {
     return this.ndcService.getAllNdc().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.ndcTableService.showTableLoading();
+          this.ndcTableService.loading = false;
           this.ndcTableService.setRowData(response);
         } else {
-          this.ndcTableService.showNoRowData();
+          this.ndcTableService.loading = false;
           this.ndcTableService.setRowData(response);
         }
 
@@ -75,7 +75,9 @@ export class NdcState {
     return this.ndcService.deleteNdc(id).pipe(
       tap((response) => {
         ctx.dispatch(new NdcSuccessState(response));
-        const filteredData = ctx.getState().NDC.filter((data) => data.id !== id);
+        const filteredData = ctx
+          .getState()
+          .NDC.filter((data) => data.id !== id);
         ctx.patchState({
           ...ctx.getState(),
           NDC: filteredData,
@@ -92,11 +94,11 @@ export class NdcState {
     this.notifierService.successNotification(
       successMessage.message,
       successMessage.httpStatusCode
-    )
+    );
     this.ndcService.onGetAllNdc();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(NdcErrorState) ifStateError(
@@ -108,14 +110,10 @@ export class NdcState {
       errorMessage.httpStatusCode
     );
 
-    if (this.ndcTableService.gridApi.getRenderedNodes().length == 0) {
-      this.ndcTableService.showNoRowData();
-    } else {
-      this.ndcTableService.showTableLoading();
-    }
+    this.ndcTableService.loading = false;
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

@@ -43,7 +43,6 @@ export class NdcService {
   }
 
   onGetAllNdc() {
-    this.ndcTableService.showTableLoading();
     this.ndcDispatch._NdcGetDispatch();
   }
 
@@ -61,5 +60,9 @@ export class NdcService {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  set ExistingData(data: NdcModel) {
+    this.existingData = data;
   }
 }

@@ -11,7 +11,7 @@ import {
   UserGetInstitution,
   UserGetUserGroup,
 } from './user.action';
-import { UserService } from 'src/app/modules/services/module-services/user.service';
+import { UserService } from 'src/app/modules/services/module-services/user-management/user.service';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
@@ -20,15 +20,15 @@ import { tap } from 'rxjs';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
+import { UserTableService } from 'src/app/modules/services/module-services/user-management/user-table.service';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
 import { TypeInterface } from 'src/app/interface/modules/type';
 import { InstitutionInterface } from 'src/app/interface/modules/institution';
 import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
-import { RolesService } from 'src/app/modules/services/module-services/roles.service';
-import { TypeService } from 'src/app/modules/services/module-services/type.service';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
-import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
+import { TypeService } from 'src/app/modules/services/module-services/user-management/type.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/user-management/institution.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-management/user-group.service';
 
 export class UserStateModel {
   User: UserModel[] = [];

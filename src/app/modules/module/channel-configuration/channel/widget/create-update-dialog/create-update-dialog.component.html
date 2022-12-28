@@ -34,7 +34,7 @@
                 invalid.</small>
         </div>
         <div class="input-container">
-            <p-dropdown autoWidth="false" [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}" (onChange)="onChange($event)" [filter]="true"
                 [options]="channelTypeGroupInterfaces" [showClear]="showClear" appendTo="body" class="channel-type"
                 filterBy="name" formControlName="channelType" optionLabel="name" placeholder="Select Channel Type"
                 scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>

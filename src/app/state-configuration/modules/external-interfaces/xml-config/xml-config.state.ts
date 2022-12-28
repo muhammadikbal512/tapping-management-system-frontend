@@ -49,11 +49,11 @@ export class XmlConfigState {
     return this.xmlService.getAllXml().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.xmlTableService.hideTableLoading();
+          this.xmlTableService.loading = false;
           this.xmlTableService.setRowData(response);
         } else {
           this.xmlTableService.setRowData(response);
-          this.xmlTableService.showNoRowData();
+          this.xmlTableService.loading = false;
         }
 
         ctx.patchState({
@@ -91,11 +91,7 @@ export class XmlConfigState {
       errorMessage.httpStatusCode
     );
 
-    if (this.xmlTableService.gridApi.getRenderedNodes().length == 0) {
-      this.xmlTableService.showNoRowData();
-    } else {
-      this.xmlTableService.hideTableLoading();
-    }
+    this.xmlTableService.loading = false;
 
     ctx.patchState({
       responseMessage: errorMessage,

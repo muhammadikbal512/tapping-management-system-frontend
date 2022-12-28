@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
-import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction-parameters-table.service';
+import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction/transaction-parameters.service';
+import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction/transaction-parameters-table.service';
 
 @Component({
   selector: 'app-transaction-param-table',

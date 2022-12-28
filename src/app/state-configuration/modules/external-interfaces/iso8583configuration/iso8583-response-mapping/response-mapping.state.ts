@@ -53,11 +53,11 @@ export class ResponseMappingState {
     return this.responseService.getAllResponseMapping().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.responseTableService.showTableLoading();
+          this.responseTableService.loading = false;
           this.responseTableService.setRowData(response);
         } else {
           this.responseTableService.setRowData(response);
-          this.responseTableService.showNorowData();
+          this.responseTableService.loading = false;
         }
 
         ctx.patchState({
@@ -95,12 +95,12 @@ export class ResponseMappingState {
     this.notifierService.successNotification(
       successMessage.message,
       successMessage.httpStatusCode
-    )
-    
+    );
+
     this.responseService.onGetAllResponseMapping();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(ResponseMappingErrorState) ifErrorState(
@@ -110,16 +110,12 @@ export class ResponseMappingState {
     this.notifierService.errorNotification(
       errorMessage.message,
       errorMessage.httpStatusCode
-    )
+    );
 
-    if (this.responseTableService.gridApi.getRenderedNodes().length == 0) {
-      this.responseTableService.showNorowData();
-    } else {
-      this.responseTableService.showTableLoading();
-    }
+    this.responseTableService.loading = false;
 
     ctx.patchState({
-      responseMessage: errorMessage
-    })
+      responseMessage: errorMessage,
+    });
   }
 }

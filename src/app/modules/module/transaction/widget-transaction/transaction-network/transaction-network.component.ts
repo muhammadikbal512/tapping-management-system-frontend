@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClassRules } from 'ag-grid-community';
 import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
 import { TransactionNetworkTableService } from 'src/app/modules/services/module-services/transaction-network-table.service';
-import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
-import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
+import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
+import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
 
 @Component({
   selector: 'app-transaction-network',

@@ -13,47 +13,37 @@ export class TableXmlComponent implements OnInit {
     private xmlTable: XmlTableService,
     private xmlService: XmlService
   ) {}
-
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.xmlTable.gridApi = params.api;
-    this.xmlTable.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllXmlConfig();
   }
 
-  runService() {
-    this.xmlTable.showTableLoading();
-    this.xmlService.getAllXmlWithDelay();
+  getAllXmlConfig() {
+    this.xmlService.onGetAllXml();
   }
 
-  onCellClicked(data: RowClickedEvent) {}
-
-  get animateRow() {
-    return this.xmlTable.animateRow;
+  onRowSelect(data: any) {
+    this.xmlService.ExistingData = data.data
   }
 
-  get headerHeight() {
-    return this.xmlTable.headerHeight;
+  refreshTable() {
+    this.getAllXmlConfig();
+    this.xmlTable.loading = true;
   }
 
-  get rowHeight() {
-    return this.xmlTable.rowHeight;
+  showDialog() {
+    this.xmlService.openDialog();
   }
 
-  get defaultColDef() {
-    return this.xmlTable.defaultColDef;
+
+  get xmlConfigs() {
+    return this.xmlTable.xmlConfigs;
   }
 
-  get columnDefs() {
-    return this.xmlTable.columnDefs;
+  get cols() {
+    return this.xmlTable.cols;
   }
 
-  get overlayLoadingTemplate() {
-    return this.xmlTable.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.xmlTable.frameworkComponents;
+  get loading() {
+    return this.xmlTable.loading;
   }
 }

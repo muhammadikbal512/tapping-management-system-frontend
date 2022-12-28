@@ -1,7 +1,6 @@
-<p-table #dt1 [columns]="cols" [loading]="loading" [value]="users" [paginator]="true"
-  [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  [rows]="20" scrollHeight="500px" [autoLayout]="true" [tableStyle]="{'min-width': '40rem'}"
-  (onRowSelect)="onRowSelect($event)" selectionMode="single">
+<p-table #dt1 [loading]="loading" [value]="users" [paginator]="true" [rowsPerPageOptions]="[10, 25, 50]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="20" scrollHeight="500px"
+  [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="search-buttons">
@@ -25,37 +24,49 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th style="min-width:100px;" *ngFor="let col of cols">
-        {{col.header}}
+      <th style="min-width:100px;">
+        Username
       </th>
-      <th>
+      <th style="min-width:200px;">
+        Email
+      </th>
+      <th style="min-width:100px;">
+        Last Login
+      </th>
+      <th style="min-width:100px;">
         Status
       </th>
-      <th>Role</th>
-      <th>Institution</th>
-      <th>Type</th>
-      <th>UserGroup</th>
+      <th style="min-width:100px;">Role</th>
+      <th style="min-width:100px;">Institution</th>
+      <th style="min-width:100px;">Type</th>
+      <th style="min-width:100px;">UserGroup</th>
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
+  <ng-template pTemplate="body" let-rowData>
     <tr>
-      <td style="min-width:100px;" *ngFor="let col of cols">
-        {{rowData[col.field]}}
+      <td style="min-width:100px;">
+        {{rowData.username}}
       </td>
-      <td>
-        <span [ngClass]="{'notActive': rowData.active == true, 'active': rowData.active == false}"></span>
+      <td style="min-width:200px;">
+        {{rowData.email}}
       </td>
-      <td>
+      <td style="min-width:100px">
+        {{rowData.lastLoginDate | date:'medium'}}
+      </td>
+      <td style="min-width:100px;">
+        <span [ngClass]="{'active': rowData.active == true, 'notActive': rowData.active == false}"></span>
+      </td>
+      <td style="min-width:100px;">
         {{rowData.role.roleName}}
       </td>
-      <td>
-        {{rowData.type.typeName}}
-      </td>
-      <td>
+      <td style="min-width:100px;">
         {{rowData.institution.institutionName}}
       </td>
-      <td>
+      <td style="min-width:100px;">
+        {{rowData.type.typeName}}
+      </td>
+      <td style="min-width:100px;">
         {{rowData.userGroup.groupName}}
       </td>
       <td style="min-width:100px;" [pSelectableRow]="rowData">

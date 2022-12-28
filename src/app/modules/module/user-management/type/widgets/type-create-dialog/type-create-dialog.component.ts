@@ -5,7 +5,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TypeService } from 'src/app/modules/services/module-services/type.service';
+import { TypeService } from 'src/app/modules/services/module-services/user-management/type.service';
 import { TypeModel } from 'src/app/model/modules-model/type.model';
 
 @Component({

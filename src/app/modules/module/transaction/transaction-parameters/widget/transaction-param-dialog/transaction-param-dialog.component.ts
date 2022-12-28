@@ -5,7 +5,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
+import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction/transaction-parameters.service';
 import { TransactionParametersModel } from 'src/app/model/modules-model/transaction-parameters';
 
 @Component({

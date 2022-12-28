@@ -1,0 +1,66 @@
+<div class="transaction-summary-container">
+    <div class="summary-left">
+        <div class="summary-item">
+            <span>App Trans ID</span>
+            <input [value]="this.transactionApiService.additionalData?.[0]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Network Layer ID</span>
+            <input [value]="this.transactionApiService.additionalData?.[11]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Dst Address</span>
+            <input [value]="this.transactionApiService.additionalData?.[14]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>IHL</span>
+            <input [value]="this.transactionApiService.additionalData?.[12]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Fragment Offset</span>
+            <input [value]="this.transactionApiService.additionalData?.[15]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Header Checksum</span>
+            <input [value]="this.transactionApiService.additionalData?.[16]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Version</span>
+            <input [value]="this.transactionApiService.additionalData?.[23]" readonly disabled>
+        </div>
+    </div>
+    <div class="summary-right">
+        <div class="summary-item">
+            <span>Identification</span>
+            <input [value]="this.transactionApiService.additionalData?.[17]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Network Flags</span>
+            <input [value]="this.transactionApiService.additionalData?.[18]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Src Address</span>
+            <input [value]="this.transactionApiService.additionalData?.[13]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Protocol</span>
+            <input [value]="this.transactionApiService.additionalData?.[19]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>TOS</span>
+            <input [value]="this.transactionApiService.additionalData?.[20]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Total Length</span>
+            <input [value]="this.transactionApiService.additionalData?.[21]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>TTL</span>
+            <input [value]="this.transactionApiService.additionalData?.[22]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Captured At</span>
+            <input type="text">
+        </div>
+    </div>
+</div>

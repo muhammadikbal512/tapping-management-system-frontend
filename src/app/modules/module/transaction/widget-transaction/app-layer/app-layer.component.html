@@ -1,0 +1,50 @@
+<div class="transaction-summary-container">
+    <div class="summary-left">
+        <div class="summary-item">
+            <span>App Trans ID</span>
+            <input [value]="transactionApiService.additionalData![0]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>App Flags</span>
+            <input [value]="transactionApiService.additionalData![2]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Checksum</span>
+            <input [value]="transactionApiService.additionalData![3]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Data Offset</span>
+            <input [value]="transactionApiService.additionalData![4]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Dst Port</span>
+            <input [value]="transactionApiService.additionalData![6]" readonly disabled type="text">
+        </div>
+    </div>
+    <div class="summary-right">
+        <div class="summary-item">
+            <span>Ack Number</span>
+            <input [value]="transactionApiService.additionalData![1]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Data Window</span>
+            <input [value]="transactionApiService.additionalData![5]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Sequence Number</span>
+            <input [value]="transactionApiService.additionalData![7]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Pointer At</span>
+            <input [value]="transactionApiService.additionalData![9]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Src Port</span>
+            <input [value]="transactionApiService.additionalData![8]" readonly disabled type="text">
+        </div>
+        <div class="summary-item">
+            <span>Captured At</span>
+            <input [value]="transactionApiService.additionalData![10]" readonly disabled type="text">
+        </div>
+    </div>
+</div>

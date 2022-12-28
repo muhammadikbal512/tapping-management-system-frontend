@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/user-management/institution.service';
 
 @Component({
   selector: 'app-institution-create-dialog',

@@ -1,5 +1,10 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { ChannelService } from 'src/app/modules/services/module-services/channel-configuration/channel.service';
 import { ChannelTypeModel } from 'src/app/model/modules-model/channel-type.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select } from '@ngxs/store';
@@ -13,10 +18,12 @@ import { ChannelState } from 'src/app/state-configuration/modules/channel-config
   templateUrl: './create-update-dialog.component.html',
   styleUrls: ['./create-update-dialog.component.css'],
 })
-export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit {
-  @Select(ChannelState.channelType) 
-  channelTypes$!: Observable<ChannelTypeGroupInterface[]>
-  
+export class CreateUpdateDialogChannelComponent
+  implements OnInit, AfterViewInit
+{
+  @Select(ChannelState.channelType)
+  channelTypes$!: Observable<ChannelTypeGroupInterface[]>;
+
   form!: FormGroup;
   showClear: boolean = false;
   disableStatus: boolean = false;
@@ -33,8 +40,10 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
   ngOnInit(): void {
     this.createForm();
     this.channelService.onGetAllTerminalType();
-    this.channelTypes$.subscribe(data => {
-      this.channelTypeGroupInterfaces = data.sort((a, b) => a.name.localeCompare(b.name));
+    this.channelTypes$.subscribe((data) => {
+      this.channelTypeGroupInterfaces = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
   }
 
@@ -61,7 +70,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
       port: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       channelType: ['', Validators.required],
       isOnPremise: [''],
-      channelstatus: ['']
+      channelstatus: [''],
     });
   }
 
@@ -118,7 +127,7 @@ export class CreateUpdateDialogChannelComponent implements OnInit, AfterViewInit
     if (this.isOnPremise.value == '' || this.isOnPremise.value == null) {
       this.channelModel.isOnPremise = false;
     }
-   
+
     return this.channelModel;
   }
 

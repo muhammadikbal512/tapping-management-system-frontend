@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-type-table.service';
-import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
+import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-configuration/channel-type.service';
+import { ChannelTypeTableService } from 'src/app/modules/services/module-services/channel-configuration/channel-type-table.service';
 
 @Component({
   selector: 'app-channel-type-table',
@@ -8,7 +8,6 @@ import { ChannelTypeService } from 'src/app/modules/services/module-services/cha
   styleUrls: ['./channel-type-table.component.css'],
 })
 export class ChannelTypeTableComponent implements OnInit {
-
   constructor(
     private channelTypeService: ChannelTypeService,
     private channelTypeTableService: ChannelTypeTableService
@@ -22,7 +21,6 @@ export class ChannelTypeTableComponent implements OnInit {
     this.channelTypeService.onGetAllChannelType();
   }
 
-
   showDialog() {
     this.channelTypeService.openDialog();
     this.channelTypeService.buttonStatus = 'create';
@@ -33,12 +31,10 @@ export class ChannelTypeTableComponent implements OnInit {
     this.channelTypeService.getAllChannelType();
   }
 
-
   onRowSelect(event: any) {
-    this.channelTypeService.ExistingData = event.data
-    console.log(event.data)
+    this.channelTypeService.ExistingData = event.data;
+    console.log(event.data);
   }
-
 
   get cols() {
     return this.channelTypeTableService.cols;
@@ -51,6 +47,4 @@ export class ChannelTypeTableComponent implements OnInit {
   get channelTypes() {
     return this.channelTypeTableService.channelTypes;
   }
-
-  
 }

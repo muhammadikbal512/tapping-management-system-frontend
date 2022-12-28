@@ -14,48 +14,37 @@ export class Iso8583ResponseMappingTableComponent implements OnInit {
     private responseService: ResponseMappingService
   ) {}
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.responseTableService.gridApi = params.api;
-    this.responseTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllResponseMappings();
   }
 
-  runService() {
-    this.responseTableService.showTableLoading();
-    this.responseService.getResponseMappingWithDelay();
+  getAllResponseMappings() {
+    this.responseService.onGetAllResponseMapping();
   }
 
-  onCellClicked(data: RowClickedEvent) {
+  refreshTable() {
+    this.responseTableService.loading = true;
+    this.getAllResponseMappings();
+  }
+
+  onRowSelect(data: any) {
     this.responseService.ExistingData = data.data;
   }
 
-  get animateRow() {
-    return this.responseTableService.animateRow;
+  showDialog() {
+    this.responseService.openDialog();
+    this.responseService.buttonStatus = 'create'
   }
 
-  get rowHeight() {
-    return this.responseTableService.rowHeight;
+  get cols() {
+    return this.responseTableService.cols;
   }
 
-  get headerHeight() {
-    return this.responseTableService.headerHeight;
+  get responseMappings() {
+    return this.responseTableService.responseMappings;
   }
 
-  get defaultColDef() {
-    return this.responseTableService.defaultColDef;
-  }
-
-  get columnDef() {
-    return this.responseTableService.columnDef;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.responseTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.responseTableService.frameworkComponents;
+  get loading() {
+    return this.responseTableService.loading;
   }
 }

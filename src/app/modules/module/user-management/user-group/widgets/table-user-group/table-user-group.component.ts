@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserGroupTableService } from 'src/app/modules/services/module-services/user-group-table.service';
-import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { UserGroupTableService } from 'src/app/modules/services/module-services/user-management/user-group-table.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-management/user-group.service';
 @Component({
   selector: 'app-table-user-group',
   templateUrl: './table-user-group.component.html',

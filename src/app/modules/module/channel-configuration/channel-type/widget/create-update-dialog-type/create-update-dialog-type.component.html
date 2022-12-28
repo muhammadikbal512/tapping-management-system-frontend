@@ -11,24 +11,22 @@
                 fill.</small>
         </div>
         <div class="input-container">
-            <div class="m-auto space-x-2 text-center pb-5">
-                <p>ISO Dialect</p>
-                <p-dropdown [filter]="true" [options]="dialectmsgTemplateOptionList" appendTo="body" filterBy="name"
-                    placeholder="Select Message Template" optionLabel="name" [showClear]="showClear"
-                    styleClass="msgTemplate" (onChange)="onChange($event)" formControlName="messageTemplate">
-                </p-dropdown>
-                <div class="message">
-                    <p-message *ngIf="dialectMsgTemplate.touched && !dialectMsgTemplate.hasError('required')"
-                        severity="success"></p-message>
-                    <p-message *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')"
-                        severity="error">
-                    </p-message>
-                    <small *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')"
-                        class="p-error">ISO
-                        Dialect
-                        should be
-                        fill.</small>
-                </div>
+            <p>ISO Dialect</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
+                [showClear]="showClear" appendTo="body" class="msgTemplate" filterBy="name"
+                formControlName="messageTemplate" optionLabel="name" placeholder="Select Message Template"
+                scrollHeight="150px" styleClass="msgTemplate"></p-dropdown>
+            <div class="message">
+                <p-message *ngIf="dialectMsgTemplate.touched && !dialectMsgTemplate.hasError('required')"
+                    severity="success"></p-message>
+                <p-message *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')"
+                    severity="error">
+                </p-message>
+                <small *ngIf="dialectMsgTemplate.touched && dialectMsgTemplate.hasError('required')" class="p-error">ISO
+                    Dialect
+                    should be
+                    fill.</small>
             </div>
         </div>
     </div>

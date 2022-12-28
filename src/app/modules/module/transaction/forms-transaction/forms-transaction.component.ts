@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionMessageInterface } from 'src/app/interface/modules/transaction-message';
 import { TransactionMessageModel } from 'src/app/model/modules-model/transaction-message-model';
-import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
+import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
 
 
 @Component({

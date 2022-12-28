@@ -15,11 +15,5 @@ export class XmlConfigurationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showDialog() {
-    this.xmlService.openDialog();
-  }
-
-  TextFilterBox() {
-    this.xmlTableService.onFilter();
-  }
+  
 }

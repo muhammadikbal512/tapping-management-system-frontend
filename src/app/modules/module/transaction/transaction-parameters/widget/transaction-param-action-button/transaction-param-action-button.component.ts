@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
+import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction/transaction-parameters.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({

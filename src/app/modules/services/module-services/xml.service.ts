@@ -12,6 +12,7 @@ import { XmlTableService } from './xml-table.service';
 })
 export class XmlService {
   private apiURL: string = environment.core236;
+  existingData:  XmlConfigModel = new XmlConfigModel();
   dialogConfig: MatDialogConfig = {
     width: '55%',
   };
@@ -33,7 +34,6 @@ export class XmlService {
   }
 
   onGetAllXml() {
-    this.xmlTableService.showTableLoading();
     this.xmlDispatch._XmlConfigurationGetDispatch();    
   }
 
@@ -47,5 +47,9 @@ export class XmlService {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  set ExistingData(data: XmlConfigModel) {
+    this.existingData = data;
   }
 }

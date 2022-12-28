@@ -61,7 +61,6 @@ export class Iso20022Service {
   }
 
   onGetAllIso20022() {
-    this.iso20022TableService.showTableLoading();
     this.iso20022Dispatch._Iso20022GetDispatch();
   }
 

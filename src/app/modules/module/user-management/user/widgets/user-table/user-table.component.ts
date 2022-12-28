@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/modules/services/module-services/user.service';
-import { UserTableService } from 'src/app/modules/services/module-services/user-table.service';
+import { UserService } from 'src/app/modules/services/module-services/user-management/user.service';
+import { UserTableService } from 'src/app/modules/services/module-services/user-management/user-table.service';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { Select } from '@ngxs/store';
@@ -42,9 +42,6 @@ export class UserTableComponent implements OnInit {
     this.userService.openDialog();
   }
 
-  get cols() {
-    return this.userTableService.cols;
-  }
 
   get loading() {
     return this.userTableService.loading;

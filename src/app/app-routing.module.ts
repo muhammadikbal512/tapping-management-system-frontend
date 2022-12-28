@@ -23,7 +23,7 @@ import { SystemParametersComponent } from './modules/module/system/system-parame
 import { Iso8583FormatComponent } from './modules/module/message-format/iso8583-format/iso8583-format.component';
 import { ChannelComponent } from './modules/module/channel-configuration/channel/channel.component';
 import { ChannelTypeComponent } from './modules/module/channel-configuration/channel-type/channel-type.component';
-import { Iso8583DialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component';
+import { Iso8583dialectComponent } from './modules/module/external-interface/iso8583configuration/iso8583dialect/iso8583dialect.component';
 import { Iso8583FieldConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component';
 import { Iso8583ResponseMappingComponent } from './modules/module/external-interface/iso8583configuration/iso8583-response-mapping/iso8583-response-mapping.component';
 import { TransactionParametersComponent } from './modules/module/transaction/transaction-parameters/transaction-parameters.component';
@@ -31,10 +31,14 @@ import { TerminalListIssuerComponent } from './modules/module/issuer/terminal-li
 import { AlertIssuerComponent } from './modules/module/issuer/alert-issuer/alert-issuer.component';
 import { InterfaceListComponent } from './modules/module/dashboard/interface-list/interface-list.component';
 import { DeviceMonitoringComponent } from './modules/module/device-monitoring/device-monitoring.component';
-import { TransactionVirtualComponent } from './modules/module/transaction/transaction-virtual/transaction-virtual.component';
+import { TransactionVirtualComponent } from './modules/module/transaction/widget-transaction/transaction-virtual/transaction-virtual.component';
 import { InstitutionComponent } from './modules/module/user-management/institution/institution.component';
 import { TypeComponent } from './modules/module/user-management/type/type.component';
 import { UserGroupComponent } from './modules/module/user-management/user-group/user-group.component';
+import { HeaderConfigurationComponent } from './modules/module/external-interface/iso8583configuration/header-configuration/header-configuration.component';
+import { AidConfigurationComponent } from './modules/module/external-interface/iso8583configuration/aid-configuration/aid-configuration.component';
+import { TransactionTypeMappingComponent } from './modules/module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-mapping.component';
+import { MtiConfigurationComponent } from './modules/module/external-interface/iso8583configuration/mti-configuration/mti-configuration.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -114,8 +118,28 @@ const routes: Routes = [
             children: [
               {
                 path: 'iso8583-dialect',
-                data: { title: 'ISO8583 Dialect' },
-                component: Iso8583DialectComponent,
+                data: { title: 'ISO Configuration' },
+                component: Iso8583dialectComponent,
+              },
+              {
+                path: 'aid-configuration',
+                data: { title: 'AID Configuration' },
+                component: AidConfigurationComponent,
+              },
+              {
+                path: 'header-configuration',
+                data: { title: 'Header Configuration' },
+                component: HeaderConfigurationComponent,
+              },
+              {
+                path: 'transaction-type-mapping',
+                data: { title: 'Transaction Type Mapping' },
+                component: TransactionTypeMappingComponent,
+              },
+              {
+                path: 'mti-configuration',
+                data: { title: 'MTI Configuration' },
+                component: MtiConfigurationComponent,
               },
               {
                 path: 'iso8583-field-configuration',
@@ -124,7 +148,7 @@ const routes: Routes = [
               },
               {
                 path: 'iso8583-response-mapping',
-                data: { title: 'ISO8583 Response Mapping' },
+                data: { title: 'ISO8583 Response Code Mapping' },
                 component: Iso8583ResponseMappingComponent,
               },
             ],
@@ -246,9 +270,9 @@ const routes: Routes = [
           {
             path: 'all-devices',
             data: { title: 'Device Monitoring' },
-            component: DeviceMonitoringComponent
-          }
-        ]
+            component: DeviceMonitoringComponent,
+          },
+        ],
       },
     ],
   },

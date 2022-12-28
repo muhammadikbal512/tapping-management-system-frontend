@@ -45,7 +45,6 @@ export class ResponseMappingService {
   }
 
   onGetAllResponseMapping() {
-    this.responseTable.showTableLoading();
     this.responseDispatch._ResponseMappingGetDispatch();
   }
 

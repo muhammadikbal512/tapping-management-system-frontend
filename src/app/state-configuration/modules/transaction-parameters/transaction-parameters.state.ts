@@ -11,8 +11,8 @@ import {
   TransactionParametersSuccessState,
   TransactionParametersErrorState,
 } from './transaction-parameters.action';
-import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction-parameters.service';
-import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction-parameters-table.service';
+import { TransactionParametersService } from 'src/app/modules/services/module-services/transaction/transaction-parameters.service';
+import { TransactionParametersTableService } from 'src/app/modules/services/module-services/transaction/transaction-parameters-table.service';
 import { tap } from 'rxjs';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';

@@ -1,0 +1,28 @@
+<div>
+    <div class="case-container">
+        <h3>Classify Queue</h3>
+    </div>
+    <div class="case-content">
+        <div class="case-title">
+            <label for="">Classification Type</label>
+        </div>
+        <div class="case-input">
+            <input [value]="this.investigationService.existingData.classificationType" type="text">
+        </div>
+        <div class="case-title mt-2">
+            <label for="">Classification Source</label>
+        </div>
+        <div class="case-input">
+            <input [value]="this.investigationService.existingData.lockedByUser" type="text">
+        </div>
+        <div class="case-title mt-2">
+            <label for="">Comment</label>
+        </div>
+        <div class="case-input">
+            <textarea cols="30" rows="5"></textarea>
+        </div>
+        <div class="button w-full">
+            <p-button style="width:1000px;" label="Classify"></p-button>
+        </div>
+    </div>
+</div>

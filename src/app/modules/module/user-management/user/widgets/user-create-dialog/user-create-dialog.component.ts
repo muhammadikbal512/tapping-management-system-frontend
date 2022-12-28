@@ -4,7 +4,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { UserService } from 'src/app/modules/services/module-services/user.service';
+import { UserService } from 'src/app/modules/services/module-services/user-management/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/model/user-model/user.model';
 import { Select } from '@ngxs/store';
@@ -14,6 +14,10 @@ import { TypeInterface } from 'src/app/interface/modules/type';
 import { InstitutionInterface } from 'src/app/interface/modules/institution';
 import { UsergroupInterface } from 'src/app/interface/modules/usergroup';
 import { UserState } from 'src/app/state-configuration/modules/user-management/user/user.state';
+import { RolesModel } from 'src/app/model/modules-model/roles.model';
+import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
+import { TypeModel } from 'src/app/model/modules-model/type.model';
+import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
 
 @Component({
   selector: 'app-user-create-dialog',
@@ -157,10 +161,14 @@ export class UserCreateDialogComponent implements OnInit, AfterViewInit {
     this.userModel.lastName = this.lastName.value;
     this.userModel.username = this.username.value;
     this.userModel.email = this.email.value;
-    this.userModel.role = this.role.value;
-    this.userModel.institution = this.institution.value;
-    this.userModel.type = this.type.value;
-    this.userModel.userGroup = this.userGroup.value;
+    this.userModel.role = new RolesModel(Number(this.role.value.code));
+    this.userModel.institution = new InstitutionModel(
+      Number(this.institution.value.code)
+    );
+    this.userModel.type = new TypeModel(Number(this.type.value.code));
+    this.userModel.userGroup = new UserGroupModel(
+      Number(this.userGroup.value.code)
+    );
     this.userModel.active = this.isActive.value;
     this.userModel.notLocked = this.isNonLocked.value;
     this.userModel.profileImageUrl = '';

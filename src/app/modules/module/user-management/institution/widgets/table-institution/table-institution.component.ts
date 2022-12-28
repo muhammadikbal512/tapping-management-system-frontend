@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable, tap } from 'rxjs';
 import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
-import { InstitutionTableService } from 'src/app/modules/services/module-services/institution-table.service';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { InstitutionTableService } from 'src/app/modules/services/module-services/user-management/institution-table.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/user-management/institution.service';
 import { InstitutionState } from 'src/app/state-configuration/modules/user-management/institution/institution.state';
 
 @Component({

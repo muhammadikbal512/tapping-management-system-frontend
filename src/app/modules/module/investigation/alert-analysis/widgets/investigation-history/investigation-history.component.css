@@ -1,0 +1,9 @@
+:host ::ng-deep .p-datatable .p-datatable-header {
+    @apply text-white rounded-t-xl;
+    background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-thead tr th {
+    background: linear-gradient(98.79deg, #087592 5.7%, #34A1A8 100%);
+    color: white;
+}

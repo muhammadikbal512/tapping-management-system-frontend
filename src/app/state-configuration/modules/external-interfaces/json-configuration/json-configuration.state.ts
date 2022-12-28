@@ -50,10 +50,10 @@ export class JsonConfigurationState {
     return this.jsonService.getAllJsonConfig().pipe(
       tap((response) => {
         if (response.length != 0) {
-          this.jsonTableService.hideTableLoading();
+          this.jsonTableService.loading = false;
           this.jsonTableService.setRowData(response);
         } else {
-          this.jsonTableService.showNoRowData();
+          this.jsonTableService.loading = false;
           this.jsonTableService.setRowData(response);
         }
 
@@ -99,8 +99,8 @@ export class JsonConfigurationState {
     );
     this.jsonService.onGetAllJsonConfig();
     ctx.patchState({
-      responseMessage: successMessage
-    })
+      responseMessage: successMessage,
+    });
   }
 
   @Action(JsonConfigurationErrorState) ifStateError(
@@ -112,11 +112,7 @@ export class JsonConfigurationState {
       errorMessage.httpStatusCode
     );
 
-    if (this.jsonTableService.gridApi.getRenderedNodes().length == 0) {
-      this.jsonTableService.showNoRowData();
-    } else {
-      this.jsonTableService.hideTableLoading();
-    }
+    this.jsonTableService.loading = false;
 
     ctx.patchState({
       responseMessage: errorMessage,

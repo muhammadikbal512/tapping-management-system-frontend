@@ -8,8 +8,8 @@ import {
   UserGroupWithUsersGet,
 } from './user-group.action';
 import { Action, StateContext, State, Selector } from '@ngxs/store';
-import { UserGroupTableService } from 'src/app/modules/services/module-services/user-group-table.service';
-import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { UserGroupTableService } from 'src/app/modules/services/module-services/user-management/user-group-table.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-management/user-group.service';
 import { Injectable } from '@angular/core';
 import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';

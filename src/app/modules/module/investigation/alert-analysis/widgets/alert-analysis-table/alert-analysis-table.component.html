@@ -30,13 +30,13 @@
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 3rem"></th>
-                <th *ngFor="let col of cols" [pSortableColumn]="col.field">{{col.header}} <p-sortIcon></p-sortIcon>
+                <th *ngFor="let col of cols">{{col.header}}
                 </th>
                 <th style="width: 3rem"></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-expanded="expanded">
-            <tr>
+            <tr [pSelectableRow]="rowData">
                 <td>
                     <button type="button" pButton pRipple [pRowToggler]="rowData"
                         class="p-button-text p-button-rounded p-button-plain"
@@ -45,9 +45,9 @@
                 <td *ngFor="let col of cols">
                     {{rowData[col.field]}}
                 </td>
-                <td [pSelectableRow]="rowData">
+                <!-- <td>
                     <app-action-button-alert-analysis></app-action-button-alert-analysis>
-                </td>
+                </td> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex" let-rowData.viewDetails="false">

@@ -43,7 +43,6 @@ export class JsonConfigurationService {
   }
 
   onGetAllJsonConfig() {
-    this.jsonTableService.showTableLoading();
     this.jsonDispatch._JsonConfigurationGetDispatch();
   }
 
@@ -61,5 +60,9 @@ export class JsonConfigurationService {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  set ExistingData(data: JsonConfigModel) {
+    this.existingData = data
   }
 }

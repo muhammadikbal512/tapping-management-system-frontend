@@ -1,9 +1,6 @@
-<p-table #dt1 [value]="eventCollectors" [loading]="loading" sortField="networkId" sortMode="single" dataKey="networkId"
-  rowGroupMode="subheader" groupRowsBy="networkId" responsiveLayout="scroll" [paginator]="true" [rows]="20"
-  [showCurrentPageReport]="true" responsiveLayout="scroll"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
-  [globalFilterFields]="['networkId']" [columns]="cols" [scrollable]="true" scrollHeight="400px" stateStorage="session"
-  stateKey="statedemo-session" selectionMode="single" (onRowSelect)="onRowSelect($event)">
+<p-table #dt1 [columns]="cols" [value]="transactions" dataKey="0" [lazy]="true" (onLazyLoad)="loadTransactions($event)" [paginator]="true" [rows]="5"
+  [totalRecords]="totalRecords" [loading]="loading" scrollHeight="400px" selectionMode="single"
+  (onRowSelect)="onRowSelect($event)" [scrollable]="true" [rowsPerPageOptions]="[5,10, 20, 25, 50]">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="export-buttons">
@@ -29,30 +26,17 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of cols">
+      <th *ngFor="let col of cols" field="col.field">
         {{col.header}}
       </th>
+
     </tr>
   </ng-template>
-  <ng-template pTemplate="groupheader" let-eventCollectors let-rowIndex="rowIndex" let-expanded="expanded">
-    <tr [pSelectableRow]="eventCollectors">
-      <td colspan="5">
-        <button type="button" pButton pRipple [pRowToggler]="eventCollectors"
-          class="p-button-text p-button-rounded p-button-plain mr-2"
-          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-        <span class="font-bold ml-2">{{eventCollectors.networkId}}</span>
+  <ng-template pTemplate="body" let-transactions let-columns="cols">
+    <tr [pSelectableRow]="transactions">
+      <td *ngFor="let col of cols">
+        {{transactions[col.field]}}
       </td>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="rowexpansion" let-eventCollectors>
-    <tr>
-      <td>{{eventCollectors.timestamp}}</td>
-      <td>{{eventCollectors.dstAddress}} : {{eventCollectors.dstPort}}</td>
-      <td>{{eventCollectors.srcAddress}} : {{eventCollectors.srcPort}}</td>
-      <td>{{eventCollectors.flag}}</td>
-      <td>{{eventCollectors.typeMessage}}</td>
-      <td>{{eventCollectors.status}}</td>
-      <td>{{eventCollectors.incidentDetails}}</td>
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage">

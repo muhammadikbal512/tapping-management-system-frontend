@@ -34,7 +34,7 @@ import { TransactionStatusComponent } from '../modules/module/dashboard/transact
 import { DatePickerComponent } from '../modules/module/transaction/widget-transaction/date-picker/date-picker.component';
 import { TableComponent } from '../modules/module/transaction/widget-transaction/table/table.component';
 import { FormsTransactionComponent } from '../modules/module/transaction/forms-transaction/forms-transaction.component';
-import { TransactionSummaryComponent } from '../modules/module/transaction/transaction-summary/transaction-summary.component';
+import { TransactionSummaryComponent } from '../modules/module/transaction/widget-transaction/transaction-summary/transaction-summary.component';
 import { Iso8583FormatComponent } from '../modules/module/message-format/iso8583-format/iso8583-format.component';
 import { Iso8583FormatTableComponent } from '../modules/module/message-format/iso8583-format/widget/iso8583-format-table/iso8583-format-table.component';
 import { CreateUpdateDialogIso8583FormatTableComponent } from '../modules/module/message-format/iso8583-format/widget/create-update-dialog-iso8583-format-table/create-update-dialog-iso8583-format-table.component';
@@ -45,11 +45,8 @@ import { ChannelTableComponent } from '../modules/module/channel-configuration/c
 import { ActionButtonGroupTerminalComponent } from '../modules/module/channel-configuration/channel/widget/action-button-group-terminal/action-button-group-terminal.component';
 import { ChannelTypeTableComponent } from '../modules/module/channel-configuration/channel-type/widget/channel-type-table/channel-type-table.component';
 import { ActionButtonGroupChannelTypeComponent } from '../modules/module/channel-configuration/channel-type/widget/action-button-group-channel-type/action-button-group-channel-type.component';
-import { Iso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/iso8583-dialect.component';
 import { Iso8583FieldConfigurationComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-field-configuration/iso8583-field-configuration.component';
-import { Iso8583DialectTableComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/iso8583-dialect-table/iso8583-dialect-table.component';
-import { CreateUpdateIso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
-import { ActionButtonGroupIso8583DialectComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-dialect/widget/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
+import { CreateUpdateIso8583DialectComponent } from './module/external-interface/iso8583configuration/iso8583dialect/widgets/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
 import { Iso8583FieldTableComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-field-table/iso8583-field-table.component';
 import { CreateUpdateIso8583FieldFormComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
 import { CreateUpdateDialogTypeComponent } from '../modules/module/channel-configuration/channel-type/widget/create-update-dialog-type/create-update-dialog-type.component';
@@ -119,19 +116,19 @@ import { Iso8583ResponseMappingCreateDialogComponent } from '../modules/module/e
 import { Iso8583ResponseMappingActionButtonComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-action-button/iso8583-response-mapping-action-button.component';
 import { Iso8583ResponseMappingTableComponent } from '../modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-table/iso8583-response-mapping-table.component';
 import { ActionButtonInterfaceComponent } from '../modules/module/dashboard/interface-list-card/action-button-interface/action-button-interface.component';
-import { TransactionVirtualComponent } from '../modules/module/transaction/transaction-virtual/transaction-virtual.component';
+import { TransactionVirtualComponent } from '../modules/module/transaction/widget-transaction/transaction-virtual/transaction-virtual.component';
 import { WebsocketService } from './services/websocket-service/websocket-service.service';
 import { TransactionRateChartService } from './services/chart-services/transaction-rate-chart.service';
-import { TransactionService } from './services/module-services/transaction.service';
-import { TransactionTableService } from './services/module-services/transaction-table.service';
+import { TransactionService } from './services/module-services/transaction/transaction.service';
+import { TransactionTableService } from './services/module-services/transaction/transaction-table.service';
 import { DashboardService } from './services/module-services/dashboard.service';
-import { ChannelTableService } from './services/module-services/channel-table.service';
-import { ChannelService } from './services/module-services/channel.service';
-import { ChannelTypeService } from './services/module-services/channel-type.service';
+import { ChannelTableService } from './services/module-services/channel-configuration/channel-table.service';
+import { ChannelService } from './services/module-services/channel-configuration/channel.service';
+import { ChannelTypeService } from './services/module-services/channel-configuration/channel-type.service';
 import { Iso8583DialectService } from './services/module-services/iso8583-dialect.service';
-import { ChannelTypeTableService } from './services/module-services/channel-type-table.service';
+import { ChannelTypeTableService } from './services/module-services/channel-configuration/channel-type-table.service';
 import { AuthenticationService } from './services/authentication-service/authentication.service';
-import { UserService } from './services/module-services/user.service';
+import { UserService } from './services/module-services/user-management/user.service';
 import { AuthenticationGuard } from '../guard/authentication.guard';
 import { RouterModule } from '@angular/router';
 import { TableDeviceMonitoringComponent } from './module/device-monitoring/widgets/table-device-monitoring/table-device-monitoring.component';
@@ -153,12 +150,25 @@ import { TransactionNetworkComponent } from './module/transaction/widget-transac
 import { TakeActionCaseComponent } from './module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
 import { ForwardActionCaseComponent } from './module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
 import { AlertInvestigationService } from './services/module-services/alert-investigation.service';
-import { AlertRejectedTableComponent } from './module/investigation/alert-analysis/widgets/alert-rejected-table/alert-rejected-table.component';
-import { AlertQueueTableComponent } from './module/investigation/alert-analysis/widgets/alert-queue-table/alert-queue-table.component';
-
-
-
-
+import { PhysicalLayerComponent } from './module/transaction/widget-transaction/physical-layer/physical-layer.component';
+import { NetworkLayerComponent } from './module/transaction/widget-transaction/network-layer/network-layer.component';
+import { AppLayerComponent } from './module/transaction/widget-transaction/app-layer/app-layer.component';
+import { ClassifyQueueComponent } from './module/investigation/alert-analysis/widgets/classify-queue/classify-queue.component';
+import { TakeActionComponent } from './module/investigation/alert-analysis/widgets/take-action/take-action.component';
+import { InvestigationHistoryComponent } from './module/investigation/alert-analysis/widgets/investigation-history/investigation-history.component';
+import { HeaderConfigurationComponent } from './module/external-interface/iso8583configuration/header-configuration/header-configuration.component';
+import { AidConfigurationComponent } from './module/external-interface/iso8583configuration/aid-configuration/aid-configuration.component';
+import { TransactionTypeMappingComponent } from './module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-mapping.component';
+import { MtiConfigurationComponent } from './module/external-interface/iso8583configuration/mti-configuration/mti-configuration.component';
+import { HeaderConfigTableComponent } from './module/external-interface/iso8583configuration/header-configuration/widgets/header-config-table/header-config-table.component';
+import { HeaderConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/header-configuration/widgets/header-config-create-update-dialog/header-config-create-update-dialog.component';
+import { HeaderConfigActionButtonComponent } from './module/external-interface/iso8583configuration/header-configuration/widgets/header-config-action-button/header-config-action-button.component';
+import { Iso8583dialectComponent } from './module/external-interface/iso8583configuration/iso8583dialect/iso8583dialect.component';
+import { Iso8583DialectTableComponent } from './module/external-interface/iso8583configuration/iso8583dialect/widgets/iso8583-dialect-table/iso8583-dialect-table.component';
+import { ActionButtonGroupIso8583DialectComponent } from './module/external-interface/iso8583configuration/iso8583dialect/widgets/action-button-group-iso8583-dialect/action-button-group-iso8583-dialect.component';
+import { AidConfigTableComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-table/aid-config-table.component';
+import { AidConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-create-update-dialog/aid-config-create-update-dialog.component';
+import { AidConfigActionButtonComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-action-button/aid-config-action-button.component';
 
 @NgModule({
   declarations: [
@@ -195,7 +205,7 @@ import { AlertQueueTableComponent } from './module/investigation/alert-analysis/
     ActionButtonGroupTerminalComponent,
     ChannelTypeTableComponent,
     ActionButtonGroupChannelTypeComponent,
-    Iso8583DialectComponent,
+    Iso8583dialectComponent,
     Iso8583FieldConfigurationComponent,
     Iso8583DialectTableComponent,
     CreateUpdateIso8583DialectComponent,
@@ -288,9 +298,22 @@ import { AlertQueueTableComponent } from './module/investigation/alert-analysis/
     TransactionNetworkComponent,
     TakeActionCaseComponent,
     ForwardActionCaseComponent,
-    AlertRejectedTableComponent,
-    AlertQueueTableComponent
-
+    PhysicalLayerComponent,
+    NetworkLayerComponent,
+    AppLayerComponent,
+    ClassifyQueueComponent,
+    TakeActionComponent,
+    InvestigationHistoryComponent,
+    HeaderConfigurationComponent,
+    AidConfigurationComponent,
+    TransactionTypeMappingComponent,
+    MtiConfigurationComponent,
+    HeaderConfigTableComponent,
+    HeaderConfigCreateUpdateDialogComponent,
+    HeaderConfigActionButtonComponent,
+    AidConfigTableComponent,
+    AidConfigCreateUpdateDialogComponent,
+    AidConfigActionButtonComponent,
   ],
   imports: [
     CommonModule,

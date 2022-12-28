@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelTableService } from 'src/app/modules/services/module-services/channel-table.service';
-import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
+import { ChannelTableService } from 'src/app/modules/services/module-services/channel-configuration/channel-table.service';
+import { ChannelService } from 'src/app/modules/services/module-services/channel-configuration/channel.service';
 
 @Component({
   selector: 'app-channel-table',

@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserGroupModel } from 'src/app/model/modules-model/user-group.model';
-import { UserGroupTableService } from 'src/app/modules/services/module-services/user-group-table.service';
-import { UserGroupService } from 'src/app/modules/services/module-services/user-group.service';
+import { UserGroupTableService } from 'src/app/modules/services/module-services/user-management/user-group-table.service';
+import { UserGroupService } from 'src/app/modules/services/module-services/user-management/user-group.service';
 
 @Component({
   selector: 'app-user-group-create-dialog',

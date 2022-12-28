@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 const MaterialComponents = [
   MatFormFieldModule,
@@ -45,6 +46,7 @@ const MaterialComponents = [
   MatIconModule,
   MatMenuModule,
   MatCheckboxModule,
+  MatCardModule
 ];
 
 @NgModule({

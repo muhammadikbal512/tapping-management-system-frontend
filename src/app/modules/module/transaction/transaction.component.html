@@ -1,6 +1,5 @@
 <div class="container-transaction">
   <div class="grid-container mb-4 shadow-md">
-
     <div class="p-4">
       <app-table></app-table>
     </div>
@@ -11,7 +10,22 @@
         <mat-tab label="Transaction Summary">
           <app-transaction-summary></app-transaction-summary>
         </mat-tab>
-        <mat-tab label="Transaction Virtual">
+        <mat-tab label="Physical Layer">
+          <app-physical-layer></app-physical-layer>
+        </mat-tab>
+        <mat-tab label="Network Layer">
+          <app-network-layer></app-network-layer>
+        </mat-tab>
+        <mat-tab label="App Layer">
+          <app-app-layer></app-app-layer>
+        </mat-tab>
+        <mat-tab label="EMV Transaction">
+
+        </mat-tab>
+        <mat-tab label="Transaction Flow">
+          
+        </mat-tab>
+        <mat-tab label="Visual Transaction">
           <app-transaction-virtual></app-transaction-virtual>
         </mat-tab>
       </mat-tab-group>

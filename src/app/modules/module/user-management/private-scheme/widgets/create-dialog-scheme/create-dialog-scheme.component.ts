@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SchemeModel } from 'src/app/model/modules-model/scheme.model';
-import { SchemeServiceService } from 'src/app/modules/services/module-services/scheme-service.service';
-import { SchemeTableService } from 'src/app/modules/services/module-services/scheme-table.service';
+import { SchemeServiceService } from 'src/app/modules/services/module-services/user-management/scheme-service.service';
+import { SchemeTableService } from 'src/app/modules/services/module-services/user-management/scheme-table.service';
 
 @Component({
   selector: 'app-create-dialog-scheme',

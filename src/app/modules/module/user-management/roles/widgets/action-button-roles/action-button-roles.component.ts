@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { RolesService } from 'src/app/modules/services/module-services/roles.service';
+import { RolesTableService } from 'src/app/modules/services/module-services/user-management/roles-table.service';
+import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ActionButtonRolesComponent implements AgRendererComponent {
   cellValue = '';
   constructor(
     private rolesService: RolesService,
-    private confirmationService: PopupMessageService
+    private confirmationService: PopupMessageService,
+    private roleTableService: RolesTableService
   ) {}
 
   agInit(params: ICellRendererParams): void {

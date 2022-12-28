@@ -12,8 +12,8 @@ import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { InstitutionModel } from 'src/app/model/modules-model/institution.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
-import { InstitutionTableService } from 'src/app/modules/services/module-services/institution-table.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/user-management/institution.service';
+import { InstitutionTableService } from 'src/app/modules/services/module-services/user-management/institution-table.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

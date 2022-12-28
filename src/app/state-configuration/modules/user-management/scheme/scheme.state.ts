@@ -7,8 +7,8 @@ import {
 import { Injectable } from '@angular/core';
 import { SchemeModel } from 'src/app/model/modules-model/scheme.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { SchemeServiceService } from 'src/app/modules/services/module-services/scheme-service.service';
-import { SchemeTableService } from 'src/app/modules/services/module-services/scheme-table.service';
+import { SchemeServiceService } from 'src/app/modules/services/module-services/user-management/scheme-service.service';
+import { SchemeTableService } from 'src/app/modules/services/module-services/user-management/scheme-table.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';

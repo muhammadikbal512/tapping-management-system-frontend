@@ -13,7 +13,7 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
 import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
-import { RolesService } from 'src/app/modules/services/module-services/roles.service';
+import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
 import { tap } from 'rxjs';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
 

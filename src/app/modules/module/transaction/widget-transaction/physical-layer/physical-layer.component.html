@@ -1,0 +1,34 @@
+<div class="transaction-summary-container">
+    <div class="summary-left">
+        <div class="summary-item">
+            <span>App Trans ID</span>
+            <input [value]="this.transactionApiService.additionalData?.[0]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Physical Layer ID</span>
+            <input [value]="this.transactionApiService.additionalData?.[24]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Dst Address</span>
+            <input [value]="this.transactionApiService.additionalData?.[25]" readonly disabled>
+        </div>
+    </div>
+    <div class="summary-right">
+        <div class="summary-item">
+            <span>Type</span>
+            <input [value]="this.transactionApiService.additionalData?.[28]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Header Length</span>
+            <input [value]="this.transactionApiService.additionalData?.[27]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Src Address</span>
+            <input [value]="this.transactionApiService.additionalData?.[26]" readonly disabled>
+        </div>
+        <div class="summary-item">
+            <span>Captured At</span>
+            <input type="text">
+        </div>
+    </div>
+</div>

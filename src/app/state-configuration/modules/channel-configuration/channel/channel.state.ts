@@ -1,13 +1,13 @@
 import { ChannelTypeGroupInterface } from 'src/app/interface/modules/channel-type-group';
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
+import { ChannelService } from 'src/app/modules/services/module-services/channel-configuration/channel.service';
 import { tap } from 'rxjs';
 import { CustomHttpResponseModel } from '../../../../model/customHttpResponse-Model/custom-http-response.model';
 import { ChannelModel } from '../../../../model/modules-model/channel.model';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-type.service';
-import { ChannelTableService } from 'src/app/modules/services/module-services/channel-table.service';
+import { ChannelTypeService } from 'src/app/modules/services/module-services/channel-configuration/channel-type.service';
+import { ChannelTableService } from 'src/app/modules/services/module-services/channel-configuration/channel-table.service';
 import {
   ChannelAdd,
   ChannelDelete,
@@ -198,11 +198,11 @@ export class ChannelState {
       errorMessage?.message,
       errorMessage?.status
     );
-    this.channelTableService.loading = false;
 
     if (this.channelService.getCurrentStatusDialog().length != 0) {
       this.channelService.closeDialog();
     }
+    this.channelTableService.loading = false;
     ctx.patchState({
       responseMessage: errorMessage,
     });

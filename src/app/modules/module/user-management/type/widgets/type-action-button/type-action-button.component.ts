@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { TypeService } from 'src/app/modules/services/module-services/type.service';
+import { TypeService } from 'src/app/modules/services/module-services/user-management/type.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 @Component({
   selector: 'app-type-action-button',

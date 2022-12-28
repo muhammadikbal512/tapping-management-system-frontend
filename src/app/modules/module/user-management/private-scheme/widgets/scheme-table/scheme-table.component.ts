@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { SchemeServiceService } from 'src/app/modules/services/module-services/scheme-service.service';
-import { SchemeTableService } from 'src/app/modules/services/module-services/scheme-table.service';
+import { SchemeServiceService } from 'src/app/modules/services/module-services/user-management/scheme-service.service';
+import { SchemeTableService } from 'src/app/modules/services/module-services/user-management/scheme-table.service';
 
 @Component({
   selector: 'app-scheme-table',

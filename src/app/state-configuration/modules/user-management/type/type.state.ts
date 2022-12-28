@@ -11,11 +11,11 @@ import { State, StateContext, Selector, Action } from '@ngxs/store';
 import { TypeModel } from 'src/app/model/modules-model/type.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
-import { TypeService } from 'src/app/modules/services/module-services/type.service';
+import { TypeService } from 'src/app/modules/services/module-services/user-management/type.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TypeTableService } from 'src/app/modules/services/module-services/type-table.service';
+import { TypeTableService } from 'src/app/modules/services/module-services/user-management/type-table.service';
 
 export class TypeStateModel {
   Type: TypeModel[] = [];

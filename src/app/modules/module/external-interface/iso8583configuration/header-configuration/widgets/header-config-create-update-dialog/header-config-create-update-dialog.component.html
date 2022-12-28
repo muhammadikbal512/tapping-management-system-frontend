@@ -1,0 +1,110 @@
+<form [formGroup]="formGroup" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="fieldId" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Field ID</label>
+            <p-message *ngIf="fieldId.touched && !fieldId.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="fieldId.touched && fieldId.hasError('required')" severity="error"></p-message>
+            <small *ngIf="fieldId.touched && fieldId.hasError('required')" class="p-error">Field ID should
+                be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Description</label>
+            <p-message *ngIf="description.touched && !description.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="description.touched && description.hasError('required')" severity="error"></p-message>
+            <small *ngIf="description.touched && description.hasError('required')" class="p-error">Description should
+                be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="length" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Length</label>
+            <p-message *ngIf="length.touched && !length.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="length.touched && length.hasError('required')" severity="error"></p-message>
+            <small *ngIf="length.touched && length.hasError('required')" class="p-error">Length should
+                be
+                fill.</small>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <p>Format</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
+                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="format" optionLabel="name"
+                placeholder="Select Format" scrollHeight="150px"></p-dropdown>
+            <div class="message">
+                <p-message *ngIf="format.touched && !format.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="format.touched && format.hasError('required')" severity="error">
+                </p-message>
+                <small *ngIf="format.touched && format.hasError('required')" class="p-error">ISO
+                    Dialect
+                    should be
+                    fill.</small>
+            </div>
+        </div>
+        <div class="input-container">
+            <p>Encoding</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
+                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="encoding" optionLabel="name"
+                placeholder="Select Encoding" scrollHeight="150px"></p-dropdown>
+            <div class="message">
+                <p-message *ngIf="encoding.touched && !encoding.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="encoding.touched && encoding.hasError('required')" severity="error">
+                </p-message>
+                <small *ngIf="encoding.touched && encoding.hasError('required')" class="p-error">Encoding
+                    should be
+                    fill.</small>
+            </div>
+        </div>
+        <div class="input-container">
+            <p>Config ID</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
+                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="configId" optionLabel="name"
+                placeholder="Select Config ID" scrollHeight="150px"></p-dropdown>
+            <div class="message">
+                <p-message *ngIf="configId.touched && !configId.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="configId.touched && configId.hasError('required')" severity="error">
+                </p-message>
+                <small *ngIf="configId.touched && configId.hasError('required')" class="p-error">Config ID
+                    should be
+                    fill.</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="conditionalId" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Conditional ID</label>
+            <p-message *ngIf="conditionalId.touched && !conditionalId.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="conditionalId.touched && conditionalId.hasError('required')" severity="error"></p-message>
+            <small *ngIf="conditionalId.touched && conditionalId.hasError('required')" class="p-error">Conditional ID should
+                be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <input formControlName="priority" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Priority</label>
+            <p-message *ngIf="priority.touched && !priority.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="priority.touched && priority.hasError('required')" severity="error"></p-message>
+            <small *ngIf="priority.touched && priority.hasError('required')" class="p-error">Priority should
+                be
+                fill.</small>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onCreateHeaderConfig()" *ngIf="headerService.buttonStatus == 'create'"
+            [disabled]="formGroup.invalid" [loading]="showLoading" class="create-button ml-3" label="Create"
+            styleClass="p-button-sm">
+        </p-button>
+        <p-button (onClick)="onUpdateHeaderConfig()" *ngIf="headerService.buttonStatus == 'edit'"
+            [disabled]="disableStatus" [loading]="showLoading" class="create-button ml-3" label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
+</form>

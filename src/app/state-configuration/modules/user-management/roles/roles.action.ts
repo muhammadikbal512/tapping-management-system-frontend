@@ -6,8 +6,12 @@ export class RolesGet {
 }
 
 export class RolesWithUserGet {
-  static readonly type = '[Get] Get Roles With User';
+  static readonly type = '[Roles] Get Roles With User';
   constructor(public name: string) {}
+}
+
+export class AuthoritiesGet {
+  static readonly type = '[Roles] Get Authorities';
 }
 
 export class RolesAdd {

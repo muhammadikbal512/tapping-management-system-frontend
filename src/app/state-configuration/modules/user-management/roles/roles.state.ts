@@ -6,10 +6,11 @@ import {
   RolesSuccessState,
   RolesUpdate,
   RolesWithUserGet,
+  AuthoritiesGet,
 } from './roles.action';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
-import { RolesService } from 'src/app/modules/services/module-services/roles.service';
-import { RolesTableService } from 'src/app/modules/services/module-services/roles-table.service';
+import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
+import { RolesTableService } from 'src/app/modules/services/module-services/user-management/roles-table.service';
 import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
@@ -17,10 +18,13 @@ import { tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
+import { AuthoritiesService } from 'src/app/modules/services/module-services/authorities/authorities.service';
+import { AuthoritiesInterface } from 'src/app/interface/modules/authorities';
 
 export class RolesStateModel {
   Roles: RolesModel[] = [];
   RolesWithUsers: RolesModel[] = [];
+  Authorities: AuthoritiesInterface[] = [];
   responseMessage: CustomHttpResponseModel | undefined;
 }
 
@@ -29,6 +33,7 @@ export class RolesStateModel {
   defaults: {
     Roles: [],
     RolesWithUsers: [],
+    Authorities: [],
     responseMessage: undefined,
   },
 })
@@ -37,12 +42,18 @@ export class RolesState {
   constructor(
     private rolesService: RolesService,
     private rolesTableService: RolesTableService,
-    private notifierService: NotificationService
+    private notifierService: NotificationService,
+    private authoritiesService: AuthoritiesService
   ) {}
 
   @Selector()
   static Roles(state: RolesStateModel) {
     return state.Roles;
+  }
+
+  @Selector()
+  static Authorities(state: RolesStateModel) {
+    return state.Authorities;
   }
 
   @Selector()
@@ -88,6 +99,27 @@ export class RolesState {
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new RolesErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(AuthoritiesGet, { cancelUncompleted: true }) getAuthoritiesFromState(
+    ctx: StateContext<RolesStateModel>
+  ) {
+    return this.authoritiesService.getAllAuthorities().pipe(
+      tap((response) => {
+        let authoritiesParseList: AuthoritiesInterface[] = [];
+        response.forEach((x) => {
+          authoritiesParseList.push({
+            code: String(x.id),
+            name: x.authorityName,
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Authorities: authoritiesParseList,
+        });
       })
     );
   }
@@ -170,6 +202,7 @@ export class RolesState {
       successMessage.message,
       successMessage.httpStatusCode
     );
+    this.rolesTableService.loading = false;
     this.rolesService.onGetAllRoles();
     ctx.patchState({
       responseMessage: successMessage,

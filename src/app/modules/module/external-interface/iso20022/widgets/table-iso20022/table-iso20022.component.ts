@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
 import { Iso20022TableService } from 'src/app/modules/services/module-services/iso20022-table.service';
 import { Iso20022Service } from 'src/app/modules/services/module-services/iso20022.service';
 
@@ -14,48 +13,37 @@ export class TableIso20022Component implements OnInit {
     private isoService: Iso20022Service
   ) {}
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.isoTableService.gridApi = params.api;
-    this.isoTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllIso2022();
   }
 
-  runService() {
-    this.isoService.getAllIso20022WithDelay();
-    this.isoTableService.showTableLoading();
+  getAllIso2022() {
+    this.isoService.onGetAllIso20022();
   }
 
-  onCellClicked(data: RowClickedEvent) {
+  refreshTable() {
+    this.isoTableService.loading = true;
+    this.getAllIso2022();
+  }
+
+  showDialog() {
+    this.isoService.buttonStatus = 'create';
+    this.isoService.openDialog();
+  }
+
+  onRowSelect(data: any) {
     this.isoService.ExistingData = data.data;
   }
 
-  get animateRow() {
-    return this.isoTableService.animateRow;
+  get cols() {
+    return this.isoTableService.cols;
   }
 
-  get headerHeight() {
-    return this.isoTableService.headerHeight;
+  get loading() {
+    return this.isoTableService.loading;
   }
 
-  get rowHeight() {
-    return this.isoTableService.rowHeight;
-  }
-
-  get defaultColDef() {
-    return this.isoTableService.defaultColDef;
-  }
-
-  get columnDefs() {
-    return this.isoTableService.columnDefs;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.isoTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.isoTableService.frameworkComponents;
+  get iso2022() {
+    return this.isoTableService.iso2022;
   }
 }

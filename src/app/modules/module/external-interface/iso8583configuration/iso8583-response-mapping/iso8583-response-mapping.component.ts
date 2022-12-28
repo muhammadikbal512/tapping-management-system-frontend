@@ -9,24 +9,7 @@ import { ResponseMappingService } from 'src/app/modules/services/module-services
   styleUrls: ['./iso8583-response-mapping.component.css'],
 })
 export class Iso8583ResponseMappingComponent implements OnInit {
-  constructor(
-    private responseService: ResponseMappingService,
-    private responseTableService: ResponseMappingTableService,
-    private dialog: MatDialog
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  onFilterTextBoxChange() {
-    this.responseTableService.onFilter('search-filter');
-  }
-
-  refreshTable() {
-    this.responseService.getResponseMappingWithDelay();
-  }
-
-  openDialog() {
-    this.responseService.buttonStatus = 'create';
-    this.responseService.openDialog();
-  }
 }

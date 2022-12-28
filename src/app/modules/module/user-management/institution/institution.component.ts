@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InstitutionTableService } from 'src/app/modules/services/module-services/institution-table.service';
-import { InstitutionService } from 'src/app/modules/services/module-services/institution.service';
+import { InstitutionTableService } from 'src/app/modules/services/module-services/user-management/institution-table.service';
+import { InstitutionService } from 'src/app/modules/services/module-services/user-management/institution.service';
 
 @Component({
   selector: 'app-institution',

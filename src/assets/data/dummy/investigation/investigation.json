@@ -61,6 +61,67 @@
         ]
     },
     {
+        "id": "2000",
+        "lockedByUser": "Network",
+        "caseId": 8004,
+        "caseCreationDate": "2022.01.22 26.06.13",
+        "classificationType": "Negative",
+        "classificationStatus": "Classified",
+        "privateScheme": 6,
+        "payload": [
+            {
+                "id": "2000",
+                "networkId": 1123,
+                "responseCode": 97,
+                "sequenceNumber": 65,
+                "srcAddress": "192.168.1.10",
+                "dstAddress": "192.168.1.13",
+                "flag": "SYN",
+                "status": "PENDING"
+            },
+            {
+                "id": "2000",
+                "networkId": 1123,
+                "responseCode": 97,
+                "sequenceNumber": 65,
+                "srcAddress": "192.168.1.10",
+                "dstAddress": "192.168.1.13",
+                "flag": "ACK",
+                "status": "PENDING"
+            },
+            {
+                "id": "2000",
+                "networkId": 1123,
+                "responseCode": 97,
+                "sequenceNumber": 65,
+                "srcAddress": "192.168.1.10",
+                "dstAddress": "192.168.1.13",
+                "flag": "SYN ACK",
+                "status": "PENDING"
+            },
+            {
+                "id": "2000",
+                "networkId": 1123,
+                "responseCode": 97,
+                "sequenceNumber": 65,
+                "srcAddress": "192.168.1.10",
+                "dstAddress": "192.168.1.13",
+                "flag": "ACK",
+                "status": "PENDING"
+            },
+            {
+                "id": "2000",
+                "networkId": 1123,
+                "responseCode": 97,
+                "sequenceNumber": 65,
+                "srcAddress": "192.168.1.10",
+                "dstAddress": "192.168.1.13",
+                "flag": "FIN",
+                "status": "PENDING"
+            }
+        ]
+    },
+    {
         "id": "1001",
         "lockedByUser": "Admin",
         "caseId": 2,

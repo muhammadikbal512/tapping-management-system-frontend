@@ -3,8 +3,8 @@ import { TransactionMessageModel } from 'src/app/model/modules-model/transaction
 import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { TransactionService } from 'src/app/modules/services/module-services/transaction.service';
-import { TransactionTableService } from 'src/app/modules/services/module-services/transaction-table.service';
+import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
+import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
 import {
   TransactionGet,
   TransactionSuccessState,
@@ -54,20 +54,21 @@ export class TransactionState {
 
   @Action(EventCollectorsGet, { cancelUncompleted: true })
   getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
-    return this.transactionService.getAllEventCollector().pipe(
+    return this.transactionService.getAllTransactionList().pipe(
       tap((response) => {
         if (response?.length != 0) {
           this.transactionTableService.loading = false;
 
-          this.transactionTableService.setRowData(response);
+          this.transactionTableService.setTrans(response);
         } else {
           this.transactionTableService.loading = false;
 
-          this.transactionTableService.setRowData(response);
+          this.transactionTableService.setTrans(response);
         }
+        this.transactionTableService.totalRecords = response.length;
         ctx.setState({
           ...ctx.getState(),
-          EventCollectors: response,
+          Transactions: response,
         });
       }),
       catchError((response: HttpErrorResponse) => {

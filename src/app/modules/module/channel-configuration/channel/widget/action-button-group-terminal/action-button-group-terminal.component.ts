@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { ChannelService } from 'src/app/modules/services/module-services/channel.service';
+import { ChannelService } from 'src/app/modules/services/module-services/channel-configuration/channel.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({

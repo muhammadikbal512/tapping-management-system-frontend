@@ -6,6 +6,7 @@ import {
   RolesSuccessState,
   RolesUpdate,
   RolesWithUserGet,
+  AuthoritiesGet,
 } from './roles.action';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
@@ -19,6 +20,11 @@ export class RolesDispatch {
     @Dispatch()
     public _RolesGetDispatch() {
         return new RolesGet();
+    }
+
+    @Dispatch()
+    public _AuthoritiesGetDispatch() {
+        return new AuthoritiesGet();
     }
 
     @Dispatch()

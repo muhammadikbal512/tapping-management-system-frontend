@@ -14,46 +14,37 @@ export class TableJsonComponent implements OnInit {
     private jsonService: JsonConfigurationService
   ) {}
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.jsonTableService.gridApi = params.api;
-    this.jsonTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllJsonConfig();
   }
 
-  runService() {
-    this.jsonTableService.showTableLoading();
-    this.jsonService.getAllJsonConfigWithDelay();
+  getAllJsonConfig() {
+    this.jsonService.onGetAllJsonConfig();
   }
 
-  onCellClicked(data: RowClickedEvent) {}
-
-  get animateRow() {
-    return this.jsonTableService.animateRow;
+  refreshTable() {
+    this.jsonTableService.loading = true;
+    this.getAllJsonConfig();
   }
 
-  get headerHeight() {
-    return this.jsonTableService.headerHeight;
+  onRowSelect(data: any) {
+    this.jsonService.ExistingData = data.data
   }
 
-  get rowHeight() {
-    return this.jsonTableService.rowHeight;
+  showDialog() {
+    this.jsonService.buttonStatus = 'create';
+    this.jsonService.openDialog();
   }
 
-  get defaultColDef() {
-    return this.jsonTableService.defaultColDef;
+  get cols() {
+    return this.jsonTableService.cols;
   }
 
-  get columnDefs() {
-    return this.jsonTableService.columnDefs;
+  get jsonConfigs() {
+    return this.jsonTableService.jsonConfigs;
   }
 
-  get frameworkComponents() {
-    return this.jsonTableService.frameworkComponents;
-  }
-
-  get overlayLoadingTemplate() {
-    return this.jsonTableService.overlayLoadingTemplate;
+  get loading() {
+    return this.jsonTableService.loading;
   }
 }

@@ -57,7 +57,7 @@ import { UserGroupState } from './modules/user-management/user-group/user-group.
       XmlConfigState,
       InstitutionState,
       TypeState,
-      UserGroupState
+      UserGroupState,
     ]),
   ],
 })

@@ -1,0 +1,26 @@
+<div>
+    <p-table [value]="investHistories" styleClass="p-datatable-gridlines" [paginator]="true" [rows]="10"
+        [showCurrentPageReport]="true" responsiveLayout="scroll" [tableStyle]="{'min-width': '50rem'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         selectionMode="single" scrollHeight="270px">
+        <ng-template pTemplate="caption">
+            Investigation History
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Action Type</th>
+                <th>Action Date</th>
+                <th>Initiator</th>
+                <th>Info</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-investigation>
+            <tr>
+                <td>{{this.investigationService.existingData.classificationType}}</td>
+                <td>{{this.investigationService.existingData.caseCreationDate}}</td>
+                <td>{{this.investigationService.existingData.lockedByUser}}</td>
+                <td>{{this.investigationService.existingData.caseId}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

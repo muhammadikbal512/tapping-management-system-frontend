@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { AlertInvestigationService } from '../module-services/alert-investigation.service';
-import { ChannelTypeService } from '../module-services/channel-type.service';
-import { ChannelService } from '../module-services/channel.service';
-import { InstitutionService } from '../module-services/institution.service';
+import { ChannelTypeService } from '../module-services/channel-configuration/channel-type.service';
+import { ChannelService } from '../module-services/channel-configuration/channel.service';
+import { InstitutionService } from '../module-services/user-management/institution.service';
 import { IsoFieldConfigurationService } from '../module-services/iso-field-configuration.service';
 import { Iso8583DialectService } from '../module-services/iso8583-dialect.service';
 import { MessageFormatService } from '../module-services/message-format.service';
 import { ResponseMappingService } from '../module-services/response-mapping.service';
-import { RolesService } from '../module-services/roles.service';
-import { SchemeServiceService } from '../module-services/scheme-service.service';
-import { TransactionParametersService } from '../module-services/transaction-parameters.service';
-import { TypeService } from '../module-services/type.service';
-import { UserGroupService } from '../module-services/user-group.service';
-import { UserService } from '../module-services/user.service';
+import { RolesService } from '../module-services/user-management/roles.service';
+import { TransactionParametersService } from '../module-services/transaction/transaction-parameters.service';
+import { TypeService } from '../module-services/user-management/type.service';
+import { UserGroupService } from '../module-services/user-management/user-group.service';
+import { UserService } from '../module-services/user-management/user.service';
 
 @Injectable({
   providedIn: 'root',

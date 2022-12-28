@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GridReadyEvent } from 'ag-grid-community';
 import { NdcTableService } from 'src/app/modules/services/module-services/ndc-table.service';
 import { NdcService } from 'src/app/modules/services/module-services/ndc.service';
 
@@ -14,44 +13,37 @@ export class TableNdcComponent implements OnInit {
     private ndcService: NdcService
   ) {}
 
-  ngOnInit(): void {}
-
-  onGridReady(params: GridReadyEvent) {
-    this.ndcTableService.gridApi = params.api;
-    this.ndcTableService.gridColumnApi = params.columnApi;
-    this.runService();
+  ngOnInit(): void {
+    this.getAllNdc();
   }
 
-  runService() {
-    this.ndcTableService.showTableLoading();
+  getAllNdc() {
     this.ndcService.getAllNdcWithDelay();
   }
 
-  get animateRow() {
-    return this.ndcTableService.animateRow;
+  refreshTable() {
+    this.ndcTableService.loading = true;
+    this.getAllNdc();
   }
 
-  get headerHeight() {
-    return this.ndcTableService.headerHeight;
+  showDialog() {
+    this.ndcService.buttonStatus = 'create';
+    this.ndcService.openDialog();
   }
 
-  get rowHeight() {
-    return this.ndcTableService.rowHeight;
+  onRowSelect(data: any) {
+    this.ndcService.ExistingData = data.data;
   }
 
-  get defaultColDef() {
-    return this.ndcTableService.defaultColDef;
+  get cols() {
+    return this.ndcTableService.cols;
   }
 
-  get columnDefs() {
-    return this.ndcTableService.columnDefs;
+  get ndcs() {
+    return this.ndcTableService.ndcs;
   }
 
-  get overlayLoadingTemplate() {
-    return this.ndcTableService.overlayLoadingTemplate;
-  }
-
-  get frameworkComponents() {
-    return this.ndcTableService.frameworkComponents;
+  get loading() {
+    return this.ndcTableService.loading;
   }
 }

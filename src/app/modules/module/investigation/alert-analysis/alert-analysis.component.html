@@ -1,21 +1,44 @@
-<div class="grid grid-cols-12 gap-3 space-y-3">
-    <div class="grid-container shadow-md col-span-12">
-        <div class="pl-4 pt-2">
-            <input type="checkbox">
-            <label class="ml-3">Update every 60 seconds</label>
-        </div>
-        <div class="p-4">
-            <app-alert-analysis-table></app-alert-analysis-table>
-        </div>
-    </div>
-    <div class="grid-container shadow-md col-span-6">
-        <div class="p-4">
-         <app-alert-queue-table></app-alert-queue-table>
+<div class="alert-container">
+    <div class="grid-container mb-4">
+        <div>
+            <div class="pl-4 pt-2">
+                <input type="checkbox">
+                <label class="ml-3">Update every 60 seconds</label>
+            </div>
+            <div class="p-4">
+                <app-alert-analysis-table></app-alert-analysis-table>
+            </div>
         </div>
     </div>
-    <div class="grid-container shadow-md col-span-6">
-        <div class="p-4">
-         <app-alert-rejected-table></app-alert-rejected-table>
+    <div class="grid-container">
+        <div class="shadow-md sm:rounded-lg">
+            <mat-tab-group>
+                <mat-tab label="Case Management">
+                    <div class="flex flex-row">
+                        <div class="p-4">
+                            <app-classify-queue></app-classify-queue>
+                        </div>
+                        <div class="p-4">
+                           <app-take-action></app-take-action>
+                        </div>
+                        <div class="p-4">
+                            <app-investigation-history></app-investigation-history>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Physical Layer">
+                    <app-physical-layer></app-physical-layer>
+                </mat-tab>
+                <mat-tab label="Network Layer">
+                    <app-network-layer></app-network-layer>
+                </mat-tab>
+                <mat-tab label="App Layer">
+                    <app-app-layer></app-app-layer>
+                </mat-tab>
+                <mat-tab label="Transaction Summary">
+                    <app-transaction-summary></app-transaction-summary>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </div>
 </div>

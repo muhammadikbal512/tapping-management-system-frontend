@@ -1,44 +1,62 @@
 <form [formGroup]="form" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="isoFieldId" type="number" class="peer" placeholder=" " required="">
-            <label class="input-label">Iso Field ID</label>
+            <input formControlName="fieldId" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Field ID</label>
             <p-message *ngIf="isoFieldId.touched && !isoFieldId.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="isoFieldId.touched && isoFieldId.hasError('required')" severity="error"></p-message>
             <small *ngIf="isoFieldId.touched && isoFieldId.hasError('required')" class="p-error">Iso Field ID should be fill.</small>
         </div>
 
         <div class="input-container">
-            <input formControlName="attributeId" type="number" class="peer" placeholder=" " required="">
-            <label class="input-label">Attribute ID</label>
+            <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
+            filterBy="name" placeholder="Select Field Format"  [style]="{'width':'100%'}" 
+            optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
+            formControlName="fieldFormat"></p-dropdown>
             <p-message *ngIf="attributeId.touched && !attributeId.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="attributeId.touched && attributeId.hasError('required')" severity="error"></p-message>
-            <small *ngIf="attributeId.touched && attributeId.hasError('required')" class="p-error">Attribute ID should be fill.</small>
+            <small *ngIf="attributeId.touched && attributeId.hasError('required')" class="p-error">Field Format should be fill.</small>
         </div>
         
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="tagNumber" type="number" class="peer" placeholder=" "
+            <input formControlName="encoding" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Encoding</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="isoConfigId" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Iso Config ID</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="description" type="number" class="peer" placeholder=" "
                 required="">
-            <label class="input-label">Tag Number</label>
+            <label class="input-label">Description</label>
             <p-message *ngIf="tagNumber.touched && !tagNumber.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="tagNumber.touched && tagNumber.hasError('required')" severity="error"></p-message>
             <small *ngIf="tagNumber.touched && tagNumber.hasError('required')" class="p-error">Tag Number should be
                 fill.</small>
         </div>
         <div class="input-container">
-            <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
-            filterBy="name" placeholder="Select Message Template"
-            optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
-            formControlName="dialectId"></p-dropdown>
+            <input formControlName="tagNumber" type="number" class="peer" placeholder=" "
+                required="">
+            <label class="input-label">Field Length</label>
         </div>
-
         <div class="input-container">
             <div class="m-auto space-x-2">
                 <section>
-                    <p-checkbox [binary]="true" formControlName="isTagNumber"></p-checkbox>
-                    <label class="ml-2">is Tag Number</label>
+                    <p-checkbox [binary]="true" formControlName="hasChild"></p-checkbox>
+                    <label class="ml-2">has Child</label>
+                </section>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="m-auto space-x-2">
+                <section>
+                    <p-checkbox [binary]="true" formControlName="fieldCondId"></p-checkbox>
+                    <label class="ml-2">Field Cond ID</label>
                 </section>
             </div>
         </div>
