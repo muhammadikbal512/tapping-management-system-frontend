@@ -169,7 +169,12 @@ import { ActionButtonGroupIso8583DialectComponent } from './module/external-inte
 import { AidConfigTableComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-table/aid-config-table.component';
 import { AidConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-create-update-dialog/aid-config-create-update-dialog.component';
 import { AidConfigActionButtonComponent } from './module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-action-button/aid-config-action-button.component';
-
+import { TransactionTypeTableComponent } from './module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-table/transaction-type-table.component';
+import { TransactionTypeCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-create-update-dialog/transaction-type-create-update-dialog.component';
+import { TransactionTypeActionButtonGroupComponent } from './module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-action-button-group/transaction-type-action-button-group.component';
+import { MtiConfigTableComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-table/mti-config-table.component';
+import { MtiConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-create-update-dialog/mti-config-create-update-dialog.component';
+import { MtiConfigActionButtonGroupComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-action-button-group/mti-config-action-button-group.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -314,6 +319,12 @@ import { AidConfigActionButtonComponent } from './module/external-interface/iso8
     AidConfigTableComponent,
     AidConfigCreateUpdateDialogComponent,
     AidConfigActionButtonComponent,
+    TransactionTypeTableComponent,
+    TransactionTypeCreateUpdateDialogComponent,
+    TransactionTypeActionButtonGroupComponent,
+    MtiConfigTableComponent,
+    MtiConfigCreateUpdateDialogComponent,
+    MtiConfigActionButtonGroupComponent,
   ],
   imports: [
     CommonModule,

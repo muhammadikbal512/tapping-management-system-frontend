@@ -13,6 +13,7 @@ import { TransactionParametersService } from '../module-services/transaction/tra
 import { TypeService } from '../module-services/user-management/type.service';
 import { UserGroupService } from '../module-services/user-management/user-group.service';
 import { UserService } from '../module-services/user-management/user.service';
+import { HeaderConfigurationService } from '../module-services/external-interfaces/header-configuration.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +28,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteIso8583Format();
-      }
-    })
+      },
+    });
   }
 
   channelConfirm(event: Event, onDelete: ChannelService) {
@@ -38,8 +39,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteChannel();
-      }
-    })
+      },
+    });
   }
 
   channelTypeConfirm(event: Event, onDelete: ChannelTypeService) {
@@ -49,8 +50,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteChannelType();
-      }
-    })
+      },
+    });
   }
 
   iso8583DialectConfirm(event: Event, onDelete: Iso8583DialectService) {
@@ -60,30 +61,36 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteIso8583Dialect();
-      }
-    })
+      },
+    });
   }
 
-  transactionParametersConfirm(event: Event, onDelete: TransactionParametersService) {
+  transactionParametersConfirm(
+    event: Event,
+    onDelete: TransactionParametersService
+  ) {
     this.confirmationService.confirm({
       target: event.target || undefined,
       message: 'Do you want to delete this record?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteTransactionParameters();
-      }
-    })
+      },
+    });
   }
 
-  iso8583FieldConfigurationConfirm(event: Event, onDelete: IsoFieldConfigurationService) {
+  iso8583FieldConfigurationConfirm(
+    event: Event,
+    onDelete: IsoFieldConfigurationService
+  ) {
     this.confirmationService.confirm({
       target: event.target || undefined,
       message: 'Do you want to delete this record?',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteIsoFieldConfiguration();
-      }
-    })
+      },
+    });
   }
 
   userConfirm(event: Event, onDelete: UserService) {
@@ -93,8 +100,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteUser();
-      }
-    })
+      },
+    });
   }
 
   resetPassword(event: Event, onResetPassword: UserService) {
@@ -104,8 +111,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onResetPassword.onResetPasswordUser();
-      }
-    })
+      },
+    });
   }
 
   roleConfirm(event: Event, onDelete: RolesService) {
@@ -115,8 +122,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteRole();
-      }
-    })
+      },
+    });
   }
 
   responseConfirm(event: Event, onDelete: ResponseMappingService) {
@@ -126,8 +133,8 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteResponseMapping();
-      }
-    })
+      },
+    });
   }
 
   alertConfirm(event: Event, onDelete: AlertInvestigationService) {
@@ -135,10 +142,8 @@ export class PopupMessageService {
       target: event.target || undefined,
       message: 'Do you want to reject this case ?',
       icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        
-      }
-    })
+      accept: () => {},
+    });
   }
 
   institutionConfirm(event: Event, onDelete: InstitutionService) {
@@ -148,19 +153,19 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteInstitution();
-      }
-    })
+      },
+    });
   }
 
   typeConfirm(event: Event, onDelete: TypeService) {
     this.confirmationService.confirm({
       target: event.target || undefined,
       message: 'Do you want to delete this Type ?',
-      icon:'pi pi-exclamation-triangle',
+      icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteType();
-      }
-    })
+      },
+    });
   }
 
   userGroupConfirm(event: Event, onDelete: UserGroupService) {
@@ -170,9 +175,18 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteUserGroup();
-      }
-    })
+      },
+    });
   }
 
- 
+  headerConfigConfirm(event: Event, onDelete: HeaderConfigurationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this Header Configuration ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteHeaderConfig();
+      },
+    });
+  }
 }

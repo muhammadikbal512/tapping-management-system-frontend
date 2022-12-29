@@ -1,4 +1,4 @@
-<p-table #dt1 [columns]="cols" [loading]="loading" [value]="headerConfigs" [paginator]="true"
+<p-table #dt1 [columns]="cols" [loading]="false" [value]="mtiConfigs" [paginator]="true"
     [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
     <ng-template pTemplate="caption">

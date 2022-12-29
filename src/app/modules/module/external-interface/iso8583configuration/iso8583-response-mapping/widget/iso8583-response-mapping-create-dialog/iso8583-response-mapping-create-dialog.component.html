@@ -1,13 +1,13 @@
 <form [formGroup]="formGroup" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="transactionType" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">Transaction Type</label>
-            <p-message *ngIf="transactionType.touched && !transactionType.hasError('required')" severity="success">
+            <input formControlName="responseCode" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Response Code</label>
+            <p-message *ngIf="responseCode.touched && !responseCode.hasError('required')" severity="success">
             </p-message>
-            <p-message *ngIf="transactionType.touched && transactionType.hasError('required')" severity="error">
+            <p-message *ngIf="responseCode.touched && responseCode.hasError('required')" severity="error">
             </p-message>
-            <small *ngIf="transactionType.touched && transactionType.hasError('required')" class="p-error">Transaction
+            <small *ngIf="responseCode.touched && responseCode.hasError('required')" class="p-error">Transaction
                 Type should
                 be
                 fill.</small>

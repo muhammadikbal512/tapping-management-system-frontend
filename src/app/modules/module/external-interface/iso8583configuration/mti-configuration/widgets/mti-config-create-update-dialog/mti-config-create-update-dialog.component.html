@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="mti" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">MTI</label>
+            <p-message *ngIf="mti.touched && !mti.hasError('required')" severity="success">
+            </p-message>
+            <p-message *ngIf="mti.touched && mti.hasError('required')" severity="error">
+            </p-message>
+            <small *ngIf="mti.touched && mti.hasError('required')" class="p-error">Transaction
+                Type should
+                be
+                fill.</small>
+        </div>
+        <div class="input-container">
+            <div class="m-auto space-x-2">
+                <section>
+                    <p-checkbox [binary]="true" formControlName="response"></p-checkbox>
+                    <label class="ml-2">Is Response</label>
+                </section>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="m-auto space-x-2">
+                <section>
+                    <p-checkbox [binary]="true" formControlName="reversal"></p-checkbox>
+                    <label class="ml-2">Is Reversal</label>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="onCreateMtiConfiguration()" *ngIf="mtiConfigService.buttonStatus== 'create'"
+            [disabled]="formGroup.invalid" [loading]="showLoading" class="create-button ml-3" label="Create"
+            styleClass="p-button-sm">
+        </p-button>
+        <p-button (onClick)="onUpdateMtiConfiguration()" *ngIf="mtiConfigService.buttonStatus == 'edit'"
+            [disabled]="disableStatus" [loading]="showLoading" class="create-button ml-3" label="Save"
+            styleClass="p-button-sm"></p-button>
+    </mat-dialog-actions>
+</form>

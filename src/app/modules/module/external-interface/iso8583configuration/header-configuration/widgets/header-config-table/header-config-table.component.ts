@@ -13,13 +13,19 @@ export class HeaderConfigTableComponent implements OnInit {
     private headerService: HeaderConfigurationService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllHeaderConfigs();
+  }
+
+  getAllHeaderConfigs() {
+    this.headerService.onGetAllHeaderConfig();
+  }
 
   refreshTable() {}
 
   showDialog() {
     this.headerService.openDialog();
-    this.headerService.buttonStatus = 'create'
+    this.headerService.buttonStatus = 'create';
   }
 
   onRowSelect(event: any) {}

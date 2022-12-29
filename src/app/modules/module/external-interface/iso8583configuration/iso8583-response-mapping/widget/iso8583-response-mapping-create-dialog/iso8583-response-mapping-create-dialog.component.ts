@@ -28,7 +28,7 @@ export class Iso8583ResponseMappingCreateDialogComponent implements OnInit {
 
   createFormat() {
     this.formGroup = this.fb.group({
-      transactionType: ['', Validators.required],
+      responseCode: ['', Validators.required],
       description: ['', Validators.required],
       configId: ['', Validators.required],
     });
@@ -38,8 +38,8 @@ export class Iso8583ResponseMappingCreateDialogComponent implements OnInit {
     this.showClear = $event != '' && $event != null;
   }
 
-  get transactionType() {
-    return this.formGroup.controls['transactionType'];
+  get responseCode() {
+    return this.formGroup.controls['responseCode'];
   }
 
   get description() {

@@ -41,30 +41,10 @@ export class TransactionVirtualComponent implements OnInit {
             symbolSize: 100,
           },
           {
-            name: 'ATMBlock',
-            label: {
-              show: false,
-            },
-            x: 300,
-            y: 370,
-            symbolSize: [80, 300],
-            symbol: 'rect',
-          },
-          {
             name: 'Switching',
             x: 400,
             y: 300,
             symbolSize: 100,
-          },
-          {
-            name: 'SwitchingBlock',
-            label: {
-              show: false,
-            },
-            x: 400,
-            y: 370,
-            symbolSize: [80, 300],
-            symbol: 'rect',
           },
           {
             name: 'HSM',
@@ -72,59 +52,30 @@ export class TransactionVirtualComponent implements OnInit {
             y: 300,
             symbolSize: 100,
           },
-          {
-            name: 'HSMBlock',
-            label: {
-              show: false,
-            },
-            x: 500,
-            y: 370,
-            symbolSize: [80, 300],
-            symbol: 'rect',
-          },
         ],
         // links: [],
         links: [
           {
             source: 'ATM',
-            target: 'ATMBlock',
-          },
-          {
-            source: 'ATMBlock',
-            target: 'SwitchingBlock',
-            label: {
-              position: 'start',
-            },
-          },
-          {
-            source: 'SwitchingBlock',
-            target: 'ATMBlock',
-            label: {
-              position: 'middle',
-            },
-          },
-          {
-            source: 'ATMBlock',
-            target: 'SwitchingBlock',
-          },
-          {
-            source: 'ATMBlock',
-            target: 'SwitchingBlock',
+            target: 'Switching',
           },
           {
             source: 'Switching',
-            target: 'SwitchingBlock',
+            target: 'ATM'
           },
-
+          {
+            source: 'Switching',
+            target: 'HSM',
+          },
           {
             source: 'HSM',
-            target: 'HSMBlock',
-          },
+            target: 'Switching'
+          }
         ],
         lineStyle: {
           opacity: 0.9,
           width: 2,
-          curveness: 0,
+          curveness: 0.3,
         },
       },
     ],

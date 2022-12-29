@@ -26,6 +26,7 @@ import { XmlConfigState } from './modules/external-interfaces/xml-config/xml-con
 import { InstitutionState } from './modules/user-management/institution/institution.state';
 import { TypeState } from './modules/user-management/type/type.state';
 import { UserGroupState } from './modules/user-management/user-group/user-group.state';
+import { HeaderConfigState } from './modules/external-interfaces/iso8583configuration/header-configuration/header-config.state';
 
 @NgModule({
   declarations: [],
@@ -58,6 +59,7 @@ import { UserGroupState } from './modules/user-management/user-group/user-group.
       InstitutionState,
       TypeState,
       UserGroupState,
+      HeaderConfigState,
     ]),
   ],
 })

@@ -8,7 +8,7 @@ export class ResponseMappingTableService {
   responseMappings!: ResponseMappingModel[];
   loading: boolean = true;
   cols = [
-    { field: 'transactionType', header: 'Transaction Type' },
+    { field: 'responseCode', header: 'Response Code' },
     { field: 'description', header: 'Description' },
     { field: 'configId', header: 'Config ID' },
   ];
