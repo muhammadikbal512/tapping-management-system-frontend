@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
 import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/iso-field-configuration-table.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-iso8583-field-table',
@@ -10,11 +11,17 @@ import { IsoFieldConfigurationTableService } from 'src/app/modules/services/modu
 export class Iso8583FieldTableComponent implements OnInit {
   constructor(
     private isoFieldConfigurationService: IsoFieldConfigurationService,
-    private isoFieldConfigurationTableService: IsoFieldConfigurationTableService
+    private isoFieldConfigurationTableService: IsoFieldConfigurationTableService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.getAllIsoConfigs();
+  }
+
+  createField() {
+    this.router.navigate(['create-iso8583-field-configuration'], { relativeTo: this.route });
   }
 
   getAllIsoConfigs() {

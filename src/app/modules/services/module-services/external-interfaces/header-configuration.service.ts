@@ -100,4 +100,8 @@ export class HeaderConfigurationService {
   getCurrentStatusDialog() {
     return this.dialog.openDialogs;
   }
+
+  set ExistingData(data: HeaderConfigurationModel) {
+    this.existingData = data;
+  }
 }

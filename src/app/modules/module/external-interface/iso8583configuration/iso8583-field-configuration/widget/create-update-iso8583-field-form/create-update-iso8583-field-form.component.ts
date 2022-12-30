@@ -137,6 +137,10 @@ export class CreateUpdateIso8583FieldFormComponent
   AddIso8583FieldConfig(data: any) {
   }
 
+  backButton() {
+    window.history.back();
+  }
+
   get isoFieldId() {
     return this.form.controls['isoFieldId'];
   }

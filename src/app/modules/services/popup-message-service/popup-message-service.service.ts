@@ -14,6 +14,7 @@ import { TypeService } from '../module-services/user-management/type.service';
 import { UserGroupService } from '../module-services/user-management/user-group.service';
 import { UserService } from '../module-services/user-management/user.service';
 import { HeaderConfigurationService } from '../module-services/external-interfaces/header-configuration.service';
+import { AidConfigurationService } from '../module-services/external-interfaces/aid-configuration.service';
 
 @Injectable({
   providedIn: 'root',
@@ -186,6 +187,17 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteHeaderConfig();
+      },
+    });
+  }
+
+  aidConfigConfirm(event: Event, onDelete: AidConfigurationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this AID Configuration ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteAidConfig();
       },
     });
   }

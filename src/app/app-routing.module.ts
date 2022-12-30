@@ -39,6 +39,7 @@ import { HeaderConfigurationComponent } from './modules/module/external-interfac
 import { AidConfigurationComponent } from './modules/module/external-interface/iso8583configuration/aid-configuration/aid-configuration.component';
 import { TransactionTypeMappingComponent } from './modules/module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-mapping.component';
 import { MtiConfigurationComponent } from './modules/module/external-interface/iso8583configuration/mti-configuration/mti-configuration.component';
+import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -145,7 +146,19 @@ const routes: Routes = [
                 path: 'iso8583-field-configuration',
                 data: { title: 'ISO8583 Field Configuration' },
                 component: Iso8583FieldConfigurationComponent,
+                children: [
+                  {
+                    path: 'create-iso8583-field-configuration',
+                    data: { title: 'Add Field Configuration' },
+                    component: CreateUpdateIso8583FieldFormComponent,
+                  },
+                ],
               },
+              {
+                path: 'iso8583-field-configuration/create-iso8583-field-configuration',
+                component: CreateUpdateIso8583FieldFormComponent,
+              },
+
               {
                 path: 'iso8583-response-mapping',
                 data: { title: 'ISO8583 Response Code Mapping' },

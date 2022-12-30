@@ -29,19 +29,42 @@ export class ResponseMappingService {
   ) {}
 
   getAllResponseMapping() {
-    return this.http.get<ResponseMappingModel[]>(`${this.apiUrl}/responseMapping/list`);
+    return this.http.get<ResponseMappingModel[]>(
+      `${this.apiUrl}/resp_mapping/getAll`
+    );
   }
 
-  addResponseMapping() {}
+  addResponseMapping(data: ResponseMappingModel) {}
 
-  deleteResponseMapping() {}
+  deleteResponseMapping(id: number) {
+    return this.http.delete<CustomHttpResponseModel>(
+      `${this.apiUrl}/resp_mapping/delete/` + id
+    );
+  }
 
-  updateResponseMapping() {}
+  updateResponseMapping(data: FormData) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/resp_mapping/update`,
+      data
+    );
+  }
 
   getResponseMappingWithDelay() {
     setTimeout(() => {
       this.onGetAllResponseMapping();
     }, 500);
+  }
+
+  createResponseMappingFormData(
+    currentRespCode: string,
+    newData: ResponseMappingModel
+  ): FormData {
+    const formData = new FormData();
+    formData.append('currentRespCode', currentRespCode);
+    formData.append('newRespCode', newData.respCode);
+    formData.append('newDescription', newData.description);
+    formData.append('isoConfiguration', String(newData.isoConfiguration));
+    return formData;
   }
 
   onGetAllResponseMapping() {
@@ -65,7 +88,10 @@ export class ResponseMappingService {
   }
 
   openDialog() {
-    this.dialog.open(Iso8583ResponseMappingCreateDialogComponent, this.matDialogConfig)
+    this.dialog.open(
+      Iso8583ResponseMappingCreateDialogComponent,
+      this.matDialogConfig
+    );
   }
 
   getCurrentStatusDialog() {
@@ -77,6 +103,6 @@ export class ResponseMappingService {
   }
 
   set ExistingData(data: RowClickedEvent) {
-    this.existingData = data.data
+    this.existingData = data.data;
   }
 }

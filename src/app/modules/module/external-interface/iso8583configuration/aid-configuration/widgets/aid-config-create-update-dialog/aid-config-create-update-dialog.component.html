@@ -1,17 +1,17 @@
 <form [formGroup]="formGroup" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="aidNumber" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="aid" type="text" class="peer" placeholder=" " required="">
             <label class="input-label">AID Number</label>
-            <p-message *ngIf="aidNumber.touched && !aidNumber.hasError('required')" severity="success"></p-message>
-            <p-message *ngIf="aidNumber.touched && aidNumber.hasError('required')" severity="error"></p-message>
-            <small *ngIf="aidNumber.touched && aidNumber.hasError('required')" class="p-error">AID Number should
+            <p-message *ngIf="aid.touched && !aid.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="aid.touched && aid.hasError('required')" severity="error"></p-message>
+            <small *ngIf="aid.touched && aid.hasError('required')" class="p-error">AID Number should
                 be
                 fill.</small>
         </div>
         <div class="input-container">
             <input formControlName="label" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">AID Number</label>
+            <label class="input-label">Label</label>
             <p-message *ngIf="label.touched && !label.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="label.touched && label.hasError('required')" severity="error"></p-message>
             <small *ngIf="label.touched && label.hasError('required')" class="p-error">Label should

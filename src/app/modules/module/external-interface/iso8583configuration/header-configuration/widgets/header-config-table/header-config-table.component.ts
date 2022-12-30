@@ -28,7 +28,9 @@ export class HeaderConfigTableComponent implements OnInit {
     this.headerService.buttonStatus = 'create';
   }
 
-  onRowSelect(event: any) {}
+  onRowSelect(event: any) {
+    this.headerService.ExistingData = event.data;
+  }
 
   get cols() {
     return this.headerTableService.cols;

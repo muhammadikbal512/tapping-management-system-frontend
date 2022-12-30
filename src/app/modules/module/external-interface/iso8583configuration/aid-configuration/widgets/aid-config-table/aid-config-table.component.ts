@@ -13,7 +13,13 @@ export class AidConfigTableComponent implements OnInit {
     private aidConfigTableService: AidConfigurationTableService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllAidConfig();
+  }
+
+  getAllAidConfig() {
+    this.aidConfigService.onGetAidConfig();
+  }
 
   refreshTable() {}
 
@@ -22,7 +28,9 @@ export class AidConfigTableComponent implements OnInit {
     this.aidConfigService.buttonStatus = 'create';
   }
 
-  onRowSelect(event: any) {}
+  onRowSelect(event: any) {
+    this.aidConfigService.ExistingData = event.data;
+  }
 
   get cols() {
     return this.aidConfigTableService.cols;
