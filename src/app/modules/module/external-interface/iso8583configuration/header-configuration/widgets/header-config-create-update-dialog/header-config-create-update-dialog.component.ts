@@ -115,7 +115,7 @@ export class HeaderConfigCreateUpdateDialogComponent
 
   onUpdateHeaderConfig() {
     const newData = this.headerService.createHeaderConfig(
-      String(this.headerService.existingData.id),
+      this.existingId,
       this.setNewDataToModel()
     );
     this.headerService.onUpdateHeaderConfig(newData, this.setNewDataToModel());
@@ -151,6 +151,10 @@ export class HeaderConfigCreateUpdateDialogComponent
 
   get priority() {
     return this.formGroup.controls['priority'];
+  }
+
+  get existingId() {
+    return this.headerService.existingData.id;
   }
 
   get existingHeaderField() {

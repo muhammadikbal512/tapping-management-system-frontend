@@ -75,7 +75,7 @@ export class AidConfigCreateUpdateDialogComponent
 
   onUpdateAidNumber() {
     const newData = this.aidConfigService.createAidConfigFormData(
-      String(this.existingAid),
+      this.existingId,
       this.setNewDataToModel()
     );
 
@@ -90,11 +90,15 @@ export class AidConfigCreateUpdateDialogComponent
     return this.formGroup.controls['label'];
   }
 
+  get existingId() {
+    return this.aidConfigService.existingData.id;
+  }
+
   get existingAid() {
-    return this.aidConfigModel.aid;
+    return this.aidConfigService.existingData.aid;
   }
 
   get existingLabel() {
-    return this.aidConfigModel.label;
+    return this.aidConfigService.existingData.label;
   }
 }

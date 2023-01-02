@@ -2,20 +2,19 @@
     <div class="form-filled-container">
         <div class="input-container">
             <input formControlName="mti" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">MTI</label>
-            <p-message *ngIf="mti.touched && !mti.hasError('required')" severity="success">
+            <label class="input-label">Value</label>
+            <p-message *ngIf="value.touched && !value.hasError('required')" severity="success">
             </p-message>
-            <p-message *ngIf="mti.touched && mti.hasError('required')" severity="error">
+            <p-message *ngIf="value.touched && value.hasError('required')" severity="error">
             </p-message>
-            <small *ngIf="mti.touched && mti.hasError('required')" class="p-error">Transaction
-                Type should
+            <small *ngIf="value.touched && value.hasError('required')" class="p-error">Value should
                 be
                 fill.</small>
         </div>
         <div class="input-container">
             <div class="m-auto space-x-2">
                 <section>
-                    <p-checkbox [binary]="true" formControlName="response"></p-checkbox>
+                    <p-checkbox [binary]="true" formControlName="isResponse"></p-checkbox>
                     <label class="ml-2">Is Response</label>
                 </section>
             </div>
@@ -23,7 +22,7 @@
         <div class="input-container">
             <div class="m-auto space-x-2">
                 <section>
-                    <p-checkbox [binary]="true" formControlName="reversal"></p-checkbox>
+                    <p-checkbox [binary]="true" formControlName="isReversal"></p-checkbox>
                     <label class="ml-2">Is Reversal</label>
                 </section>
             </div>

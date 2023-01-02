@@ -52,12 +52,9 @@ export class AidConfigurationService {
     );
   }
 
-  createAidConfigFormData(
-    currentAidConfig: string,
-    newData: AidConfigurationModel
-  ) {
+  createAidConfigFormData(id: number, newData: AidConfigurationModel) {
     const formData = new FormData();
-    formData.append('currentAidConfig', currentAidConfig);
+    formData.append('id', String(id));
     formData.append('aid', String(newData.aid));
     formData.append('label', newData.label);
     return formData;

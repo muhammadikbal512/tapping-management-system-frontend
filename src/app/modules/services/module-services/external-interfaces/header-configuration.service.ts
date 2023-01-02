@@ -73,14 +73,14 @@ export class HeaderConfigurationService {
   }
 
   createHeaderConfig(
-    currentHeaderId: string,
+    id: number,
     newData: HeaderConfigurationModel
   ) {
     const formData = new FormData();
-    formData.append('currentHeaderId', currentHeaderId);
-    formData.append('newHeaderId', String(newData.id));
-    formData.append('newHeaderField', String(newData.headerField));
-    formData.append('newHeaderLength', String(newData.headerLength));
+    formData.append('id', String(id));
+    formData.append('headerId', String(newData.id));
+    formData.append('headerField', String(newData.headerField));
+    formData.append('headerLength', String(newData.headerLength));
     formData.append('description', newData.description);
     formData.append('priority', newData.priority);
     return formData;

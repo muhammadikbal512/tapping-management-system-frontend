@@ -1,6 +1,6 @@
 export class MtiConfigurationModel {
     id!: number;
-    mti: string = '';
-    response: boolean = false;
-    reversal: boolean = false;
+    value: string = '';
+    isResponse: boolean = false;
+    isReversal: boolean = false;
 }
