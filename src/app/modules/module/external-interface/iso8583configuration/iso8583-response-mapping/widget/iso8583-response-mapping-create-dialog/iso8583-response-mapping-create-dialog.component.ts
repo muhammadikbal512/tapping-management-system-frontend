@@ -82,9 +82,21 @@ export class Iso8583ResponseMappingCreateDialogComponent
     this.isoConfiguration.setValue(this.existingIsoConfiguration);
   }
 
-  onCreateResponseCodeMapping() {}
+  onCreateResponseCodeMapping() {
+    this.responseService.onCreateResponseMapping(this.setNewDataToModel());
+  }
 
-  onUpdateResponseCodeMapping() {}
+  onUpdateResponseCodeMapping() {
+    const newData = this.responseService.createResponseMappingFormData(
+      this.existingRespCode,
+      this.setNewDataToModel()
+    );
+
+    this.responseService.onUpdateResponseMapping(
+      newData,
+      this.setNewDataToModel()
+    );
+  }
 
   onChange($event: any) {
     this.showClear = $event != '' && $event != null;

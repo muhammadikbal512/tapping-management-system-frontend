@@ -72,21 +72,66 @@ export class ResponseMappingState {
   }
 
   @Action(ResponseMappingAdd, { cancelUncompleted: true }) addDataFromState(
-    ctx: StateContext<ResponseMappingAdd>,
+    ctx: StateContext<ResponseMappingStateModel>,
     { payload }: ResponseMappingAdd
-  ) {}
+  ) {
+    return this.responseService.addResponseMapping(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new ResponseMappingSuccessState(response));
+        ctx.patchState({
+          ...ctx.getState(),
+          responseMappings: [...ctx.getState().responseMappings],
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new ResponseMappingErrorState(response.error));
+      })
+    );
+  }
 
   @Action(ResponseMappingDelete, { cancelUncompleted: true })
   deleteDataFromState(
-    ctx: StateContext<ResponseMappingDelete>,
+    ctx: StateContext<ResponseMappingStateModel>,
     { id }: ResponseMappingDelete
-  ) {}
+  ) {
+    return this.responseService.deleteResponseMapping(id).pipe(
+      tap((response) => {
+        ctx.dispatch(new ResponseMappingSuccessState(response));
+        const filteredData = ctx
+          .getState()
+          .responseMappings.filter((x) => x.id !== id);
+        ctx.patchState({
+          ...ctx.getState(),
+          responseMappings: filteredData,
+          responseMessage: response,
+        });
+      })
+    );
+  }
 
   @Action(ResponseMappingUpdate, { cancelUncompleted: true })
   updateDataFromState(
-    ctx: StateContext<ResponseMappingUpdate>,
+    ctx: StateContext<ResponseMappingStateModel>,
     { id, payload, stateData }: ResponseMappingUpdate
-  ) {}
+  ) {
+    return this.responseService.updateResponseMapping(payload).pipe(
+      tap((response) => {
+        ctx.dispatch(new ResponseMappingSuccessState(response));
+        const dataList = [...ctx.getState().responseMappings];
+        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
+        dataList[updatedDataIndex] = stateData;
+        ctx.patchState({
+          ...ctx.getState(),
+          responseMappings: dataList,
+          responseMessage: response,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new ResponseMappingErrorState(response.error));
+      })
+    );
+  }
 
   @Action(ResponseMappingSuccessState) ifSuccessState(
     ctx: StateContext<ResponseMappingStateModel>,

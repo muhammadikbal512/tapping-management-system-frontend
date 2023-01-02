@@ -13,13 +13,22 @@ export class TransactionTypeTableComponent implements OnInit {
     private transactionTypesTableService: TransactionTypeTableService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllTransTypeMapping();
+  }
 
-  onRowSelect(event: any) {}
+  onRowSelect(event: any) {
+    this.transactionTypesService.ExistingData = event.data;
+  }
 
   refreshTable() {}
 
+  getAllTransTypeMapping() {
+    this.transactionTypesService.onGetAllTransactionType();
+  }
+
   showDialog() {
+    this.transactionTypesService.buttonStatus = 'create';
     this.transactionTypesService.openDialog();
   }
 

@@ -20,7 +20,7 @@
         </div>
         <div class="input-container">
             <input formControlName="headerLength" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">headerLength</label>
+            <label class="input-label">header Length</label>
             <p-message *ngIf="headerLength.touched && !headerLength.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="headerLength.touched && headerLength.hasError('required')" severity="error"></p-message>
             <small *ngIf="headerLength.touched && headerLength.hasError('required')" class="p-error">Length should

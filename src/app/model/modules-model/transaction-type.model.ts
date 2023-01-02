@@ -1,6 +1,6 @@
 export class TransactionTypeModel {
   id!: number;
-  transactionType: string = '';
+  transType: string = '';
   description: string = '';
-  configId: number = 0;
+  isoConfiguration: number = 0;
 }

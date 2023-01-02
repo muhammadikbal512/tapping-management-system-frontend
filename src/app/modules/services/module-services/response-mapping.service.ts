@@ -34,7 +34,12 @@ export class ResponseMappingService {
     );
   }
 
-  addResponseMapping(data: ResponseMappingModel) {}
+  addResponseMapping(data: ResponseMappingModel) {
+    return this.http.post<CustomHttpResponseModel>(
+      `${this.apiUrl}/resp_mapping/add`,
+      data
+    );
+  }
 
   deleteResponseMapping(id: number) {
     return this.http.delete<CustomHttpResponseModel>(
@@ -79,11 +84,11 @@ export class ResponseMappingService {
     this.responseDispatch._ResponseMappingDeleteDispatch(this.existingData.id);
   }
 
-  onUpdateResponseMapping(data: FormData) {
+  onUpdateResponseMapping(data: FormData, dataState: ResponseMappingModel) {
     this.responseDispatch._ResponseMappingUpdateDispatch(
       this.existingData.id,
       data,
-      this.existingData
+      dataState
     );
   }
 
