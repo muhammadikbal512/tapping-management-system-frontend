@@ -78,9 +78,18 @@ export class MtiConfigCreateUpdateDialogComponent
     });
   }
 
-  onCreateMtiConfiguration() {}
+  onCreateMtiConfiguration() {
+    this.mtiConfigService.onAddMtiConfig(this.setNewDataToModel());
+  }
 
-  onUpdateMtiConfiguration() {}
+  onUpdateMtiConfiguration() {
+    const newData = this.mtiConfigService.MtiConfigCreateFormat(
+      this.existingId,
+      this.setNewDataToModel()
+    );
+
+    this.mtiConfigService.onUpdateMtiConfig(newData, this.setNewDataToModel());
+  }
 
   get value() {
     return this.formGroup.controls['value'];

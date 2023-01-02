@@ -58,6 +58,8 @@ export class MtiConfigurationService {
     formData.append('value', newData.value);
     formData.append('isResponse', String(newData.isResponse));
     formData.append('isReversal', String(newData.isReversal));
+
+    return formData;
   }
 
   onGetAllMtiConfig() {

@@ -8,11 +8,12 @@ export class IsoFieldConfigurationTableService {
   isoConfigs!: IsoFieldConfigurationModel[];
   loading: boolean = true;
   cols = [
-    { field: 'isoFieldId', header: 'Iso Field Id' },
-    { field: 'tagNumber', header: 'Tag Number' },
-    { field: 'dialectId', header: 'Dialect Id' },
-    { field: 'attributeId', header: 'Attribute Id' },
-    { field: 'isTagNumber', header: 'isTag Number' },
+    { field: 'fieldId', header: 'Field ID' },
+    { field: 'description', header: 'Description' },
+    { field: 'length', header: 'Length' },
+    { field: 'hasChild', header: 'Has Child' },
+    { field: 'configId', header: 'Config ID' },
+    { field: 'priority', header: 'Priority' },
   ];
   constructor() {}
 
