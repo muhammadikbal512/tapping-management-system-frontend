@@ -6,8 +6,8 @@ import { PopupMessageService } from 'src/app/modules/services/popup-message-serv
 
 @Component({
   selector: 'app-action-button-iso8583-field-configuration',
-  templateUrl: './action-button-iso8583-field-configuration.component.html',
-  styleUrls: ['./action-button-iso8583-field-configuration.component.css'],
+  templateUrl: './action-button-field-config.component.html',
+  styleUrls: ['./action-button-field-config.component.css'],
 })
 export class ActionButtonIso8583FieldConfigurationComponent
   implements AgRendererComponent
