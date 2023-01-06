@@ -5,6 +5,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
 import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
 
@@ -50,7 +51,9 @@ export class TransactionTypeCreateUpdateDialogComponent
   setNewDataToModel(): TransactionTypeModel {
     this.transTypeModel.transType = this.transType.value;
     this.transTypeModel.description = this.description.value;
-    this.transTypeModel.isoConfiguration = this.isoConfiguration.value;
+    this.transTypeModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
     return this.transTypeModel;
   }
 
@@ -80,17 +83,34 @@ export class TransactionTypeCreateUpdateDialogComponent
   setExistingDataToModel() {
     this.transType.setValue(this.existingTransType);
     this.description.setValue(this.existingDescription);
-    this.isoConfiguration.setValue(this.existingIsoConfiguration);
+    this.isoConfiguration.setValue({
+      name: this.existingIsoConfiguration.name,
+      code: String(this.existingIsoConfiguration.id),
+    });
   }
 
   onCreateTransTypeMapping() {
     this.transTypeService.onAddTransactionType(this.setNewDataToModel());
   }
 
-  onUpdateTransTypeMapping() {}
+  onUpdateTransTypeMapping() {
+    const newData = this.transTypeService.createTransType(
+      this.existingId,
+      this.setNewDataToModel()
+    );
+
+    this.transTypeService.onUpdateTransactionType(
+      newData,
+      this.setNewDataToModel()
+    );
+  }
 
   onChange($event: any) {
     this.showClear = $event != '' && $event != null;
+  }
+
+  get existingId() {
+    return this.transTypeService.existingData.id;
   }
 
   get transType() {

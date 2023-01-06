@@ -51,17 +51,17 @@ export class TransTypeMappingState {
   ) {
     return this.transTypeService.getAllTransactionTypes().pipe(
       tap((response) => {
-        if (response.length != 0) {
+        if (response.responseData.length != 0) {
           this.transTypeTableService.loading = false;
-          this.transTypeTableService.setRowData(response);
+          this.transTypeTableService.setRowData(response.responseData);
         } else {
           this.transTypeTableService.loading = false;
-          this.transTypeTableService.setRowData(response);
+          this.transTypeTableService.setRowData(response.responseData);
         }
 
         ctx.patchState({
           ...ctx.getState(),
-          TransactionTypeMappings: response,
+          TransactionTypeMappings: response.responseData,
         });
       }),
       catchError((response: HttpErrorResponse) => {

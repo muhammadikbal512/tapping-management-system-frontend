@@ -12,10 +12,8 @@ export class InvestigationHistoryComponent implements OnInit {
   constructor(private http: HttpClient, public investigationService: AlertInvestigationService) {}
 
   ngOnInit(): void {
-    this.http
-      .get(`assets/data/dummy/investigation/investigation.json`)
-      .subscribe((response) => {
-        this.investHistories = response;
-      });
+      this.investigationService.getAllAlertInvestigation().subscribe((response) => {
+        this.investHistories = response
+      })
   }
 }

@@ -175,6 +175,13 @@ import { TransactionTypeActionButtonGroupComponent } from './module/external-int
 import { MtiConfigTableComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-table/mti-config-table.component';
 import { MtiConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-create-update-dialog/mti-config-create-update-dialog.component';
 import { MtiConfigActionButtonGroupComponent } from './module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-action-button-group/mti-config-action-button-group.component';
+import { IsoConfigurationComponent } from './module/external-interface/iso8583configuration/iso-configuration/iso-configuration.component';
+import { IsoConfigTableComponent } from './module/external-interface/iso8583configuration/iso-configuration/widgets/iso-config-table/iso-config-table.component';
+import { IsoConfigActionButtonComponent } from './module/external-interface/iso8583configuration/iso-configuration/widgets/iso-config-action-button/iso-config-action-button.component';
+import { IsoConfigCreateUpdateDialogComponent } from './module/external-interface/iso8583configuration/iso-configuration/widgets/iso-config-create-update-dialog/iso-config-create-update-dialog.component';
+import { AppLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/app-layer-case/app-layer-case.component';
+import { NetworkLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/network-layer-case/network-layer-case.component';
+import { PhysicalLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/physical-layer-case/physical-layer-case.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -325,6 +332,13 @@ import { MtiConfigActionButtonGroupComponent } from './module/external-interface
     MtiConfigTableComponent,
     MtiConfigCreateUpdateDialogComponent,
     MtiConfigActionButtonGroupComponent,
+    IsoConfigurationComponent,
+    IsoConfigTableComponent,
+    IsoConfigActionButtonComponent,
+    IsoConfigCreateUpdateDialogComponent,
+    AppLayerCaseComponent,
+    NetworkLayerCaseComponent,
+    PhysicalLayerCaseComponent,
   ],
   imports: [
     CommonModule,

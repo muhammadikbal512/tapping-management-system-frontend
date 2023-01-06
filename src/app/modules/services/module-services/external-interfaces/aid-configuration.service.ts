@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { AidConfigCreateUpdateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/aid-configuration/widgets/aid-config-create-update-dialog/aid-config-create-update-dialog.component';
 import { AidConfigDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/aid-configuration/aid-config.dispatch';
 import { environment } from 'src/environments/environment';
@@ -27,7 +28,7 @@ export class AidConfigurationService {
   ) {}
 
   getAllAidConfig() {
-    return this.http.get<AidConfigurationModel[]>(
+    return this.http.get<HttpResponseData<AidConfigurationModel>>(
       `${this.apiUrl}/list_aid_label/getAll`
     );
   }

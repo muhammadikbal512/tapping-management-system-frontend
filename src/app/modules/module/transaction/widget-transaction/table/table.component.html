@@ -1,6 +1,7 @@
-<p-table #dt1 [columns]="cols" [value]="transactions" dataKey="0" [lazy]="true" (onLazyLoad)="loadTransactions($event)" [paginator]="true" [rows]="5"
-  [totalRecords]="totalRecords" [loading]="loading" scrollHeight="400px" selectionMode="single"
-  (onRowSelect)="onRowSelect($event)" [scrollable]="true" [rowsPerPageOptions]="[5,10, 20, 25, 50]">
+<p-table #dt1 [columns]="cols" [value]="transactions" dataKey="0" [lazy]="true" (onLazyLoad)="loadTransactions($event)"
+  [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [loading]="loading" scrollHeight="400px"
+  selectionMode="single" (onRowSelect)="onRowSelect($event)" [scrollable]="true"
+  [rowsPerPageOptions]="[5,10, 20, 25, 50]">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="export-buttons">

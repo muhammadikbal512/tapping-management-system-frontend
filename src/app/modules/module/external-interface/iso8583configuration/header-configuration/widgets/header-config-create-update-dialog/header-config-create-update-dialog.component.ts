@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
+import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
 import { HeaderService } from 'src/app/modules/services/shared-service/header.service';
 
@@ -94,14 +95,19 @@ export class HeaderConfigCreateUpdateDialogComponent
     this.isoConfiguration.setValue(this.existingIsoConfiguration);
     this.fieldFormat.setValue(this.existingFieldFormat);
     this.encoding.setValue(this.existingEncoding);
-    this.isofieldCondition.setValue(this.existingIsofieldCondition);
+    this.isofieldCondition.setValue({
+      name: this.existingIsoConfiguration.name,
+      code: String(this.existingIsoConfiguration.id),
+    });
   }
 
   setNewDataToModel(): HeaderConfigurationModel {
     this.headerConfigModel.headerField = this.headerField.value;
     this.headerConfigModel.headerLength = this.headerLength.value;
     this.headerConfigModel.description = this.description.value;
-    this.headerConfigModel.isoConfiguration = this.isoConfiguration.value;
+    this.headerConfigModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
     this.headerConfigModel.fieldFormat = this.fieldFormat.value;
     this.headerConfigModel.encoding = this.encoding.value;
     this.headerConfigModel.isofieldCondition = this.isofieldCondition.value;

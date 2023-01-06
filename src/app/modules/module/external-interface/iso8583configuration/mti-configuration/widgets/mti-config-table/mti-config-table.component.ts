@@ -15,17 +15,13 @@ export class MtiConfigTableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onRowSelect(event: any) {
+  onRowSelect(event: any) {}
 
-  }
-
-  refreshTable() {
-
-  }
+  refreshTable() {}
 
   showDialog() {
     this.mtiConfigService.openDialog();
-    this.mtiConfigService.buttonStatus = 'create'
+    this.mtiConfigService.buttonStatus = 'create';
   }
 
   get cols() {

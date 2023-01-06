@@ -11,7 +11,9 @@ import {
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MtiConfigDispatch {
   constructor() {}
 

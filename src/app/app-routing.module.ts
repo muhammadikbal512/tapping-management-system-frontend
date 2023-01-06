@@ -40,6 +40,7 @@ import { AidConfigurationComponent } from './modules/module/external-interface/i
 import { TransactionTypeMappingComponent } from './modules/module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-mapping.component';
 import { MtiConfigurationComponent } from './modules/module/external-interface/iso8583configuration/mti-configuration/mti-configuration.component';
 import { CreateUpdateIso8583FieldFormComponent } from './modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
+import { IsoConfigurationComponent } from './modules/module/external-interface/iso8583configuration/iso-configuration/iso-configuration.component';
 const routes: Routes = [
   {
     path: 'TMS-Home',
@@ -118,9 +119,9 @@ const routes: Routes = [
             path: 'iso8583-configuration',
             children: [
               {
-                path: 'iso8583-dialect',
+                path: 'iso-configuration',
                 data: { title: 'ISO Configuration' },
-                component: Iso8583dialectComponent,
+                component: IsoConfigurationComponent,
               },
               {
                 path: 'aid-configuration',

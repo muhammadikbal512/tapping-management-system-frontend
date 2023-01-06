@@ -17,8 +17,6 @@ import { AlertInvestigationState } from 'src/app/state-configuration/modules/inv
   styleUrls: ['./forward-action-case.component.css'],
 })
 export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
-  @Select(AlertInvestigationState.Roles)
-  Roles$!: Observable<RoleInterface[]>;
   disableStatus: boolean = false;
   form!: FormGroup;
   roleInterface: RoleInterface[] = [];
@@ -31,10 +29,6 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.alertService.OnGetAllRoles();
-    this.Roles$.subscribe((data) => {
-      this.roleInterface = data.sort((a, b) => a.name.localeCompare(b.name));
-    });
   }
 
   ngAfterViewInit(): void {
@@ -47,10 +41,9 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
 
   createForm() {
     this.form = this.fb.group({
-      caseId: ['',Validators.required],
-      privateScheme: ['',Validators.required],
-      caseCreationDate: ['',Validators.required],
-      classificationType: ['',Validators.required],
+      id: ['', Validators.required],
+      classificationStatus: ['', Validators.required],
+      classificationType: ['', Validators.required],
       role: ['', Validators.required],
       comment: ['', Validators.required],
     });
@@ -61,18 +54,16 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
     this.form.valueChanges.subscribe((value) => {
       if (
         this.existingCaseId != value.caseId ||
-        this.existingCaseCreationDate != value.caseCreationDate ||
-        this.existingClassificationType != value.classificationType ||
-        this.existingPrivateScheme != value.privateScheme
+        this.existingClassificationStatus != value.classificationStatus ||
+        this.existingClassificationType != value.classificationType
       ) {
         this.disableStatus = false;
       }
 
       if (
         this.existingCaseId == value.caseId &&
-        this.existingCaseCreationDate == value.caseCreationDate &&
-        this.existingClassificationType == value.classificationType &&
-        this.existingPrivateScheme == value.privateScheme
+        this.existingClassificationStatus == value.classificationStatus &&
+        this.existingClassificationType == value.classificationType
       ) {
         this.disableStatus = true;
       }
@@ -81,8 +72,7 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
 
   setExistingDataToDialog() {
     this.caseId.setValue(this.existingCaseId);
-    this.privateScheme.setValue(this.existingPrivateScheme);
-    this.caseCreationDate.setValue(this.existingCaseCreationDate);
+    this.classificationStatus.setValue(this.existingClassificationStatus);
     this.classificationType.setValue(this.existingClassificationType);
   }
 
@@ -98,8 +88,8 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
     return this.form.controls['privateScheme'];
   }
 
-  get caseCreationDate() {
-    return this.form.controls['caseCreationDate'];
+  get classificationStatus() {
+    return this.form.controls['classificationStatus'];
   }
 
   get classificationType() {
@@ -115,15 +105,11 @@ export class ForwardActionCaseComponent implements OnInit, AfterViewInit {
   }
 
   get existingCaseId() {
-    return this.alertService.existingData.caseId;
+    return this.alertService.existingData.id;
   }
 
-  get existingPrivateScheme() {
-    return this.alertService.existingData.privateScheme;
-  }
-
-  get existingCaseCreationDate() {
-    return this.alertService.existingData.caseCreationDate;
+  get existingClassificationStatus() {
+    return this.alertService.existingData.classificationStatus;
   }
 
   get existingClassificationType() {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
 import { TransactionTypeCreateUpdateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/transaction-type-mapping/transaction-type-create-update-dialog/transaction-type-create-update-dialog.component';
 import { TransTypeMappingDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/transaction-type-mapping/trans-type-mapping.dispatch';
@@ -27,7 +28,7 @@ export class TransactionTypeService {
   ) {}
 
   getAllTransactionTypes() {
-    return this.http.get<TransactionTypeModel[]>(
+    return this.http.get<HttpResponseData<TransactionTypeModel>>(
       `${this.apiUrl}/trans_type_mapping/getAll`
     );
   }
@@ -50,6 +51,15 @@ export class TransactionTypeService {
     return this.http.delete<CustomHttpResponseModel>(
       `${this.apiUrl}/trans_type_mapping/delete/` + id
     );
+  }
+
+  createTransType(id: number, newData: TransactionTypeModel) {
+    const formData = new FormData();
+    formData.append('id', String(id));
+    formData.append('transType', newData.transType);
+    formData.append('description', newData.description);
+    formData.append('isoConfiguration', String(newData.isoConfiguration.id));
+    return formData;
   }
 
   onGetAllTransactionType() {

@@ -50,17 +50,17 @@ export class HeaderConfigState {
   getDataFromState(ctx: StateContext<HeaderConfigStateModel>) {
     return this.headerConfigService.getAllHeaderConfigs().pipe(
       tap((response) => {
-        if (response.length != 0) {
+        if (response.responseData.length != 0) {
           this.headerConfigTableService.loading = false;
-          this.headerConfigTableService.setRowData(response);
+          this.headerConfigTableService.setRowData(response.responseData);
         } else {
-          this.headerConfigTableService.setRowData(response);
+          this.headerConfigTableService.setRowData(response.responseData);
           this.headerConfigTableService.loading = false;
         }
 
         ctx.setState({
           ...ctx.getState(),
-          HeaderConfigurations: response,
+          HeaderConfigurations: response.responseData,
         });
       }),
       catchError((response: HttpErrorResponse) => {

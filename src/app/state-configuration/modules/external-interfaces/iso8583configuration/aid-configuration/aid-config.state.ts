@@ -50,17 +50,17 @@ export class AidConfigState {
   ) {
     return this.aidConfigService.getAllAidConfig().pipe(
       tap((response) => {
-        if (response.length != 0) {
+        if (response.responseData.length != 0) {
           this.aidConfigTableService.loading = false;
-          this.aidConfigTableService.setRowData(response);
+          this.aidConfigTableService.setRowData(response.responseData);
         } else {
           this.aidConfigTableService.loading = false;
-          this.aidConfigTableService.setRowData(response);
+          this.aidConfigTableService.setRowData(response.responseData);
         }
 
         ctx.patchState({
           ...ctx.getState(),
-          AidConfigurations: response,
+          AidConfigurations: response.responseData,
         });
       }),
       catchError((response: HttpErrorResponse) => {
@@ -140,7 +140,7 @@ export class AidConfigState {
     }
     this.notifierService.successNotification(
       successMessage?.message,
-      successMessage?.httpStatusCode
+      successMessage?.status
     );
     this.aidConfigService.onGetAidConfig();
     ctx.patchState({
@@ -157,7 +157,7 @@ export class AidConfigState {
     }
     this.notifierService.errorNotification(
       errorMessage?.message,
-      errorMessage?.httpStatusCode
+      errorMessage?.status
     );
 
     this.aidConfigTableService.loading = false;

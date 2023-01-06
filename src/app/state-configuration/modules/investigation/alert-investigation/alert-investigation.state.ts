@@ -6,16 +6,15 @@ import {
   AlertInvestigationGet,
   AlertInvestigationSuccessState,
   AlertInvestigationErrorState,
-  AlertInvestigationGetRoles,
-  AlertInvestigationRejected,
 } from './alert-investigation.action';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
 import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
 import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
-import { tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class AlertInvestigationStateModel {
   alertInvestigation: AlertInvestigationModel[] = [];
@@ -70,48 +69,11 @@ export class AlertInvestigationState {
           ...ctx.getState(),
           alertInvestigation: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new AlertInvestigationErrorState(response.error));
       })
     );
-  }
-
-  @Action(AlertInvestigationGetRoles, { cancelUncompleted: true })
-  getRolesFromState(ctx: StateContext<AlertInvestigationGetRoles>) {
-    return this.roleService.getAllRoles().pipe(
-      tap((response) => {
-        let roleParseList: RoleInterface[] = [];
-        response.forEach((x) => {
-          roleParseList.push({
-            name: x.roleName,
-            code: String(x.id),
-          });
-        });
-
-        ctx.patchState({
-          ...ctx.getState(),
-          Roles: roleParseList,
-        });
-      })
-    );
-  }
-
-  @Action(AlertInvestigationRejected, { cancelUncompleted: true })
-  sendCaseRejected(
-    ctx: StateContext<AlertInvestigationStateModel>,
-    { payload }: AlertInvestigationRejected
-  ) {}
-
-  @Action(AlertInvestigationSuccessState) ifSuccessState(
-    ctx: StateContext<AlertInvestigationStateModel>,
-    { successMessage }: AlertInvestigationSuccessState
-  ) {
-    this.notifierService.successNotification(
-      successMessage.message,
-      successMessage.httpStatusCode
-    );
-    this.alertService.onGetAllAlertInvestigation();
-    ctx.patchState({
-      responseMessage: successMessage,
-    });
   }
 
   @Action(AlertInvestigationErrorState) ifErrorState(
@@ -122,6 +84,7 @@ export class AlertInvestigationState {
       errorMessage?.message,
       errorMessage?.httpStatusCode
     );
+    this.alertTableService.loading = false;
     ctx.patchState({
       responseMessage: errorMessage,
     });

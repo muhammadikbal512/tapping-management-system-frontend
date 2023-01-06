@@ -27,6 +27,7 @@ export class CreateUpdateIso8583FieldFormComponent
   >;
 
   form!: FormGroup;
+  configID!: any[];
   disableStatus: boolean = false;
   showClearButton: boolean = false;
   DialectMsgTemplateOptionList: DialectMsgTemplateGroup[] = [];

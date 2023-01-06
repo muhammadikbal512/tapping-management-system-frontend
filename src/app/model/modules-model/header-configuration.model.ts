@@ -1,3 +1,5 @@
+import { IsoConfigurationModel } from "./iso-configuration.model";
+
 export class HeaderConfigurationModel {
   id!: number;
   headerField: number = 0;
@@ -6,7 +8,6 @@ export class HeaderConfigurationModel {
   fieldFormat: number = 0;
   encoding: number = 0;
   isofieldCondition: number = 0;
-  isoConfiguration: number = 0;
-  configId: number = 0;
+  isoConfiguration!: IsoConfigurationModel
   priority: string = '';
 }

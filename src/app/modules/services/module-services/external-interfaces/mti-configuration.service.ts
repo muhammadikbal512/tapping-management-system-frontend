@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
 import { MtiConfigCreateUpdateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/mti-configuration/widgets/mti-config-create-update-dialog/mti-config-create-update-dialog.component';
 import { MtiConfigDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/mti-configuration/mti-config.dispatch';
@@ -27,7 +28,7 @@ export class MtiConfigurationService {
   ) {}
 
   getAllMtiConfig() {
-    return this.http.get<MtiConfigurationModel[]>(
+    return this.http.get<HttpResponseData<MtiConfigurationModel>>(
       `${this.apiUrl}/supported_mti/getAll`
     );
   }

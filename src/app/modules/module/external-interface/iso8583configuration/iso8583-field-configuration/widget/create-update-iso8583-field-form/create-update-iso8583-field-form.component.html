@@ -9,7 +9,7 @@
         </div>
 
         <div class="input-container">
-            <p-dropdown [filter]="true" [options]="DialectMsgTemplateOptionList" appendTo="body"
+            <p-dropdown [filter]="true" [options]="configID" appendTo="body"
             filterBy="name" placeholder="Select Field Format"  [style]="{'width':'100%'}" 
             optionLabel="name" [showClear]="showClearButton" styleClass="msgTemplate" (onChange)="onChange($event)"
             formControlName="fieldFormat"></p-dropdown>

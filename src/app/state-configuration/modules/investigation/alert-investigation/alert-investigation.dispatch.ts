@@ -2,8 +2,6 @@ import {
   AlertInvestigationGet,
   AlertInvestigationErrorState,
   AlertInvestigationSuccessState,
-  AlertInvestigationRejected,
-  AlertInvestigationGetRoles,
 } from './alert-investigation.action';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -17,16 +15,6 @@ export class AlertInvestigationDispatch {
   @Dispatch()
   public _AlertInvestigationGetDispatch() {
     return new AlertInvestigationGet();
-  }
-
-  @Dispatch()
-  public _AlertInvestigationGetRolesDispatch() {
-    return new AlertInvestigationGetRoles();
-  }
-
-  @Dispatch()
-  public _AlertInvestigationDeleteDispatch(payload: AlertInvestigationModel) {
-    return new AlertInvestigationRejected(payload);
   }
 
   @Dispatch()

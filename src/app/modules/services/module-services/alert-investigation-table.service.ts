@@ -12,14 +12,16 @@ export class AlertInvestigationTableService {
   constructor() {}
 
   cols = [
-    { field: 'lockedByUser', header: 'Locked By User' },
-    { field: 'caseId', header: 'Case ID' },
-    { field: 'caseCreationDate', header: 'Case Creation Date' },
+    { field: 'caseName', header: 'Case Name' },
+    { field: 'createdAt', header: 'Created At' },
     { field: 'classificationType', header: 'Classification Type' },
     { field: 'classificationStatus', header: 'Classification Status' },
-    { field: 'privateScheme', header: 'Private Scheme' },
-    { field: 'name', header: 'Name' },
-    { field: 'details', header: 'Header' },
+    { field: 'investigationHistories', header: 'Investigation Histories' },
+    { field: 'comments', header: 'Comments' },
+    { field: 'updatedBy', header: 'Updated By' },
+    { field: 'lockedByUser', header: 'Locked By User' },
+    { field: 'initiator', header: 'initiator' },
+    { field: 'group', header: 'Group' },
   ];
   cols1 = [
     { field: 'networkId', header: 'Network ID' },

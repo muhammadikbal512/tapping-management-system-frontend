@@ -51,14 +51,13 @@ export class MtiConfigState {
   ) {
     return this.mtiConfigService.getAllMtiConfig().pipe(
       tap((response) => {
-        if (response.length != 0) {
+        if (response.responseData.length != 0) {
           this.mtiConfigTableService.loading = false;
-          this.mtiConfigTableService.setRowData(response);
+          this.mtiConfigTableService.setRowData(response.responseData);
         }
-
         ctx.patchState({
           ...ctx.getState(),
-          MtiConfigurations: response,
+          MtiConfigurations: response.responseData,
         });
       }),
       catchError((response: HttpErrorResponse) => {

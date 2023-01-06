@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { HeaderConfigCreateUpdateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/header-configuration/widgets/header-config-create-update-dialog/header-config-create-update-dialog.component';
 import { HeaderConfigDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/header-configuration/header-config.dispatch';
 import { HeaderConfigStateModel } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/header-configuration/header-config.state';
@@ -27,7 +28,7 @@ export class HeaderConfigurationService {
   ) {}
 
   getAllHeaderConfigs() {
-    return this.http.get<HeaderConfigurationModel[]>(
+    return this.http.get<HttpResponseData<HeaderConfigurationModel>>(
       `${this.apiUrl}/header_configuration/getAll`
     );
   }
@@ -72,14 +73,12 @@ export class HeaderConfigurationService {
     this.headerDispatch._HeaderConfigDelete(this.existingData.id);
   }
 
-  createHeaderConfig(
-    id: number,
-    newData: HeaderConfigurationModel
-  ) {
+  createHeaderConfig(id: number, newData: HeaderConfigurationModel) {
     const formData = new FormData();
     formData.append('id', String(id));
     formData.append('headerId', String(newData.id));
     formData.append('headerField', String(newData.headerField));
+    formData.append('isoConfiguration', String(newData.isoConfiguration.id));
     formData.append('headerLength', String(newData.headerLength));
     formData.append('description', newData.description);
     formData.append('priority', newData.priority);
