@@ -51,9 +51,10 @@ export class IsoConfigState {
   ) {
     return this.isoConfigService.getAllIsoConfiguration().pipe(
       tap((response) => {
-        this.isoConfigTableService.loading = false;
-        this.isoConfigTableService.setRowData(response.responseData);
-
+        if (response.responseData.length != 0) {
+          this.isoConfigTableService.loading = false;
+          this.isoConfigTableService.setRowData(response.responseData);
+        }
         ctx.patchState({
           ...ctx.getState(),
           IsoConfigurations: response.responseData,
@@ -136,6 +137,11 @@ export class IsoConfigState {
       successMessage?.message,
       successMessage?.status
     );
+    if (this.isoConfigService.getCurrentStatusDialog().length != 0) {
+      this.isoConfigService.closeDialog();
+    }
+
+    this.isoConfigService.onGetAllIsoConfig();
     ctx.patchState({
       responseMessage: successMessage,
     });
@@ -146,7 +152,7 @@ export class IsoConfigState {
     { errorMessage }: IsoConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.message,
+      errorMessage?.error,
       errorMessage?.status
     );
     this.isoConfigTableService.loading = false;

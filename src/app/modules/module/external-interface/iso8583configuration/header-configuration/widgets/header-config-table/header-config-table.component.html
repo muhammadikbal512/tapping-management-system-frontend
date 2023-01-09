@@ -28,6 +28,8 @@
             <th style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
             </th>
+            <th>Config ID</th>
+            <th>Encoding</th>
             <th>
                 Actions
             </th>
@@ -39,6 +41,8 @@
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>
+            <td>{{rowData.isoConfiguration.name}}</td>
+            <td>{{rowData.encoding.encodingType}}</td>
             <td>
                 <app-header-config-action-button></app-header-config-action-button>
             </td>

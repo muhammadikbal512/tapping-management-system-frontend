@@ -143,9 +143,10 @@ export class TransTypeMappingState {
     }
 
     this.notifierService.successNotification(
-      successMessage?.message,
+      successMessage?.error,
       successMessage?.status
     );
+    this.transTypeService.onGetAllTransactionType();
 
     ctx.patchState({
       responseMessage: successMessage,
@@ -162,7 +163,7 @@ export class TransTypeMappingState {
     }
 
     this.notifierService.errorNotification(
-      errorMessage?.message,
+      errorMessage?.error,
       errorMessage?.status
     );
     this.transTypeTableService.loading = false;

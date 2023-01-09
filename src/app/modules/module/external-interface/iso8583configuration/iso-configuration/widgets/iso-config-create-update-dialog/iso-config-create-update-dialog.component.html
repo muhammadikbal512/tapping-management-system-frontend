@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="mti" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="name" type="text" class="peer" placeholder=" " required="">
             <label class="input-label">Name</label>
             <p-message *ngIf="name.touched && !name.hasError('required')" severity="success">
             </p-message>
@@ -12,8 +12,8 @@
                 fill.</small>
         </div>
         <div class="input-container">
-            <input formControlName="mti" type="text" class="peer" placeholder=" " required="">
-            <label class="input-label">description</label>
+            <input formControlName="description" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Description</label>
             <p-message *ngIf="description.touched && !description.hasError('required')" severity="success">
             </p-message>
             <p-message *ngIf="description.touched && description.hasError('required')" severity="error">

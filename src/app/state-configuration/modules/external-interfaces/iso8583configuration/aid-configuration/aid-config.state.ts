@@ -106,7 +106,7 @@ export class AidConfigState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new AidConfigSuccessState(response.error));
+        return ctx.dispatch(new AidConfigErrorState(response.error));
       })
     );
   }
@@ -127,6 +127,9 @@ export class AidConfigState {
           AidConfigurations: filterData,
           responseMessage: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new AidConfigErrorState(response.error));
       })
     );
   }
@@ -156,7 +159,7 @@ export class AidConfigState {
       this.aidConfigService.closeDialog();
     }
     this.notifierService.errorNotification(
-      errorMessage?.message,
+      errorMessage?.error,
       errorMessage?.status
     );
 

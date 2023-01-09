@@ -1,5 +1,5 @@
 export class AidConfigurationModel {
     id!: number;
-    aid: number = 0;
+    aid: string = '';
     label: string = '';
 }

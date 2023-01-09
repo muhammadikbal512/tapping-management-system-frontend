@@ -8,7 +8,7 @@ export class TransactionTypeTableService {
   loading: boolean = true;
   transactionTypes!: TransactionTypeModel[];
   cols = [
-    { field: 'transactionType', header: 'Transaction Type' },
+    { field: 'transType', header: 'Transaction Type' },
     { field: 'description', header: 'Description' },
     { field: 'configId', header: 'Config ID' },
   ];

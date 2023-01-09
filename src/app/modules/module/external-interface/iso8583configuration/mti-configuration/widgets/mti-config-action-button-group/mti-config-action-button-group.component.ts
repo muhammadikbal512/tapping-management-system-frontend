@@ -29,5 +29,7 @@ export class MtiConfigActionButtonGroupComponent
     this.mtiConfigService.buttonStatus = 'edit';
   }
 
-  deleteButton(event: Event) {}
+  deleteButton(event: Event) {
+    this.confirmationService.mtiConfig(event, this.mtiConfigService);
+  }
 }

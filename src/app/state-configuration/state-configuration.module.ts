@@ -29,6 +29,8 @@ import { UserGroupState } from './modules/user-management/user-group/user-group.
 import { HeaderConfigState } from './modules/external-interfaces/iso8583configuration/header-configuration/header-config.state';
 import { AidConfigState } from './modules/external-interfaces/iso8583configuration/aid-configuration/aid-config.state';
 import { TransTypeMappingState } from './modules/external-interfaces/iso8583configuration/transaction-type-mapping/trans-type-mapping.state';
+import { MtiConfigState } from './modules/external-interfaces/iso8583configuration/mti-configuration/mti-config.state';
+import { IsoConfigState } from './modules/external-interfaces/iso8583configuration/iso-configuration/iso-config.state';
 
 @NgModule({
   declarations: [],
@@ -64,6 +66,8 @@ import { TransTypeMappingState } from './modules/external-interfaces/iso8583conf
       HeaderConfigState,
       AidConfigState,
       TransTypeMappingState,
+      MtiConfigState,
+      IsoConfigState,
     ]),
   ],
 })

@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="mti" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="value" type="text" class="peer" placeholder=" " required="">
             <label class="input-label">Value</label>
             <p-message *ngIf="value.touched && !value.hasError('required')" severity="success">
             </p-message>

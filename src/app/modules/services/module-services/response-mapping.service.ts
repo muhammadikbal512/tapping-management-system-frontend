@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { Iso8583ResponseMappingCreateDialogComponent } from '../../module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
 import { ResponseMappingTableService } from './response-mapping-table.service';
 import { RowClickedEvent } from 'ag-grid-community';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,7 @@ export class ResponseMappingService {
   ) {}
 
   getAllResponseMapping() {
-    return this.http.get<ResponseMappingModel[]>(
+    return this.http.get<HttpResponseData<ResponseMappingModel>>(
       `${this.apiUrl}/resp_mapping/getAll`
     );
   }

@@ -79,10 +79,12 @@ export class MtiConfigCreateUpdateDialogComponent
   }
 
   onCreateMtiConfiguration() {
+    this.showLoading = true;
     this.mtiConfigService.onAddMtiConfig(this.setNewDataToModel());
   }
 
   onUpdateMtiConfiguration() {
+    this.showLoading = true;
     const newData = this.mtiConfigService.MtiConfigCreateFormat(
       this.existingId,
       this.setNewDataToModel()

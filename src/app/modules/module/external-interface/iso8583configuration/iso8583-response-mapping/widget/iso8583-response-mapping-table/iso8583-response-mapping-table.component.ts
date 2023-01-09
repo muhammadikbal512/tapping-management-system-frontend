@@ -28,7 +28,7 @@ export class Iso8583ResponseMappingTableComponent implements OnInit {
   }
 
   onRowSelect(data: any) {
-    this.responseService.ExistingData = data.data;
+    this.responseService.existingData = data.data;
   }
 
   showDialog() {

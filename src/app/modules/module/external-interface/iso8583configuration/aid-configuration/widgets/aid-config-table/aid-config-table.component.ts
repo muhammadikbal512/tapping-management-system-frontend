@@ -21,7 +21,10 @@ export class AidConfigTableComponent implements OnInit {
     this.aidConfigService.onGetAidConfig();
   }
 
-  refreshTable() {}
+  refreshTable() {
+    this.aidConfigTableService.loading = true;
+    this.getAllAidConfig();
+  }
 
   showDialog() {
     this.aidConfigService.openDialog();

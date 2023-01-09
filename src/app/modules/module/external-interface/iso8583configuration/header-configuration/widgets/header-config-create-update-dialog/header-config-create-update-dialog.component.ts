@@ -116,10 +116,12 @@ export class HeaderConfigCreateUpdateDialogComponent
   }
 
   onCreateHeaderConfig() {
+    this.showLoading = true;
     this.headerService.onCreateHeaderConfig(this.setNewDataToModel());
   }
 
   onUpdateHeaderConfig() {
+    this.showLoading = true;
     const newData = this.headerService.createHeaderConfig(
       this.existingId,
       this.setNewDataToModel()

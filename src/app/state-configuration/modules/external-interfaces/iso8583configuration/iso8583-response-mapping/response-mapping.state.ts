@@ -52,17 +52,17 @@ export class ResponseMappingState {
   ) {
     return this.responseService.getAllResponseMapping().pipe(
       tap((response) => {
-        if (response.length != 0) {
+        if (response.responseData.length != 0) {
           this.responseTableService.loading = false;
-          this.responseTableService.setRowData(response);
+          this.responseTableService.setRowData(response.responseData);
         } else {
-          this.responseTableService.setRowData(response);
+          this.responseTableService.setRowData(response.responseData);
           this.responseTableService.loading = false;
         }
 
         ctx.patchState({
           ...ctx.getState(),
-          responseMappings: response,
+          responseMappings: response.responseData,
         });
       }),
       catchError((response: HttpErrorResponse) => {
@@ -106,6 +106,9 @@ export class ResponseMappingState {
           responseMappings: filteredData,
           responseMessage: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new ResponseMappingErrorState(response.error));
       })
     );
   }
@@ -153,8 +156,8 @@ export class ResponseMappingState {
     { errorMessage }: ResponseMappingErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage.message,
-      errorMessage.httpStatusCode
+      errorMessage.error,
+      errorMessage.status
     );
 
     this.responseTableService.loading = false;

@@ -1,6 +1,6 @@
-<p-table #dt1 [columns]="cols" [loading]="false" [value]="mtiConfigs" [paginator]="true"
-    [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+<p-table #dt1 [loading]="loading" [value]="mtiConfigs" [paginator]="true" [rowsPerPageOptions]="[10, 25, 50]"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="10" scrollHeight="400px"
+    [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
     <ng-template pTemplate="caption">
         <div class="flex justify-between">
             <div class="search-buttons">
@@ -25,8 +25,14 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th style="min-width:100px;" *ngFor="let col of cols">
-                {{col.header}}
+            <th style="min-width:100px;">
+                Value
+            </th>
+            <th style="min-width:100px;">
+                Reversal
+            </th>
+            <th style="min-width:100px;">
+                Response
             </th>
             <th>
                 Actions
@@ -36,11 +42,17 @@
     <ng-template pTemplate="body" let-rowData>
         <tr [pSelectableRow]="rowData">
 
-            <td style="min-width:100px;" *ngFor="let col of cols">
-                {{rowData[col.field]}}
+            <td style="min-width:100px;">
+                {{rowData.value}}
+            </td>
+            <td style="min-width:100px;">
+                <span [ngClass]="{'active': rowData.reversal == true, 'notActive': rowData.reversal == false}"></span>
+            </td>
+            <td style="min-width:100px;">
+                <span [ngClass]="{'active': rowData.response == true, 'notActive': rowData.response == false}"></span>
             </td>
             <td>
-                <app-header-config-action-button></app-header-config-action-button>
+                <app-mti-config-action-button-group></app-mti-config-action-button-group>
             </td>
         </tr>
     </ng-template>

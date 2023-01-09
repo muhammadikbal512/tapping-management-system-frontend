@@ -70,12 +70,14 @@ export class AidConfigCreateUpdateDialogComponent
   }
 
   onCreateAidNumber() {
+    this.showLoading = true;
     this.aidConfigService.onAddAidConfig(this.setNewDataToModel());
   }
 
   onUpdateAidNumber() {
+    this.showLoading = true;
     const newData = this.aidConfigService.createAidConfigFormData(
-      this.existingId,
+      String(this.existingId),
       this.setNewDataToModel()
     );
 

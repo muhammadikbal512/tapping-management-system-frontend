@@ -25,7 +25,7 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th>Message Format</th>
+      <th>Iso Field Configuration</th>
       <th style="min-width:100px;" *ngFor="let col of cols">
         {{col.header}}
       </th>
@@ -36,7 +36,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData>
     <tr [pSelectableRow]="rowData">
-      <td>{{rowData.dialectMessageTemplate.messageFormat.messageFormat}}</td>
+      <td>{{rowData.isoFieldConfiguration.name}}</td>
       <td style="min-width:100px;" *ngFor="let col of cols">
         {{rowData[col.field]}}
       </td>

@@ -15,6 +15,9 @@ import { UserGroupService } from '../module-services/user-management/user-group.
 import { UserService } from '../module-services/user-management/user.service';
 import { HeaderConfigurationService } from '../module-services/external-interfaces/header-configuration.service';
 import { AidConfigurationService } from '../module-services/external-interfaces/aid-configuration.service';
+import { MtiConfigurationService } from '../module-services/external-interfaces/mti-configuration.service';
+import { TransactionTypeService } from '../module-services/external-interfaces/transaction-type.service';
+import { IsoConfigurationService } from '../module-services/external-interfaces/iso-configuration.service';
 
 @Injectable({
   providedIn: 'root',
@@ -198,6 +201,39 @@ export class PopupMessageService {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         onDelete.onDeleteAidConfig();
+      },
+    });
+  }
+
+  mtiConfig(event: Event, onDelete: MtiConfigurationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this MTI Configuration ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteMtiConfig();
+      },
+    });
+  }
+
+  transType(event: Event, onDelete: TransactionTypeService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this Trans Type ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteTransactionType();
+      },
+    });
+  }
+
+  isoConfig(event: Event, onDelete: IsoConfigurationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this Iso Configuration ?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteIsoConfig();
       },
     });
   }

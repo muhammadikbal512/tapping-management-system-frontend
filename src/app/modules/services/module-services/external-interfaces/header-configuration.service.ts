@@ -28,7 +28,7 @@ export class HeaderConfigurationService {
   ) {}
 
   getAllHeaderConfigs() {
-    return this.http.get<HttpResponseData<HeaderConfigurationModel>>(
+    return this.http.get<HeaderConfigurationModel[]>(
       `${this.apiUrl}/header_configuration/getAll`
     );
   }

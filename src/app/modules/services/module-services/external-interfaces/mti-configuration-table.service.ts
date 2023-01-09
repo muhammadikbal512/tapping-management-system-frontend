@@ -7,11 +7,6 @@ import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configura
 export class MtiConfigurationTableService {
   mtiConfigs!: MtiConfigurationModel[];
   loading: boolean = true;
-  cols = [
-    { field: 'mti', header: 'MTI' },
-    { field: 'response', header: 'Response' },
-    { field: 'reversal', header: 'Reversal' },
-  ];
   constructor() {}
 
   setRowData(data: MtiConfigurationModel[]) {

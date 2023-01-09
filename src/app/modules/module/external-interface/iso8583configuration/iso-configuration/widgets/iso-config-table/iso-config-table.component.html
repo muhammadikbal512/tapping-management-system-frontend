@@ -1,4 +1,4 @@
-<p-table #dt1 [columns]="cols" [loading]="false" [value]="isoConfigs" [paginator]="true"
+<p-table #dt1 [columns]="cols" [loading]="loading" [value]="isoConfigs" [paginator]="true"
     [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
     <ng-template pTemplate="caption">
@@ -40,9 +40,11 @@
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>
-            <td></td>
             <td>
-                <app-header-config-action-button></app-header-config-action-button>
+                <span [ngClass]="{'active': rowData.hasHeader == true, 'notActive': rowData.hasHeader == false}"></span>
+            </td>
+            <td>
+                <app-iso-config-action-button></app-iso-config-action-button>
             </td>
         </tr>
     </ng-template>

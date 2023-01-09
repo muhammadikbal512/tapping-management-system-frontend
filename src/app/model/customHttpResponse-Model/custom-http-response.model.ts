@@ -5,5 +5,6 @@ export interface CustomHttpResponseModel {
   reason: string;
   message: string;
   status: number;
+  error: string;
   }
   

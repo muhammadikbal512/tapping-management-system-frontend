@@ -8,7 +8,7 @@ export class AidConfigurationTableService {
   loading: boolean = true;
   aidConfigs!: AidConfigurationModel[];
   cols = [
-    { field: 'aidNumber', header: 'AID Number' },
+    { field: 'aid', header: 'AID Number' },
     { field: 'label', header: 'Label' },
   ];
   constructor() {}

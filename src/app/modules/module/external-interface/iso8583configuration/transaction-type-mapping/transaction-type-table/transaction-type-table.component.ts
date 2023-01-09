@@ -18,7 +18,7 @@ export class TransactionTypeTableComponent implements OnInit {
   }
 
   onRowSelect(event: any) {
-    this.transactionTypesService.ExistingData = event.data;
+    this.transactionTypesService.existingData = event.data;
   }
 
   refreshTable() {}

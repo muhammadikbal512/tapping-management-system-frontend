@@ -26,5 +26,7 @@ export class IsoConfigActionButtonComponent implements AgRendererComponent {
     this.isoConfigService.buttonStatus = 'edit';
   }
 
-  deleteButton(event: Event) {}
+  deleteButton(event: Event) {
+    this.confirmationService.isoConfig(event, this.isoConfigService);
+  }
 }

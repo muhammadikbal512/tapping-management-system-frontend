@@ -78,6 +78,8 @@ export class MtiConfigState {
           MtiConfigurations: [...ctx.getState().MtiConfigurations],
           responseMessage: response,
         });
+      }), catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new MtiConfigErrorState(response.error));
       })
     );
   }
@@ -102,7 +104,7 @@ export class MtiConfigState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new MtiConfigSuccessState(response.error));
+        return ctx.dispatch(new MtiConfigErrorState(response.error));
       })
     );
   }
@@ -124,6 +126,9 @@ export class MtiConfigState {
           MtiConfigurations: filteredData,
           responseMessage: response,
         });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new MtiConfigErrorState(response.error));
       })
     );
   }
@@ -152,7 +157,7 @@ export class MtiConfigState {
     { errorMessage }: MtiConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.message,
+      errorMessage?.error,
       errorMessage?.status
     );
 

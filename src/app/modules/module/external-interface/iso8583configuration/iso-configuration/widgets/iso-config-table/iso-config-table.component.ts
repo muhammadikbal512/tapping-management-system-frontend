@@ -13,7 +13,10 @@ export class IsoConfigTableComponent implements OnInit {
     private isoConfigTableService: IsoConfigurationTableService
   ) {}
 
-  refreshTable() {}
+  refreshTable() {
+    this.isoConfigTableService.loading = true;
+    this.getAllIsoConfig();
+  }
 
   showDialog() {
     this.isoConfigService.openDialog();
@@ -24,7 +27,13 @@ export class IsoConfigTableComponent implements OnInit {
     this.isoConfigService.existingData = event.data;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllIsoConfig();
+  }
+
+  getAllIsoConfig() {
+    this.isoConfigService.onGetAllIsoConfig();
+  }
 
   get cols() {
     return this.isoConfigTableService.cols;

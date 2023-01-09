@@ -8,10 +8,9 @@ export class HeaderConfigurationTableService {
   loading: boolean = true;
   headerConfigs!: HeaderConfigurationModel[];
   cols = [
-    { field: 'fieldId', header: 'Field ID' },
+    { field: 'headerField', header: 'Field ID' },
     { field: 'description', header: 'Description' },
-    { field: 'length', header: 'Length' },
-    { field: 'configId', header: 'Config ID' },
+    { field: 'headerLength', header: 'Length' },
     { field: 'priority', header: 'Priority' },
   ];
   constructor() {}

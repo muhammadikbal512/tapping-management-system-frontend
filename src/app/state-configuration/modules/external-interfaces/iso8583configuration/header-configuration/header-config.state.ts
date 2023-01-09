@@ -46,21 +46,22 @@ export class HeaderConfigState {
     return state.responseMessage;
   }
 
-  @Action(HeaderConfigGet, { cancelUncompleted: true })
-  getDataFromState(ctx: StateContext<HeaderConfigStateModel>) {
+  @Action(HeaderConfigGet, { cancelUncompleted: true }) getDataFromState(
+    ctx: StateContext<HeaderConfigStateModel>
+  ) {
     return this.headerConfigService.getAllHeaderConfigs().pipe(
       tap((response) => {
-        if (response.responseData.length != 0) {
+        if (response.length != 0) {
           this.headerConfigTableService.loading = false;
-          this.headerConfigTableService.setRowData(response.responseData);
+          this.headerConfigTableService.setRowData(response);
         } else {
-          this.headerConfigTableService.setRowData(response.responseData);
           this.headerConfigTableService.loading = false;
+          this.headerConfigTableService.setRowData(response);
         }
 
-        ctx.setState({
+        ctx.patchState({
           ...ctx.getState(),
-          HeaderConfigurations: response.responseData,
+          HeaderConfigurations: response,
         });
       }),
       catchError((response: HttpErrorResponse) => {
@@ -158,7 +159,7 @@ export class HeaderConfigState {
     { errorMessage }: HeaderConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.message,
+      errorMessage?.error,
       errorMessage?.status
     );
 
