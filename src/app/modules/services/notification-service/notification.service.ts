@@ -10,21 +10,21 @@ export class NotificationService {
 
   public notify(
     type: NotificationTypeEnum,
-    message: string,
-    statusCode: number
+    responseMessage: string,
+    responseCode: number
   ) {
     if (type == 'success') {
       this.messageService.add({
         severity: type,
         summary: this.upperCaseFirstLetter(type),
-        detail: message,
+        detail: responseMessage,
         life: 2000,
       });
     } else {
       this.messageService.add({
         severity: type,
-        summary: this.upperCaseFirstLetter(type) + ' ' + statusCode,
-        detail: message,
+        summary: this.upperCaseFirstLetter(type) + ' ' + responseCode,
+        detail: responseMessage,
         life: 2000,
       });
     }
@@ -34,11 +34,11 @@ export class NotificationService {
     return char.charAt(0).toUpperCase() + char.slice(1);
   }
 
-  successNotification(message: string, statusCode: number) {
-    this.notify(NotificationTypeEnum.SUCCESS, message, statusCode);
+  successNotification(responseMessage: string, responseCode: number) {
+    this.notify(NotificationTypeEnum.SUCCESS, responseMessage, responseCode);
   }
 
-  errorNotification(message: string, statusCode: number) {
+  errorNotification(message: any, statusCode: any) {
     this.notify(NotificationTypeEnum.ERROR, message, statusCode);
   }
 

@@ -6,6 +6,9 @@ import {
   HeaderConfigErrorState,
   HeaderConfigSuccessState,
   HeaderConfigUpdate,
+  HeaderIsoConfigGet,
+  HeaderEncodingGet,
+  HeaderFieldFormatGet,
 } from './header-config.action';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
@@ -15,16 +18,29 @@ import { HeaderConfigurationTableService } from 'src/app/modules/services/module
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { EncodingInterface } from 'src/app/interface/modules/encoding';
+import { EncodingService } from 'src/app/modules/services/module-services/encoding.service';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
+import { FieldFormatInterface } from 'src/app/interface/modules/field-format';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class HeaderConfigStateModel {
   HeaderConfigurations: HeaderConfigurationModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  IsoConfigurations: IsoConfigurationInterface[] = [];
+  Encodings: EncodingInterface[] = [];
+  fieldFormats: FieldFormatInterface[] = [];
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<HeaderConfigStateModel>({
   name: 'HeaderConfigurations',
   defaults: {
     HeaderConfigurations: [],
+    IsoConfigurations: [],
+    Encodings: [],
+    fieldFormats: [],
     responseMessage: undefined,
   },
 })
@@ -33,12 +49,30 @@ export class HeaderConfigState {
   constructor(
     private headerConfigService: HeaderConfigurationService,
     private headerConfigTableService: HeaderConfigurationTableService,
-    private notifierService: NotificationService
+    private encodingService: EncodingService,
+    private notifierService: NotificationService,
+    private isoConfigService: IsoConfigurationService,
+    private isoFieldService: IsoFieldConfigurationService
   ) {}
 
   @Selector()
   static headerConfigs(state: HeaderConfigStateModel) {
     return state.HeaderConfigurations;
+  }
+
+  @Selector()
+  static IsoConfigurations(state: HeaderConfigStateModel) {
+    return state.IsoConfigurations;
+  }
+
+  @Selector()
+  static FieldFormats(state: HeaderConfigStateModel) {
+    return state.fieldFormats;
+  }
+
+  @Selector()
+  static Encodings(state: HeaderConfigStateModel) {
+    return state.Encodings;
   }
 
   @Selector()
@@ -70,6 +104,79 @@ export class HeaderConfigState {
     );
   }
 
+  @Action(HeaderIsoConfigGet, { cancelUncompleted: true })
+  getIsoConfigFromState(ctx: StateContext<HeaderConfigStateModel>) {
+    return this.isoConfigService.getAllIsoConfiguration().pipe(
+      tap((response) => {
+        let isoConfigurationParseList: IsoConfigurationInterface[] = [];
+
+        response.responseData.forEach((x) => {
+          isoConfigurationParseList.push({
+            code: String(x.id),
+            name: x.name,
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          IsoConfigurations: isoConfigurationParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new HeaderConfigErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(HeaderEncodingGet, { cancelUncompleted: true }) getEncodingFromState(
+    ctx: StateContext<HeaderConfigStateModel>
+  ) {
+    return this.encodingService.getAllEncoding().pipe(
+      tap((response) => {
+        let encodingParseList: EncodingInterface[] = [];
+
+        response.responseData.forEach((x) => {
+          encodingParseList.push({
+            code: String(x.id),
+            name: x.encodingType,
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          Encodings: encodingParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new HeaderConfigErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(HeaderFieldFormatGet, { cancelUncompleted: true })
+  getFieldFormatFromState(ctx: StateContext<HeaderConfigStateModel>) {
+    return this.isoFieldService.getAllFieldFormat().pipe(
+      tap((response) => {
+        let fieldFormatParseList: FieldFormatInterface[] = [];
+
+        response.responseData.forEach((x) => {
+          fieldFormatParseList.push({
+            name: x.formatType,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          fieldFormats: fieldFormatParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new HeaderConfigErrorState(response.error));
+      })
+    );
+  }
+
   @Action(HeaderConfigAdd, { cancelUncompleted: true }) addDataFromState(
     ctx: StateContext<HeaderConfigStateModel>,
     { payload }: HeaderConfigAdd
@@ -91,15 +198,12 @@ export class HeaderConfigState {
 
   @Action(HeaderConfigUpdate, { cancelUncompleted: true }) updateDataFromState(
     ctx: StateContext<HeaderConfigStateModel>,
-    { id, payload, stateData }: HeaderConfigUpdate
+    { payload }: HeaderConfigUpdate
   ) {
     return this.headerConfigService.updateHeaderConfig(payload).pipe(
       tap((response) => {
         ctx.dispatch(new HeaderConfigSuccessState(response));
         const dataList = [...ctx.getState().HeaderConfigurations];
-        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
-        dataList[updatedDataIndex] = stateData;
-
         ctx.patchState({
           ...ctx.getState(),
           HeaderConfigurations: dataList,
@@ -144,8 +248,8 @@ export class HeaderConfigState {
       this.headerConfigService.closeDialog();
     }
     this.notifierService.successNotification(
-      successMessage?.message,
-      successMessage?.httpStatusCode
+      successMessage?.responseMessage,
+      successMessage?.responseCode
     );
     this.headerConfigService.onGetAllHeaderConfig();
     ctx.patchState({
@@ -159,8 +263,8 @@ export class HeaderConfigState {
     { errorMessage }: HeaderConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.error,
-      errorMessage?.status
+      errorMessage?.responseCode,
+      errorMessage?.responseMessage
     );
 
     if (this.headerConfigService.getCurrentStatusDialog().length != 0) {

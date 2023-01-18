@@ -2,7 +2,7 @@ import { IsoConfigurationModel } from "./iso-configuration.model";
 
 export class TransactionTypeModel {
   id!: number;
-  transType: string = '';
+  transType: number = 0;
   description: string = '';
   isoConfiguration!: IsoConfigurationModel
 }

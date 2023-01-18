@@ -7,9 +7,13 @@ import {
   HeaderConfigErrorState,
   HeaderConfigSuccessState,
   HeaderConfigUpdate,
+  HeaderIsoConfigGet,
+  HeaderEncodingGet,
+  HeaderFieldFormatGet,
 } from './header-config.action';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -21,17 +25,28 @@ export class HeaderConfigDispatch {
   }
 
   @Dispatch()
+  public _HeaderIsoConfigGetDispatch() {
+    return new HeaderIsoConfigGet();
+  }
+
+  @Dispatch()
+  public _HeaderFieldFormatGetDispatch() {
+    return new HeaderFieldFormatGet();
+  }
+
+  @Dispatch()
+  public _HeaderEncodingGetDispatch() {
+    return new HeaderEncodingGet();
+  }
+
+  @Dispatch()
   public _HeaderConfigAdd(payload: HeaderConfigurationModel) {
     return new HeaderConfigAdd(payload);
   }
 
   @Dispatch()
-  public _HeaderConfigUpdate(
-    id: number,
-    payload: FormData,
-    stateData: HeaderConfigurationModel
-  ) {
-    return new HeaderConfigUpdate(id, payload, stateData);
+  public _HeaderConfigUpdate(payload: HeaderConfigurationModel) {
+    return new HeaderConfigUpdate(payload);
   }
 
   @Dispatch()
@@ -40,12 +55,12 @@ export class HeaderConfigDispatch {
   }
 
   @Dispatch()
-  public _HeaderConfigSuccessState(message: CustomHttpResponseModel) {
+  public _HeaderConfigSuccessState(message: HttpResponseData<any>) {
     return new HeaderConfigSuccessState(message);
   }
 
   @Dispatch()
-  public _HeaderConfigErrorState(message: CustomHttpResponseModel) {
+  public _HeaderConfigErrorState(message: HttpResponseData<any>) {
     return new HeaderConfigErrorState(message);
   }
 }

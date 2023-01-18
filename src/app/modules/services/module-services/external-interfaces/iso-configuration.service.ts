@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class IsoConfigurationService {
   apiUrl: string = environment.core236;
   buttonStatus: string = '';
+  showLoading!: boolean;
   existingData: IsoConfigurationModel = new IsoConfigurationModel();
   dialogConfig: MatDialogConfig = {
     autoFocus: false,
@@ -33,33 +34,23 @@ export class IsoConfigurationService {
   }
 
   addIsoConfiguration(data: IsoConfigurationModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/iso_configuration/add`,
       data
     );
   }
 
-  updateIsoConfiguration(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateIsoConfiguration(data: IsoConfigurationModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/iso_configuration/update`,
       data
     );
   }
 
   deleteIsoConfiguration(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/iso_configuration/delete/` + id
     );
-  }
-
-  isoConfigCreateFormat(id: number, newData: IsoConfigurationModel) {
-    const formData = new FormData();
-    formData.append('id', String(id));
-    formData.append('name', newData.name);
-    formData.append('description', String(newData.description));
-    formData.append('hasHeader', String(newData.hasHeader));
-
-    return formData;
   }
 
   onGetAllIsoConfig() {
@@ -74,12 +65,8 @@ export class IsoConfigurationService {
     this.isoConfigDispatch._IsoConfigDeleteDispatch(this.existingData.id);
   }
 
-  onUpdateIsoConfig(data: FormData, stateData: IsoConfigurationModel) {
-    this.isoConfigDispatch._IsoConfigUpdateDispatch(
-      this.existingData.id,
-      data,
-      stateData
-    );
+  onUpdateIsoConfig(data: IsoConfigurationModel) {
+    this.isoConfigDispatch._IsoConfigUpdateDispatch(data);
   }
 
   getCurrentStatusDialog() {

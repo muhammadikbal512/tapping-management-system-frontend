@@ -5,10 +5,18 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { EncodingInterface } from 'src/app/interface/modules/encoding';
+import { FieldFormatInterface } from 'src/app/interface/modules/field-format';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
+import { EncodingModel } from 'src/app/model/modules-model/encoding.model';
+import { FieldFormatModel } from 'src/app/model/modules-model/field-format.model';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
+import { IsoFieldConditionModel } from 'src/app/model/modules-model/iso-field-condition.model';
 import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
-import { HeaderService } from 'src/app/modules/services/shared-service/header.service';
+import { HeaderConfigState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/header-configuration/header-config.state';
 
 @Component({
   selector: 'app-header-config-create-update-dialog',
@@ -18,10 +26,19 @@ import { HeaderService } from 'src/app/modules/services/shared-service/header.se
 export class HeaderConfigCreateUpdateDialogComponent
   implements OnInit, AfterViewInit
 {
+  @Select(HeaderConfigState.IsoConfigurations)
+  IsoConfigurations$!: Observable<IsoConfigurationInterface[]>;
+  @Select(HeaderConfigState.Encodings)
+  Encodings$!: Observable<EncodingInterface[]>;
+  @Select(HeaderConfigState.FieldFormats)
+  fieldFormats$!: Observable<FieldFormatInterface[]>;
+
   formGroup!: FormGroup;
+  isoConfigurationInterface: IsoConfigurationInterface[] = [];
+  encodingInterface: EncodingInterface[] = [];
+  fieldFormatInterface: FieldFormatInterface[] = [];
   headerConfigModel: HeaderConfigurationModel = new HeaderConfigurationModel();
   showClear: boolean = false;
-  dialectmsgTemplateOptionList!: any[];
   disableStatus: boolean = false;
   showLoading: boolean = false;
   constructor(
@@ -32,6 +49,25 @@ export class HeaderConfigCreateUpdateDialogComponent
 
   ngOnInit(): void {
     this.createForm();
+    this.headerService.onGetAllHeaderIsoConfig();
+    this.headerService.onGetAllHeaderEncoding();
+    this.headerService.onGetAllFieldFormat();
+    this.headerService;
+    this.Encodings$.subscribe((data) => {
+      this.encodingInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
+    this.IsoConfigurations$.subscribe((data) => {
+      this.isoConfigurationInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
+    this.fieldFormats$.subscribe((data) => {
+      this.fieldFormatInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
   }
 
   ngAfterViewInit(): void {
@@ -50,8 +86,8 @@ export class HeaderConfigCreateUpdateDialogComponent
       fieldFormat: ['', Validators.required],
       encoding: ['', Validators.required],
       isoConfiguration: ['', Validators.required],
-      isofieldCondition: ['', Validators.required],
-      priority: ['', Validators.required],
+      isofieldCondition: [null],
+      priority: [''],
     });
   }
 
@@ -68,8 +104,7 @@ export class HeaderConfigCreateUpdateDialogComponent
         this.existingDescription != value.description ||
         this.existingIsoConfiguration != value.isoConfiguration ||
         this.existingFieldFormat != value.fieldFormat ||
-        this.existingEncoding != value.encoding ||
-        this.existingIsofieldCondition != value.isofieldCondition
+        this.existingEncoding != value.encoding
       ) {
         this.disableStatus = false;
       }
@@ -80,8 +115,7 @@ export class HeaderConfigCreateUpdateDialogComponent
         this.existingDescription == value.description &&
         this.existingIsoConfiguration == value.isoConfiguration &&
         this.existingFieldFormat == value.fieldFormat &&
-        this.existingEncoding == value.encoding &&
-        this.existingIsofieldCondition == value.isofieldCondition
+        this.existingEncoding == value.encoding
       ) {
         this.disableStatus = true;
       }
@@ -92,13 +126,19 @@ export class HeaderConfigCreateUpdateDialogComponent
     this.headerField.setValue(this.existingHeaderField);
     this.headerLength.setValue(this.existingHeaderLength);
     this.description.setValue(this.existingDescription);
-    this.isoConfiguration.setValue(this.existingIsoConfiguration);
-    this.fieldFormat.setValue(this.existingFieldFormat);
-    this.encoding.setValue(this.existingEncoding);
-    this.isofieldCondition.setValue({
+    this.isoConfiguration.setValue({
       name: this.existingIsoConfiguration.name,
       code: String(this.existingIsoConfiguration.id),
     });
+    this.fieldFormat.setValue({
+      name: this.existingFieldFormat.formatType,
+      code: String(this.existingFieldFormat.id),
+    });
+    this.encoding.setValue({
+      name: this.existingEncoding.encodingType,
+      code: String(this.existingEncoding.id),
+    });
+    this.isofieldCondition.setValue(this.existingIsofieldCondition);
   }
 
   setNewDataToModel(): HeaderConfigurationModel {
@@ -108,9 +148,38 @@ export class HeaderConfigCreateUpdateDialogComponent
     this.headerConfigModel.isoConfiguration = new IsoConfigurationModel(
       Number(this.isoConfiguration.value.code)
     );
-    this.headerConfigModel.fieldFormat = this.fieldFormat.value;
-    this.headerConfigModel.encoding = this.encoding.value;
+    this.headerConfigModel.fieldFormat = new FieldFormatModel(
+      Number(this.fieldFormat.value.code)
+    );
+    this.headerConfigModel.encoding = new EncodingModel(
+      Number(this.encoding.value.code)
+    );
     this.headerConfigModel.isofieldCondition = this.isofieldCondition.value;
+
+    return this.headerConfigModel;
+  }
+
+  setUpdateDataToModel(): HeaderConfigurationModel {
+    this.headerConfigModel.id = this.existingId;
+    this.headerConfigModel.headerField = this.headerField.value;
+    this.headerConfigModel.headerLength = this.headerLength.value;
+    this.headerConfigModel.description = this.description.value;
+    this.headerConfigModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
+    this.headerConfigModel.fieldFormat = new FieldFormatModel(
+      Number(this.fieldFormat.value.code)
+    );
+    this.headerConfigModel.encoding = new EncodingModel(
+      Number(this.encoding.value.code)
+    );
+    if (this.isofieldCondition == null) {
+      this.headerConfigModel.isofieldCondition = new IsoFieldConditionModel(
+        Number(this.existingIsofieldCondition.id)
+      );
+    } else {
+      this.headerConfigModel.isofieldCondition = this.existingIsofieldCondition;
+    }
 
     return this.headerConfigModel;
   }
@@ -122,11 +191,7 @@ export class HeaderConfigCreateUpdateDialogComponent
 
   onUpdateHeaderConfig() {
     this.showLoading = true;
-    const newData = this.headerService.createHeaderConfig(
-      this.existingId,
-      this.setNewDataToModel()
-    );
-    this.headerService.onUpdateHeaderConfig(newData, this.setNewDataToModel());
+    this.headerService.onUpdateHeaderConfig(this.setUpdateDataToModel());
   }
 
   get headerField() {

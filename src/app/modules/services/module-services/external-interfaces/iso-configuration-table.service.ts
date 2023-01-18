@@ -9,7 +9,7 @@ export class IsoConfigurationTableService {
     { field: 'name', header: 'Name' },
     { field: 'description', header: 'Description' },
   ];
-  loading: boolean = false;
+  loading: boolean = true;
   isoConfigs!: IsoConfigurationModel[];
 
   constructor() {}

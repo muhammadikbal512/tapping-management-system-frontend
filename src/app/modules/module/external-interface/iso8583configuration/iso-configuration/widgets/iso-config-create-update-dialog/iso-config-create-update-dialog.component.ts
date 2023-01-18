@@ -17,7 +17,7 @@ export class IsoConfigCreateUpdateDialogComponent
   implements OnInit, AfterViewInit
 {
   formGroup!: FormGroup;
-  showLoading: boolean = false;
+
   isoConfigModel: IsoConfigurationModel = new IsoConfigurationModel();
   disableStatus: boolean = false;
   constructor(
@@ -41,12 +41,6 @@ export class IsoConfigCreateUpdateDialogComponent
     });
   }
 
-  setNewDataToModel(): IsoConfigurationModel {
-    this.isoConfigModel.name = this.name.value;
-    this.isoConfigModel.description = this.description.value;
-    this.isoConfigModel.hasHeader = this.hasHeader.value;
-    return this.isoConfigModel;
-  }
   ngOnInit(): void {
     this.createFormat();
   }
@@ -78,19 +72,33 @@ export class IsoConfigCreateUpdateDialogComponent
     this.hasHeader.setValue(this.existingHasHeader);
   }
 
+  setNewDataToModel(): IsoConfigurationModel {
+    this.isoConfigModel.name = this.name.value;
+    this.isoConfigModel.description = this.description.value;
+    this.isoConfigModel.hasHeader = this.hasHeader.value;
+    return this.isoConfigModel;
+  }
+
+  setUpdateDataToModel(): IsoConfigurationModel {
+    this.isoConfigModel.id = this.existingId;
+    this.isoConfigModel.name = this.name.value;
+    this.isoConfigModel.description = this.description.value;
+    this.isoConfigModel.hasHeader = this.hasHeader.value;
+    return this.isoConfigModel;
+  }
+
   onCreateIsoConfiguration() {
-    this.showLoading = true;
+    this.isoConfigService.showLoading = true;
     this.isoConfigService.onAddAllIsoConfig(this.setNewDataToModel());
   }
 
   onUpdateIsoConfiguration() {
-    this.showLoading = true;
-    const newData = this.isoConfigService.isoConfigCreateFormat(
-      this.existingId,
-      this.setNewDataToModel()
-    );
+    this.isoConfigService.showLoading = true;
+    this.isoConfigService.onUpdateIsoConfig(this.setUpdateDataToModel());
+  }
 
-    this.isoConfigService.onUpdateIsoConfig(newData, this.setNewDataToModel());
+  get showLoading() {
+    return this.isoConfigService.showLoading;
   }
 
   get name() {

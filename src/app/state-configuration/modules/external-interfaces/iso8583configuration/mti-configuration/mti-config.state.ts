@@ -15,10 +15,11 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
 import { catchError, tap } from 'rxjs';
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class MtiConfigStateModel {
   MtiConfigurations: MtiConfigurationModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<MtiConfigStateModel>({
@@ -78,7 +79,8 @@ export class MtiConfigState {
           MtiConfigurations: [...ctx.getState().MtiConfigurations],
           responseMessage: response,
         });
-      }), catchError((response: HttpErrorResponse) => {
+      }),
+      catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new MtiConfigErrorState(response.error));
       })
     );
@@ -86,16 +88,12 @@ export class MtiConfigState {
 
   @Action(MtiConfigUpdate, { cancelUncompleted: true }) updateDataFromState(
     ctx: StateContext<MtiConfigStateModel>,
-    { id, payload, stateData }: MtiConfigUpdate
+    { payload }: MtiConfigUpdate
   ) {
     return this.mtiConfigService.updateMtiConfig(payload).pipe(
       tap((response) => {
         ctx.dispatch(new MtiConfigSuccessState(response));
         const dataList = [...ctx.getState().MtiConfigurations];
-        const updatedDataIndex = dataList.findIndex((x) => {
-          x.id == id;
-        });
-        dataList[updatedDataIndex] = stateData;
 
         ctx.patchState({
           ...ctx.getState(),
@@ -142,8 +140,8 @@ export class MtiConfigState {
       this.mtiConfigService.closeDialog();
     }
     this.notifierService.successNotification(
-      successMessage?.message,
-      successMessage?.httpStatusCode
+      successMessage?.responseMessage,
+      successMessage?.responseCode
     );
     this.mtiConfigService.onGetAllMtiConfig();
     ctx.patchState({
@@ -157,8 +155,8 @@ export class MtiConfigState {
     { errorMessage }: MtiConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.error,
-      errorMessage?.status
+      errorMessage?.responseMessage,
+      errorMessage?.responseCode
     );
 
     if (this.mtiConfigService.getCurrentStatusDialog().length != 0) {

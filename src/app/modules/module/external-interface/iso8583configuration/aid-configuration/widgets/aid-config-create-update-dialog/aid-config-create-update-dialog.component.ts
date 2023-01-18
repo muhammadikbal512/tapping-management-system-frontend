@@ -69,6 +69,13 @@ export class AidConfigCreateUpdateDialogComponent
     return this.aidConfigModel;
   }
 
+  setUpdateDataToModel(): AidConfigurationModel {
+    this.aidConfigModel.id = this.existingId;
+    this.aidConfigModel.aid = this.aid.value;
+    this.aidConfigModel.label = this.label.value;
+    return this.aidConfigModel;
+  }
+
   onCreateAidNumber() {
     this.showLoading = true;
     this.aidConfigService.onAddAidConfig(this.setNewDataToModel());
@@ -76,12 +83,7 @@ export class AidConfigCreateUpdateDialogComponent
 
   onUpdateAidNumber() {
     this.showLoading = true;
-    const newData = this.aidConfigService.createAidConfigFormData(
-      String(this.existingId),
-      this.setNewDataToModel()
-    );
-
-    this.aidConfigService.onUpdateAidConfig(newData, this.setNewDataToModel());
+    this.aidConfigService.onUpdateAidConfig(this.setUpdateDataToModel());
   }
 
   get aid() {

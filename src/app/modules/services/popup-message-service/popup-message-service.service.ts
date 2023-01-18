@@ -4,7 +4,7 @@ import { AlertInvestigationService } from '../module-services/alert-investigatio
 import { ChannelTypeService } from '../module-services/channel-configuration/channel-type.service';
 import { ChannelService } from '../module-services/channel-configuration/channel.service';
 import { InstitutionService } from '../module-services/user-management/institution.service';
-import { IsoFieldConfigurationService } from '../module-services/iso-field-configuration.service';
+import { IsoFieldConfigurationService } from '../module-services/external-interfaces/iso-field-configuration.service';
 import { Iso8583DialectService } from '../module-services/iso8583-dialect.service';
 import { MessageFormatService } from '../module-services/message-format.service';
 import { ResponseMappingService } from '../module-services/response-mapping.service';

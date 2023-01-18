@@ -1,0 +1,64 @@
+<form [formGroup]="form" class="p-8">
+    <div class="form-filled-container">
+        <div class="input-container">
+            <div class="checkboxes">
+                <p-checkbox [binary]="true" formControlName="isCommon"></p-checkbox>
+                <label for="">Common</label>
+                <p-checkbox [binary]="true" formControlName="isTlvFormat"></p-checkbox>
+                <label for="">Is TLV</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="subFieldId" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Field ID</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="description" type="text" class="peer" placeholder=" " required="">
+            <label class="input-label">Description</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="subFieldLength" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Length</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <p>Format</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="fieldFormatInterface"
+                [showClear]="showClearButton" appendTo="body" filterBy="name" formControlName="subFieldFormat"
+                optionLabel="name" placeholder="Select Format" scrollHeight="150px"></p-dropdown>
+        </div>
+        <div class="input-container">
+            <p>Encoding</p>
+            <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
+                (onChange)="onChange($event)" [filter]="true" [options]="encodingInterface"
+                [showClear]="showClearButton" appendTo="body" filterBy="name" formControlName="encoding"
+                optionLabel="name" placeholder="Select Encoding" scrollHeight="150px"></p-dropdown>
+        </div>
+        <div class="input-container">
+            <input formControlName="isoFieldCondition" readonly class="peer">
+            <label class="input-label">Cond ID</label>
+        </div>
+    </div>
+    <div class="form-filled-container">
+        <div class="input-container">
+            <input formControlName="priority" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Priority</label>
+        </div>
+        <div class="input-container">
+            <input formControlName="tlvTagSize" type="number" class="peer" placeholder=" " required="">
+            <label class="input-label">Tlv TagSize</label>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
+        <p-button (onClick)="createSubField()" [disabled]="form.invalid"
+            class="create-button ml-3" label="Create" styleClass="p-button-sm">
+        </p-button>
+    </mat-dialog-actions>
+
+</form>

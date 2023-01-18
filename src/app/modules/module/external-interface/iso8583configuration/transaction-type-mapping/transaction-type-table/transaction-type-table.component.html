@@ -1,7 +1,6 @@
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="transactionTypes" [paginator]="true"
   [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  [rows]="10" scrollHeight="400px" [autoLayout]="true"
-  (onRowSelect)="onRowSelect($event)" selectionMode="single">
+  [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="search-buttons">
@@ -28,6 +27,7 @@
       <th style="min-width:100px;" *ngFor="let col of cols">
         {{col.header}}
       </th>
+      <th style="min-width:100px;">Config ID</th>
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
@@ -35,6 +35,9 @@
     <tr>
       <td style="min-width:100px;" *ngFor="let col of cols">
         {{rowData[col.field]}}
+      </td>
+      <td>
+        {{rowData.isoConfiguration.name}}
       </td>
       <td style="min-width:100px;" [pSelectableRow]="rowData">
         <app-transaction-type-action-button-group></app-transaction-type-action-button-group>

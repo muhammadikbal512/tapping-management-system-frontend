@@ -15,10 +15,11 @@ import {
 import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class IsoConfigStateModel {
   IsoConfigurations: IsoConfigurationModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<IsoConfigStateModel>({
@@ -87,14 +88,12 @@ export class IsoConfigState {
 
   @Action(IsoConfigUpdate, { cancelUncompleted: true }) updateDataFromState(
     ctx: StateContext<IsoConfigStateModel>,
-    { id, payload, stateData }: IsoConfigUpdate
+    { payload }: IsoConfigUpdate
   ) {
     return this.isoConfigService.updateIsoConfiguration(payload).pipe(
       tap((response) => {
         ctx.dispatch(new IsoConfigSuccessState(response));
         const dataList = [...ctx.getState().IsoConfigurations];
-        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
-        dataList[updatedDataIndex] = stateData;
 
         ctx.patchState({
           IsoConfigurations: dataList,
@@ -102,7 +101,7 @@ export class IsoConfigState {
         });
       }),
       catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new IsoConfigSuccessState(response.error));
+        return ctx.dispatch(new IsoConfigErrorState(response.error));
       })
     );
   }
@@ -134,12 +133,13 @@ export class IsoConfigState {
     { successMessage }: IsoConfigSuccessState
   ) {
     this.notifierService.successNotification(
-      successMessage?.message,
-      successMessage?.status
+      successMessage.responseMessage,
+      successMessage.responseCode,
     );
     if (this.isoConfigService.getCurrentStatusDialog().length != 0) {
       this.isoConfigService.closeDialog();
     }
+    this.isoConfigService.showLoading = false;
 
     this.isoConfigService.onGetAllIsoConfig();
     ctx.patchState({
@@ -152,10 +152,11 @@ export class IsoConfigState {
     { errorMessage }: IsoConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.error,
-      errorMessage?.status
+      errorMessage?.responseCode,
+      errorMessage?.responseMessage
     );
     this.isoConfigTableService.loading = false;
+    this.isoConfigService.showLoading = false;
     ctx.patchState({
       responseMessage: errorMessage,
     });

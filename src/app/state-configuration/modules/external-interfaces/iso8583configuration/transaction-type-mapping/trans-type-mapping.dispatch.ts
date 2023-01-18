@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import {
+  TransTypeGetIsoConfig,
   TransTypeMappingAdd,
   TransTypeMappingDelete,
   TransTypeMappingErrorState,
@@ -10,6 +11,7 @@ import {
 } from './trans-type-mapping.action';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -21,17 +23,18 @@ export class TransTypeMappingDispatch {
   }
 
   @Dispatch()
+  public _TransactionTypeMappingGetIsoConfig() {
+    return new TransTypeGetIsoConfig();
+  }
+
+  @Dispatch()
   public _TransactionTypeMappingAddDispatch(data: TransactionTypeModel) {
     return new TransTypeMappingAdd(data);
   }
 
   @Dispatch()
-  public _TransactionTypeMappingUpdateDispatch(
-    id: number,
-    data: FormData,
-    stateData: TransactionTypeModel
-  ) {
-    return new TransTypeMappingUpdate(id, data, stateData);
+  public _TransactionTypeMappingUpdateDispatch(payload: TransactionTypeModel) {
+    return new TransTypeMappingUpdate(payload);
   }
 
   @Dispatch()
@@ -41,14 +44,14 @@ export class TransTypeMappingDispatch {
 
   @Dispatch()
   public _TransactionTypeMappingSuccessStateDispatch(
-    message: CustomHttpResponseModel
+    message: HttpResponseData<any>
   ) {
     return new TransTypeMappingSuccessState(message);
   }
 
   @Dispatch()
   public _TransactionTypeMappingErrorStateDispatch(
-    message: CustomHttpResponseModel
+    message: HttpResponseData<any>
   ) {
     return new TransTypeMappingErrorState(message);
   }

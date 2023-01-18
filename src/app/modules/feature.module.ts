@@ -182,6 +182,8 @@ import { IsoConfigCreateUpdateDialogComponent } from './module/external-interfac
 import { AppLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/app-layer-case/app-layer-case.component';
 import { NetworkLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/network-layer-case/network-layer-case.component';
 import { PhysicalLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/physical-layer-case/physical-layer-case.component';
+import { SubfieldTableComponent } from './module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-subfield/subfield-table/subfield-table.component';
+import { SubfieldCreateUpdateComponent } from './module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-subfield/subfield-create-update/subfield-create-update.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -339,6 +341,8 @@ import { PhysicalLayerCaseComponent } from './module/investigation/alert-analysi
     AppLayerCaseComponent,
     NetworkLayerCaseComponent,
     PhysicalLayerCaseComponent,
+    SubfieldTableComponent,
+    SubfieldCreateUpdateComponent,
   ],
   imports: [
     CommonModule,

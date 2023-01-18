@@ -1,6 +1,8 @@
+import { IsoConfigurationModel } from "./iso-configuration.model";
+
 export class ResponseMappingModel {
-  id: number = 0;
+  id!: number;
   respCode: string = '';
   description: string = '';
-  isoConfiguration: number = 0;
+  isoConfiguration!: IsoConfigurationModel
 }

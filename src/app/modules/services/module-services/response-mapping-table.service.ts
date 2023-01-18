@@ -10,7 +10,6 @@ export class ResponseMappingTableService {
   cols = [
     { field: 'respCode', header: 'Response Code' },
     { field: 'description', header: 'Description' },
-    { field: 'configId', header: 'Config ID' },
   ];
   constructor() {}
 

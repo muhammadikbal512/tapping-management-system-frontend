@@ -1,4 +1,5 @@
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
 
 export class MtiConfigGet {
@@ -12,11 +13,7 @@ export class MtiConfigAdd {
 
 export class MtiConfigUpdate {
   static readonly type = '[MTI] Update';
-  constructor(
-    public id: number,
-    public payload: FormData,
-    public stateData: MtiConfigurationModel
-  ) {}
+  constructor(public payload: MtiConfigurationModel) {}
 }
 
 export class MtiConfigDelete {
@@ -26,10 +23,10 @@ export class MtiConfigDelete {
 
 export class MtiConfigSuccessState {
   static readonly type = '[MTI] Success';
-  constructor(public successMessage: CustomHttpResponseModel) {}
+  constructor(public successMessage: HttpResponseData<any>) {}
 }
 
 export class MtiConfigErrorState {
   static readonly type = '[MTI] Error';
-  constructor(public errorMessage: CustomHttpResponseModel) {}
+  constructor(public errorMessage: HttpResponseData<any>) {}
 }

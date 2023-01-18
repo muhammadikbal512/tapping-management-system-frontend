@@ -16,6 +16,7 @@ import { HttpResponseData } from 'src/app/model/modules-model/http-response-data
 export class ResponseMappingService {
   private apiUrl = environment.core236;
   buttonStatus: string = '';
+  showLoading: boolean = false;
   matDialogConfig: MatDialogConfig = {
     width: '55%',
     autoFocus: true,
@@ -36,20 +37,20 @@ export class ResponseMappingService {
   }
 
   addResponseMapping(data: ResponseMappingModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/resp_mapping/add`,
       data
     );
   }
 
   deleteResponseMapping(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/resp_mapping/delete/` + id
     );
   }
 
-  updateResponseMapping(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateResponseMapping(data: ResponseMappingModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/resp_mapping/update`,
       data
     );
@@ -77,6 +78,10 @@ export class ResponseMappingService {
     this.responseDispatch._ResponseMappingGetDispatch();
   }
 
+  onGetAllIsoConfig() {
+    this.responseDispatch._ResponseMappingGetIsoConfigDispatch();
+  }
+
   onCreateResponseMapping(data: ResponseMappingModel) {
     this.responseDispatch._ResponseMappingAddDispatch(data);
   }
@@ -85,12 +90,8 @@ export class ResponseMappingService {
     this.responseDispatch._ResponseMappingDeleteDispatch(this.existingData.id);
   }
 
-  onUpdateResponseMapping(data: FormData, dataState: ResponseMappingModel) {
-    this.responseDispatch._ResponseMappingUpdateDispatch(
-      this.existingData.id,
-      data,
-      dataState
-    );
+  onUpdateResponseMapping(payload: ResponseMappingModel) {
+    this.responseDispatch._ResponseMappingUpdateDispatch(payload);
   }
 
   openDialog() {

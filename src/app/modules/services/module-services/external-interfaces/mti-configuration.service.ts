@@ -34,33 +34,23 @@ export class MtiConfigurationService {
   }
 
   addMtiConfig(data: MtiConfigurationModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/supported_mti/add`,
       data
     );
   }
 
-  updateMtiConfig(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateMtiConfig(data: MtiConfigurationModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/supported_mti/update`,
       data
     );
   }
 
   deleteMtiConfig(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/supported_mti/delete/` + id
     );
-  }
-
-  MtiConfigCreateFormat(id: number, newData: MtiConfigurationModel) {
-    const formData = new FormData();
-    formData.append('id', String(id));
-    formData.append('value', newData.value);
-    formData.append('isResponse', String(newData.isResponse));
-    formData.append('isReversal', String(newData.isReversal));
-
-    return formData;
   }
 
   onGetAllMtiConfig() {
@@ -71,12 +61,8 @@ export class MtiConfigurationService {
     this.mtiConfigDispatch._MtiConfigAddDispatch(payload);
   }
 
-  onUpdateMtiConfig(data: FormData, stateData: MtiConfigurationModel) {
-    this.mtiConfigDispatch._MtiConfigUpdateDispatch(
-      this.existingData.id,
-      data,
-      stateData
-    );
+  onUpdateMtiConfig(payload: MtiConfigurationModel) {
+    this.mtiConfigDispatch._MtiConfigUpdateDispatch(payload);
   }
 
   onDeleteMtiConfig() {

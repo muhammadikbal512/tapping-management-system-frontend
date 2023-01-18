@@ -6,15 +6,19 @@ import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-ty
 })
 export class TransactionTypeTableService {
   loading: boolean = true;
+  existingData: TransactionTypeModel = new TransactionTypeModel();
   transactionTypes!: TransactionTypeModel[];
   cols = [
     { field: 'transType', header: 'Transaction Type' },
     { field: 'description', header: 'Description' },
-    { field: 'configId', header: 'Config ID' },
   ];
   constructor() {}
 
   setRowData(data: TransactionTypeModel[]) {
     this.transactionTypes = data;
+  }
+
+  set ExistingData(data: TransactionTypeModel) {
+    this.existingData = data;
   }
 }

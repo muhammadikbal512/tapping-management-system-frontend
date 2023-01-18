@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { EncodingModel } from 'src/app/model/modules-model/encoding.model';
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { HeaderConfigCreateUpdateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/header-configuration/widgets/header-config-create-update-dialog/header-config-create-update-dialog.component';
@@ -34,21 +35,21 @@ export class HeaderConfigurationService {
   }
 
   addHeaderConfig(data: HeaderConfigurationModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/header_configuration/add`,
       data
     );
   }
 
-  updateHeaderConfig(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateHeaderConfig(data: HeaderConfigurationModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/header_configuration/update`,
       data
     );
   }
 
   deleteHeaderConfig(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/header_configuration/delete/` + id
     );
   }
@@ -57,16 +58,24 @@ export class HeaderConfigurationService {
     this.headerDispatch._HeaderConfigGetDispatch();
   }
 
+  onGetAllHeaderIsoConfig() {
+    this.headerDispatch._HeaderIsoConfigGetDispatch();
+  }
+
+  onGetAllHeaderEncoding() {
+    this.headerDispatch._HeaderEncodingGetDispatch();
+  }
+
+  onGetAllFieldFormat() {
+    this.headerDispatch._HeaderFieldFormatGetDispatch();
+  }
+
   onCreateHeaderConfig(data: HeaderConfigurationModel) {
     this.headerDispatch._HeaderConfigAdd(data);
   }
 
-  onUpdateHeaderConfig(data: FormData, dataState: HeaderConfigurationModel) {
-    this.headerDispatch._HeaderConfigUpdate(
-      this.existingData.id,
-      data,
-      dataState
-    );
+  onUpdateHeaderConfig(payload: HeaderConfigurationModel) {
+    this.headerDispatch._HeaderConfigUpdate(payload);
   }
 
   onDeleteHeaderConfig() {
@@ -81,7 +90,7 @@ export class HeaderConfigurationService {
     formData.append('isoConfiguration', String(newData.isoConfiguration.id));
     formData.append('headerLength', String(newData.headerLength));
     formData.append('description', newData.description);
-    formData.append('priority', newData.priority);
+    formData.append('priority', String(newData.priority));
     return formData;
   }
 

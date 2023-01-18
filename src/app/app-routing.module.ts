@@ -156,11 +156,6 @@ const routes: Routes = [
                 ],
               },
               {
-                path: 'iso8583-field-configuration/create-iso8583-field-configuration',
-                component: CreateUpdateIso8583FieldFormComponent,
-              },
-
-              {
                 path: 'iso8583-response-mapping',
                 data: { title: 'ISO8583 Response Code Mapping' },
                 component: Iso8583ResponseMappingComponent,

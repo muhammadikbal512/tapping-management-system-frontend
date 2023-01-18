@@ -21,7 +21,10 @@ export class TransactionTypeTableComponent implements OnInit {
     this.transactionTypesService.existingData = event.data;
   }
 
-  refreshTable() {}
+  refreshTable() {
+    this.transactionTypesTableService.loading = true;
+    this.getAllTransTypeMapping();
+  }
 
   getAllTransTypeMapping() {
     this.transactionTypesService.onGetAllTransactionType();

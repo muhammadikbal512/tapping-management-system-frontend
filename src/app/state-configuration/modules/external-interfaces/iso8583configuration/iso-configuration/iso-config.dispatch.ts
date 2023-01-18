@@ -10,6 +10,7 @@ import {
 } from './iso-config.action';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -33,21 +34,17 @@ export class IsoConfigDispatch {
   }
 
   @Dispatch()
-  public _IsoConfigUpdateDispatch(
-    id: number,
-    payload: FormData,
-    stateData: IsoConfigurationModel
-  ) {
-    return new IsoConfigUpdate(id, payload, stateData);
+  public _IsoConfigUpdateDispatch(payload: IsoConfigurationModel) {
+    return new IsoConfigUpdate(payload);
   }
 
   @Dispatch()
-  public _IsoConfigSuccessDispatch(message: CustomHttpResponseModel) {
+  public _IsoConfigSuccessDispatch(message: HttpResponseData<any>) {
     return new IsoConfigSuccessState(message);
   }
 
   @Dispatch()
-  public _IsoConfigErrorDispatch(message: CustomHttpResponseModel) {
+  public _IsoConfigErrorDispatch(message: HttpResponseData<any>) {
     return new IsoConfigErrorState(message);
   }
 }

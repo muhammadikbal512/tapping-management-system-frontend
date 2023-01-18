@@ -12,20 +12,26 @@ import {
   ResponseMappingErrorState,
   ResponseMappingSuccessState,
   ResponseMappingUpdate,
+  ResponseMappingGetIsoConfig,
 } from './response-mapping.action';
 import { tap } from 'rxjs';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class ResponseMappingStateModel {
   responseMappings: ResponseMappingModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  IsoConfigurations: IsoConfigurationInterface[] = [];
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<ResponseMappingStateModel>({
   name: 'responseMappingState',
   defaults: {
     responseMappings: [],
+    IsoConfigurations: [],
     responseMessage: undefined,
   },
 })
@@ -34,12 +40,18 @@ export class ResponseMappingState {
   constructor(
     private responseService: ResponseMappingService,
     private responseTableService: ResponseMappingTableService,
-    private notifierService: NotificationService
+    private notifierService: NotificationService,
+    private isoConfigurationService: IsoConfigurationService
   ) {}
 
   @Selector()
   static responseMappings(state: ResponseMappingStateModel) {
     return state.responseMappings;
+  }
+
+  @Selector()
+  static IsoConfigurations(state: ResponseMappingStateModel) {
+    return state.IsoConfigurations;
   }
 
   @Selector()
@@ -67,6 +79,27 @@ export class ResponseMappingState {
       }),
       catchError((response: HttpErrorResponse) => {
         return ctx.dispatch(new ResponseMappingErrorState(response.error));
+      })
+    );
+  }
+
+  @Action(ResponseMappingGetIsoConfig, { cancelUncompleted: true })
+  GetAdditionalDataFromState(ctx: StateContext<ResponseMappingStateModel>) {
+    return this.isoConfigurationService.getAllIsoConfiguration().pipe(
+      tap((response) => {
+        let isoConfigurationParseList: IsoConfigurationInterface[] = [];
+
+        response.responseData.forEach((x) => {
+          isoConfigurationParseList.push({
+            code: String(x.id),
+            name: x.name,
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          IsoConfigurations: isoConfigurationParseList,
+        });
       })
     );
   }
@@ -116,14 +149,12 @@ export class ResponseMappingState {
   @Action(ResponseMappingUpdate, { cancelUncompleted: true })
   updateDataFromState(
     ctx: StateContext<ResponseMappingStateModel>,
-    { id, payload, stateData }: ResponseMappingUpdate
+    { payload }: ResponseMappingUpdate
   ) {
     return this.responseService.updateResponseMapping(payload).pipe(
       tap((response) => {
         ctx.dispatch(new ResponseMappingSuccessState(response));
         const dataList = [...ctx.getState().responseMappings];
-        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
-        dataList[updatedDataIndex] = stateData;
         ctx.patchState({
           ...ctx.getState(),
           responseMappings: dataList,
@@ -141,10 +172,12 @@ export class ResponseMappingState {
     { successMessage }: ResponseMappingSuccessState
   ) {
     this.notifierService.successNotification(
-      successMessage.message,
-      successMessage.httpStatusCode
+      successMessage.responseMessage,
+      successMessage.responseCode
     );
 
+    this.responseService.closeDialog();
+    this.responseTableService.loading = true;
     this.responseService.onGetAllResponseMapping();
     ctx.patchState({
       responseMessage: successMessage,
@@ -156,12 +189,12 @@ export class ResponseMappingState {
     { errorMessage }: ResponseMappingErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage.error,
-      errorMessage.status
+      errorMessage.responseMessage,
+      errorMessage.responseData
     );
 
     this.responseTableService.loading = false;
-
+    this.responseService.showLoading = false;
     ctx.patchState({
       responseMessage: errorMessage,
     });

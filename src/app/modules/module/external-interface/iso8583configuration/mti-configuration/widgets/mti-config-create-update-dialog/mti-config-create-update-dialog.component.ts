@@ -37,27 +37,20 @@ export class MtiConfigCreateUpdateDialogComponent
     this.createFormat();
   }
 
-  setNewDataToModel(): MtiConfigurationModel {
-    this.mtiConfigModel.value = this.value.value;
-    this.mtiConfigModel.isResponse = this.isResponse.value;
-    this.mtiConfigModel.isReversal = this.isReversal.value;
-    return this.mtiConfigModel;
-  }
-
   onCheckingFormHasChange() {
     this.disableStatus = !this.formGroup.dirty;
     this.formGroup.valueChanges.subscribe((value) => {
       if (
         this.existingValue != value.value ||
-        this.existingIsResponse != value.isResponse ||
-        this.existingIsReversal != value.isReversal
+        this.existingResponse != value.isResponse ||
+        this.existingReversal != value.isReversal
       ) {
         this.disableStatus = false;
       }
       if (
         this.existingValue == value.value &&
-        this.existingIsResponse == value.isResponse &&
-        this.existingIsReversal == value.isReversal
+        this.existingResponse == value.isResponse &&
+        this.existingReversal == value.isReversal
       ) {
         this.disableStatus = true;
       }
@@ -66,15 +59,30 @@ export class MtiConfigCreateUpdateDialogComponent
 
   setExistingDataToModel() {
     this.value.setValue(this.existingValue);
-    this.isResponse.setValue(this.existingIsResponse);
-    this.isReversal.setValue(this.existingIsReversal);
+    this.response.setValue(this.existingResponse);
+    this.reversal.setValue(this.existingReversal);
+  }
+
+  setNewDataToModel(): MtiConfigurationModel {
+    this.mtiConfigModel.value = this.value.value;
+    this.mtiConfigModel.response = this.response.value;
+    this.mtiConfigModel.reversal = this.reversal.value;
+    return this.mtiConfigModel;
+  }
+
+  setUpdateDataToModel(): MtiConfigurationModel {
+    this.mtiConfigModel.id = this.existingId;
+    this.mtiConfigModel.value = this.value.value;
+    this.mtiConfigModel.response = this.response.value;
+    this.mtiConfigModel.reversal = this.reversal.value;
+    return this.mtiConfigModel;
   }
 
   createFormat() {
     this.formGroup = this.fb.group({
       value: ['', Validators.required],
-      isResponse: ['', Validators.required],
-      isReversal: ['', Validators.required],
+      response: ['', Validators.required],
+      reversal: ['', Validators.required],
     });
   }
 
@@ -85,24 +93,19 @@ export class MtiConfigCreateUpdateDialogComponent
 
   onUpdateMtiConfiguration() {
     this.showLoading = true;
-    const newData = this.mtiConfigService.MtiConfigCreateFormat(
-      this.existingId,
-      this.setNewDataToModel()
-    );
-
-    this.mtiConfigService.onUpdateMtiConfig(newData, this.setNewDataToModel());
+    this.mtiConfigService.onUpdateMtiConfig(this.setUpdateDataToModel());
   }
 
   get value() {
     return this.formGroup.controls['value'];
   }
 
-  get isResponse() {
-    return this.formGroup.controls['isResponse'];
+  get response() {
+    return this.formGroup.controls['response'];
   }
 
-  get isReversal() {
-    return this.formGroup.controls['isReversal'];
+  get reversal() {
+    return this.formGroup.controls['reversal'];
   }
 
   get existingId() {
@@ -113,11 +116,11 @@ export class MtiConfigCreateUpdateDialogComponent
     return this.mtiConfigService.existingData.value;
   }
 
-  get existingIsResponse() {
-    return this.mtiConfigService.existingData.isResponse;
+  get existingResponse() {
+    return this.mtiConfigService.existingData.response;
   }
 
-  get existingIsReversal() {
-    return this.mtiConfigService.existingData.isReversal;
+  get existingReversal() {
+    return this.mtiConfigService.existingData.reversal;
   }
 }

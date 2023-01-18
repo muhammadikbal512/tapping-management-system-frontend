@@ -21,7 +21,8 @@
         <div class="input-container">
             <input formControlName="headerLength" type="text" class="peer" placeholder=" " required="">
             <label class="input-label">header Length</label>
-            <p-message *ngIf="headerLength.touched && !headerLength.hasError('required')" severity="success"></p-message>
+            <p-message *ngIf="headerLength.touched && !headerLength.hasError('required')" severity="success">
+            </p-message>
             <p-message *ngIf="headerLength.touched && headerLength.hasError('required')" severity="error"></p-message>
             <small *ngIf="headerLength.touched && headerLength.hasError('required')" class="p-error">Length should
                 be
@@ -32,11 +33,12 @@
         <div class="input-container">
             <p>Format</p>
             <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
-                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
-                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="fieldFormat" optionLabel="name"
+                (onChange)="onChange($event)" [filter]="true" [options]="fieldFormatInterface" [showClear]="showClear"
+                appendTo="body" filterBy="name" formControlName="fieldFormat" optionLabel="name"
                 placeholder="Select Format" scrollHeight="150px"></p-dropdown>
             <div class="message">
-                <p-message *ngIf="fieldFormat.touched && !fieldFormat.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="fieldFormat.touched && !fieldFormat.hasError('required')" severity="success">
+                </p-message>
                 <p-message *ngIf="fieldFormat.touched && fieldFormat.hasError('required')" severity="error">
                 </p-message>
                 <small *ngIf="fieldFormat.touched && fieldFormat.hasError('required')" class="p-error">ISO
@@ -48,8 +50,8 @@
         <div class="input-container">
             <p>Encoding</p>
             <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
-                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
-                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="encoding" optionLabel="name"
+                (onChange)="onChange($event)" [filter]="true" [options]="encodingInterface" [showClear]="showClear"
+                appendTo="body" filterBy="name" formControlName="encoding" optionLabel="name"
                 placeholder="Select Encoding" scrollHeight="150px"></p-dropdown>
             <div class="message">
                 <p-message *ngIf="encoding.touched && !encoding.hasError('required')" severity="success"></p-message>
@@ -63,14 +65,16 @@
         <div class="input-container">
             <p>Config ID</p>
             <p-dropdown autoWidth="false" emptyMessage="Loading..." [style]="{'width':'100%'}"
-                (onChange)="onChange($event)" [filter]="true" [options]="dialectmsgTemplateOptionList"
-                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="isoConfiguration" optionLabel="name"
-                placeholder="Select Config ID" scrollHeight="150px"></p-dropdown>
+                (onChange)="onChange($event)" [filter]="true" [options]="isoConfigurationInterface"
+                [showClear]="showClear" appendTo="body" filterBy="name" formControlName="isoConfiguration"
+                optionLabel="name" placeholder="Select Config ID" scrollHeight="150px"></p-dropdown>
             <div class="message">
-                <p-message *ngIf="isoConfiguration.touched && !isoConfiguration.hasError('required')" severity="success"></p-message>
+                <p-message *ngIf="isoConfiguration.touched && !isoConfiguration.hasError('required')"
+                    severity="success"></p-message>
                 <p-message *ngIf="isoConfiguration.touched && isoConfiguration.hasError('required')" severity="error">
                 </p-message>
-                <small *ngIf="isoConfiguration.touched && isoConfiguration.hasError('required')" class="p-error">Config ID
+                <small *ngIf="isoConfiguration.touched && isoConfiguration.hasError('required')" class="p-error">Config
+                    ID
                     should be
                     fill.</small>
             </div>
@@ -78,29 +82,21 @@
     </div>
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="isofieldCondition" type="text" class="peer" placeholder=" " required="">
+            <input readonly formControlName="isofieldCondition">
             <label class="input-label">Conditional ID</label>
-            <p-message *ngIf="isofieldCondition.touched && !isofieldCondition.hasError('required')" severity="success"></p-message>
-            <p-message *ngIf="isofieldCondition.touched && isofieldCondition.hasError('required')" severity="error"></p-message>
-            <small *ngIf="isofieldCondition.touched && isofieldCondition.hasError('required')" class="p-error">Conditional ID should
-                be
-                fill.</small>
+
         </div>
         <div class="input-container">
             <input formControlName="priority" type="text" class="peer" placeholder=" " required="">
             <label class="input-label">Priority</label>
-            <p-message *ngIf="priority.touched && !priority.hasError('required')" severity="success"></p-message>
-            <p-message *ngIf="priority.touched && priority.hasError('required')" severity="error"></p-message>
-            <small *ngIf="priority.touched && priority.hasError('required')" class="p-error">Priority should
-                be
-                fill.</small>
+
         </div>
     </div>
 
     <mat-dialog-actions align="end">
         <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
         <p-button (onClick)="onCreateHeaderConfig()" *ngIf="headerService.buttonStatus == 'create'"
-            [disabled]="formGroup.invalid" [loading]="showLoading" class="create-button ml-3" label="Create"
+             [loading]="showLoading" class="create-button ml-3" label="Create"
             styleClass="p-button-sm">
         </p-button>
         <p-button (onClick)="onUpdateHeaderConfig()" *ngIf="headerService.buttonStatus == 'edit'"

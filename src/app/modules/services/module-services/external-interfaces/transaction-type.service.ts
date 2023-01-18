@@ -34,48 +34,40 @@ export class TransactionTypeService {
   }
 
   addTransactionType(data: TransactionTypeModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/trans_type_mapping/add`,
       data
     );
   }
 
-  updateTransactionType(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateTransactionType(data: TransactionTypeModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/trans_type_mapping/update`,
       data
     );
   }
 
   deleteTransactionType(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/trans_type_mapping/delete/` + id
     );
   }
 
-  createTransType(id: number, newData: TransactionTypeModel) {
-    const formData = new FormData();
-    formData.append('id', String(id));
-    formData.append('transType', newData.transType);
-    formData.append('description', newData.description);
-    formData.append('isoConfiguration', String(newData.isoConfiguration.id));
-    return formData;
-  }
-
+ 
   onGetAllTransactionType() {
     this.transTypeDispatch._TransactionTypeMappingGetDispatch();
+  }
+
+  onGetAllIsoConfiguration() {
+    this.transTypeDispatch._TransactionTypeMappingGetIsoConfig();
   }
 
   onAddTransactionType(data: TransactionTypeModel) {
     this.transTypeDispatch._TransactionTypeMappingAddDispatch(data);
   }
 
-  onUpdateTransactionType(data: FormData, stateData: TransactionTypeModel) {
-    this.transTypeDispatch._TransactionTypeMappingUpdateDispatch(
-      this.existingData.id,
-      data,
-      stateData
-    );
+  onUpdateTransactionType(payload: TransactionTypeModel) {
+    this.transTypeDispatch._TransactionTypeMappingUpdateDispatch(payload);
   }
 
   onDeleteTransactionType() {

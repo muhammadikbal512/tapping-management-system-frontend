@@ -5,9 +5,13 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
 import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
+import { TransTypeMappingState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/transaction-type-mapping/trans-type-mapping.state';
 
 @Component({
   selector: 'app-transaction-type-create-update-dialog',
@@ -17,9 +21,13 @@ import { TransactionTypeService } from 'src/app/modules/services/module-services
 export class TransactionTypeCreateUpdateDialogComponent
   implements OnInit, AfterViewInit
 {
+  @Select(TransTypeMappingState.IsoConfigurations)
+  IsoConfigurations$!: Observable<IsoConfigurationInterface[]>;
+
   form!: FormGroup;
   showLoading: boolean = false;
   disableStatus: boolean = false;
+  isoConfigurationInterface: IsoConfigurationInterface[] = [];
   showClear: boolean = false;
   transTypeModel: TransactionTypeModel = new TransactionTypeModel();
   configIds!: any;
@@ -28,6 +36,17 @@ export class TransactionTypeCreateUpdateDialogComponent
     public transTypeService: TransactionTypeService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
+
+  ngOnInit(): void {
+    this.createFormat();
+    this.transTypeService.onGetAllIsoConfiguration();
+    this.IsoConfigurations$.subscribe((data) => {
+      this.isoConfigurationInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
+  }
+
   ngAfterViewInit(): void {
     if (this.transTypeService.buttonStatus == 'edit') {
       this.setExistingDataToModel();
@@ -36,25 +55,12 @@ export class TransactionTypeCreateUpdateDialogComponent
     }
   }
 
-  ngOnInit(): void {
-    this.createFormat();
-  }
-
   createFormat() {
     this.form = this.fb.group({
       transType: ['', Validators.required],
       description: ['', Validators.required],
       isoConfiguration: ['', Validators.required],
     });
-  }
-
-  setNewDataToModel(): TransactionTypeModel {
-    this.transTypeModel.transType = this.transType.value;
-    this.transTypeModel.description = this.description.value;
-    this.transTypeModel.isoConfiguration = new IsoConfigurationModel(
-      Number(this.isoConfiguration.value.code)
-    );
-    return this.transTypeModel;
   }
 
   onCheckingFormHasChange() {
@@ -89,20 +95,35 @@ export class TransactionTypeCreateUpdateDialogComponent
     });
   }
 
+  setNewDataToModel(): TransactionTypeModel {
+    this.transTypeModel.transType = this.transType.value;
+    this.transTypeModel.description = this.description.value;
+    this.transTypeModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
+    return this.transTypeModel;
+  }
+
+  setUpdateDataToModel(): TransactionTypeModel {
+    this.transTypeModel.id = this.existingId;
+    this.transTypeModel.transType = this.transType.value;
+    this.transTypeModel.description = this.description.value;
+    this.transTypeModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
+    return this.transTypeModel;
+  }
+
   onCreateTransTypeMapping() {
     this.transTypeService.onAddTransactionType(this.setNewDataToModel());
   }
 
   onUpdateTransTypeMapping() {
-    const newData = this.transTypeService.createTransType(
-      this.existingId,
-      this.setNewDataToModel()
-    );
+    this.transTypeService.onUpdateTransactionType(this.setUpdateDataToModel());
+  }
 
-    this.transTypeService.onUpdateTransactionType(
-      newData,
-      this.setNewDataToModel()
-    );
+  set IsoConfigurationInterface(optionList: IsoConfigurationInterface[]) {
+    this.isoConfigurationInterface = optionList;
   }
 
   onChange($event: any) {
@@ -126,14 +147,14 @@ export class TransactionTypeCreateUpdateDialogComponent
   }
 
   get existingTransType() {
-    return this.transTypeModel.transType;
+    return this.transTypeService.existingData.transType;
   }
 
   get existingDescription() {
-    return this.transTypeModel.description;
+    return this.transTypeService.existingData.description;
   }
 
   get existingIsoConfiguration() {
-    return this.transTypeModel.isoConfiguration;
+    return this.transTypeService.existingData.isoConfiguration;
   }
 }

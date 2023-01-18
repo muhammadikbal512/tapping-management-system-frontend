@@ -10,6 +10,7 @@ import {
 } from './aid-config.action';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -26,12 +27,8 @@ export class AidConfigDispatch {
   }
 
   @Dispatch()
-  public _AidConfigUpdateDispatch(
-    id: number,
-    data: FormData,
-    stateData: AidConfigurationModel
-  ) {
-    return new AidConfigUpdate(id, data, stateData);
+  public _AidConfigUpdateDispatch(payload: AidConfigurationModel) {
+    return new AidConfigUpdate(payload);
   }
 
   @Dispatch()
@@ -40,12 +37,12 @@ export class AidConfigDispatch {
   }
 
   @Dispatch()
-  public _AidConfigSuccessStateDispatch(message: CustomHttpResponseModel) {
+  public _AidConfigSuccessStateDispatch(message: HttpResponseData<any>) {
     return new AidConfigSuccessState(message);
   }
 
   @Dispatch()
-  public _AidConfigErrorStateDispatch(message: CustomHttpResponseModel) {
+  public _AidConfigErrorStateDispatch(message: HttpResponseData<any>) {
     return new AidConfigErrorState(message);
   }
 }

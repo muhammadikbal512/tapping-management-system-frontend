@@ -6,6 +6,7 @@ import { TransactionTypeTableService } from 'src/app/modules/services/module-ser
 import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import {
+  TransTypeGetIsoConfig,
   TransTypeMappingAdd,
   TransTypeMappingDelete,
   TransTypeMappingErrorState,
@@ -15,16 +16,22 @@ import {
 } from './trans-type-mapping.action';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class TransTypeMappingStateModel {
   TransactionTypeMappings: TransactionTypeModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  IsoConfigurations: IsoConfigurationInterface[] = [];
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<TransTypeMappingStateModel>({
   name: 'TransactionTypeMappings',
   defaults: {
     TransactionTypeMappings: [],
+    IsoConfigurations: [],
     responseMessage: undefined,
   },
 })
@@ -33,12 +40,18 @@ export class TransTypeMappingState {
   constructor(
     private transTypeService: TransactionTypeService,
     private transTypeTableService: TransactionTypeTableService,
-    private notifierService: NotificationService
+    private notifierService: NotificationService,
+    private isoConfigService: IsoConfigurationService
   ) {}
 
   @Selector()
   static TransactionTypeMappings(state: TransTypeMappingStateModel) {
     return state.TransactionTypeMappings;
+  }
+
+  @Selector()
+  static IsoConfigurations(state: TransTypeMappingStateModel) {
+    return state.IsoConfigurations;
   }
 
   @Selector()
@@ -70,6 +83,29 @@ export class TransTypeMappingState {
     );
   }
 
+  @Action(TransTypeGetIsoConfig, { cancelUncompleted: true })
+  getAdditionalDataFromState(ctx: StateContext<TransTypeMappingStateModel>) {
+    return this.isoConfigService.getAllIsoConfiguration().pipe(
+      tap((response) => {
+        let isoConfigurationParseList: IsoConfigurationInterface[] = [];
+        response.responseData.forEach((x) => {
+          isoConfigurationParseList.push({
+            name: x.name,
+            code: String(x.id),
+          });
+        });
+
+        ctx.patchState({
+          ...ctx.getState(),
+          IsoConfigurations: isoConfigurationParseList,
+        });
+      }),
+      catchError((response: HttpErrorResponse) => {
+        return ctx.dispatch(new TransTypeMappingErrorState(response.error));
+      })
+    );
+  }
+
   @Action(TransTypeMappingAdd, { cancelUncompleted: true }) addDataFromState(
     ctx: StateContext<TransTypeMappingStateModel>,
     { data }: TransTypeMappingAdd
@@ -92,14 +128,12 @@ export class TransTypeMappingState {
   @Action(TransTypeMappingUpdate, { cancelUncompleted: true })
   updateDataFromState(
     ctx: StateContext<TransTypeMappingStateModel>,
-    { id, data, stateData }: TransTypeMappingUpdate
+    { payload }: TransTypeMappingUpdate
   ) {
-    return this.transTypeService.updateTransactionType(data).pipe(
+    return this.transTypeService.updateTransactionType(payload).pipe(
       tap((response) => {
         ctx.dispatch(new TransTypeMappingSuccessState(response));
         const dataList = [...ctx.getState().TransactionTypeMappings];
-        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
-        dataList[updatedDataIndex] = stateData;
         ctx.patchState({
           ...ctx.getState(),
           responseMessage: response,
@@ -143,8 +177,8 @@ export class TransTypeMappingState {
     }
 
     this.notifierService.successNotification(
-      successMessage?.error,
-      successMessage?.status
+      successMessage.responseMessage,
+      successMessage.responseCode,
     );
     this.transTypeService.onGetAllTransactionType();
 
@@ -163,8 +197,8 @@ export class TransTypeMappingState {
     }
 
     this.notifierService.errorNotification(
-      errorMessage?.error,
-      errorMessage?.status
+      errorMessage?.responseCode,
+      errorMessage?.responseMessage
     );
     this.transTypeTableService.loading = false;
     ctx.patchState({

@@ -5,8 +5,16 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
+import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { ResponseMappingModel } from 'src/app/model/modules-model/response-mapping.model';
 import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
+import {
+  ResponseMappingState,
+  ResponseMappingStateModel,
+} from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-response-mapping/response-mapping.state';
 
 @Component({
   selector: 'app-iso8583-response-mapping-create-dialog',
@@ -16,9 +24,13 @@ import { ResponseMappingService } from 'src/app/modules/services/module-services
 export class Iso8583ResponseMappingCreateDialogComponent
   implements OnInit, AfterViewInit
 {
+  @Select(ResponseMappingState.IsoConfigurations)
+  IsoConfigurations$!: Observable<IsoConfigurationInterface[]>;
+
   formGroup!: FormGroup;
-  showLoading: boolean = false;
+
   disableStatus: boolean = false;
+  isoConfigurationInterface: IsoConfigurationInterface[] = [];
   responseMappingModel: ResponseMappingModel = new ResponseMappingModel();
   showClear: boolean = false;
   configIds!: any;
@@ -38,6 +50,12 @@ export class Iso8583ResponseMappingCreateDialogComponent
 
   ngOnInit(): void {
     this.createFormat();
+    this.responseService.onGetAllIsoConfig();
+    this.IsoConfigurations$.subscribe((data) => {
+      this.isoConfigurationInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
   }
 
   createFormat() {
@@ -46,14 +64,6 @@ export class Iso8583ResponseMappingCreateDialogComponent
       description: ['', Validators.required],
       isoConfiguration: ['', Validators.required],
     });
-  }
-
-  setNewDataToModel(): ResponseMappingModel {
-    this.responseMappingModel.respCode = this.respCode.value;
-    this.responseMappingModel.description = this.description.value;
-    this.responseMappingModel.isoConfiguration = this.isoConfiguration.value;
-
-    return this.responseMappingModel;
   }
 
   onCheckingFormHasChange() {
@@ -79,27 +89,51 @@ export class Iso8583ResponseMappingCreateDialogComponent
   setExistingDataToModel() {
     this.respCode.setValue(this.existingRespCode);
     this.description.setValue(this.existingDescription);
-    this.isoConfiguration.setValue(this.existingIsoConfiguration);
+    this.isoConfiguration.setValue({
+      name: this.existingIsoConfiguration.name,
+      code: String(this.existingIsoConfiguration.id),
+    });
+  }
+
+  setNewDataToModel(): ResponseMappingModel {
+    this.responseMappingModel.respCode = this.respCode.value;
+    this.responseMappingModel.description = this.description.value;
+    this.responseMappingModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
+    return this.responseMappingModel;
+  }
+
+  setUpdateDataToModel(): ResponseMappingModel {
+    this.responseMappingModel.id = this.existingId;
+    this.responseMappingModel.respCode = this.respCode.value;
+    this.responseMappingModel.description = this.description.value;
+    this.responseMappingModel.isoConfiguration = new IsoConfigurationModel(
+      Number(this.isoConfiguration.value.code)
+    );
+    return this.responseMappingModel;
   }
 
   onCreateResponseCodeMapping() {
+    this.responseService.showLoading = true;
     this.responseService.onCreateResponseMapping(this.setNewDataToModel());
   }
 
   onUpdateResponseCodeMapping() {
-    const newData = this.responseService.createResponseMappingFormData(
-      this.existingRespCode,
-      this.setNewDataToModel()
-    );
-
-    this.responseService.onUpdateResponseMapping(
-      newData,
-      this.setNewDataToModel()
-    );
+    this.responseService.showLoading = true;
+    this.responseService.onUpdateResponseMapping(this.setUpdateDataToModel());
   }
 
   onChange($event: any) {
     this.showClear = $event != '' && $event != null;
+  }
+
+  set IsoConfigurationInterface(optionList: IsoConfigurationInterface[]) {
+    this.isoConfigurationInterface = optionList;
+  }
+
+  get showLoading() {
+    return this.responseService.showLoading;
   }
 
   get respCode() {
@@ -114,15 +148,19 @@ export class Iso8583ResponseMappingCreateDialogComponent
     return this.formGroup.controls['isoConfiguration'];
   }
 
+  get existingId() {
+    return this.responseService.existingData.id;
+  }
+
   get existingRespCode() {
-    return this.responseMappingModel.respCode;
+    return this.responseService.existingData.respCode;
   }
 
   get existingDescription() {
-    return this.responseMappingModel.description;
+    return this.responseService.existingData.description;
   }
 
   get existingIsoConfiguration() {
-    return this.responseMappingModel.isoConfiguration;
+    return this.responseService.existingData.isoConfiguration;
   }
 }

@@ -19,10 +19,13 @@ export class MtiConfigTableComponent implements OnInit {
 
   onRowSelect(event: any) {
     this.mtiConfigService.existingData = event.data;
-    
+    console.log(event.data);
   }
 
-  refreshTable() {}
+  refreshTable() {
+    this.mtiConfigTableService.loading = true;
+    this.getAllMtiConfig();
+  }
 
   getAllMtiConfig() {
     this.mtiConfigService.onGetAllMtiConfig();

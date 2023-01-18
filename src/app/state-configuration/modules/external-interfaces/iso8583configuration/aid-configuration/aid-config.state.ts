@@ -15,10 +15,11 @@ import { NotificationService } from 'src/app/modules/services/notification-servi
 import { catchError, tap } from 'rxjs';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class AidConfigStateModel {
   AidConfigurations: AidConfigurationModel[] = [];
-  responseMessage: CustomHttpResponseModel | undefined;
+  responseMessage: HttpResponseData<any> | undefined;
 }
 
 @State<AidConfigStateModel>({
@@ -90,17 +91,14 @@ export class AidConfigState {
 
   @Action(AidConfigUpdate, { cancelUncompleted: true }) updateDataFromState(
     ctx: StateContext<AidConfigStateModel>,
-    { id, data, stateData }: AidConfigUpdate
+    { payload }: AidConfigUpdate
   ) {
-    return this.aidConfigService.updateAidConfig(data).pipe(
+    return this.aidConfigService.updateAidConfig(payload).pipe(
       tap((response) => {
         ctx.dispatch(new AidConfigSuccessState(response));
         const dataList = [...ctx.getState().AidConfigurations];
-        const updatedDataIndex = dataList.findIndex((x) => x.id == id);
-        dataList[updatedDataIndex] = stateData;
 
         ctx.patchState({
-          ...ctx.getState(),
           AidConfigurations: dataList,
           responseMessage: response,
         });
@@ -142,8 +140,8 @@ export class AidConfigState {
       this.aidConfigService.closeDialog();
     }
     this.notifierService.successNotification(
-      successMessage?.message,
-      successMessage?.status
+      successMessage?.responseMessage,
+      successMessage?.responseCode
     );
     this.aidConfigService.onGetAidConfig();
     ctx.patchState({
@@ -159,8 +157,8 @@ export class AidConfigState {
       this.aidConfigService.closeDialog();
     }
     this.notifierService.errorNotification(
-      errorMessage?.error,
-      errorMessage?.status
+      errorMessage?.responseMessage,
+      errorMessage?.responseCode
     );
 
     this.aidConfigTableService.loading = false;

@@ -6,10 +6,12 @@ import {
   ResponseMappingErrorState,
   ResponseMappingSuccessState,
   ResponseMappingUpdate,
+  ResponseMappingGetIsoConfig,
 } from './response-mapping.action';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +20,11 @@ export class ResponseMappingDispatch {
   @Dispatch()
   public _ResponseMappingGetDispatch() {
     return new ResponseMappingGet();
+  }
+
+  @Dispatch()
+  public _ResponseMappingGetIsoConfigDispatch() {
+    return new ResponseMappingGetIsoConfig();
   }
 
   @Dispatch()
@@ -31,21 +38,17 @@ export class ResponseMappingDispatch {
   }
 
   @Dispatch()
-  public _ResponseMappingUpdateDispatch(
-    id: number,
-    payload: FormData,
-    stateData: ResponseMappingModel
-  ) {
-    return new ResponseMappingUpdate(id, payload, stateData);
+  public _ResponseMappingUpdateDispatch(payload: ResponseMappingModel) {
+    return new ResponseMappingUpdate(payload);
   }
 
   @Dispatch()
-  public _ResponseMappingSuccessState(message: CustomHttpResponseModel) {
-      return new ResponseMappingSuccessState(message);
+  public _ResponseMappingSuccessState(message: HttpResponseData<any>) {
+    return new ResponseMappingSuccessState(message);
   }
 
   @Dispatch()
-  public _ResponseMappingErrorState(message: CustomHttpResponseModel) {
-      return new ResponseMappingErrorState(message);
+  public _ResponseMappingErrorState(message: HttpResponseData<any>) {
+    return new ResponseMappingErrorState(message);
   }
 }

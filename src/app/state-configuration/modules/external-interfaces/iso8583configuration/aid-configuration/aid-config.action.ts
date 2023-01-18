@@ -1,5 +1,6 @@
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class AidConfigGet {
   static readonly type = '[AID] Get';
@@ -12,11 +13,7 @@ export class AidConfigAdd {
 
 export class AidConfigUpdate {
   static readonly type = '[AID] Update';
-  constructor(
-    public id: number,
-    public data: FormData,
-    public stateData: AidConfigurationModel
-  ) {}
+  constructor(public payload: AidConfigurationModel) {}
 }
 
 export class AidConfigDelete {
@@ -26,10 +23,10 @@ export class AidConfigDelete {
 
 export class AidConfigSuccessState {
   static readonly type = '[AID] Success';
-  constructor(public successMessage: CustomHttpResponseModel) {}
+  constructor(public successMessage: HttpResponseData<any>) {}
 }
 
 export class AidConfigErrorState {
   static readonly type = '[AID] Error';
-  constructor(public errorMessage: CustomHttpResponseModel) {}
+  constructor(public errorMessage: HttpResponseData<any>) {}
 }

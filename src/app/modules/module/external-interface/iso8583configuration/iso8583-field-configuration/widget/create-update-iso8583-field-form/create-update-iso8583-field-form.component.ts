@@ -5,14 +5,21 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/iso-field-configuration.service';
-import { IsoFieldConfigurationModel } from 'src/app/model/modules-model/iso-field-configuration.model';
-import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-template-group';
-import { Observable } from 'rxjs';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
+import {
+  Iso8583FieldModel,
+  Iso8583SubFieldModel,
+} from 'src/app/model/modules-model/iso8583-field.model';
+import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
+import { EncodingInterface } from 'src/app/interface/modules/encoding';
+import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
 import { Select } from '@ngxs/store';
 import { ISO8583FieldState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.state';
-import { Iso8583DialectMsgTemplate } from 'src/app/model/modules-model/iso8583-dialect-msg-template.model';
-
+import { Observable } from 'rxjs';
+import { FieldFormatInterface } from 'src/app/interface/modules/field-format';
+import { IsoFieldConditionModel } from 'src/app/model/modules-model/iso-field-condition.model';
+import { FieldFormatModel } from 'src/app/model/modules-model/field-format.model';
+import { EncodingModel } from 'src/app/model/modules-model/encoding.model';
 
 @Component({
   selector: 'app-create-update-iso8583-field-form',
@@ -22,17 +29,21 @@ import { Iso8583DialectMsgTemplate } from 'src/app/model/modules-model/iso8583-d
 export class CreateUpdateIso8583FieldFormComponent
   implements OnInit, AfterViewInit
 {
-  @Select(ISO8583FieldState.dialects) dialects$!: Observable<
-    DialectMsgTemplateGroup[]
-  >;
+  @Select(ISO8583FieldState.IsoConfiguration)
+  isoConfigurations$!: Observable<IsoConfigurationInterface[]>;
+  @Select(ISO8583FieldState.Encoding)
+  encodings$!: Observable<EncodingInterface[]>;
+  @Select(ISO8583FieldState.fieldFormat)
+  fieldFormats$!: Observable<FieldFormatInterface[]>;
 
   form!: FormGroup;
-  configID!: any[];
   disableStatus: boolean = false;
   showClearButton: boolean = false;
-  DialectMsgTemplateOptionList: DialectMsgTemplateGroup[] = [];
-  IsoFieldConfigurationModel: IsoFieldConfigurationModel =
-    new IsoFieldConfigurationModel();
+  isChecked: boolean = false;
+  encodingInterface: EncodingInterface[] = [];
+  isoConfigurationInterface: IsoConfigurationInterface[] = [];
+  fieldFormatInterface: FieldFormatInterface[] = [];
+  IsoFieldConfigurationModel: Iso8583FieldModel = new Iso8583FieldModel();
   showLoading: boolean = false;
 
   constructor(
@@ -43,9 +54,23 @@ export class CreateUpdateIso8583FieldFormComponent
 
   ngOnInit(): void {
     this.createForm();
-    this.isoFieldConfigurationService.onGetAllDialect();
-    this.dialects$.subscribe(data => {
-      this.DialectMsgTemplateOptionList = data.sort((a, b) => a.name.localeCompare(b.name));
+    this.isoFieldConfigurationService.onGetAllIsoConfig();
+    this.isoFieldConfigurationService.onGetAllEncoding();
+    this.isoFieldConfigurationService.onGetAllFieldFormat();
+    this.isoConfigurations$.subscribe((data) => {
+      this.isoConfigurationInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
+    this.encodings$.subscribe((data) => {
+      this.encodingInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    });
+    this.fieldFormats$.subscribe((data) => {
+      this.fieldFormatInterface = data.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     });
   }
 
@@ -60,22 +85,16 @@ export class CreateUpdateIso8583FieldFormComponent
 
   createForm() {
     this.form = this.fb.group({
-      isoFieldId: ['', Validators.required],
-      tagNumber: ['', Validators.required],
-      dialectId: ['', Validators.required],
-      attributeId: ['', Validators.required],
-      isTagNumber: ['',],
+      fieldId: ['', Validators.required],
+      fieldFormat: ['', Validators.required],
+      encoding: ['', Validators.required],
+      isoConfiguration: ['', Validators.required],
+      description: ['', Validators.required],
+      fieldLength: ['', Validators.required],
+      hasChild: [''],
+      isofieldCondition: [null],
+      subFieldConfigurations: [[]],
     });
-  }
-
-  setNewDataToModel(): IsoFieldConfigurationModel {
-    this.IsoFieldConfigurationModel.isoFieldId = this.isoFieldId.value;
-    this.IsoFieldConfigurationModel.dialectMessageTemplate =
-      new Iso8583DialectMsgTemplate(Number(this.dialectId.value.code));
-    this.IsoFieldConfigurationModel.attributeId = this.attributeId.value;
-    this.IsoFieldConfigurationModel.isTagNumber = this.isTagNumber.value;
-    this.IsoFieldConfigurationModel.tagNumber = this.tagNumber.value;
-    return this.IsoFieldConfigurationModel;
   }
 
   onChange($event: any) {
@@ -85,22 +104,26 @@ export class CreateUpdateIso8583FieldFormComponent
   onCheckingFormHasChange() {
     this.form.valueChanges.subscribe((value) => {
       if (
-        this.existingAttributeId != value.attributeId ||
-        this.existingDialectId != value.dialectId ||
-        this.existingIsTagNumber != value.isTagNumber ||
-        this.existingIsoFieldId != value.isoFieldId ||
-        this.existingTagNumber != value.tagNumber || 
-        this.existingDialectMsgTemplate != value.messageTemplate.name
+        this.existingFieldId != value.fieldId ||
+        this.existingFieldFormat != value.fieldFormat ||
+        this.existingEncoding != value.encoding ||
+        this.existingIsoConfiguration != value.isoconfiguration.name ||
+        this.existingDescription != value.description ||
+        this.existingFieldLength != value.fieldlength ||
+        this.existingHasChild != value.hasChild ||
+        this.existingSubFieldConfiguration != value.subFieldConfigurations
       ) {
         this.disableStatus = false;
       }
       if (
-        this.existingAttributeId == value.attributeId &&
-        this.existingDialectId == value.dialectId &&
-        this.existingIsTagNumber == value.isTagNumber &&
-        this.existingIsoFieldId == value.isoFieldId &&
-        this.existingTagNumber == value.tagNumb &&
-        this.existingDialectMsgTemplate == value.messageTemplate.name
+        this.existingFieldId == value.fieldId &&
+        this.existingFieldFormat == value.fieldFormat &&
+        this.existingEncoding == value.encoding &&
+        this.existingIsoConfiguration == value.isoconfiguration.name &&
+        this.existingDescription == value.description &&
+        this.existingFieldLength == value.fieldlength &&
+        this.existingHasChild == value.hasChild &&
+        this.existingSubFieldConfiguration == value.subFieldConfigurations
       ) {
         this.disableStatus = true;
       }
@@ -108,81 +131,163 @@ export class CreateUpdateIso8583FieldFormComponent
   }
 
   setExistingDataToDialog() {
-    this.attributeId.setValue(this.existingAttributeId);
-    this.dialectId.setValue({
-      name: this.existingDialectMsgTemplate.nameType,
-      code: String(this.existingDialectMsgTemplate.templateId)
-    }
+    this.fieldId.setValue(this.existingFieldId);
+    this.fieldFormat.setValue({
+      name: this.existingFieldFormat.formatType,
+      code: String(this.existingFieldFormat.id),
+    });
+    this.encoding.setValue({
+      name: this.existingEncoding.encodingType,
+      code: String(this.existingEncoding.id),
+    });
+    this.isoConfiguration.setValue({
+      name: this.existingIsoConfiguration.name,
+      code: String(this.existingIsoConfiguration.id),
+    });
+    this.description.setValue(this.existingDescription);
+    this.fieldLength.setValue(this.existingFieldLength);
+    this.hasChild.setValue(this.existingHasChild);
+    this.isofieldCondition.setValue(this.existingFieldCondId);
+  }
+
+  setNewDataToModel(): Iso8583FieldModel {
+    this.IsoFieldConfigurationModel.fieldId = this.fieldId.value;
+    this.IsoFieldConfigurationModel.fieldFormat = new FieldFormatModel(
+      Number(this.fieldFormat.value.code)
     );
-    this.isTagNumber.setValue(this.existingIsTagNumber);
-    this.isoFieldId.setValue(this.existingIsoFieldId);
-    this.tagNumber.setValue(this.existingTagNumber);
+    this.IsoFieldConfigurationModel.encoding = new EncodingModel(
+      Number(this.encoding.value.code)
+    );
+    this.IsoFieldConfigurationModel.isoConfiguration =
+      new IsoConfigurationModel(Number(this.isoConfiguration.value.code));
+    this.IsoFieldConfigurationModel.description = this.description.value;
+    this.IsoFieldConfigurationModel.fieldLength = this.fieldLength.value;
+    this.IsoFieldConfigurationModel.hasChild = this.hasChild.value;
+    this.IsoFieldConfigurationModel.isoFieldCondition =
+      this.isofieldCondition.value;
+    if (this.isoFieldConfigurationService == null) {
+      this.IsoFieldConfigurationModel.subFieldConfigurations = [];
+    } else {
+      this.IsoFieldConfigurationModel.subFieldConfigurations =
+        this.existingSubFieldConfiguration;
+    }
+    return this.IsoFieldConfigurationModel;
+  }
+
+  setUpdateToModel(): Iso8583FieldModel {
+    this.IsoFieldConfigurationModel.id = this.existingId;
+    this.IsoFieldConfigurationModel.fieldId = this.fieldId.value;
+    this.IsoFieldConfigurationModel.fieldFormat = new FieldFormatModel(
+      Number(this.fieldFormat.value.code)
+    );
+    this.IsoFieldConfigurationModel.encoding = new EncodingModel(
+      Number(this.encoding.value.code)
+    );
+    this.IsoFieldConfigurationModel.isoConfiguration =
+      new IsoConfigurationModel(Number(this.isoConfiguration.value.code));
+    this.IsoFieldConfigurationModel.description = this.description.value;
+    this.IsoFieldConfigurationModel.fieldLength = this.fieldLength.value;
+    this.IsoFieldConfigurationModel.hasChild = this.hasChild.value;
+    if (this.isofieldCondition == null) {
+      new IsoFieldConditionModel(Number(this.existingFieldCondId.id));
+    } else {
+      this.IsoFieldConfigurationModel.isoFieldCondition =
+        this.existingFieldCondId;
+    }
+    this.IsoFieldConfigurationModel.subFieldConfigurations =
+      this.existingSubFieldConfiguration;
+    return this.IsoFieldConfigurationModel;
   }
 
   onUpdateIsoField() {
     this.showLoading = true;
-    const newData =
-      this.isoFieldConfigurationService.createIsoFieldConfigurationFormData(
-        String(this.existingIsoFieldId),
-        this.setNewDataToModel()
-      );
-
-    this.isoFieldConfigurationService.onUpdateIsoFieldConfiguration(newData);
+    this.isoFieldConfigurationService.onUpdateIsoFieldConfiguration(
+      this.setUpdateToModel()
+    );
   }
 
   onCreateIsoField() {
     this.showLoading = true;
-    this.isoFieldConfigurationService.onCreateIsoFieldConfiguration(this.setNewDataToModel())
+    this.isoFieldConfigurationService.onCreateIsoFieldConfiguration(
+      this.setNewDataToModel()
+    );
   }
 
-  AddIso8583FieldConfig(data: any) {
+  get fieldId() {
+    return this.form.controls['fieldId'];
   }
 
-  backButton() {
-    window.history.back();
+  get fieldFormat() {
+    return this.form.controls['fieldFormat'];
   }
 
-  get isoFieldId() {
-    return this.form.controls['isoFieldId'];
+  get encoding() {
+    return this.form.controls['encoding'];
   }
 
-  get tagNumber() {
-    return this.form.controls['tagNumber'];
+  get isoConfiguration() {
+    return this.form.controls['isoConfiguration'];
   }
 
-  get dialectId() {
-    return this.form.controls['dialectId'];
+  get description() {
+    return this.form.controls['description'];
   }
 
-  get attributeId() {
-    return this.form.controls['attributeId'];
+  get fieldLength() {
+    return this.form.controls['fieldLength'];
   }
 
-  get isTagNumber() {
-    return this.form.controls['isTagNumber'];
+  get hasChild() {
+    return this.form.controls['hasChild'];
   }
 
-  get existingIsoFieldId() {
-    return this.isoFieldConfigurationService.existingData.isoFieldId;
+  get isofieldCondition() {
+    return this.form.controls['isofieldCondition'];
   }
 
-  get existingTagNumber() {
-    return this.isoFieldConfigurationService.existingData.tagNumber;
+  get subFieldConfigurations() {
+    return this.isoFieldConfigurationService.existingData
+      .subFieldConfigurations;
   }
 
-  get existingDialectId() {
-    return this.isoFieldConfigurationService.existingData.dialectId;
+  get existingId() {
+    return this.isoFieldConfigurationService.existingData.id;
   }
 
-  get existingAttributeId() {
-    return this.isoFieldConfigurationService.existingData.attributeId;
+  get existingFieldId() {
+    return this.isoFieldConfigurationService.existingData.id;
   }
 
-  get existingIsTagNumber() {
-    return this.isoFieldConfigurationService.existingData.isTagNumber;
+  get existingFieldFormat() {
+    return this.isoFieldConfigurationService.existingData.fieldFormat;
   }
 
-  get existingDialectMsgTemplate() {
-    return this.isoFieldConfigurationService.existingData.dialectMessageTemplate;
+  get existingEncoding() {
+    return this.isoFieldConfigurationService.existingData.encoding;
+  }
+
+  get existingIsoConfiguration() {
+    return this.isoFieldConfigurationService.existingData.isoConfiguration;
+  }
+
+  get existingDescription() {
+    return this.isoFieldConfigurationService.existingData.description;
+  }
+
+  get existingFieldLength() {
+    return this.isoFieldConfigurationService.existingData.fieldLength;
+  }
+
+  get existingHasChild() {
+    return this.isoFieldConfigurationService.existingData.hasChild;
+  }
+
+  get existingFieldCondId() {
+    return this.isoFieldConfigurationService.existingData.isoFieldCondition;
+  }
+
+  get existingSubFieldConfiguration() {
+    return this.isoFieldConfigurationService.existingData
+      .subFieldConfigurations;
   }
 }

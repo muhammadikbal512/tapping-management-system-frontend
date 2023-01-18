@@ -34,21 +34,21 @@ export class AidConfigurationService {
   }
 
   addAidConfig(data: AidConfigurationModel) {
-    return this.http.post<CustomHttpResponseModel>(
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/list_aid_label/add`,
       data
     );
   }
 
-  updateAidConfig(data: FormData) {
-    return this.http.post<CustomHttpResponseModel>(
+  updateAidConfig(data: AidConfigurationModel) {
+    return this.http.post<HttpResponseData<any>>(
       `${this.apiUrl}/list_aid_label/update`,
       data
     );
   }
 
   deleteAidConfig(id: number) {
-    return this.http.delete<CustomHttpResponseModel>(
+    return this.http.delete<HttpResponseData<any>>(
       `${this.apiUrl}/list_aid_label/delete/` + id
     );
   }
@@ -69,12 +69,8 @@ export class AidConfigurationService {
     this.aidConfigDispatch._AidConfigAddDispatch(data);
   }
 
-  onUpdateAidConfig(data: FormData, dataState: AidConfigurationModel) {
-    this.aidConfigDispatch._AidConfigUpdateDispatch(
-      this.existingData.id,
-      data,
-      dataState
-    );
+  onUpdateAidConfig(payload: AidConfigurationModel) {
+    this.aidConfigDispatch._AidConfigUpdateDispatch(payload);
   }
 
   onDeleteAidConfig() {

@@ -10,9 +10,10 @@ import {
 } from './mti-config.action';
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
+import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MtiConfigDispatch {
   constructor() {}
@@ -28,12 +29,8 @@ export class MtiConfigDispatch {
   }
 
   @Dispatch()
-  public _MtiConfigUpdateDispatch(
-    id: number,
-    data: FormData,
-    stateData: MtiConfigurationModel
-  ) {
-    return new MtiConfigUpdate(id, data, stateData);
+  public _MtiConfigUpdateDispatch(payload: MtiConfigurationModel) {
+    return new MtiConfigUpdate(payload);
   }
 
   @Dispatch()
@@ -42,12 +39,12 @@ export class MtiConfigDispatch {
   }
 
   @Dispatch()
-  public _MtiConfigSuccessStateDispatch(message: CustomHttpResponseModel) {
+  public _MtiConfigSuccessStateDispatch(message: HttpResponseData<any>) {
     return new MtiConfigSuccessState(message);
   }
 
   @Dispatch()
-  public _MtiConfigErrorStateDispatch(message: CustomHttpResponseModel) {
+  public _MtiConfigErrorStateDispatch(message: HttpResponseData<any>) {
     return new MtiConfigErrorState(message);
   }
 }

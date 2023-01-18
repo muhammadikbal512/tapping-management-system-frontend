@@ -28,6 +28,7 @@
       <th style="min-width:100px;" *ngFor="let col of cols">
         {{col.header}}
       </th>
+      <th style="min-width:100px;">Config ID</th>
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
@@ -36,6 +37,7 @@
       <td style="min-width:100px;" *ngFor="let col of cols">
         {{rowData[col.field]}}
       </td>
+      <td style="min-width:100px;">{{rowData.isoConfiguration.name}}</td>
       <td style="min-width:100px;" [pSelectableRow]="rowData">
         <app-iso8583-response-mapping-action-button></app-iso8583-response-mapping-action-button>
       </td>
