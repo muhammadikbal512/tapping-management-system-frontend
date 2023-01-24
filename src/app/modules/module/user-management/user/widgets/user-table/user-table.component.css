@@ -24,3 +24,33 @@
   border-radius: 50%;
   display: inline-block;
 }
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-paginator-bottom {
+  border-width: 0 !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator-bottom {
+  border-width: 0 !important;
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-header {
+  border-width: 0;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-header {
+  border-width: 0;
+  background: transparent;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  text-align: center;
+  padding: 1rem 1rem;
+  font-weight: 700;
+  color: white;
+  background: #12949C;
+  transition: box-shadow 0.2s;
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
+  text-align: center;
+}

@@ -52,7 +52,7 @@ export class TransactionState {
     return state.EventCollectors;
   }
 
-  @Action(EventCollectorsGet, { cancelUncompleted: true })
+  @Action(TransactionGet, { cancelUncompleted: true })
   getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
     return this.transactionService.getAllTransactionList().pipe(
       tap((response) => {
@@ -71,8 +71,8 @@ export class TransactionState {
           Transactions: response,
         });
       }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new TransactionErrorState(response.error));
+      catchError((response) => {
+        return ctx.dispatch(new TransactionErrorState(response));
       })
     );
   }

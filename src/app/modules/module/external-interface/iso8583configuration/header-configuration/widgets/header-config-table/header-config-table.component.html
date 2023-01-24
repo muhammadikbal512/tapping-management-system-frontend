@@ -1,6 +1,6 @@
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="headerConfigs" [paginator]="true"
     [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+    [rows]="10" scrollHeight="400px" styleClass="p-datatable-gridlines" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
     <ng-template pTemplate="caption">
         <div class="flex justify-between">
             <div class="search-buttons">
@@ -25,18 +25,20 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th style="min-width:100px;" *ngFor="let col of cols">
+            <th [pSortableColumn]="col.field" style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
             </th>
-            <th>Config ID</th>
-            <th>Encoding</th>
+            <th pSortableColumn="configID">Config ID <p-sortIcon field="configID"></p-sortIcon></th>
+            <th pSortableColumn="encoding">Encoding <p-sortIcon field="encoding"></p-sortIcon></th>
             <th>
                 Actions
             </th>
         </tr>
+
     </ng-template>
-    <ng-template pTemplate="body" let-rowData>
-        <tr [pSelectableRow]="rowData">
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="rowData" [ngClass]="{'row-odd': rowIndex % 2 == 1}">
 
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}

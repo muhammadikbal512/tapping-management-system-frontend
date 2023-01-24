@@ -139,6 +139,7 @@ export class HeaderConfigCreateUpdateDialogComponent
       code: String(this.existingEncoding.id),
     });
     this.isofieldCondition.setValue(this.existingIsofieldCondition);
+    this.priority.setValue(this.existingPriority);
   }
 
   setNewDataToModel(): HeaderConfigurationModel {
@@ -155,6 +156,7 @@ export class HeaderConfigCreateUpdateDialogComponent
       Number(this.encoding.value.code)
     );
     this.headerConfigModel.isofieldCondition = this.isofieldCondition.value;
+    this.headerConfigModel.priority = this.priority.value;
 
     return this.headerConfigModel;
   }
@@ -180,6 +182,7 @@ export class HeaderConfigCreateUpdateDialogComponent
     } else {
       this.headerConfigModel.isofieldCondition = this.existingIsofieldCondition;
     }
+    this.headerConfigModel.priority = this.priority.value;
 
     return this.headerConfigModel;
   }

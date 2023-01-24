@@ -24,9 +24,13 @@ export class TransactionService {
 
   getAllTransactionList() {
     return this.http.get<any[]>(
-      `assets/data/dummy/transaction/transaction.json`
+      `${this.apiUrl}/transactions/listFiveHundredTransactions`
     );
   }
+
+  getTest(params?: any) {
+    return this.http.get<any>(environment.test, { params: params }).toPromise();
+}
 
   getAllEventCollector() {
     return this.http.get<EventCollectorModel[]>(

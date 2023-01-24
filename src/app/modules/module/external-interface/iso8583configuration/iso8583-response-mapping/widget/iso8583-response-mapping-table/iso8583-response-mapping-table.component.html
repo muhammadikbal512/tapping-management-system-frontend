@@ -1,6 +1,6 @@
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="responseMappings" [paginator]="true"
   [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  [rows]="10" scrollHeight="400px" [autoLayout]="true"
+  [rows]="10" scrollHeight="400px" styleClass="p-datatable-gridlines" [autoLayout]="true"
   (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
@@ -32,8 +32,8 @@
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData>
-    <tr>
+  <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+    <tr [ngClass]="{'row-odd': rowIndex % 2 == 1}">
       <td style="min-width:100px;" *ngFor="let col of cols">
         {{rowData[col.field]}}
       </td>

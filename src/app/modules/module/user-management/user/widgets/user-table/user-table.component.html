@@ -1,6 +1,6 @@
 <p-table #dt1 [loading]="loading" [value]="users" [paginator]="true" [rowsPerPageOptions]="[10, 25, 50]"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="20" scrollHeight="500px"
-  [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+  [autoLayout]="true" styleClass="p-datatable-gridlines" (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="search-buttons">

@@ -1,7 +1,7 @@
-<p-table #dt1 [columns]="cols" [value]="transactions" dataKey="0" [lazy]="true" (onLazyLoad)="loadTransactions($event)"
+<p-table #dt1 [value]="transactions" dataKey="0" [lazy]="lazy" (onLazyLoad)="loadTransactions($event)"
   [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [loading]="loading" scrollHeight="400px"
-  selectionMode="single" (onRowSelect)="onRowSelect($event)" [scrollable]="true"
-  [rowsPerPageOptions]="[5,10, 20, 25, 50]">
+  selectionMode="single" (onRowSelect)="onRowSelect($event)" [scrollable]="true" styleClass="p-datatable-gridlines"
+  [rowsPerPageOptions]="[5,10, 20, 25, 50]" [globalFilterFields]="['0','14', '13', '2']">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="export-buttons">
@@ -19,7 +19,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </span>
-          <input #textInput (input)="dt1.filterGlobal(textInput.value, 'contains')" id="search-filter"
+          <input #textInput (input)="dt1.filterGlobal($any($event.target).value, 'contains')" id="search-filter"
             class="search-input" type="text" placeholder="Search">
         </span>
       </div>
@@ -27,16 +27,56 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of cols" field="col.field">
-        {{col.header}}
+      <th pSortableColumn="9">
+        <p-sortIcon></p-sortIcon>
+        App Trans ID
       </th>
-
+      <th pSortableColumn="14">
+        <p-sortIcon field="14"></p-sortIcon>
+        Src Address
+      </th>
+      <th pSortableColumn="13">
+        <p-sortIcon field="13"></p-sortIcon>
+        Dst Address
+      </th>
+      <th pSortableColumn="2">
+        <p-sortIcon field="2"></p-sortIcon>
+        Flag
+      </th>
+      <th pSortableColumn="typeMessage">
+        <p-sortIcon field="typeMessage"></p-sortIcon>
+        Type Message
+      </th>
+      <th pSortableColumn="status">
+        <p-sortIcon field="status"></p-sortIcon>
+        Status
+      </th>
+      <th pSortableColumn="incidentDetails">
+        <p-sortIcon field="incidentDetails"></p-sortIcon>
+        Incident Details
+      </th>
     </tr>
+
   </ng-template>
-  <ng-template pTemplate="body" let-transactions let-columns="cols">
-    <tr [pSelectableRow]="transactions">
-      <td *ngFor="let col of cols">
-        {{transactions[col.field]}}
+  <ng-template pTemplate="body" let-transactions let-rowIndex="rowIndex">
+    <tr [pSelectableRow]="transactions" [ngClass]="{'row-odd': rowIndex % 2 == 0}">
+      <td>
+        {{transactions[0]}}
+      </td>
+      <td>
+        {{transactions[14].replace('/', '')}}
+      </td>
+      <td>
+        {{transactions[13].replace('/', '')}}
+      </td>
+      <td>
+        {{transactions[2].replaceAll('|', ' - ')}}
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
       </td>
     </tr>
   </ng-template>

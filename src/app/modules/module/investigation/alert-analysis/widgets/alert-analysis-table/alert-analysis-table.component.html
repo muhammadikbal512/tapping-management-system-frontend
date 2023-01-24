@@ -2,7 +2,7 @@
     <p-table #dt1 [value]="alerts" [loading]="loading" dataKey="id" [globalFilterFields]="['caseId']" [columns]="cols"
         [paginator]="true" [rows]="20" [showCurrentPageReport]="true" responsiveLayout="scroll"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [rowsPerPageOptions]="[10,25,50]" scrollHeight="400px" (onRowSelect)="onRowSelect($event)"
+        [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-gridlines" scrollHeight="400px" (onRowSelect)="onRowSelect($event)"
         selectionMode="single">
         <ng-template pTemplate="caption">
             <div class="flex justify-between">
@@ -78,7 +78,7 @@
 </ng-template>
 <ng-template pTemplate="emptymessage">
     <tr>
-        <td colspan="11">There are no data yet.</td>
+        <td colspan="12">There are no data yet.</td>
     </tr>
 </ng-template>
 </p-table>

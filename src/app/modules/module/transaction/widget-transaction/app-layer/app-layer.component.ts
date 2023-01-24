@@ -8,6 +8,7 @@ import { TransactionService } from 'src/app/modules/services/module-services/tra
 })
 export class AppLayerComponent implements OnInit {
   constructor(public transactionApiService: TransactionService) {}
+  appTransId: number = 0;
 
   ngOnInit(): void {}
 }

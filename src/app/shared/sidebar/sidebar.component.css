@@ -5,7 +5,7 @@
   height: 100%;
   position: fixed;
   z-index: 999;
-  overflow-x: auto;
+  overflow-x: scroll;
   color: #3f6b6e;
   margin-left: 0;
   width: 5rem;

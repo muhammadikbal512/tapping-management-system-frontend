@@ -8,7 +8,7 @@ import { Select } from '@ngxs/store';
 import { TransactionState } from 'src/app/state-configuration/modules/transaction/transaction.state';
 import { Observable } from 'rxjs';
 import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
-import { LazyLoadEvent } from 'primeng/api';
+import { FilterMetadata, LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-table',
@@ -20,6 +20,8 @@ export class TableComponent implements OnInit {
   eventCollectors$!: Observable<EventCollectorModel[]>;
   transactions!: any[];
   filteredRows: any;
+  test!: number;
+  lazy!: boolean;
 
   constructor(
     private transactionApiService: TransactionService,
@@ -27,53 +29,94 @@ export class TableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getEventCollector();
+    this.lazy = true;
     this.getTransactions();
   }
 
-  filterGlobal(row: any, value: any) {
-    for (let i = 0; i < this.cols.length; i++) {
-      let column = this.cols[i];
-      if (row[column.field] == null) {
-        continue;
-      }
-      let rowValue: String = row[column.field].toString().toLowerCase();
-      if (rowValue.includes(value.toLowerCase())) {
-        return true;
-      }
-    }
-    return false;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.filteredRows.filter = filterValue.trim().toLowerCase();
   }
 
   loadTransactions(event: LazyLoadEvent) {
     this.transactionTableService.loading = true;
     setTimeout(() => {
-      if (this.datasourceTransactions) {
-        event.globalFilter;
-        this.transactions = this.datasourceTransactions.slice(
-          event.first,
-          event.first! + event.rows!
-        );
-        filter: event.globalFilter ? event.globalFilter : ''
-        // this.filteredRows = this.filteredRows.filter((row: any) =>
-        //   this.filterGlobal(row, event.globalFilter)
-        // );
+      this.filteredRows = this.datasourceTransactions.filter((row) =>
+        this.filterField(row, event.globalFilter)
+      );
+      // sort data
+      this.filteredRows.sort(
+        (a: any, b: any) =>
+          this.compareField(a, b, event.sortField!) * event.sortOrder!
+      );
+      this.transactions = this.filteredRows.slice(
+        event.first,
+        event.first! + event.rows!
+      );
+      
 
-        this.transactionTableService.loading = false;
+      this.transactionTableService.totalRecords = this.filteredRows.length;
+
+      this.transactionTableService.loading = false;
+      
+    }, 1000);
+  }
+
+  compareField(rowA: any, rowB: any, field: string): number {
+    if (rowA[field] == null) return 1; // on considère les éléments null les plus petits
+    if (typeof rowA[field] === 'string') {
+      return rowA[field].localeCompare(rowB[field]);
+    }
+    if (typeof rowA[field] === 'number') {
+      if (rowA[field] > rowB[field]) return 1;
+      else return -1;
+    }
+
+    return this.test;
+  }
+
+  filterField(row: any, filter: any) {
+    let isInFilter = false;
+    let noFilter = true;
+
+    for (var columnName in filter) {
+      if (row[columnName] == null) {
+        return;
       }
-    }, 500);
+      noFilter = false;
+      let rowValue: String = row[columnName].toString().toLowerCase();
+      let filterMatchMode: String = filter[columnName].matchMode;
+      if (
+        filterMatchMode.includes('contains') &&
+        rowValue.includes(filter[columnName].value.toLowerCase())
+      ) {
+        isInFilter = true;
+      } else if (
+        filterMatchMode.includes('startsWith') &&
+        rowValue.startsWith(filter[columnName].value.toLowerCase())
+      ) {
+        isInFilter = true;
+      } else if (
+        filterMatchMode.includes('in') &&
+        filter[columnName].value.includes(rowValue)
+      ) {
+        isInFilter = true;
+      }
+    }
+
+    if (noFilter) {
+      isInFilter = true;
+    }
+
+    return isInFilter;
   }
 
   getTransactions() {
     this.transactionApiService.onGetAllTransactionList();
   }
 
-  getEventCollector() {
-    this.transactionApiService.onGetAllEventCollector();
-  }
-
   refreshTable() {
-    this.getEventCollector();
+    this.getTransactions();
     this.transactionTableService.loading = true;
   }
 

@@ -2,18 +2,47 @@
     background-color: transparent !important;
 } */
 .search-transaction-container {
-    @apply
-    w-[300px]
-    items-center
-  }
+  @apply w-[300px] items-center
+}
 
 .export-buttons button {
-    @apply
-    mr-2
+  @apply mr-2
 }
-  
-  .search-icon-transaction {
-    @apply
-    absolute mt-[10px] ml-[10px]
-  }
-  
+
+.search-icon-transaction {
+  @apply absolute mt-[10px] ml-[10px]
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-paginator-bottom {
+  border-width: 0 !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator-bottom {
+  border-width: 0 !important;
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-header {
+  border-width: 0;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-header {
+  border-width: 0;
+  background: transparent;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead>tr>th {
+  text-align: center;
+  padding: 1rem 1rem;
+  font-weight: 700;
+  color: white;
+  background: #12949C;
+  transition: box-shadow 0.2s;
+}
+
+:host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
+  text-align: center;
+}
+
+:host ::ng-deep .row-odd {
+  background-color: rgba(8, 117, 146, 0.12) !important;
+}
