@@ -87,7 +87,7 @@ export class HeaderConfigCreateUpdateDialogComponent
       encoding: ['', Validators.required],
       isoConfiguration: ['', Validators.required],
       isofieldCondition: [null],
-      priority: [''],
+      priority: [1],
     });
   }
 

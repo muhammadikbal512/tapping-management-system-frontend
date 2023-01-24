@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" class="p-8">
     <div class="form-filled-container">
         <div class="input-container">
-            <input formControlName="headerField" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="headerField" type="number" class="peer" placeholder=" " required="">
             <label class="input-label">Field ID</label>
             <p-message *ngIf="headerField.touched && !headerField.hasError('required')" severity="success"></p-message>
             <p-message *ngIf="headerField.touched && headerField.hasError('required')" severity="error"></p-message>
@@ -19,7 +19,7 @@
                 fill.</small>
         </div>
         <div class="input-container">
-            <input formControlName="headerLength" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="headerLength" type="number" class="peer" placeholder=" " required="">
             <label class="input-label">header Length</label>
             <p-message *ngIf="headerLength.touched && !headerLength.hasError('required')" severity="success">
             </p-message>
@@ -84,12 +84,10 @@
         <div class="input-container">
             <input readonly formControlName="isofieldCondition">
             <label class="input-label">Conditional ID</label>
-
         </div>
         <div class="input-container">
-            <input formControlName="priority" type="text" class="peer" placeholder=" " required="">
+            <input formControlName="priority" type="number" class="peer" placeholder=" " required="">
             <label class="input-label">Priority</label>
-
         </div>
     </div>
 

@@ -60,7 +60,7 @@ export class SubfieldCreateUpdateComponent implements OnInit {
       subFieldFormat: ['', Validators.required],
       encoding: ['', Validators.required],
       isoFieldCondition: [null],
-      priority: ['', Validators.required],
+      priority: [1, Validators.required],
       isTlvFormat: [''],
       isCommon: [''],
       tlvTagSize: ['', Validators.required],
