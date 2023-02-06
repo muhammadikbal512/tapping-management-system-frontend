@@ -4,7 +4,7 @@ import {
   ChangeDetectorRef,
   AfterViewInit,
 } from '@angular/core';
-import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
+import { MessageFormatService } from 'src/app/modules/services/module-services/message-format/message-format.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Iso8583FormatModel } from 'src/app/model/modules-model/iso8583-format.model';
 

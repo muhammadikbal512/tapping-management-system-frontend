@@ -21,16 +21,18 @@ export class Iso8583FieldModel {
 }
 
 export class Iso8583SubFieldModel {
+  id!: number;
   parentFieldId: number = 0 ;
   subFieldId: string = '';
   subFieldFormat!: FieldFormatModel;
-  subFieldlength: number = 0;
+  subFieldLength: number = 0;
   tlvTagSize: number = 0;
   description: string = '';
   isTlvFormat: boolean = false;
   priority: number = 0;
   encoding!: EncodingModel;
   isoFieldCondition: any = null;
+  common: boolean = false;
 }
 
 export class Iso8583TaggedFieldModel {

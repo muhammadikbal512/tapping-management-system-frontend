@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Iso20022Model } from 'src/app/model/modules-model/iso20022.model';
-import { Iso20022Service } from 'src/app/modules/services/module-services/iso20022.service';
+import { Iso20022Service } from 'src/app/modules/services/module-services/external-interfaces/iso20022.service';
 
 @Component({
   selector: 'app-create-update-iso20022',

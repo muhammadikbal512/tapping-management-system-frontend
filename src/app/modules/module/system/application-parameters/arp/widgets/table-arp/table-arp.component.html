@@ -1,4 +1,4 @@
-<p-table #dt1 [columns]="cols" [loading]="loading" [value]="Arps" [paginator]="true"
+<p-table #dt1 [columns]="cols" styleClass="p-datatable-gridlines" [loading]="loading" [value]="Arps" [paginator]="true"
   [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   [rows]="10" scrollHeight="400px" [autoLayout]="true"
   (onRowSelect)="onRowSelect($event)" selectionMode="single">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IsoConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration-table.service';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration-table.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 
 @Component({
   selector: 'app-iso-config-table',

@@ -15,7 +15,7 @@ import { FieldFormatModel } from 'src/app/model/modules-model/field-format.model
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { IsoFieldConditionModel } from 'src/app/model/modules-model/iso-field-condition.model';
-import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
+import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration.service';
 import { HeaderConfigState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/header-configuration/header-config.state';
 
 @Component({

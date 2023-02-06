@@ -1,4 +1,4 @@
-<p-table #dt1 [value]="transactions" dataKey="0" [lazy]="lazy" (onLazyLoad)="loadTransactions($event)"
+<p-table #dt1 [columns]="cols" [value]="datasourceTransactions" dataKey="0"
   [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [loading]="loading" scrollHeight="400px"
   selectionMode="single" (onRowSelect)="onRowSelect($event)" [scrollable]="true" styleClass="p-datatable-gridlines"
   [rowsPerPageOptions]="[5,10, 20, 25, 50]" [globalFilterFields]="['0','14', '13', '2']">
@@ -6,10 +6,10 @@
     <div class="flex justify-between">
       <div class="export-buttons">
         <button type="button" pButton pRipple icon="pi pi-file" (click)="dt1.exportCSV()" pTooltip="CSV"
-          tooltipPosition="bottom"></button>
-        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success"
+          tooltipPosition="bottom" class="action-button"></button>
+        <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success action-button"
           pTooltip="XLS" tooltipPosition="bottom"></button>
-        <p-button (click)="refreshTable()" icon="pi pi-refresh"></p-button>
+        <!-- <p-button (click)="refreshTable()" icon="pi pi-refresh"></p-button> -->
       </div>
       <div class="search-buttons">
         <span class="p-input-icon-left ml-auto">
@@ -27,7 +27,7 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th pSortableColumn="9">
+      <th pSortableColumn="0">
         <p-sortIcon></p-sortIcon>
         App Trans ID
       </th>
@@ -56,7 +56,6 @@
         Incident Details
       </th>
     </tr>
-
   </ng-template>
   <ng-template pTemplate="body" let-transactions let-rowIndex="rowIndex">
     <tr [pSelectableRow]="transactions" [ngClass]="{'row-odd': rowIndex % 2 == 0}">

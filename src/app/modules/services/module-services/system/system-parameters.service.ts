@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
-import { CreateUpdateSystemParametersComponent } from '../../module/system/system-parameters/widgets/create-update-system-parameters/create-update-system-parameters.component';
+import { CreateUpdateSystemParametersComponent } from '../../../module/system/system-parameters/widgets/create-update-system-parameters/create-update-system-parameters.component';
 
 @Injectable({
   providedIn: 'root'

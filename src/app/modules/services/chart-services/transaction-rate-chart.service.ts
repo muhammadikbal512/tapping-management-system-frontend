@@ -11,8 +11,8 @@ export class TransactionRateChartService {
     private websocketService: WebsocketService,
     private dashboardService: DashboardService
   ) {}
-  
-  address: string = '192.168.0.113'
+
+  address: string = '192.168.0.113';
   interval: any;
   public _updateOptions: any;
 
@@ -46,40 +46,50 @@ export class TransactionRateChartService {
     return res;
   })();
 
+  private data3: number[] = (function () {
+    let res = [];
+    let len = 0;
+    while (len < 50) {
+      res.push(0);
+      len++;
+    }
+    return res;
+  })();
+
   public _option: echarts.EChartsOption = {
     grid: {
       top: 70,
-      bottom: 30
+      bottom: 30,
     },
     title: {
       text: 'Transaction Rate',
-      show: false
+      show: false,
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
         label: {
-          backgroundColor: '#283b56'
-        }
-      }
+          backgroundColor: '#283b56',
+        },
+      },
     },
     legend: {},
     toolbox: {
       show: true,
       feature: {
-        dataView: {readOnly: false},
+        dataView: { readOnly: false },
         magicType: {
-          type: ['line', 'bar']
+          type: ['line', 'bar'],
         },
         restore: {},
-        saveAsImage: {}
-      }
+        saveAsImage: {},
+      },
     },
     dataZoom: {
       id: 'dataZoomX',
       type: 'inside',
-      filterMode: 'filter'
+      filterMode: 'filter',
     },
     xAxis: [
       {
@@ -90,23 +100,32 @@ export class TransactionRateChartService {
     yAxis: [
       {
         type: 'value',
-        name: 'Price',
-        boundaryGap: [0, 0]
+        name: 'Total',
+        boundaryGap: [0, 0],
       },
     ],
     series: [
       {
-        name: 'SYN',
+        name: 'Approved',
         type: 'bar',
         data: this.data,
         // showSymbol: false,
+        color: 'green',
       },
       {
-        name: 'ACK',
+        name: 'Declined',
         type: 'bar',
         data: this.data2,
         // showSymbol: false,
-      }
+        color: 'red',
+      },
+      {
+        name: 'Timeout',
+        type: 'bar',
+        data: this.data3,
+        // showSymbol: false,
+        color: 'yellow',
+      },
     ],
   };
 
@@ -118,6 +137,8 @@ export class TransactionRateChartService {
       this.data.push(Math.round(Math.random() * 1000)); //change this value to Transaction rate value
       this.data2.shift();
       this.data2.push(Math.round(Math.random() * 500)); //change this value to Transaction rate value
+      this.data3.shift();
+      this.data3.push(Math.round(Math.random() * 100)); //change this value to Transaction rate value
 
       this.timeStamps.shift();
       this.timeStamps.push(axisData);
@@ -135,8 +156,11 @@ export class TransactionRateChartService {
           {
             data: this.data2,
           },
+          {
+            data: this.data3,
+          },
         ],
       };
-    }, 3000);
+    }, 1000);
   }
 }

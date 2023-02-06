@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { XmlConfigModel } from 'src/app/model/modules-model/xml-config.model';
 import { XmlConfigDispatch } from 'src/app/state-configuration/modules/external-interfaces/xml-config/xml-config.dispatch';
 import { environment } from 'src/environments/environment';
-import { CreateDialogXmlComponent } from '../../module/external-interface/xml-configuration/widgets/create-dialog-xml/create-dialog-xml.component';
+import { CreateDialogXmlComponent } from '../../../module/external-interface/xml-configuration/widgets/create-dialog-xml/create-dialog-xml.component';
 import { XmlTableService } from './xml-table.service';
 
 @Injectable({

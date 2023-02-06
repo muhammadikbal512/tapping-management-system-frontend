@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MtiConfigurationModel } from 'src/app/model/modules-model/mti-configuration.model';
-import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/mti-configuration.service';
+import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/mti-configuration.service';
 
 @Component({
   selector: 'app-mti-config-create-update-dialog',

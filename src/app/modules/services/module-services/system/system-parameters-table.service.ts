@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ColDef, GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
-import { OverlayLoadingComponent } from '../../global-widget/overlay-loading/overlay-loading.component';
-import { ActionButtonSystemParametersComponent } from '../../module/system/system-parameters/widgets/action-button-system-parameters/action-button-system-parameters.component';
+import { OverlayLoadingComponent } from '../../../global-widget/overlay-loading/overlay-loading.component';
+import { ActionButtonSystemParametersComponent } from '../../../module/system/system-parameters/widgets/action-button-system-parameters/action-button-system-parameters.component';
 
 
 

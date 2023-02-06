@@ -5,7 +5,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration.service';
 import {
   Iso8583FieldModel,
   Iso8583SubFieldModel,

@@ -4,8 +4,8 @@ import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { catchError, tap } from 'rxjs';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { JsonConfigModel } from 'src/app/model/modules-model/json-configuration.model';
-import { JsonConfigurationTableService } from 'src/app/modules/services/module-services/json-configuration-table.service';
-import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
+import { JsonConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/json-configuration-table.service';
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/json-configuration.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import {
   JsonConfigurationGet,

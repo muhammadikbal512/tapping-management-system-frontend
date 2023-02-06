@@ -8,8 +8,8 @@ import { XmlConfigModel } from 'src/app/model/modules-model/xml-config.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { XmlService } from 'src/app/modules/services/module-services/xml.service';
-import { XmlTableService } from 'src/app/modules/services/module-services/xml-table.service';
+import { XmlService } from 'src/app/modules/services/module-services/external-interfaces/xml.service';
+import { XmlTableService } from 'src/app/modules/services/module-services/external-interfaces/xml-table.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/investigation/alert-investigation-table.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/investigation/alert-investigation.service';
 import * as FileSaver from 'file-saver';
 import { AlertInvestigationModel } from 'src/app/model/modules-model/alert-investigation.model';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';

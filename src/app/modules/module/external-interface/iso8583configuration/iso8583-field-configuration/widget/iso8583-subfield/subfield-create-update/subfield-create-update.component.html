@@ -57,7 +57,12 @@
     <mat-dialog-actions align="end">
         <p-button class="cancel-button" label="Cancel" mat-dialog-close="true" styleClass="p-button-sm"></p-button>
         <p-button (onClick)="createSubField()" [disabled]="form.invalid"
-            class="create-button ml-3" label="Create" styleClass="p-button-sm">
+            *ngIf="isoFieldService.buttonStatusSubField == 'create'" class="create-button ml-3" label="Create"
+            styleClass="p-button-sm">
+        </p-button>
+        <p-button (onClick)="updateSubField()" [disabled]="form.invalid"
+            *ngIf="isoFieldService.buttonStatusSubField == 'edit'" class="create-button ml-3" label="Save"
+            styleClass="p-button-sm">
         </p-button>
     </mat-dialog-actions>
 

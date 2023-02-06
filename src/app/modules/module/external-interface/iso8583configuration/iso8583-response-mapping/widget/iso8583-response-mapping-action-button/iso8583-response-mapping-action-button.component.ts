@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({

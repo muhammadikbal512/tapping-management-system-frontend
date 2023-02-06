@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { JsonConfigurationTableService } from 'src/app/modules/services/module-services/json-configuration-table.service';
-import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
+import { JsonConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/json-configuration-table.service';
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/json-configuration.service';
 
 @Component({
   selector: 'app-table-json',

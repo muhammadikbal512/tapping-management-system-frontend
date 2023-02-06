@@ -149,7 +149,7 @@ import { TransactionStatusSvgComponent } from './module/dashboard/transaction-st
 import { TransactionNetworkComponent } from './module/transaction/widget-transaction/transaction-network/transaction-network.component';
 import { TakeActionCaseComponent } from './module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
 import { ForwardActionCaseComponent } from './module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
-import { AlertInvestigationService } from './services/module-services/alert-investigation.service';
+import { AlertInvestigationService } from './services/module-services/investigation/alert-investigation.service';
 import { PhysicalLayerComponent } from './module/transaction/widget-transaction/physical-layer/physical-layer.component';
 import { NetworkLayerComponent } from './module/transaction/widget-transaction/network-layer/network-layer.component';
 import { AppLayerComponent } from './module/transaction/widget-transaction/app-layer/app-layer.component';
@@ -184,6 +184,7 @@ import { NetworkLayerCaseComponent } from './module/investigation/alert-analysis
 import { PhysicalLayerCaseComponent } from './module/investigation/alert-analysis/widgets/layers/physical-layer-case/physical-layer-case.component';
 import { SubfieldTableComponent } from './module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-subfield/subfield-table/subfield-table.component';
 import { SubfieldCreateUpdateComponent } from './module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-subfield/subfield-create-update/subfield-create-update.component';
+import { ActionButtonSubfieldComponent } from './module/external-interface/iso8583configuration/iso8583-field-configuration/widget/iso8583-subfield/action-button-subfield/action-button-subfield.component';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -343,6 +344,7 @@ import { SubfieldCreateUpdateComponent } from './module/external-interface/iso85
     PhysicalLayerCaseComponent,
     SubfieldTableComponent,
     SubfieldCreateUpdateComponent,
+    ActionButtonSubfieldComponent,
   ],
   imports: [
     CommonModule,

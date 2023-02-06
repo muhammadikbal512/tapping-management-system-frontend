@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { RoleInterface } from 'src/app/interface/modules/role-interface';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/investigation/alert-investigation.service';
 import { AlertInvestigationState } from 'src/app/state-configuration/modules/investigation/alert-investigation/alert-investigation.state';
 
 @Component({

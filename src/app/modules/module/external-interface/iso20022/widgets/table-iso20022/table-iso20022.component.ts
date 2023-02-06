@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Iso20022TableService } from 'src/app/modules/services/module-services/iso20022-table.service';
-import { Iso20022Service } from 'src/app/modules/services/module-services/iso20022.service';
+import { Iso20022TableService } from 'src/app/modules/services/module-services/external-interfaces/iso20022-table.service';
+import { Iso20022Service } from 'src/app/modules/services/module-services/external-interfaces/iso20022.service';
 
 @Component({
   selector: 'app-table-iso20022',

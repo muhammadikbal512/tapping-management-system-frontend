@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { SystemParametersTableService } from 'src/app/modules/services/module-services/system-parameters-table.service';
+import { SystemParametersTableService } from 'src/app/modules/services/module-services/system/system-parameters-table.service';
 
 
 @Component({

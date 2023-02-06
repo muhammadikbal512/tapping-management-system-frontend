@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AidConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/aid-configuration-table.service';
-import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/aid-configuration.service';
+import { AidConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/aid-configuration-table.service';
+import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/aid-configuration.service';
 
 @Component({
   selector: 'app-aid-config-table',

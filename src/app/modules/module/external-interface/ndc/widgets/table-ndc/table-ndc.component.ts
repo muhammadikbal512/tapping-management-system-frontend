@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NdcTableService } from 'src/app/modules/services/module-services/ndc-table.service';
-import { NdcService } from 'src/app/modules/services/module-services/ndc.service';
+import { NdcTableService } from 'src/app/modules/services/module-services/external-interfaces/ndc-table.service';
+import { NdcService } from 'src/app/modules/services/module-services/external-interfaces/ndc.service';
 
 @Component({
   selector: 'app-table-ndc',

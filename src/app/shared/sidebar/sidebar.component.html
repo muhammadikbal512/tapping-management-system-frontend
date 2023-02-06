@@ -1,311 +1,317 @@
 <nav id="sidebar">
-  <div class="pt-4 pb-2 px-6">
-    <a routerLink="/TMS-Home/dashboard">
-      <div class="flex items-center">
-        <div class="shrink-0">
-          <img src="../../../assets/logo/TMS-test.svg" class="w-10" alt="Avatar">
+  <div class="sidebar-container">
+    <div class="pb-2 px-6">
+      <a routerLink="/TMS-Home/dashboard">
+        <div class="flex items-center">
+          <div class="shrink-0">
+            <img src="../../../assets/logo/TMS-test.svg" class="w-10" alt="Avatar">
+          </div>
+          <div class="grow ml-3">
+            <p class="text-sm font-semibold">Tapping</p>
+            <p style="font-size: 0.75rem;
+            line-height: 1rem;">Management System
+            <p>
+          </div>
         </div>
-        <div class="grow ml-3">
-          <p class="text-sm font-semibold">TMS</p>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="dropend relative" id="sidenavSecExample">
-    <ul>
-      <li>
-        <a routerLink="/TMS-Home/dashboard">
-          <i class="pi pi-home mr-1"></i>
-          <p>Dashboard</p>
-        </a>
-      </li>
-    </ul>
+      </a>
+    </div>
+    <div class="dropend relative" id="sidenavSecExample">
+      <ul>
+        <li>
+          <a routerLink="/TMS-Home/dashboard">
+            <i class="pi pi-home mr-1"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+      </ul>
 
-    <ul>
-      <li id="dropdown-investigation">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-investigation">
-          <i class="pi pi-copy mr-1"></i>
-          <p>Investigation</p>
-          <i class="ml-auto pi pi-angle-down"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-investigation"
-          aria-labelledby="dropdown-investigation" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="investigation/alert-investigation" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Alert Investigation</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+      <ul>
+        <li id="dropdown-investigation">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-investigation">
+            <i class="pi pi-copy mr-1"></i>
+            <p>Investigation</p>
+            <i class="ml-auto pi pi-angle-down"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-investigation"
+            aria-labelledby="dropdown-investigation" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="investigation/alert-investigation" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Alert Investigation</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <!-- <li id="dropdown-acquirer">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-acquirer">
-          <i class="pi pi-paperclip mr-1"></i>
-          <p>Acquirer</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-acquirer"
-          aria-labelledby="dropdown-acquirer" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="acquirer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Terminal List</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="acquirer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Alert</p>
-            </a>
-          </li>
-        </ul>
-      </li> -->
+        <!-- <li id="dropdown-acquirer">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-acquirer">
+            <i class="pi pi-paperclip mr-1"></i>
+            <p>Acquirer</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-acquirer"
+            aria-labelledby="dropdown-acquirer" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="acquirer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Terminal List</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="acquirer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Alert</p>
+              </a>
+            </li>
+          </ul>
+        </li> -->
 
-      <!-- <li id="dropdown-issuer">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-issuer">
-          <i class="pi pi-exclamation-circle mr-1"></i>
-          <p>Issuer</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-issuer"
-          aria-labelledby="dropdown-issuer" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="issuer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Terminal List</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="issuer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Alert</p>
-            </a>
-          </li>
-        </ul>
-      </li> -->
+        <!-- <li id="dropdown-issuer">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-issuer">
+            <i class="pi pi-exclamation-circle mr-1"></i>
+            <p>Issuer</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-issuer"
+            aria-labelledby="dropdown-issuer" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="issuer/terminal-list" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Terminal List</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="issuer/alert" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Alert</p>
+              </a>
+            </li>
+          </ul>
+        </li> -->
 
-      <li id="dropdown-message-format">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-message-format">
-          <i class="pi pi-comment mr-1"></i>
-          <p>Message Format</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-message-format"
-          aria-labelledby="dropdown-message-format" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="message-format/iso8583-format" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>ISO8583 Format</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li id="dropdown-message-format">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-message-format">
+            <i class="pi pi-comment mr-1"></i>
+            <p>Message Format</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-message-format"
+            aria-labelledby="dropdown-message-format" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="message-format/iso8583-format" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>ISO8583 Format</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <li id="dropdown-external-interfaces">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-external-interfaces">
-          <i class="pi pi-desktop mr-1"></i>
-          <p>External Interfaces</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-external-interfaces"
-          aria-labelledby="dropdown-external-interfaces" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse" data-mdb-ripple="true"
-              data-mdb-ripple-color="primary">
-              <p>ISO8583 Configuration</p>
-              <i class="pi pi-angle-down ml-auto ml-auto"></i>
-            </a>
-            <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-iso-config">
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso-configuration" data-mdb-ripple="true"
-                  data-mdb-ripple-color="primary">
-                  <p>ISO Configuration</p>
-                </a>
-              </li>
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/header-configuration" data-mdb-ripple="true"
-                  data-mdb-ripple-color="primary">
-                  <p>Header Configuration</p>
-                </a>
-              </li>
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/aid-configuration" data-mdb-ripple="true"
-                  data-mdb-ripple-color="primary">
-                  <p>AID Configuration</p>
-                </a>
-              </li>
+        <li id="dropdown-external-interfaces">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-external-interfaces">
+            <i class="pi pi-desktop mr-1"></i>
+            <p>External Interfaces</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-external-interfaces"
+            aria-labelledby="dropdown-external-interfaces" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a data-bs-target="#collapsedropdown-iso-config" data-bs-toggle="collapse" data-mdb-ripple="true"
+                data-mdb-ripple-color="primary">
+                <p>ISO8583 Configuration</p>
+                <i class="pi pi-angle-down ml-auto ml-auto"></i>
+              </a>
+              <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-iso-config">
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/iso-configuration" data-mdb-ripple="true"
+                    data-mdb-ripple-color="primary">
+                    <p>ISO Configuration</p>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/header-configuration" data-mdb-ripple="true"
+                    data-mdb-ripple-color="primary">
+                    <p>Header Configuration</p>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/aid-configuration" data-mdb-ripple="true"
+                    data-mdb-ripple-color="primary">
+                    <p>AID Configuration</p>
+                  </a>
+                </li>
 
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/transaction-type-mapping"
-                  data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <p>Transaction Type Mapping</p>
-                </a>
-              </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/transaction-type-mapping"
+                    data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                    <p>Transaction Type Mapping</p>
+                  </a>
+                </li>
 
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/mti-configuration" data-mdb-ripple="true"
-                  data-mdb-ripple-color="primary">
-                  <p>MTI Configuration</p>
-                </a>
-              </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/mti-configuration" data-mdb-ripple="true"
+                    data-mdb-ripple-color="primary">
+                    <p>MTI Configuration</p>
+                  </a>
+                </li>
 
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration"
-                  data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <p>ISO Field Configuration</p>
-                </a>
-              </li>
-              <li>
-                <a routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping"
-                  data-mdb-ripple="true" data-mdb-ripple-color="primary">
-                  <p>Response Code Mapping</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a routerLink="external-interfaces/iso20022" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>ISO 20022</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="external-interfaces/json-configuration" data-mdb-ripple="true"
-              data-mdb-ripple-color="primary">
-              <p>JSON Config</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="external-interfaces/NDC" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>NDC</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="external-interfaces/xml-configuration" data-mdb-ripple="true"
-              data-mdb-ripple-color="primary">
-              <p>XML Config</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/iso8583-field-configuration"
+                    data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                    <p>ISO Field Configuration</p>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="external-interfaces/iso8583-configuration/iso8583-response-mapping"
+                    data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                    <p>Response Code Mapping</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a routerLink="external-interfaces/iso20022" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>ISO 20022</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="external-interfaces/json-configuration" data-mdb-ripple="true"
+                data-mdb-ripple-color="primary">
+                <p>JSON Config</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="external-interfaces/NDC" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>NDC</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="external-interfaces/xml-configuration" data-mdb-ripple="true"
+                data-mdb-ripple-color="primary">
+                <p>XML Config</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <li id="dropdown-channel-configuration">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-channel-configuration">
-          <i class="pi pi-sliders-h mr-1"></i>
-          <p>Channel Config</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-channel-configuration"
-          aria-labelledby="dropdown-channel-configuration" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="channel-configuration/channel" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Channel</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="channel-configuration/channel-type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Channel Type</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li id="dropdown-channel-configuration">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-channel-configuration">
+            <i class="pi pi-sliders-h mr-1"></i>
+            <p>Channel Config</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-channel-configuration"
+            aria-labelledby="dropdown-channel-configuration" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="channel-configuration/channel" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Channel</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="channel-configuration/channel-type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Channel Type</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <li id="dropdown-transaction">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-transaction">
-          <i class="pi pi-money-bill mr-1"></i>
-          <p>Transaction</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-transaction"
-          aria-labelledby="dropdown-transaction" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="transactions/transaction-page" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Transaction</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="transactions/transaction-parameters" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Transaction Parameters</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li id="dropdown-transaction">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-transaction">
+            <i class="pi pi-money-bill mr-1"></i>
+            <p>Transaction</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-transaction"
+            aria-labelledby="dropdown-transaction" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="transactions/transaction-page" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Transaction</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="transactions/transaction-parameters" data-mdb-ripple="true"
+                data-mdb-ripple-color="primary">
+                <p>Transaction Parameters</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <li id="dropdown-user-management">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-user-management">
-          <i class="pi pi-users mr-1"></i>
-          <p>User Management</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-user-management"
-          aria-labelledby="dropdown-user-management" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="user-management/private-scheme" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Scheme</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="user-management/roles" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Roles</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="user-management/user" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>User</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="user-management/institution" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Institution</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="user-management/type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>Type</p>
-            </a>
-          </li>
-          <li>
-            <a routerLink="user-management/user-group" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>User Group</p>
-            </a>
-          </li>
-        </ul>
-      </li>
+        <li id="dropdown-user-management">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-user-management">
+            <i class="pi pi-users mr-1"></i>
+            <p>User Management</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-user-management"
+            aria-labelledby="dropdown-user-management" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="user-management/private-scheme" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Scheme</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="user-management/roles" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Roles</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="user-management/user" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>User</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="user-management/institution" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Institution</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="user-management/type" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>Type</p>
+              </a>
+            </li>
+            <li>
+              <a routerLink="user-management/user-group" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>User Group</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
-      <li id="dropdown-system">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-system">
-          <i class="pi pi-cog mr-1"></i>
-          <p>System</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-system"
-          aria-labelledby="dropdown-system" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="system/arp" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>ARP</p>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li id="dropdown-device-monitoring">
-        <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
-          data-bs-target="#collapsedropdown-device-monitoring">
-          <i class="pi pi-th-large mr-1"></i>
-          <p>Device Monitoring</p>
-          <i class="pi pi-angle-down ml-auto"></i>
-        </a>
-        <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-device-monitoring"
-          aria-labelledby="dropdown-device-monitoring" data-bs-parent="#sidenavSecExample">
-          <li>
-            <a routerLink="device-monitoring/all-devices" data-mdb-ripple="true" data-mdb-ripple-color="primary">
-              <p>All Devices</p>
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+        <li id="dropdown-system">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-system">
+            <i class="pi pi-cog mr-1"></i>
+            <p>System</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-system"
+            aria-labelledby="dropdown-system" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="system/arp" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>ARP</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="dropdown-device-monitoring">
+          <a data-mdb-ripple="true" data-mdb-ripple-color="primary" data-bs-toggle="collapse"
+            data-bs-target="#collapsedropdown-device-monitoring">
+            <i class="pi pi-th-large mr-1"></i>
+            <p>Device Monitoring</p>
+            <i class="pi pi-angle-down ml-auto"></i>
+          </a>
+          <ul class="items-dropdown accordion-collapse collapse" id="collapsedropdown-device-monitoring"
+            aria-labelledby="dropdown-device-monitoring" data-bs-parent="#sidenavSecExample">
+            <li>
+              <a routerLink="device-monitoring/all-devices" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                <p>All Devices</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

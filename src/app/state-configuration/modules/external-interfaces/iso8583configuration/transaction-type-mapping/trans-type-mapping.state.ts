@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
-import { TransactionTypeTableService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type-table.service';
-import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
+import { TransactionTypeTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/transaction-type-table.service';
+import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/transaction-type.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import {
   TransTypeGetIsoConfig,
@@ -17,7 +17,7 @@ import {
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 

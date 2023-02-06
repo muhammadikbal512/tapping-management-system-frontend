@@ -7,8 +7,8 @@ import {
 } from './device-monitoring.action';
 import { Injectable } from '@angular/core';
 import { Action, StateContext, Selector, State } from '@ngxs/store';
-import { DeviceMonitoringService } from 'src/app/modules/services/module-services/device-monitoring.service';
-import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring-table.service';
+import { DeviceMonitoringService } from 'src/app/modules/services/module-services/device-monitoring/device-monitoring.service';
+import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring/device-monitoring-table.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';

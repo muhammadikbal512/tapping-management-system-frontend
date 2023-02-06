@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { XmlTableService } from 'src/app/modules/services/module-services/xml-table.service';
-import { XmlService } from 'src/app/modules/services/module-services/xml.service';
+import { XmlTableService } from 'src/app/modules/services/module-services/external-interfaces/xml-table.service';
+import { XmlService } from 'src/app/modules/services/module-services/external-interfaces/xml.service';
 
 @Component({
   selector: 'app-table-xml',

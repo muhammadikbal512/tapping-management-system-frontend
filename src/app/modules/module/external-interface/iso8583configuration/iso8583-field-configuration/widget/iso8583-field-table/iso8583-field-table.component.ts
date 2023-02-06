@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
-import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration-table.service';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration.service';
+import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration-table.service';
 
 @Component({
   selector: 'app-iso8583-field-table',

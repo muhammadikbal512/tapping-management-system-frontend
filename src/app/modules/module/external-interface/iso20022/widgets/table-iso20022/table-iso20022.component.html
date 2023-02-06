@@ -1,5 +1,5 @@
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="iso2022" [paginator]="true"
-  [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10, 25, 50]" styleClass="p-datatable-gridlines" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   [rows]="10" scrollHeight="400px" [autoLayout]="true"
   (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">

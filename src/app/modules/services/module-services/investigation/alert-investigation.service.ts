@@ -5,8 +5,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { AlertInvestigationTableService } from './alert-investigation-table.service';
 import { environment } from 'src/environments/environment';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { TakeActionCaseComponent } from '../../module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
-import { ForwardActionCaseComponent } from '../../module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
+import { TakeActionCaseComponent } from '../../../module/investigation/alert-analysis/widgets/take-action-case/take-action-case.component';
+import { ForwardActionCaseComponent } from '../../../module/investigation/alert-analysis/widgets/forward-action-case/forward-action-case.component';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 
 @Injectable({

@@ -10,8 +10,8 @@ import {
 import { Injectable } from '@angular/core';
 import { Iso20022Model } from 'src/app/model/modules-model/iso20022.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { Iso20022Service } from 'src/app/modules/services/module-services/iso20022.service';
-import { Iso20022TableService } from 'src/app/modules/services/module-services/iso20022-table.service';
+import { Iso20022Service } from 'src/app/modules/services/module-services/external-interfaces/iso20022.service';
+import { Iso20022TableService } from 'src/app/modules/services/module-services/external-interfaces/iso20022-table.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';

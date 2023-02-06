@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemParametersService } from 'src/app/modules/services/module-services/system-parameters.service';
+import { SystemParametersService } from 'src/app/modules/services/module-services/system/system-parameters.service';
 
 
 @Component({

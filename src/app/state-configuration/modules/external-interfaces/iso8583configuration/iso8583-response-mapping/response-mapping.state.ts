@@ -3,8 +3,8 @@ import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/
 import { State, Selector, Action, StateContext, Select } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
-import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping.service';
+import { ResponseMappingTableService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping-table.service';
 import {
   ResponseMappingGet,
   ResponseMappingAdd,
@@ -18,7 +18,7 @@ import { tap } from 'rxjs';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 
 export class ResponseMappingStateModel {

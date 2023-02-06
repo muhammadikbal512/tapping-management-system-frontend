@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonConfigurationService } from 'src/app/modules/services/module-services/json-configuration.service';
+import { JsonConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/json-configuration.service';
 
 @Component({
   selector: 'app-create-dialog-json',

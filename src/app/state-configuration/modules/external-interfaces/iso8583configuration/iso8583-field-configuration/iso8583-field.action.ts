@@ -19,11 +19,6 @@ export class Iso8583FieldAdd {
   constructor(public payload: Iso8583FieldModel) {}
 }
 
-export class Iso8583SubFieldAdd {
-  static readonly type = '[ISO8583-Field] Add Subfield';
-  constructor(public payload: Iso8583SubFieldModel) {}
-}
-
 export class Iso8583FieldIsoConfig {
   static readonly type = '[ISO8583-Field] IsoConfigGet';
 }
@@ -44,6 +39,21 @@ export class Iso8583FieldUpdate {
 export class Iso8583FieldDelete {
   static readonly type = '[ISO8583-Field] Delete';
   constructor(public id: number) {}
+}
+
+export class Iso8583SubFieldAdd {
+  static readonly type = '[ISO8583-Field] Add Subfield';
+  constructor(public payload: Iso8583SubFieldModel) {}
+}
+
+export class Iso8583SubFieldDelete {
+  static readonly type = '[ISO8583-Field] Delete SubField';
+  constructor(public id: number) {}
+}
+
+export class Iso8583SubFieldUpdate {
+  static readonly type = '[ISO8583-Field] Update SubField';
+  constructor(public id: number, public payload: Iso8583SubFieldModel) {}
 }
 
 export class Iso8583FieldSuccessState {

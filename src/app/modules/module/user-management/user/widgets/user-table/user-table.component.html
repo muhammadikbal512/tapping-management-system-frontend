@@ -1,6 +1,6 @@
 <p-table #dt1 [loading]="loading" [value]="users" [paginator]="true" [rowsPerPageOptions]="[10, 25, 50]"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="20" scrollHeight="500px"
-  [autoLayout]="true" styleClass="p-datatable-gridlines" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+  [autoLayout]="true" styleClass="p-datatable-gridlines" [globalFilterFields]="['username', 'email', 'role.roleName', 'institution.institutionName', 'userGroup.groupName', 'type.typeName']" (onRowSelect)="onRowSelect($event)" selectionMode="single">
   <ng-template pTemplate="caption">
     <div class="flex justify-between">
       <div class="search-buttons">
@@ -43,8 +43,8 @@
       <th style="min-width:100px;">Actions</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData>
-    <tr>
+  <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+    <tr [ngClass]="{'row-odd': rowIndex % 2 == 1}" >
       <td style="min-width:100px;">
         {{rowData.username}}
       </td>

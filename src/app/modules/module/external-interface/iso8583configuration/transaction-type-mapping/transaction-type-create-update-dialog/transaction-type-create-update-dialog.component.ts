@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { TransactionTypeModel } from 'src/app/model/modules-model/transaction-type.model';
-import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
+import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/transaction-type.service';
 import { TransTypeMappingState } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/transaction-type-mapping/trans-type-mapping.state';
 
 @Component({

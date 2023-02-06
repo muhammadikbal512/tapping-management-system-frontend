@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppsParametersModel } from 'src/app/model/modules-model/apps-parameters.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
-import { CreateUpdateArpComponent } from '../../module/system/application-parameters/arp/widgets/create-update-arp/create-update-arp.component';
+import { CreateUpdateArpComponent } from '../../../module/system/application-parameters/arp/widgets/create-update-arp/create-update-arp.component';
 import { ArpDispatch } from 'src/app/state-configuration/modules/system/arp/arp.dispatch';
 import { AppParametersTableService } from './app-parameters-table.service';
 

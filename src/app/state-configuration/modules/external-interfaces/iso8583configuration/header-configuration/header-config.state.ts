@@ -13,16 +13,16 @@ import {
 import { HeaderConfigurationModel } from 'src/app/model/modules-model/header-configuration.model';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
-import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
-import { HeaderConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration-table.service';
+import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration.service';
+import { HeaderConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration-table.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 import { EncodingInterface } from 'src/app/interface/modules/encoding';
-import { EncodingService } from 'src/app/modules/services/module-services/encoding.service';
-import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
+import { EncodingService } from 'src/app/modules/services/module-services/external-interfaces/encoding.service';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration.service';
 import { FieldFormatInterface } from 'src/app/interface/modules/field-format';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 

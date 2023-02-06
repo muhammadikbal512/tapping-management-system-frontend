@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { CreateDialogNdcComponent } from '../../module/external-interface/ndc/widgets/create-dialog-ndc/create-dialog-ndc.component';
+import { CreateDialogNdcComponent } from 'src/app/modules/module/external-interface/ndc/widgets/create-dialog-ndc/create-dialog-ndc.component';
 import { NdcModel } from 'src/app/model/modules-model/ndc.model';
 import { NdcTableService } from './ndc-table.service';
 import { environment } from 'src/environments/environment';

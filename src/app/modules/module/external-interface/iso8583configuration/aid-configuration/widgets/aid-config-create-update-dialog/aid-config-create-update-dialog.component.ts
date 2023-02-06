@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';
-import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/aid-configuration.service';
+import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/aid-configuration.service';
 
 @Component({
   selector: 'app-aid-config-create-update-dialog',

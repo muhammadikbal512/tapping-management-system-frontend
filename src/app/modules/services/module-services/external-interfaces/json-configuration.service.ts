@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CreateDialogJsonComponent } from '../../module/external-interface/json-configuration/widgets/create-dialog-json/create-dialog-json.component';
+import { CreateDialogJsonComponent } from '../../../module/external-interface/json-configuration/widgets/create-dialog-json/create-dialog-json.component';
 import { JsonConfigModel } from 'src/app/model/modules-model/json-configuration.model';
 import { environment } from 'src/environments/environment';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';

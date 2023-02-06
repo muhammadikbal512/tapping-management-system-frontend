@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MtiConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/mti-configuration-table.service';
-import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/mti-configuration.service';
+import { MtiConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/mti-configuration-table.service';
+import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/mti-configuration.service';
 
 @Component({
   selector: 'app-mti-config-table',

@@ -8,8 +8,8 @@ import {
   AlertInvestigationErrorState,
 } from './alert-investigation.action';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
-import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/alert-investigation-table.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/investigation/alert-investigation.service';
+import { AlertInvestigationTableService } from 'src/app/modules/services/module-services/investigation/alert-investigation-table.service';
 import { RolesModel } from 'src/app/model/modules-model/roles.model';
 import { RolesService } from 'src/app/modules/services/module-services/user-management/roles.service';
 import { catchError, tap } from 'rxjs';
@@ -87,6 +87,20 @@ export class AlertInvestigationState {
     this.alertTableService.loading = false;
     ctx.patchState({
       responseMessage: errorMessage,
+    });
+  }
+
+  @Action(AlertInvestigationSuccessState) ifSuccessState(
+    ctx: StateContext<AlertInvestigationStateModel>,
+    { successMessage }: AlertInvestigationSuccessState
+  ) {
+    this.notifierService.errorNotification(
+      successMessage?.message,
+      successMessage?.httpStatusCode
+    );
+    this.alertTableService.loading = false;
+    ctx.patchState({
+      responseMessage: successMessage,
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { AppParametersTableService } from 'src/app/modules/services/module-services/app-parameters-table.service';
-import { AppParametersService } from 'src/app/modules/services/module-services/app-parameters.service';
+import { AppParametersTableService } from 'src/app/modules/services/module-services/system/app-parameters-table.service';
+import { AppParametersService } from 'src/app/modules/services/module-services/system/app-parameters.service';
 
 @Component({
   selector: 'app-table-arp',

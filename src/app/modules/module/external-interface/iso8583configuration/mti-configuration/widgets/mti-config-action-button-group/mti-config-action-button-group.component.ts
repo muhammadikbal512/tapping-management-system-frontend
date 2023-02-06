@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
-import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/mti-configuration.service';
+import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration.service';
+import { MtiConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/mti-configuration.service';
 import { PopupMessageService } from 'src/app/modules/services/popup-message-service/popup-message-service.service';
 
 @Component({

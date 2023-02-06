@@ -53,7 +53,7 @@ export class TransactionState {
   }
 
   @Action(TransactionGet, { cancelUncompleted: true })
-  getEventCollectorsFromState(ctx: StateContext<TransactionStateModel>) {
+  getTransactionFromState(ctx: StateContext<TransactionStateModel>) {
     return this.transactionService.getAllTransactionList().pipe(
       tap((response) => {
         if (response?.length != 0) {

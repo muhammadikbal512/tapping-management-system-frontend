@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
+import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
 
 @Component({
@@ -8,14 +9,14 @@ import { TransactionService } from 'src/app/modules/services/module-services/tra
   styleUrls: ['./transaction-virtual.component.css'],
 })
 export class TransactionVirtualComponent implements OnInit {
-  constructor(private transactionApiService: TransactionService) {}
+  constructor(
+    private transactionApiService: TransactionService,
+    private transactionTableService: TransactionTableService
+  ) {}
 
   ngOnInit(): void {}
 
   options: EChartsOption = {
-    title: {
-      text: 'Simple Graph',
-    },
     tooltip: {},
     animationDurationUpdate: 1500,
     animationEasingUpdate: 'quinticInOut',
@@ -56,26 +57,17 @@ export class TransactionVirtualComponent implements OnInit {
         // links: [],
         links: [
           {
-            source: 'ATM',
-            target: 'Switching',
-          },
-          {
-            source: 'Switching',
-            target: 'ATM'
+            source: 0,
+            target: 1,
           },
           {
             source: 'Switching',
             target: 'HSM',
           },
-          {
-            source: 'HSM',
-            target: 'Switching'
-          }
         ],
         lineStyle: {
           opacity: 0.9,
           width: 2,
-          curveness: 0.3,
         },
       },
     ],

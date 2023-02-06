@@ -5,7 +5,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Iso8583DialectService } from 'src/app/modules/services/module-services/iso8583-dialect.service';
 import { tap } from 'rxjs';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
+import { MessageFormatService } from 'src/app/modules/services/module-services/message-format/message-format.service';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MessageFormatGroupInterface } from 'src/app/interface/modules/message-format-group-interface';

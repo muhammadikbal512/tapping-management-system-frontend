@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
-import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format-table.service';
+import { MessageFormatService } from 'src/app/modules/services/module-services/message-format/message-format.service';
+import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format/message-format-table.service';
 import {
   GridReadyEvent,
   RowClassRules,

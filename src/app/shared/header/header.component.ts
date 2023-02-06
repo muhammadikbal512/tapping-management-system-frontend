@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   @Output() btnClick = new EventEmitter();
   @Output() mobileClick = new EventEmitter();
   dataUser: any;
-
+  sidebarButton: boolean = false;
 
   constructor(
     private _er: ElementRef,

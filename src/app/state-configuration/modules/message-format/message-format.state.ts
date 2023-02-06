@@ -11,8 +11,8 @@ import {
   MessageFormatSuccessState,
   MessageFormatUpdate,
 } from './message-format.action';
-import { MessageFormatService } from 'src/app/modules/services/module-services/message-format.service';
-import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format-table.service';
+import { MessageFormatService } from 'src/app/modules/services/module-services/message-format/message-format.service';
+import { MessageFormatTableService } from 'src/app/modules/services/module-services/message-format/message-format-table.service';
 import { tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';

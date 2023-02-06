@@ -10,8 +10,9 @@ import {
   Iso8583FieldFormat,
   Iso8583SubFieldAdd,
   Iso8583SubFieldGet,
+  Iso8583SubFieldDelete,
+  Iso8583SubFieldUpdate
 } from './iso8583-field.action';
-import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { Injectable } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import {
@@ -55,11 +56,6 @@ export class Iso8583FieldDispatch {
   }
 
   @Dispatch()
-  public _Iso8583SubFieldAddDispatch(payload: Iso8583SubFieldModel) {
-    return new Iso8583SubFieldAdd(payload);
-  }
-
-  @Dispatch()
   public _Iso8583FieldUpdateDispatch(payload: Iso8583FieldModel) {
     return new Iso8583FieldUpdate(payload);
   }
@@ -67,6 +63,21 @@ export class Iso8583FieldDispatch {
   @Dispatch()
   public _Iso8583FieldDeleteDispatch(id: number) {
     return new Iso8583FieldDelete(id);
+  }
+
+  @Dispatch()
+  public _Iso8583SubFieldAddDispatch(payload: Iso8583SubFieldModel) {
+    return new Iso8583SubFieldAdd(payload);
+  }
+
+  @Dispatch()
+  public _Iso8583SubFieldDeleteDispatch(id: number) {
+    return new Iso8583SubFieldDelete(id);
+  }
+
+  @Dispatch()
+  public _Iso8583SubFieldUpdateDispatch(id: number, payload: Iso8583SubFieldModel) {
+    return new Iso8583SubFieldUpdate(id, payload);
   }
 
   @Dispatch()

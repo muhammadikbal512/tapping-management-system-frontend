@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridReadyEvent, RowClickedEvent } from 'ag-grid-community';
-import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
+import { ResponseMappingTableService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping-table.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping.service';
 
 @Component({
   selector: 'app-iso8583-response-mapping-table',

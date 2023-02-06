@@ -1,6 +1,6 @@
 <p-table #dt1 [columns]="cols" [loading]="loading" [value]="subFields" [paginator]="true"
     [rowsPerPageOptions]="[10, 25, 50]" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rows]="10" scrollHeight="400px" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
+    [rows]="10" scrollHeight="400px" styleClass="p-datatable-gridlines" [autoLayout]="true" (onRowSelect)="onRowSelect($event)" selectionMode="single">
     <ng-template pTemplate="caption">
         <div class="flex justify-between">
             <div class="search-buttons">
@@ -27,18 +27,24 @@
             <th style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
             </th>
+            <th>IsTlv Format</th>
             <th>Sub Field Format</th>
+            <th>Encoding</th>
             <th style="min-width:100px;">Actions</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-rowData>
-        <tr>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr [ngClass]="{'row-odd': rowIndex % 2 == 1}">
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>
+            <td>
+                <span [ngClass]="{'active': rowData.isTlvFormat == true, 'notActive': rowData.isTlvFormat == false}"></span>
+            </td>
             <td>{{rowData.subFieldFormat.formatType}}</td>
+            <td>{{rowData.encoding.encodingType}}</td>
             <td style="min-width:100px;" [pSelectableRow]="rowData">
-                <app-action-button-group-iso8583-dialect></app-action-button-group-iso8583-dialect>
+                <app-action-button-subfield></app-action-button-subfield>
             </td>
         </tr>
     </ng-template>

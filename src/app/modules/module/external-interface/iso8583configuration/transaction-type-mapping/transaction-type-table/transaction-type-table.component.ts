@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionTypeTableService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type-table.service';
-import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/transaction-type.service';
+import { TransactionTypeTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/transaction-type-table.service';
+import { TransactionTypeService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/transaction-type.service';
 
 @Component({
   selector: 'app-transaction-type-table',

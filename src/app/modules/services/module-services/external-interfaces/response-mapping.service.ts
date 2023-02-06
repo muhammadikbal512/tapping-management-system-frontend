@@ -5,7 +5,7 @@ import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/
 import { ResponseMappingModel } from 'src/app/model/modules-model/response-mapping.model';
 import { ResponseMappingDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-response-mapping/response-mapping.dispatch';
 import { environment } from 'src/environments/environment';
-import { Iso8583ResponseMappingCreateDialogComponent } from '../../module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
+import { Iso8583ResponseMappingCreateDialogComponent } from 'src/app/modules/module/external-interface/iso8583configuration/iso8583-response-mapping/widget/iso8583-response-mapping-create-dialog/iso8583-response-mapping-create-dialog.component';
 import { ResponseMappingTableService } from './response-mapping-table.service';
 import { RowClickedEvent } from 'ag-grid-community';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';

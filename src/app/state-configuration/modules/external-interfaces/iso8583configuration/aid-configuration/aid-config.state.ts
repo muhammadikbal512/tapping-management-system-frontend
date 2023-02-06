@@ -9,8 +9,8 @@ import {
   AidConfigSuccessState,
   AidConfigUpdate,
 } from './aid-config.action';
-import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/aid-configuration.service';
-import { AidConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/aid-configuration-table.service';
+import { AidConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/aid-configuration.service';
+import { AidConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/aid-configuration-table.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { catchError, tap } from 'rxjs';
 import { AidConfigurationModel } from 'src/app/model/modules-model/aid-configuration.model';

@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { IsoFieldConfigurationTableService } from './iso-field-configuration-table.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Iso8583FieldDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-field-configuration/iso8583-field.dispatch';
-import { CreateUpdateIso8583FieldFormComponent } from '../../../module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
+import { CreateUpdateIso8583FieldFormComponent } from 'src/app/modules/module/external-interface/iso8583configuration/iso8583-field-configuration/widget/create-update-iso8583-field-form/create-update-iso8583-field-form.component';
 import { IsoFieldConfigurationModel } from 'src/app/model/modules-model/iso-field-configuration.model';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import {
@@ -19,8 +19,9 @@ import { SubfieldCreateUpdateComponent } from 'src/app/modules/module/external-i
 })
 export class IsoFieldConfigurationService {
   buttonStatus: string = '';
+  buttonStatusSubField: string = '';
   existingData: Iso8583FieldModel = new Iso8583FieldModel();
-  subFieldData: Iso8583SubFieldModel[] = [];
+  subFieldData: Iso8583SubFieldModel = new Iso8583SubFieldModel();
   dialogConfig: MatDialogConfig = {
     autoFocus: false,
     disableClose: false,
@@ -98,16 +99,24 @@ export class IsoFieldConfigurationService {
     this.isoFieldDispatch._Iso8583FieldAddDispatch(data);
   }
 
-  onCreateIsoSubFieldConfiguration(data: Iso8583SubFieldModel) {
-    this.isoFieldDispatch._Iso8583SubFieldAddDispatch(data);
-  }
-
   onUpdateIsoFieldConfiguration(payload: Iso8583FieldModel) {
     this.isoFieldDispatch._Iso8583FieldUpdateDispatch(payload);
   }
 
+  onCreateIsoSubFieldConfiguration(data: Iso8583SubFieldModel) {
+    this.isoFieldDispatch._Iso8583SubFieldAddDispatch(data);
+  }
+
+  onUpdateSubFieldConfiguration(data: Iso8583SubFieldModel) {
+    this.isoFieldDispatch._Iso8583SubFieldUpdateDispatch(this.subFieldData.id, data);
+  }
+
   onDeleteIsoFieldConfiguration() {
     this.isoFieldDispatch._Iso8583FieldDeleteDispatch(this.existingData.id);
+  }
+
+  onDeleteSubFieldConfiguration() {
+    this.isoFieldDispatch._Iso8583SubFieldDeleteDispatch(this.subFieldData.id);
   }
   createIsoFieldConfigurationFormData(
     currentIsoFieldId: string,

@@ -1,7 +1,7 @@
 import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
-import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration.service';
+import { IsoFieldConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration.service';
 
 import {
   Iso8583FieldAdd,
@@ -14,22 +14,22 @@ import {
   Iso8583FieldSuccessState,
   Iso8583FieldUpdate,
   Iso8583SubFieldAdd,
+  Iso8583SubFieldDelete,
   Iso8583SubFieldGet,
+  Iso8583SubFieldUpdate,
 } from './iso8583-field.action';
 import { tap } from 'rxjs';
-import { DialectMsgTemplateGroup } from 'src/app/interface/modules/dialect-msg-template-group';
 import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Iso8583DialectService } from 'src/app/modules/services/module-services/iso8583-dialect.service';
 import {
   Iso8583FieldModel,
   Iso8583SubFieldModel,
 } from 'src/app/model/modules-model/iso8583-field.model';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
-import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso-field-configuration-table.service';
-import { EncodingService } from 'src/app/modules/services/module-services/encoding.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
+import { IsoFieldConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-field-configuration-table.service';
+import { EncodingService } from 'src/app/modules/services/module-services/external-interfaces/encoding.service';
 import { EncodingInterface } from 'src/app/interface/modules/encoding';
 import { FieldFormatInterface } from 'src/app/interface/modules/field-format';
 
@@ -222,24 +222,6 @@ export class ISO8583FieldState {
     );
   }
 
-  @Action(Iso8583SubFieldAdd, { cancelUncompleted: true }) addSubFieldFromState(
-    ctx: StateContext<IsoFieldConfigurationStateModel>,
-    { payload }: Iso8583SubFieldAdd
-  ) {
-    this.iso8583FieldService.existingData.subFieldConfigurations.push(payload);
-
-    ctx.patchState({
-      ...ctx.getState(),
-      iso8583SubFieldConfiguration: [
-        ...ctx.getState().iso8583SubFieldConfiguration,
-      ],
-    });
-    this.notifierService.successNotification(
-      'Success',
-      400
-    )
-  }
-
   @Action(Iso8583FieldUpdate) updateDataFromState(
     ctx: StateContext<IsoFieldConfigurationStateModel>,
     { payload }: Iso8583FieldUpdate
@@ -248,7 +230,7 @@ export class ISO8583FieldState {
       tap((response) => {
         ctx.dispatch(new Iso8583FieldSuccessState(response));
         const dataList = [...ctx.getState().iso8583FieldConfiguration];
-
+        console.log(dataList);
         ctx.patchState({
           ...ctx.getState(),
           iso8583FieldConfiguration: dataList,
@@ -274,6 +256,37 @@ export class ISO8583FieldState {
         });
       })
     );
+  }
+
+  @Action(Iso8583SubFieldAdd)
+  addSubFieldFromState(ctx: StateContext<IsoFieldConfigurationStateModel>, { payload }: Iso8583SubFieldAdd) {
+    console.log(payload);
+    this.iso8583FieldService.existingData.subFieldConfigurations.push(payload);
+    this.notifierService.successNotification('Success', 400);
+  }
+
+  @Action(Iso8583SubFieldDelete, { cancelUncompleted: true })
+  deleteSubFieldFromState(ctx: StateContext<IsoFieldConfigurationStateModel>, { id }: Iso8583SubFieldDelete) {
+    console.log(id)
+    const filterData =
+      this.iso8583FieldService.existingData.subFieldConfigurations.filter(
+        (x) => x.id !== id
+      );
+    this.iso8583FieldTableService.setSubFieldData(filterData);
+    this.iso8583FieldService.existingData.subFieldConfigurations = filterData;
+    this.notifierService.successNotification('Delete Success', 400);
+  }
+
+  @Action(Iso8583SubFieldUpdate, { cancelUncompleted: true })
+  updateSubFieldFromState(
+    ctx: StateContext<IsoFieldConfigurationStateModel>,
+    { id, payload }: Iso8583SubFieldUpdate
+  ) {
+    const dataList =
+      this.iso8583FieldService.existingData.subFieldConfigurations;
+    const updatedDataIndex = dataList.findIndex((x) => x.id === id);
+    dataList[updatedDataIndex] = payload;
+    this.notifierService.successNotification('Update Success', 400);
   }
 
   @Action(Iso8583FieldSuccessState)

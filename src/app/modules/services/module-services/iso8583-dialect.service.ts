@@ -4,7 +4,7 @@ import { Iso8583DialectMsgTemplate } from 'src/app/model/modules-model/iso8583-d
 import { environment } from 'src/environments/environment';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MessageFormatService } from './message-format.service';
+import { MessageFormatService } from './message-format/message-format.service';
 import { CreateUpdateIso8583DialectComponent } from '../../module/external-interface/iso8583configuration/iso8583dialect/widgets/create-update-iso8583-dialect/create-update-iso8583-dialect.component';
 import { DialectDispatch } from 'src/app/state-configuration/modules/external-interfaces/iso8583configuration/iso8583-dialect/dialect.dispatch';
 import { MessageFormatGroupInterface } from 'src/app/interface/modules/message-format-group-interface';

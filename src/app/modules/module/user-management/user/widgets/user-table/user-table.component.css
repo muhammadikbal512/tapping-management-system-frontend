@@ -54,3 +54,7 @@
 :host ::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
   text-align: center;
 }
+
+:host ::ng-deep .row-odd {
+  background-color: rgba(8, 117, 146, 0.12) !important;
+}

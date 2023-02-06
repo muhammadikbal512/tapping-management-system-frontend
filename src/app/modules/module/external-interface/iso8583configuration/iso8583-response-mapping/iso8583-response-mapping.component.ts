@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ResponseMappingTableService } from 'src/app/modules/services/module-services/response-mapping-table.service';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
 
 @Component({
   selector: 'app-iso8583-response-mapping',

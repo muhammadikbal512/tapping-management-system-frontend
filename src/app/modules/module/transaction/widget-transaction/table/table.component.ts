@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
-import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import { EventCollectorInterface } from 'src/app/interface/modules/event-collector';
 import * as FileSaver from 'file-saver';
 import { EventCollectorModel } from 'src/app/model/modules-model/event-collector.model';
@@ -8,7 +7,7 @@ import { Select } from '@ngxs/store';
 import { TransactionState } from 'src/app/state-configuration/modules/transaction/transaction.state';
 import { Observable } from 'rxjs';
 import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
-import { FilterMetadata, LazyLoadEvent } from 'primeng/api';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-table',
@@ -53,12 +52,10 @@ export class TableComponent implements OnInit {
         event.first,
         event.first! + event.rows!
       );
-      
 
       this.transactionTableService.totalRecords = this.filteredRows.length;
 
       this.transactionTableService.loading = false;
-      
     }, 1000);
   }
 
@@ -86,6 +83,7 @@ export class TableComponent implements OnInit {
       noFilter = false;
       let rowValue: String = row[columnName].toString().toLowerCase();
       let filterMatchMode: String = filter[columnName].matchMode;
+      console.log(filter[columnName]);
       if (
         filterMatchMode.includes('contains') &&
         rowValue.includes(filter[columnName].value.toLowerCase())
@@ -113,6 +111,9 @@ export class TableComponent implements OnInit {
 
   getTransactions() {
     this.transactionApiService.onGetAllTransactionList();
+    // this.transactionApiService.getAllTransactionList().subscribe((response) => {
+    //   this.transactionTableService.datasourceTransactions = response;
+    // })
   }
 
   refreshTable() {
@@ -127,7 +128,7 @@ export class TableComponent implements OnInit {
 
   exportExcel() {
     import('xlsx').then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(this.eventCollectors);
+      const worksheet = xlsx.utils.json_to_sheet(this.datasourceTransactions);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, {
         bookType: 'xlsx',

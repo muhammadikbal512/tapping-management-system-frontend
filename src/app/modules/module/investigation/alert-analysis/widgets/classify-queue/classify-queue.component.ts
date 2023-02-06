@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/investigation/alert-investigation.service';
 
 @Component({
   selector: 'app-classify-queue',

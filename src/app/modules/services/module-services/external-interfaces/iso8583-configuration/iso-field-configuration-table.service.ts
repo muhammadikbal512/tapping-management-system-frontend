@@ -20,7 +20,6 @@ export class IsoFieldConfigurationTableService {
 
   subfieldCols = [
     { field: 'description', header: 'Description' },
-    { field: 'isTlvFormat', header: 'isTLV Format' },
     { field: 'isoFieldCondition', header: 'isoFieldCondition' },
     { field: 'parentFieldId', header: 'Parent Field ID' },
     { field: 'subFieldId', header: 'Sub Field ID' },

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { IsoConfigurationInterface } from 'src/app/interface/modules/iso-configuration-interface';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
 import { ResponseMappingModel } from 'src/app/model/modules-model/response-mapping.model';
-import { ResponseMappingService } from 'src/app/modules/services/module-services/response-mapping.service';
+import { ResponseMappingService } from 'src/app/modules/services/module-services/external-interfaces/response-mapping.service';
 import {
   ResponseMappingState,
   ResponseMappingStateModel,

@@ -5,7 +5,7 @@ import { Iso8583FormatModel } from 'src/app/model/modules-model/iso8583-format.m
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { MessageFormatDispatch } from 'src/app/state-configuration/modules/message-format/message-format.dispatch';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CreateUpdateDialogIso8583FormatTableComponent } from '../../module/message-format/iso8583-format/widget/create-update-dialog-iso8583-format-table/create-update-dialog-iso8583-format-table.component';
+import { CreateUpdateDialogIso8583FormatTableComponent } from 'src/app/modules/module/message-format/iso8583-format/widget/create-update-dialog-iso8583-format-table/create-update-dialog-iso8583-format-table.component';
 import { RowClickedEvent } from 'ag-grid-community';
 import { MessageFormatTableService } from './message-format-table.service';
 

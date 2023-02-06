@@ -4,8 +4,8 @@ import { Action, State, StateContext, Selector } from '@ngxs/store';
 import { catchError, tap } from 'rxjs';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { NdcModel } from 'src/app/model/modules-model/ndc.model';
-import { NdcTableService } from 'src/app/modules/services/module-services/ndc-table.service';
-import { NdcService } from 'src/app/modules/services/module-services/ndc.service';
+import { NdcTableService } from 'src/app/modules/services/module-services/external-interfaces/ndc-table.service';
+import { NdcService } from 'src/app/modules/services/module-services/external-interfaces/ndc.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import {
   NdcGet,

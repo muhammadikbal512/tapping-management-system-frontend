@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration-table.service';
-import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/header-configuration.service';
+import { HeaderConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration-table.service';
+import { HeaderConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/header-configuration.service';
 
 @Component({
   selector: 'app-header-config-table',

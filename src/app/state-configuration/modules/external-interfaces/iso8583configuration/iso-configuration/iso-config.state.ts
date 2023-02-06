@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/custom-http-response.model';
 import { IsoConfigurationModel } from 'src/app/model/modules-model/iso-configuration.model';
-import { IsoConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration-table.service';
+import { IsoConfigurationTableService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration-table.service';
 import { NotificationService } from 'src/app/modules/services/notification-service/notification.service';
 import {
   IsoConfigAdd,
@@ -12,7 +12,7 @@ import {
   IsoConfigSuccessState,
   IsoConfigUpdate,
 } from './iso-config.action';
-import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso-configuration.service';
+import { IsoConfigurationService } from 'src/app/modules/services/module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 import { catchError, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpResponseData } from 'src/app/model/modules-model/http-response-data';
@@ -61,8 +61,9 @@ export class IsoConfigState {
           IsoConfigurations: response.responseData,
         });
       }),
-      catchError((response: HttpErrorResponse) => {
-        return ctx.dispatch(new IsoConfigErrorState(response.error));
+      catchError((response) => {
+        console.log(response)
+        return ctx.dispatch(new IsoConfigErrorState(response));
       })
     );
   }
@@ -152,8 +153,8 @@ export class IsoConfigState {
     { errorMessage }: IsoConfigErrorState
   ) {
     this.notifierService.errorNotification(
-      errorMessage?.responseCode,
-      errorMessage?.responseMessage
+      errorMessage?.message,
+      errorMessage?.status
     );
     this.isoConfigTableService.loading = false;
     this.isoConfigService.showLoading = false;

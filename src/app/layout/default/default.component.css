@@ -1,8 +1,9 @@
 .default-container {
   /* zoom: 0.8; */
   min-height: 100vh;
+  position: relative;
   @apply flex 
-    flex-row 
+    /* flex-row  */
     bg-gray-100 
     text-gray-800;
 }
@@ -20,7 +21,7 @@
   @apply flex 
     flex-col 
     w-full;
-    margin-left: 70px;
+    /* margin-left: 70px; */
 }
 
 .main-content {

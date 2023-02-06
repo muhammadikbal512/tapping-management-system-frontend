@@ -13,7 +13,7 @@ import { EventCollectorInterface } from 'src/app/interface/modules/event-collect
 })
 export class TransactionService {
   apiUrl = environment.core236;
-  additionalData: any[] | undefined;
+  additionalData!: any[];
   eventCollectorDispatch: any;
 
   constructor(

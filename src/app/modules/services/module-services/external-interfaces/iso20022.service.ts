@@ -5,7 +5,7 @@ import { CustomHttpResponseModel } from 'src/app/model/customHttpResponse-Model/
 import { Iso20022Model } from 'src/app/model/modules-model/iso20022.model';
 import { Iso20022Dispatch } from 'src/app/state-configuration/modules/external-interfaces/iso20022/iso20022.dispatch';
 import { environment } from 'src/environments/environment';
-import { CreateUpdateIso20022Component } from '../../module/external-interface/iso20022/widgets/create-update-iso20022/create-update-iso20022.component';
+import { CreateUpdateIso20022Component } from 'src/app/modules/module/external-interface/iso20022/widgets/create-update-iso20022/create-update-iso20022.component';
 import { Iso20022TableService } from './iso20022-table.service';
 
 @Injectable({

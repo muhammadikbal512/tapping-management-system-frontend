@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
-import { AlertInvestigationService } from '../module-services/alert-investigation.service';
+import { AlertInvestigationService } from '../module-services/investigation/alert-investigation.service';
 import { ChannelTypeService } from '../module-services/channel-configuration/channel-type.service';
 import { ChannelService } from '../module-services/channel-configuration/channel.service';
 import { InstitutionService } from '../module-services/user-management/institution.service';
-import { IsoFieldConfigurationService } from '../module-services/external-interfaces/iso-field-configuration.service';
+import { IsoFieldConfigurationService } from '../module-services/external-interfaces/iso8583-configuration/iso-field-configuration.service';
 import { Iso8583DialectService } from '../module-services/iso8583-dialect.service';
-import { MessageFormatService } from '../module-services/message-format.service';
-import { ResponseMappingService } from '../module-services/response-mapping.service';
+import { MessageFormatService } from '../module-services/message-format/message-format.service';
+import { ResponseMappingService } from '../module-services/external-interfaces/response-mapping.service';
 import { RolesService } from '../module-services/user-management/roles.service';
 import { TransactionParametersService } from '../module-services/transaction/transaction-parameters.service';
 import { TypeService } from '../module-services/user-management/type.service';
 import { UserGroupService } from '../module-services/user-management/user-group.service';
 import { UserService } from '../module-services/user-management/user.service';
-import { HeaderConfigurationService } from '../module-services/external-interfaces/header-configuration.service';
-import { AidConfigurationService } from '../module-services/external-interfaces/aid-configuration.service';
-import { MtiConfigurationService } from '../module-services/external-interfaces/mti-configuration.service';
-import { TransactionTypeService } from '../module-services/external-interfaces/transaction-type.service';
-import { IsoConfigurationService } from '../module-services/external-interfaces/iso-configuration.service';
+import { HeaderConfigurationService } from '../module-services/external-interfaces/iso8583-configuration/header-configuration.service';
+import { AidConfigurationService } from '../module-services/external-interfaces/iso8583-configuration/aid-configuration.service';
+import { MtiConfigurationService } from '../module-services/external-interfaces/iso8583-configuration/mti-configuration.service';
+import { TransactionTypeService } from '../module-services/external-interfaces/iso8583-configuration/transaction-type.service';
+import { IsoConfigurationService } from '../module-services/external-interfaces/iso8583-configuration/iso-configuration.service';
 
 @Injectable({
   providedIn: 'root',
@@ -95,6 +95,17 @@ export class PopupMessageService {
         onDelete.onDeleteIsoFieldConfiguration();
       },
     });
+  }
+
+  iso8583SubFieldConfigurationConfirm(event: Event, onDelete: IsoFieldConfigurationService) {
+    this.confirmationService.confirm({
+      target: event.target || undefined,
+      message: 'Do you want to delete this record?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        onDelete.onDeleteSubFieldConfiguration();
+      }
+    })
   }
 
   userConfirm(event: Event, onDelete: UserService) {

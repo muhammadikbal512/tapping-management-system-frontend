@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AlertInvestigationService } from 'src/app/modules/services/module-services/alert-investigation.service';
+import { AlertInvestigationService } from 'src/app/modules/services/module-services/investigation/alert-investigation.service';
 
 @Component({
   selector: 'app-investigation-history',

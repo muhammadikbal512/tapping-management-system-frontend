@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceMonitoringInterface } from 'src/app/interface/modules/device-monitoring';
-import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring-table.service';
+import { DeviceMonitoringTableService } from 'src/app/modules/services/module-services/device-monitoring/device-monitoring-table.service';
 
 @Component({
   selector: 'app-table-device-monitoring',
