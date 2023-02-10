@@ -111,7 +111,7 @@ export class TableComponent implements OnInit {
 
   getTransactions() {
     this.transactionApiService.onGetAllTransactionList();
-    // this.transactionApiService.getAllTransactionList().subscribe((response) => {
+    // this.transactionApiService.Test().subscribe((response) => {
     //   this.transactionTableService.datasourceTransactions = response;
     // })
   }

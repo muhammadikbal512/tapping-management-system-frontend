@@ -13,6 +13,9 @@ export class DeviceConnectedChartService {
     },
     legend: {
       left: 'center',
+      textStyle: {
+        color: 'white',
+      },
     },
     series: [
       {

@@ -29,6 +29,31 @@ export class avaliableCaseForUser {
   constructor(public username: string) {}
 }
 
+export class confirmCase {
+  static readonly type = '[AlertInvestigation] Confirm Case';
+  constructor(public payload: AlertInvestigationModel) {}
+}
+
+export class classifyCase {
+  static readonly type = '[AlertInvestigation] Classify Case';
+  constructor(public id: number) {}
+}
+
+export class rejectCaseByInitiator {
+  static readonly type = '[AlertInvestigation] Reject Case By Initiator';
+  constructor(public payload: AlertInvestigationModel) {}
+}
+
+export class postPoneCase {
+  static readonly type = '[AlertInvestigation] PostPone Case';
+  constructor(public payload: AlertInvestigationModel) {}
+}
+
+export class classifiedCase {
+  static readonly type = '[AlertInvestigation] Classified Case';
+  constructor(public payload: AlertInvestigationModel) {}
+}
+
 export class AlertInvestigationSuccessState {
   static readonly type = '[AlertInvestigation] Success';
   constructor(public successMessage: CustomHttpResponseModel) {}

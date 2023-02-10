@@ -24,6 +24,7 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>No</th>
             <th style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
             </th>
@@ -35,11 +36,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <tr [ngClass]="{'row-odd': rowIndex % 2 == 1}">
+            <td>{{rowIndex + 1}}</td>
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>
             <td>
-                <span [ngClass]="{'active': rowData.isTlvFormat == true, 'notActive': rowData.isTlvFormat == false}"></span>
+                <span *ngIf="rowData.isTlvFormat == true" class="active">True</span>
+                <span *ngIf="rowData.isTlvFormat == false" class="notActive">False</span>
             </td>
             <td>{{rowData.subFieldFormat.formatType}}</td>
             <td>{{rowData.encoding.encodingType}}</td>
@@ -50,7 +53,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="9">There are no data</td>
+            <td colspan="10">There are no data</td>
         </tr>
     </ng-template>
 </p-table>

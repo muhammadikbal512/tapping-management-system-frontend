@@ -55,7 +55,8 @@
         {{rowData.lastLoginDate | date:'medium'}}
       </td>
       <td style="min-width:100px;">
-        <span [ngClass]="{'active': rowData.active == true, 'notActive': rowData.active == false}"></span>
+        <span *ngIf="rowData.active == true" class="active">Active</span>
+        <span *ngIf="rowData.active == false" class="notActive">Not Active</span>
       </td>
       <td style="min-width:100px;">
         {{rowData.role.roleName}}

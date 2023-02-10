@@ -29,6 +29,7 @@
     "@stomp/stompjs": "^6.1.2",
     "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "@syncfusion/ej2-angular-treegrid": "^20.1.48",
+    "@types/drawflow": "^0.0.4",
     "ag-grid-angular": "^27.0.0",
     "ag-grid-community": "^27.0.1",
     "ag-grid-enterprise": "^27.2.1",

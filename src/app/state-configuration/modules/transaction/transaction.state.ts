@@ -58,11 +58,9 @@ export class TransactionState {
       tap((response) => {
         if (response?.length != 0) {
           this.transactionTableService.loading = false;
-
           this.transactionTableService.setTrans(response);
         } else {
           this.transactionTableService.loading = false;
-
           this.transactionTableService.setTrans(response);
         }
         this.transactionTableService.totalRecords = response.length;

@@ -25,6 +25,7 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>No</th>
             <th style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
             </th>
@@ -35,7 +36,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <tr [pSelectableRow]="rowData" [ngClass]="{'row-odd': rowIndex % 2 == 1}">
-
+            <td>{{rowIndex + 1}}</td>
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>

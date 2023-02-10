@@ -25,6 +25,7 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>No</th>
             <th style="min-width:100px;">
                 Value
             </th>
@@ -41,14 +42,17 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <tr [pSelectableRow]="rowData" [ngClass]="{'row-odd': rowIndex % 2 == 1}">
+            <td>{{rowIndex + 1}}</td>
             <td style="min-width:100px;">
                 {{rowData.value}}
             </td>
             <td style="min-width:100px;">
-                <span [ngClass]="{'active': rowData.reversal == true, 'notActive': rowData.reversal == false}"></span>
+                <span *ngIf="rowData.reversal == true" class="active">True</span>
+                <span *ngIf="rowData.reversal == false" class="active">False</span>
             </td>
             <td style="min-width:100px;">
-                <span [ngClass]="{'active': rowData.response == true, 'notActive': rowData.response == false}"></span>
+                <span *ngIf="rowData.response == true" class="active">True</span>
+                <span *ngIf="rowData.response == false" class="notActive">False</span>
             </td>
             <td>
                 <app-mti-config-action-button-group></app-mti-config-action-button-group>

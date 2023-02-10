@@ -35,13 +35,18 @@ header {
     ml-auto
 }
 
+.user-details {
+  @apply
+  ml-3
+}
+
 .header-logout button {
   @apply
   flex 
   mr-3 
   text-sm 
   bg-gray-800 
-  rounded-full 
+  rounded-lg
   md:mr-0 
   focus:ring-4 
   focus:ring-gray-300 
@@ -50,9 +55,9 @@ header {
 
 .header-logout button img {
   @apply
-  w-8 
+  w-10 
   h-8 
-  rounded-full
+  rounded-lg
 }
 
 
@@ -105,10 +110,28 @@ header {
   cursor-pointer
 }
 
+.search-with-buttons {
+  @apply
+  flex
+  space-x-3
+}
+
 .header-notif i {
   @apply
   text-white
   p-1.5
+}
+
+.header-notif button {
+  @apply
+  mr-3 
+  text-sm 
+  bg-gray-500 
+  rounded 
+  md:mr-0 
+  focus:ring-4 
+  focus:ring-gray-300 
+  dark:focus:ring-gray-600
 }
 
 /* .header-logout:hover > .user-dropdown-container {

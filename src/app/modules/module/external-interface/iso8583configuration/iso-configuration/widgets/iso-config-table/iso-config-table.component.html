@@ -25,6 +25,7 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>No</th>
             <th style="min-width:100px;" *ngFor="let col of cols">
                 {{col.header}}
             </th>
@@ -36,12 +37,13 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
         <tr [pSelectableRow]="rowData" [ngClass]="{'row-odd': rowIndex % 2 == 1}">
-
+            <td>{{rowIndex + 1}}</td>
             <td style="min-width:100px;" *ngFor="let col of cols">
                 {{rowData[col.field]}}
             </td>
             <td>
-                <span [ngClass]="{'active': rowData.hasHeader == true, 'notActive': rowData.hasHeader == false}"></span>
+                <span *ngIf="rowData.hasHeader == true" class="active">True</span>
+                <span *ngIf="rowData.hasHeader == false" class="notActive">False</span>
             </td>
             <td>
                 <app-iso-config-action-button></app-iso-config-action-button>

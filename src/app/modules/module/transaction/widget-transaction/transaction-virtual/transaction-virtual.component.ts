@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { worker } from 'cluster';
 import type { EChartsOption } from 'echarts';
-import { TransactionTableService } from 'src/app/modules/services/module-services/transaction/transaction-table.service';
 import { TransactionService } from 'src/app/modules/services/module-services/transaction/transaction.service';
+
+
 
 @Component({
   selector: 'app-transaction-virtual',
@@ -9,12 +11,14 @@ import { TransactionService } from 'src/app/modules/services/module-services/tra
   styleUrls: ['./transaction-virtual.component.css'],
 })
 export class TransactionVirtualComponent implements OnInit {
-  constructor(
-    private transactionApiService: TransactionService,
-    private transactionTableService: TransactionTableService
-  ) {}
+  test: any[] = [];
+  constructor(private transactionApiService: TransactionService) {
+  }
+  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   options: EChartsOption = {
     tooltip: {},
@@ -28,6 +32,7 @@ export class TransactionVirtualComponent implements OnInit {
         roam: true,
         label: {
           show: true,
+          
         },
         edgeSymbol: ['circle', 'arrow'],
         edgeSymbolSize: [4, 10],
@@ -35,7 +40,7 @@ export class TransactionVirtualComponent implements OnInit {
           fontSize: 20,
         },
         data: [
-          {
+          { 
             name: 'ATM',
             x: 300,
             y: 300,
